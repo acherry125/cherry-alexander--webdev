@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    font-family: Rockwell;
+    background-color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#header {
+
+}
+
+#links li {
+    list-style: none;
+    color: cornflowerblue;
+    padding: 5px;
+}
+
+#links {
+    margin: 10px;
+    font-size: 1.25em;
+}
