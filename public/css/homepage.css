@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    font-family: Rockwell;
+    font-family: Rockwell, Georgia, sans-serif;
     background-color: whitesmoke;
 }
 
@@ -9,9 +9,6 @@ a {
     color: inherit;
 }
 
-#header {
-
-}
 
 #links li {
     list-style: none;
