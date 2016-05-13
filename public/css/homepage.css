@@ -12,6 +12,17 @@ a {
     color: inherit;
 }
 
+/*_ image formatting */
+img {
+    /* for mobile */
+    max-width: 100%;
+}
+
+/* input box formatting */
+input, textarea {
+    /* for mobile */
+    max-width:100%
+}
 
 /* link-buttons */
 .link-button {
