@@ -2,6 +2,7 @@ body {
     text-align: center;
     font-family: Rockwell, Georgia, sans-serif;
     background-color: whitesmoke;
+    list-style: none;
 }
 
 a {
@@ -12,7 +13,7 @@ a {
 
 
 .button {
-    background-color: cornflowerblue; /* Green */
+    background-color: cornflowerblue;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -22,6 +23,11 @@ a {
     font-size: 16px;
     border-radius: 15px;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 1.5rem;
+    font-size: 1.25em;
 }
 
 .button:hover {
