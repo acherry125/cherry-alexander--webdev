@@ -4,6 +4,7 @@ body {
     font-family: Rockwell, Georgia, sans-serif;
     background-color: #e6e6fa;
     list-style: none;
+    font-size: 18px;
 }
 
 /* clear hyperlink formatting */
@@ -53,4 +54,26 @@ input, textarea {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* media controller for mobile (and tablet) screens */
+@media only screen and (max-device-width: 770px) {
+    /* make text more readable */
+    body {
+        font-size: 100%;
+    }
+    /* make button easier to tap */
+    .center-button {
+        width: 75%
+    }
+    /* make button easier to tap and read */
+    .link-button {
+        height: 40px;
+        font-size: 35px;
+    }
+    /* make image scale effectively */
+    img {
+        width: 100%;
+        position: relative;
+        align-content: center;
+    }
+}
 
