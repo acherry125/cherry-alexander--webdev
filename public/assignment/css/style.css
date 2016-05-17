@@ -1,8 +1,17 @@
+
+.col-xs-2, .col-xs-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .glyphicon {
     font-size: 1.5em;
     margin-top: 15px;
-    margin-right: 10px;
-    padding-right: 10px;
+    margin-left: 0px;
+}
+
+a.glyphicon:active {
+    background-color: black;
 }
 
 p {
@@ -16,4 +25,13 @@ img {
 
 iframe {
 	max-width: 100%
+}
+
+@media only screen and (max-device-width: 370px) {
+
+    .glyphicon-cog, .glyphicon-align-justify {
+        font-size: 1em;
+    }
+
+
 }
