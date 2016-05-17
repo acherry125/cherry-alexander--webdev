@@ -36,10 +36,6 @@ input, textarea {
     border-radius: 15px;
     height: 30px;
     font-size: 25px;
-}
-
-/* large centered button (use with link-button) */
-.center-button {
     display: block;
     margin-top: 10px;
     margin-left: auto;
@@ -60,18 +56,15 @@ input, textarea {
     body {
         font-size: 100%;
     }
-    /* make button easier to tap */
-    .center-button {
-        width: 75%
-    }
     /* make button easier to tap and read */
     .link-button {
-        height: 40px;
+        height: 100%;
         font-size: 35px;
+        width: 75%
     }
     /* make image scale effectively */
-    img {
-        width: 100%;
+    #profile-pic {
+        width: 330px;
         position: relative;
         align-content: center;
     }
