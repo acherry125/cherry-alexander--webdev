@@ -1,0 +1,19 @@
+.glyphicon {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+p {
+	margin-top: 20px;
+}
+
+img {
+
+	max-width: 100%;
+}
+
+iframe {
+	max-width: 100%
+}
