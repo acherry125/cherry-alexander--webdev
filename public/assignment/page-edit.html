@@ -8,27 +8,52 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <div class="container">
     <div class="row">
-        <a href="page-list.html">Back to Pages</a>
-        <h1>Edit Page</h1>
-        <a href="page-new.html">Save Page</a>
+        <div class="col-xs-1">
+            <a href="page-list.html">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="col-xs-10">
+            <h1>Edit Page</h1>
+        </div>
+        <div class="col-xs-1">
+            <a href="page-list.html"><span class="glyphicon glyphicon-ok"></span></a>
+        </div>
     </div>
     <div class="row">
-        <form>
-            <label for="page-name">Name</label>
-            <input type="text" id="page-name" placeholder="Page Name">
-            <label for="page-title">Title</label>
-            <input type="text" id="page-title" placeholder="Page Title">
-        </form>
+        <div class="col-xs-12">
+            <!-- Website Details -->
+            <form>
+                <div class="form-group">
+                    <!-- Page name -->
+                    <label for="page-name">Page Name</label>
+                    <input class="form-control" type="text" id="page-name"
+                           placeholder="Page Name" value="Blogging is fun">
+                </div>
+                <div class="form-group">
+                    <!-- Page Description -->
+                    <label for="page-desc">Page Description</label>
+                    <textarea class="form-control" rows="6" id="page-desc"
+                              placeholder="Page Description">This is a description</textarea>
+                </div>
+
+            </form>
+        </div>
     </div>
     <div class="row">
-        <a href="page-list.html"><button>Delete</button></a>
+        <div class="col-xs-12">
+            <!-- Delete Website -->
+            <a href="page-list.html" role="button" class="btn-block btn-danger btn-lg">Delete</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 col-xs-offset-10">
+            <!-- Profile Button -->
+            <a href="profile.html"><span class="glyphicon glyphicon-user"></span></a>
+        </div>
     </div>
 </div>
-
-<a href="profile.html">Back to Profile</a>
-
 </body>
 </html>
