@@ -9,23 +9,44 @@
 </head>
 <body>
 
-<a href="website-list.html">Cancel</a>
-<h1>New Website</h1>
-<a href="website-list.html">Save and Finish</a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1">
+            <a href="website-list.html">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="col-xs-10">
+            <h1>New Website</h1>
+        </div>
+        <div class="col-xs-1">
+            <a href="website-list.html"><span class="glyphicon glyphicon-ok"></span></a>
+        </div>
+    </div>
+    <div class="row">
 
-<!-- Website Details -->
-<form>
-    <!-- Name -->
-    <label for="name">Name</label>
-    <input type="text" id="name" placeholder="Name">
-    <!-- Description -->
-    <label for="desc">Description</label>
-    <input type="text" id="desc" placeholder="Description">
-</form>
-<!-- Profile Button -->
-<a href="profile.html">
-    <span class="glyphicon glyphicon-user pull-right"></span>
-</a>
+        <!-- Website Details -->
+        <form>
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" placeholder="Name">
+            </div>
+            <!-- Description -->
+            <div class="form-group">
+                <label for="desc">Description</label>
+                <input class="form-control" type="text" id="desc" placeholder="Description">
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 col-xs-offset-10">
+            <a href="profile.html">
+                <span class="glyphicon glyphicon-user pull-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
