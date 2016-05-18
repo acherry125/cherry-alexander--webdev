@@ -11,17 +11,27 @@
 
 <div class="container">
     <div class="row">
-        <a href="page-list.html">Back to Pages</a>
-        <h1>New Page</h1>
-        <a href="page-new.html">Save Page</a>
+        <div class="col-xs-1">
+            <a href="page-list.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        </div>
+        <div class="col-xs-10">
+            <h1>New Page</h1>
+        </div>
+        <div class="col-xs-1">
+            <a href="page-new.html"><span class="glyphicon glyphicon-ok"></span></a>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <form>
-                <label for="page-name">Name</label>
-                <input type="text" id="page-name" placeholder="Page Name">
-                <label for="page-title">Title</label>
-                <input type="text" id="page-title" placeholder="Page Title">
+                <div class="form-group">
+                    <label for="page-name">Name</label>
+                    <input class="form-control" type="text" id="page-name" placeholder="Page Name">
+                </div>
+                <div class="form-group">
+                    <label for="page-title">Title</label>
+                    <input class="form-control" type="text" id="page-title" placeholder="Page Title">
+                </div>
             </form>
         </div>
     </div>
