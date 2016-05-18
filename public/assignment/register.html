@@ -5,22 +5,47 @@
           content="width=page-width, initial-scale=1, user-scalable=no">
     <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Register</h1>
 <!-- Registration form -->
-<form>
-    <!-- Username -->
-    <input type="text" class="form-control" id="username" placeholder="username">
-    <!-- Password -->
-    <input type="password" class="form-control" id="password" placeholder="password">
-    <input type="password" class="form-control" id="ver-password" placeholder="verify password">
-</form>
-
-<!-- Register Button -->
-<a href="profile.html"><button>Register</button></a>
-<!-- Cancel Button -->
-<a href="login.html"><button>Cancel</button></a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Register</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <!-- Username -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" placeholder="username">
+                </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="password">
+                </div>
+                <!-- Verify -->
+                <div class="form-group">
+                    <input type="password" class="form-control" id="ver-password" placeholder="verify password">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Register Button -->
+            <a href="profile.html" role="button" class="btn-block btn-primary btn-lg">Register</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Cancel Button -->
+            <a href="login.html" role="button" class="btn-block btn-danger btn-lg">Cancel</a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

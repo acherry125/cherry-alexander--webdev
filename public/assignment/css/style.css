@@ -23,6 +23,22 @@ img, iframe {
 	max-width: 100%;
 }
 
+a.btn-block {
+    margin-bottom: 6px;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px 0px black;
+}
+
+a.btn-block:hover {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+
+
 @media only screen and (max-device-width: 370px) {
 
     .glyphicon-cog, .glyphicon-align-justify {
