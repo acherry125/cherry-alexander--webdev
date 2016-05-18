@@ -10,6 +10,11 @@
     margin-left: 0px;
 }
 
+.glyphicon-chevron-left, .glyphicon-plus {
+    font-size: 2.5em;
+}
+
+
 a .glyphicon:hover {
     background-color: yellow;
 }
@@ -44,6 +49,8 @@ h1 {
     .glyphicon-cog, .glyphicon-align-justify {
         font-size: 1em;
     }
+
+
 
 
 
