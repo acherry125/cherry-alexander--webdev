@@ -1,11 +1,15 @@
+body {
+    align-content: center;
+}
 
-.col-xs-2, .col-xs-10 {
-    padding-left: 10px;
-    padding-right: 10px;
+.glyphicon-container {
+    white-space: nowrap;
+    position: relative;
+    right: 5px;
 }
 
 .glyphicon {
-    font-size: 1.5em;
+    font-size: 2em;
     margin-top: 15px;
     margin-left: 0px;
 }
@@ -21,6 +25,7 @@ a .glyphicon:hover {
 
 p {
 	margin-top: 20px;
+    font-size: 2em;
 }
 
 img, iframe {
@@ -30,27 +35,47 @@ img, iframe {
 
 a.btn-block {
     margin-bottom: 6px;
-    text-align: center;
-    box-shadow: inset 0px 0px 5px 0px black;
-}
-
-a.btn-block:hover {
-    text-decoration: none;
 }
 
 h1 {
     font-size: 4em;
 }
 
+h2 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2.5em;
+}
 
 
-@media only screen and (max-device-width: 370px) {
+
+@media only screen and (max-device-width: 440px) {
 
     .glyphicon-cog, .glyphicon-align-justify {
-        font-size: 1em;
+        font-size: 2.25em;
     }
 
+    .glyphicon-container {
+        padding-left: 0px;
+    }
 
+    .col-xs-10, .col-xs-11 {
+        max-width: 75%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.25em;
+    }
 
 
 
