@@ -54,27 +54,42 @@ h3 {
 @media only screen and (max-device-width: 440px) {
 
     .glyphicon-cog, .glyphicon-align-justify {
-        font-size: 2.25em;
+        font-size: 2.1em;
     }
 
     .glyphicon-container {
         padding-left: 0px;
+        right: 1px;
+        margin-right: 0px;
+        padding-right: 0px;
+        border-style: dotted;
+        border-width: 0.1px;
     }
 
+    .row {
+        margin-right: -20px;
+        padding-right: 0px;
+        border-style: dotted;
+        border-width: 0.1px;
+    }
     .col-xs-10, .col-xs-11 {
         max-width: 75%;
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 3em;
     }
 
     h2 {
-        font-size: 1.5em;
+        font-size: 2.25em;
     }
 
     h3 {
-        font-size: 1.25em;
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.6em;
     }
 
 
