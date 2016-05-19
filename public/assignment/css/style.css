@@ -1,11 +1,15 @@
-body {
-    align-content: center;
-}
-
 .glyphicon-container {
     white-space: nowrap;
     position: relative;
     right: 5px;
+}
+
+.widget-row > .glyphicon-container {
+    /*
+    margin-left: -4em;
+    */
+    background-color: white;
+
 }
 
 .glyphicon {
@@ -72,7 +76,7 @@ h3 {
         /*border-style: dotted;
         border-width: 0.1px;*/
     }
-    .col-xs-10, .col-xs-11 {
+    .col-xs-10, .col-xs-9, .col-xs-11 {
         max-width: 75%;
     }
 
