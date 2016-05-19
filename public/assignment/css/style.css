@@ -62,15 +62,15 @@ h3 {
         right: 1px;
         margin-right: 0px;
         padding-right: 0px;
-        border-style: dotted;
-        border-width: 0.1px;
+        /*border-style: dotted;
+        border-width: 0.1px;*/
     }
 
     .row {
         margin-right: -20px;
         padding-right: 0px;
-        border-style: dotted;
-        border-width: 0.1px;
+        /*border-style: dotted;
+        border-width: 0.1px;*/
     }
     .col-xs-10, .col-xs-11 {
         max-width: 75%;
