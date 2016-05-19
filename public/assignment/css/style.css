@@ -1,5 +1,5 @@
 body {
-    padding-top: 75px;
+    padding-top: 90px;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -8,12 +8,16 @@ body {
     color: #337ab7;
 }
 
-.navbar-header {
+.navbar-brand {
+    font-size: 2.5em;
+}
+
+.navbar-text {
+    font-size: 2.5em;
 }
 
 .navbar-fixed-top {
     padding-right: 20px;
-    padding-bottom: 0px;
 }
 
 .container-fluid>.navbar-header {
