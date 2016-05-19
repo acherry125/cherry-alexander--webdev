@@ -4,14 +4,21 @@ body {
     overflow-x: hidden;
 }
 
+.navbar .glyphicon {
+    color: #337ab7;
+}
 
 .navbar-fixed-top {
     padding-right: 20px;
     padding-bottom: 0px;
 }
 
-.navbar-fixed-top .glyphicon {
-    font-size: 1.5em;
+.container-fluid>.navbar-header {
+    margin-left: 0;
+}
+
+.navbar-brand {
+    line-height: inherit;
 }
 
 .glyphicon-container {
@@ -34,9 +41,7 @@ body {
     margin-left: 0px;
 }
 
-.glyphicon-chevron-left, .glyphicon-plus, .glyphicon-ok {
-    font-size: 2.5em;
-}
+
 
 
 a .glyphicon:hover {
