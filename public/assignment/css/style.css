@@ -28,7 +28,7 @@ body {
 
 }
 
-.glyphicon.side-glyphicon {
+.glyphicon-container .glyphicon {
     font-size: 2em;
     margin-top: 15px;
     margin-left: 0px;
