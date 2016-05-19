@@ -9,6 +9,10 @@ body {
     color: #337ab7;
 }
 
+#ac-invisible-glyphicon {
+    visibility: hidden;
+}
+
 .navbar-brand {
     font-size: 2.5em;
 }
