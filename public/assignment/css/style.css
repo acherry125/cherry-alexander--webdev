@@ -7,8 +7,16 @@ body {
 
 .navbar .glyphicon {
     color: #337ab7;
+}
+
+.navbar.navbar-fixed-bottom .glyphicon{
     margin-right: 1em;
 }
+
+.navbar.navbar-fixed-bottom {
+    margin-right: -1em;
+}
+
 
 #ac-invisible-glyphicon {
     visibility: hidden;
