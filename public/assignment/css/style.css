@@ -40,7 +40,7 @@ body {
     margin-right: 2px;
 }
 
-@media only screen and (min-width:768px) {
+@media only screen and (min-width:780px) {
 
     .container-fluid > .navbar-header {
         width: 750px;
@@ -72,18 +72,11 @@ body {
     right: 5px;
 }
 
-.widget-row > .glyphicon-container {
-    /*
-    margin-left: -4em;
-    */
-    background-color: white;
-
-}
-
 .glyphicon-container .glyphicon {
     font-size: 2em;
     margin-top: 15px;
     margin-left: 0px;
+    background: white;
 }
 
 
@@ -119,9 +112,18 @@ h3 {
     font-size: 2.5em;
 }
 
+@media only screen and (max-device-width: 510px) {
+    .col-xs-10, .col-xs-9, .col-xs-11 {
+        max-width: 75%;
+    }
+    .glyphicon {
+        padding-bottom: 5px;
+        padding-right: 5px;
+        margin-left: 0px;
+    }
+}
 
-
-@media only screen and (max-device-width: 440px) {
+@media only screen and (max-device-width: 790px) and (min-device-width: 510px) {
 
     .glyphicon-cog, .glyphicon-align-justify {
         font-size: 2.1em;
@@ -143,7 +145,7 @@ h3 {
         border-width: 0.1px;*/
     }
     .col-xs-10, .col-xs-9, .col-xs-11 {
-        max-width: 75%;
+        max-width: 85%;
     }
 
     h1 {
