@@ -1,8 +1,13 @@
 body {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     max-width: 100%;
     overflow-x: hidden;
+}
+
+.container-fluid {
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .navbar .glyphicon {
@@ -23,21 +28,14 @@ body {
 }
 
 .navbar-brand {
-    font-size: 2.5em;
-}
-
-.navbar-text {
-    font-size: 2.5em;
-}
-
-.navbar-fixed-top {
-    padding-right: 20px;
+    font-size: 2em;
 }
 
 .container-fluid>.navbar-header {
     float: none;
-    margin-left: 5px;
-    margin-right: 2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 70px;
 }
 
 @media only screen and (min-width:780px) {

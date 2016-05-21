@@ -29,41 +29,40 @@
         </div>
     </div>
 </nav>
+
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- Website Details -->
-            <form>
-                <div class="form-group">
-                    <!-- Website name -->
-                    <label for="app-name">Website Name</label>
-                    <input class="form-control" type="text" id="app-name"
-                           placeholder="Application Name" value="Blogger">
-                </div>
-                <div class="form-group">
-                    <!-- Website Description -->
-                    <label for="app-desc">Website Description</label>
-                    <textarea class="form-control" rows="6" id="app-desc"
-                              placeholder="Application Description">This is a description</textarea>
-                </div>
-            </form>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Website Name</label>
+            <input type="text"
+                   value="jannunzi"
+                   class="form-control"
+                   id="username"
+                   placeholder="alice"/>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- Delete Website -->
-            <a href="website-list.html" role="button" class="btn btn-block btn-danger btn-lg">Delete</a>
+        <div class="form-group">
+            <label for="description">Website Description</label>
+            <textarea rows="8" id="description" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
         </div>
-    </div>
+    </form>
+
+    <a class="btn btn-danger btn-block"
+       href="website-list.html">Delete</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-header">
-            <h4 class="navbar-text pull-right">
+            <p class="navbar-text pull-right">
                 <a href="../user/profile.html" class="navbar-link">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
-            </h4>
+            </p>
+            <p class="navbar-text pull-right">
+                <a href="website-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
