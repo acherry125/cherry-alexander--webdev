@@ -5,6 +5,8 @@ body {
     overflow-x: hidden;
 }
 
+
+
 .container-fluid {
     padding-right: 10px;
     padding-left: 10px;
@@ -25,7 +27,9 @@ body {
     margin-right: -1em;
 }
 
-
+.ac-full-width {
+    width: 100%;
+}
 #ac-invisible-glyphicon {
     visibility: hidden;
 }
