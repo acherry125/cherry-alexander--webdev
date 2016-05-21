@@ -95,11 +95,11 @@ a .glyphicon:hover {
     background-color: yellow;
 }
 
-.widget-row {
+.ac-row {
     position: relative;
 }
 
-.widget-row .embed-responsive, .widget-row img {
+.ac-row .embed-responsive, .ac-row img {
     margin-top: 20px;
     width: 100%;
 }
