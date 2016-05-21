@@ -95,7 +95,7 @@ a .glyphicon:hover {
     position: relative;
 }
 
-.widget-row iframe, .widget-row img {
+.widget-row .embed-responsive, .widget-row img {
     margin-top: 20px;
     width: 100%;
 }
