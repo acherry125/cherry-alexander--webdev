@@ -68,16 +68,20 @@ body {
 }
 
 .glyphicon-container {
-    white-space: nowrap;
-    position: relative;
+    position: absolute;
+    margin-top: 20px;
+    width: inherit;
+    background: white;
+    border-style: solid;
+    border-bottom-left-radius: 12px;
+    border-width: 4px;
+    border-color: white;
     right: 5px;
 }
 
 .glyphicon-container .glyphicon {
     font-size: 2em;
-    margin-top: 15px;
     margin-left: 0px;
-    background: white;
 }
 
 
@@ -87,15 +91,20 @@ a .glyphicon:hover {
     background-color: yellow;
 }
 
+.widget-row {
+    position: relative;
+}
+
+.widget-row iframe, .widget-row img {
+    margin-top: 20px;
+    width: 100%;
+}
+
 p {
 	margin-top: 20px;
-    font-size: 2em;
+    font-size: 1.75em;
 }
 
-img, iframe {
-
-	max-width: 100%;
-}
 
 a.btn-block {
     margin-bottom: 6px;
@@ -106,7 +115,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 2.5em;
 }
 
 h3 {
@@ -114,13 +123,9 @@ h3 {
 }
 
 @media only screen and (max-device-width: 510px) {
-    .col-xs-10, .col-xs-9, .col-xs-11 {
-        max-width: 75%;
-    }
+
     .glyphicon {
-        padding-bottom: 5px;
         padding-right: 5px;
-        margin-left: 0px;
     }
 }
 
@@ -135,18 +140,11 @@ h3 {
         right: 1px;
         margin-right: 0px;
         padding-right: 0px;
-        /*border-style: dotted;
-        border-width: 0.1px;*/
     }
 
     .row {
         margin-right: -20px;
         padding-right: 0px;
-        /*border-style: dotted;
-        border-width: 0.1px;*/
-    }
-    .col-xs-10, .col-xs-9, .col-xs-11 {
-        max-width: 85%;
     }
 
     h1 {
