@@ -11,9 +11,12 @@ body {
 }
 
 .navbar .glyphicon {
-    color: #337ab7;
+    color: black;
 }
 
+.navbar .glyphicon-user {
+    color: #337ab7;
+}
 .navbar.navbar-fixed-bottom .glyphicon{
     margin-right: 1em;
 }
@@ -107,7 +110,7 @@ h2 {
 }
 
 h3 {
-    font-size: 2.5em;
+    font-size: 2.3em;
 }
 
 @media only screen and (max-device-width: 510px) {
