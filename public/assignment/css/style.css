@@ -3,17 +3,25 @@ body {
     padding-bottom: 80px;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
-
+/*
 .container-fluid {
     padding-right: 10px;
     padding-left: 10px;
+}*/
+
+.navbar .glyphicon, .navbar .navbar-brand {
+    color: white;
 }
 
-.navbar .glyphicon {
-    color: black;
+.navbar {
+    background-color: black;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .navbar .glyphicon-user {
@@ -73,7 +81,7 @@ body {
 
 .glyphicon-container {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 19px;
     width: inherit;
     background: white;
     border-style: solid;
@@ -92,7 +100,7 @@ body {
 
 
 a .glyphicon:hover {
-    color: darkblue;
+    color: red;
 }
 
 .ac-row {
@@ -128,7 +136,7 @@ h3 {
 
 @media only screen and (max-device-width: 510px) {
 
-    .glyphicon {
+    .container .glyphicon {
         padding-right: 5px;
     }
 }
