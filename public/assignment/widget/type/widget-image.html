@@ -19,15 +19,18 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
                     <a href="../widget-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
+                <!-- Page Title -->
                 <a class="navbar-brand" href="#">
                     Widget Edit
                 </a>
+                <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
                     <a href="../widget-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
@@ -38,10 +41,11 @@
         </div>
     </nav>
 </header>
-
+<!-- Main Container -->
 <div class="container">
-
+    <!-- Image Information Form -->
     <form>
+        <!-- Name -->
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
@@ -50,6 +54,7 @@
                    id="name"
                    placeholder="name"/>
         </div>
+        <!-- Text -->
         <div class="form-group">
             <label for="text">Text</label>
             <input type="text"
@@ -58,6 +63,7 @@
                    id="text"
                    placeholder="text"/>
         </div>
+        <!-- URL -->
         <div class="form-group">
             <label for="url">URL</label>
             <input type="url"
@@ -66,6 +72,7 @@
                    id="url"
                    placeholder="image link"/>
         </div>
+        <!-- Width -->
         <div class="form-group">
             <label for="width">Width</label>
             <input type="text"
@@ -74,6 +81,7 @@
                    id="width"
                    placeholder="width"/>
         </div>
+        <!-- Upload -->
         <div class="form-group">
             <label for="hidden-upload" id="ac-hidden-trigger">
                 Upload
@@ -83,25 +91,34 @@
                    id="hidden-upload"/>
         </div>
     </form>
-
-
-    <button class="btn btn-primary btn-block">
-        Upload Image
-    </button>
-
-    <a class="btn btn-danger btn-block"
-       href="../widget-list.html">Delete</a>
+    <!-- Upload Image Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-block">
+                Upload Image
+            </button>
+        </div>
+    </div>
+    <!-- Delete Widget Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-danger btn-block"
+               href="../widget-list.html">Delete</a>
+        </div>
+    </div>
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
+                <!-- Profile Button -->
                 <p class="navbar-text pull-right">
                     <a href="../../user/profile.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
+                <!-- Website-list link button -->
                 <p class="navbar-text pull-right">
                     <a href="../../website/website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>

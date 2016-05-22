@@ -109,7 +109,7 @@ nav>.container>.navbar-header {
 }
 
 /* whitespace between button blocks */
-a.btn-block {
+.btn-block {
     margin-bottom: 6px;
 }
 
