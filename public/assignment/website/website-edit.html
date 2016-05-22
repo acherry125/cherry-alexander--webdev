@@ -18,15 +18,18 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <!-- Back Button -->
                 <p class="navbar-text pull-left">
                     <a href="website-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
+                <!-- Page Title -->
                 <a class="navbar-brand" href="#">
                     Edit Website
                 </a>
+                <!-- Save Button -->
                 <p class="navbar-text pull-right">
                     <a href="website-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
@@ -37,9 +40,11 @@
         </div>
     </nav>
 </header>
+<!-- Main Container -->
 <div class="container">
-
+    <!-- Website information form -->
     <form>
+        <!-- Website Name -->
         <div class="form-group">
             <label for="username">Website Name</label>
             <input type="text"
@@ -48,30 +53,41 @@
                    id="username"
                    placeholder="alice"/>
         </div>
+        <!-- Website Description -->
         <div class="form-group">
             <label for="description">Website Description</label>
-            <textarea rows="8" id="description" class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
+            <textarea rows="8"
+                      id="description"
+                      class="form-control">Lorem Ipsum is simply dummy text.</textarea>
         </div>
     </form>
-
-    <a class="btn btn-danger btn-block"
-       href="website-list.html">Delete</a>
+    <!-- Delete Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn btn-danger btn-block" href="website-list.html">
+                Delete
+            </a>
+        </div>
+    </div>
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
+                <!-- From wireframe, unspecified as of assignment 2 -->
                 <p class="navbar-text pull-left">
                     <a href="#" class="navbar-link">
                         <span class="glyphicon glyphicon-share-alt"></span>
                     </a>
                 </p>
+                <!-- Profile Link -->
                 <p class="navbar-text pull-right">
                     <a href="../user/profile.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
+                <!-- Website-list link to improve user experience -->
                 <p class="navbar-text pull-right">
                     <a href="website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
