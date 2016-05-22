@@ -4,6 +4,7 @@
     <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
     <meta lang="en" charset="UTF-8" name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Register</title>
@@ -14,27 +15,50 @@
 <!-- REGISTER PAGE -->
 <body>
 <!-- no top navigation bar in register -->
-<!-- Registration form -->
+
+<!-- Main Container -->
 <div class="container">
     <h1>Register</h1>
+    <!-- Registration form -->
     <form>
         <!-- Username -->
         <div class="form-group">
-            <input type="text" class="form-control" id="username" placeholder="username">
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="username">
         </div>
         <!-- Password -->
         <div class="form-group">
-            <input type="password" class="form-control" id="password" placeholder="password">
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="password">
         </div>
-        <!-- Verify -->
+        <!-- Verify Password -->
         <div class="form-group">
-            <input type="password" class="form-control" id="ver-password" placeholder="verify password">
+            <input type="password"
+                   class="form-control"
+                   id="ver-password"
+                   placeholder="verify password">
         </div>
     </form>
     <!-- Register Button -->
-    <a href="profile.html" role="button" class="btn btn-block btn-primary btn-lg">Register</a>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="profile.html"
+               role="button"
+               class="btn btn-block btn-primary btn-lg">Register</a>
+        </div>
+    </div>
     <!-- Cancel Button -->
-    <a href="login.html" role="button" class="btn btn-block btn-danger btn-lg">Cancel</a>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="login.html"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Cancel</a>
+        </div>
+    </div>
 </div>
 <!-- no top navigation bar in register -->
 </body>

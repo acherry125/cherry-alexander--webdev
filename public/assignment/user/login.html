@@ -4,6 +4,7 @@
     <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
     <meta lang="en" charset="UTF-8" name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Login</title>
@@ -14,24 +15,43 @@
 <!-- LOGIN PAGE -->
 <body>
 <!-- No top navigation bar on login -->
+<!-- Main Container -->
 <div class="container">
     <h1>Login</h1>
-    <!-- login form -->
+    <!-- Login form -->
     <form>
         <div class="form-group">
             <!-- Username -->
-            <input class="form-control" type="text" id="username" placeholder="username">
+            <input class="form-control"
+                   type="text"
+                   id="username"
+                   placeholder="username">
         </div>
         <div class="form-group">
             <!-- Password -->
-            <input class="form-control" type="password" id="password" placeholder="password">
+            <input class="form-control"
+                   type="password"
+                   id="password"
+                   placeholder="password">
         </div>
     </form>
     <!-- Login Button -->
-    <a href="profile.html" role="button" class="btn btn-block btn-primary btn-lg">Login</a>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="profile.html"
+               role="button"
+               class="btn btn-block btn-primary btn-lg">Login</a>
+        </div>
+    </div>
     <!-- Register Button -->
-    <a href="register.html" role="button" class="btn btn-block btn-success btn-lg">Register</a>
-    <!-- back to index... just for assignmen 2 -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="register.html"
+               role="button"
+               class="btn btn-block btn-success btn-lg">Register</a>
+        </div>
+    </div>
+    <!-- back to index... just for assignment 2 -->
     <a href="../index.html">Back to Homepage</a>
 </div>
 <!-- no bottom navigation bar on login -->
