@@ -1,36 +1,51 @@
+/* general page layout */
 body {
+    /* clear navbar */
     padding-top: 80px;
     padding-bottom: 80px;
+    /* display properly */
     max-width: 100%;
     overflow-x: hidden;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.navbar .glyphicon, .navbar .navbar-brand {
-    color: white;
-}
-
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: white;
-}
-
+/* Make navbar white */
 .navbar {
     background-color: #5d5d5d;
-    border-color: #5d5d5d;
+    border-color: #808080;
     padding-left: 10px;
     padding-right: 10px;
 }
 
+/* Give sufficient padding from right screen border */
+.navbar.navbar-fixed-bottom {
+    padding-right: 20px;
+}
+
+/* Space to tap footer glyphicons */
+.navbar.navbar-fixed-bottom .glyphicon{
+    padding-left: 1em;
+}
+
+/* Navbar text is white */
+.navbar .glyphicon, .navbar .navbar-brand {
+    color: white;
+}
+
+/* Override default bootstrap setting */
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: white;
+}
+
+
+/* Profile button should still be blue */
 .navbar .glyphicon-user {
     color: #337ab7;
 }
-.navbar.navbar-fixed-bottom .glyphicon{
-    margin-right: 1em;
-}
 
-.navbar.navbar-fixed-bottom {
-    margin-right: -1em;
-}
+
+
+
 
 .ac-full-width {
     width: 100%;
@@ -53,7 +68,7 @@ nav>.container>.navbar-header {
     line-height: inherit;
 }
 
-.glyphicon-container {
+.ac-glyphicon-container {
     position: absolute;
     margin-top: 19px;
     background: white;
@@ -64,7 +79,7 @@ nav>.container>.navbar-header {
     right: 12px;
 }
 
-.glyphicon-container .glyphicon {
+.ac-glyphicon-container .glyphicon {
     font-size: 2em;
 }
 
@@ -110,7 +125,7 @@ h3 {
         font-size: 2.1em;
     }
 
-    .glyphicon-container {
+    .ac-glyphicon-container {
         right: 8px;
     }
 
