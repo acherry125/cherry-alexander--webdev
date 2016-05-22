@@ -6,13 +6,6 @@ body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-
-/*
-.container-fluid {
-    padding-right: 10px;
-    padding-left: 10px;
-}*/
-
 .navbar .glyphicon, .navbar .navbar-brand {
     color: white;
 }
@@ -50,33 +43,10 @@ body {
     font-size: 2em;
 }
 
-.container-fluid>.navbar-header {
+nav>.container>.navbar-header {
     float: none;
-    margin-left: 0px;
+    height: 65px;
     margin-right: 0px;
-    height: 70px;
-}
-
-@media only screen and (min-width:780px) {
-
-    .container-fluid > .navbar-header {
-        width: 750px;
-        float: none;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .container-fluid > .navbar-header {
-        width: 950px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .container-fluid > .navbar-header {
-        width: 1190px;
-    }
 }
 
 .navbar-brand {
@@ -86,21 +56,17 @@ body {
 .glyphicon-container {
     position: absolute;
     margin-top: 19px;
-    width: inherit;
     background: white;
     border-style: solid;
     border-bottom-left-radius: 12px;
     border-width: 4px;
     border-color: white;
-    right: 5px;
+    right: 12px;
 }
 
 .glyphicon-container .glyphicon {
     font-size: 2em;
-    margin-left: 0px;
 }
-
-
 
 
 a .glyphicon:hover {
@@ -138,13 +104,6 @@ h3 {
     font-size: 2.3em;
 }
 
-@media only screen and (max-device-width: 510px) {
-
-    .container .glyphicon {
-        padding-right: 5px;
-    }
-}
-
 @media only screen and (max-device-width: 790px) and (min-device-width: 510px) {
 
     .glyphicon-cog, .glyphicon-align-justify {
@@ -152,10 +111,11 @@ h3 {
     }
 
     .glyphicon-container {
-        padding-left: 0px;
-        right: 1px;
-        margin-right: 0px;
-        padding-right: 0px;
+        right: 8px;
+    }
+
+    .container .glyphicon {
+        padding-right: 5px;
     }
 
     .row {
