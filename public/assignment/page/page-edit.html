@@ -19,15 +19,18 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
                     <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
+                <!-- Page Title -->
                 <a class="navbar-brand" href="#">
                     Edit Page
                 </a>
+                <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
                     <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
@@ -38,27 +41,35 @@
         </div>
     </nav>
 </header>
-
+<!-- Main Container -->
 <div class="container">
-
-    <!-- Website Details -->
+    <!-- Website Details Form -->
     <form>
+        <!-- Page Name -->
         <div class="form-group">
-            <!-- Page name -->
             <label for="page-name">Page Name</label>
-            <input class="form-control" type="text" id="page-name"
-                   placeholder="Page Name" value="Blogging is fun">
+            <input class="form-control"
+                   type="text" id="page-name"
+                   placeholder="Page Name"
+                   value="Blogging is fun">
         </div>
+        <!-- Page Description -->
         <div class="form-group">
-            <!-- Page Description -->
             <label for="page-desc">Page Description</label>
-                    <textarea class="form-control" rows="6" id="page-desc"
-                              placeholder="Page Description">This is a description</textarea>
+            <textarea class="form-control"
+                      rows="6"
+                      id="page-desc"
+                      placeholder="Page Description">This is a description</textarea>
         </div>
-
     </form>
-    <!-- Delete Website -->
-    <a href="page-list.html" role="button" class="btn btn-lg btn-block btn-danger btn-lg">Delete</a>
+    <!-- Delete Page -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="page-list.html"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Delete</a>
+        </div>
+    </div>
 
 </div>
 <!-- Footer Navigation Bar -->
@@ -66,11 +77,13 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
+                <!-- Profile Button -->
                 <p class="navbar-text pull-right">
                     <a href="../user/profile.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
+                <!-- Website-list Link Button -->
                 <p class="navbar-text pull-right">
                     <a href="../website/website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
