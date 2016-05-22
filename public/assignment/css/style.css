@@ -44,6 +44,11 @@ a .glyphicon:hover {
     color: white;
 }
 
+/* To stop the user from thinking the title page is clickable */
+.navbar .navbar-brand {
+    cursor: default;
+}
+
 /* Override default bootstrap setting */
 .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
     color: white;
