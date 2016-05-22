@@ -9,12 +9,17 @@ body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* for better readability */
+label, .form-control {
+    font-size: 16px;
+}
+
 /* highlight glyphicons when focused for clarity */
 a .glyphicon:hover {
     color: red;
 }
 
-a:hover {
+a:hover, a:focus {
     text-decoration: none;
 }
 
