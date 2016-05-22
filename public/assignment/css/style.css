@@ -1,8 +1,8 @@
 /***** general page layout *****/
 body {
     /* clear navbar */
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 85px;
+    padding-bottom: 85px;
     /* display properly */
     max-width: 100%;
     overflow-x: hidden;
@@ -19,6 +19,7 @@ a .glyphicon:hover {
     color: red;
 }
 
+/* comply with requirements */
 a:hover, a:focus {
     text-decoration: none;
 }
@@ -142,8 +143,7 @@ h3 {
 
 /***** MEDIA QUERIES ******/
 
-/* Medium sized screens (tablets)
-   They act weird with bootstrap for some reason */
+/* increase font size for phones */
 @media only screen and (max-device-width: 440px) {
 
     h1 {
