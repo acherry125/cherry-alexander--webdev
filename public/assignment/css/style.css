@@ -1,4 +1,4 @@
-/* general page layout */
+/***** general page layout *****/
 body {
     /* clear navbar */
     padding-top: 80px;
@@ -8,6 +8,18 @@ body {
     overflow-x: hidden;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* highlight glyphicons when focused for clarity */
+a .glyphicon:hover {
+    color: red;
+}
+
+/* potentially useful class */
+.ac-full-width {
+    width: 100%;
+}
+
+/***** NAVBAR *****/
 
 /* Make navbar white */
 .navbar {
@@ -33,41 +45,33 @@ body {
 }
 
 /* Override default bootstrap setting */
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
     color: white;
 }
-
 
 /* Profile button should still be blue */
 .navbar .glyphicon-user {
     color: #337ab7;
 }
 
-
-
-
-
-.ac-full-width {
-    width: 100%;
-}
-#ac-invisible-glyphicon {
-    visibility: hidden;
-}
-
+/* Make header text more readable */
 .navbar-brand {
     font-size: 2em;
+    line-height: inherit;
+
 }
 
+/* Standardize header size and stop right
+   glyphicons from floating left */
 nav>.container>.navbar-header {
     float: none;
     height: 65px;
     margin-right: 0px;
 }
 
-.navbar-brand {
-    line-height: inherit;
-}
+/***** Main Content *****/
 
+/* position glyphicons in "...-list" pages to the right */
 .ac-glyphicon-container {
     position: absolute;
     margin-top: 19px;
@@ -79,32 +83,34 @@ nav>.container>.navbar-header {
     right: 12px;
 }
 
+/* Content glyphicon sizing */
 .ac-glyphicon-container .glyphicon {
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
-
-a .glyphicon:hover {
-    color: red;
-}
-
+/* allow ac-glyphicon-containers to position relative to rows */
 .ac-row {
     position: relative;
 }
 
+/* Align youtube videos and images like other content */
 .ac-row .embed-responsive, .ac-row img {
     margin-top: 20px;
     width: 100%;
 }
 
-p {
-	margin-top: 20px;
-    font-size: 1.75em;
-}
-
-
+/* whitespace between button blocks */
 a.btn-block {
     margin-bottom: 6px;
+}
+
+/***** Text Font Sizes *****/
+/* increase font size for clarity */
+
+/* Align paragraphs like other content, increase size for clarity */
+p {
+    margin-top: 20px;
+    font-size: 1.75em;
 }
 
 h1 {
@@ -119,41 +125,27 @@ h3 {
     font-size: 2.3em;
 }
 
-@media only screen and (max-device-width: 790px) and (min-device-width: 510px) {
 
-    .glyphicon-cog, .glyphicon-align-justify {
-        font-size: 2.1em;
-    }
+/***** MEDIA QUERIES ******/
 
-    .ac-glyphicon-container {
-        right: 8px;
-    }
-
-    .container .glyphicon {
-        padding-right: 5px;
-    }
-
-    .row {
-        margin-right: -20px;
-        padding-right: 0px;
-    }
+/* Medium sized screens (tablets)
+   They act weird with bootstrap for some reason */
+@media only screen and (max-device-width: 440px) {
 
     h1 {
-        font-size: 3em;
+        font-size: 4.2em;
     }
 
     h2 {
-        font-size: 2.25em;
+        font-size: 3em;
     }
 
     h3 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     p {
-        font-size: 1.6em;
+        font-size: 2em;
     }
-
-
 
 }
