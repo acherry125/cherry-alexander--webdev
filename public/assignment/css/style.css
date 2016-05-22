@@ -14,6 +14,10 @@ a .glyphicon:hover {
     color: red;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 /* potentially useful class */
 .ac-full-width {
     width: 100%;
