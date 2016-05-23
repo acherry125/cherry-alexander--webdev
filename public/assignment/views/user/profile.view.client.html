@@ -1,38 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
-    <meta lang="en" charset="UTF-8" name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- APPLE META TAGS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
 <!-- PROFILE PAGE -->
-<body>
-<!-- Header Navigation Bar -->
-<header>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Page Title -->
-                <a class="navbar-brand" href="#">
-                    Profile
-                </a>
-                <!-- Save Button -->
-                <p class="navbar-text pull-right">
-                    <a href="profile.view.client.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </nav>
-</header>
 <!-- Main Container -->
 <div class="container">
     <!-- Profile information form -->
@@ -87,32 +54,9 @@
     <!-- Logout Button -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="login.view.client.html"
+            <a href="#/logout"
                role="button"
                class="btn btn-block btn-danger btn-lg">Logout</a>
         </div>
     </div>
 </div>
-<!-- Footer Navigation Bar -->
-<footer>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Profile Link -->
-                <p class="navbar-text pull-right">
-                    <a href="profile.view.client.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                </p>
-                <!-- Website-list link to improve user experience (invisible for right now) -->
-                <p class="navbar-text pull-right">
-                    <a href="../views/website/website-list.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </nav>
-</footer>
-</body>
-</html>

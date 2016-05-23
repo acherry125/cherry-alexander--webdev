@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="WebAppMaker">
 <head>
+    <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
     <meta lang="en" charset="UTF-8" name="viewport"
-          content="width=page-width, initial-scale=1, user-scalable=no">
-    <title>Assignment Home Page</title>
-    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- APPLE META TAGS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="app.js"></script>
 </head>
@@ -12,13 +17,8 @@
 <!-- INDEX PAGE -->
 <!-- NOT EVEN GOING TO BOTHER WITH THIS FOR ASSIGNMENT 2 -->
 <body>
-    <!-- presumably where all the partials will be loaded -->
-    <h1>Index Page (future single page application)</h1>
-	<!-- input form -->
 
-    <a href="../index.html" class="link-button center-button">Back to Homepage</a>
-    <!-- temporary for assignment 2  multipage site -->
-    <a href="views/user/login.view.client.html" class="link-button center-button">Login Page</a>
+
 
 </body>
 </html>
