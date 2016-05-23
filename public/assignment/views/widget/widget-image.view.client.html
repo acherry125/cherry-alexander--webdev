@@ -7,12 +7,12 @@
     <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Header Widget</title>
+    <title>Image Widget</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<!-- WIDGET HEADER PAGE -->
+<!-- WIDGET IMAGE PAGE -->
 <body>
 <!-- Header Navigation Bar -->
 <header>
@@ -21,7 +21,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="../widget-list.html" class="navbar-link">
+                    <a href="widget-list.view.client.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -30,9 +30,9 @@
                 <a class="navbar-brand" href="#">
                     Widget Edit
                 </a>
-                <!-- Save and Confirm button -->
+                <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../widget-list.html" class="navbar-link">
+                    <a href="widget-list.view.client.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -43,7 +43,7 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    <!-- Header Information Form -->
+    <!-- Image Information Form -->
     <form>
         <!-- Name -->
         <div class="form-group">
@@ -58,30 +58,51 @@
         <div class="form-group">
             <label for="text">Text</label>
             <input type="text"
-                   value="Gizmodo"
+                   value="This is a youtube video"
                    class="form-control"
                    id="text"
                    placeholder="Text"/>
         </div>
-        <!-- Size -->
+        <!-- URL -->
         <div class="form-group">
-            <label for="size">Size</label>
-            <select class="form-control" id="size">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-            </select>
+            <label for="url">URL</label>
+            <input type="url"
+                   value="https://www.youtube.com/embed/GunaXxJifPA"
+                   class="form-control"
+                   id="url"
+                   placeholder="Image URL"/>
+        </div>
+        <!-- Width -->
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text"
+                   value="100%"
+                   class="form-control"
+                   id="width"
+                   placeholder="Width"/>
+        </div>
+        <!-- Upload -->
+        <div class="form-group">
+            <label for="upload">Upload</label>
+            <input type="file"
+                   class="form-control"
+                   id="Upload"/>
         </div>
     </form>
-    <!-- Delete Button -->
+    <!-- Upload Image Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <button role="button" class="btn btn-primary btn-block btn-lg">
+                Upload Image
+            </button>
+        </div>
+    </div>
+    <!-- Delete Widget Button -->
     <div class="row">
         <div class="col-xs-12">
             <a role="button"
                class="btn btn-danger btn-block btn-lg"
-               href="../widget-list.html">Delete</a>
+               href="widget-list.view.client.html">Delete</a>
         </div>
     </div>
 </div>
@@ -90,15 +111,15 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Link Button -->
+                <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../../user/profile.html" class="navbar-link">
+                    <a href="../user/profile.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
-                <!-- Website-list Link Button -->
+                <!-- Website-list link button -->
                 <p class="navbar-text pull-right">
-                    <a href="../../website/website-list.html" class="navbar-link">
+                    <a href="../../views/website/website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>

@@ -7,53 +7,59 @@
     <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<!-- LOGIN PAGE -->
+<!-- REGISTER PAGE -->
 <body>
-<!-- No top navigation bar on login -->
+<!-- no top navigation bar in register -->
+
 <!-- Main Container -->
 <div class="container">
-    <h1>Login</h1>
-    <!-- Login form -->
+    <h1>Register</h1>
+    <!-- Registration form -->
     <form>
+        <!-- Username -->
         <div class="form-group">
-            <!-- Username -->
-            <input class="form-control"
-                   type="text"
+            <input type="text"
+                   class="form-control"
                    id="username"
                    placeholder="username">
         </div>
+        <!-- Password -->
         <div class="form-group">
-            <!-- Password -->
-            <input class="form-control"
-                   type="password"
+            <input type="password"
+                   class="form-control"
                    id="password"
                    placeholder="password">
         </div>
-    </form>
-    <!-- Login Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a href="profile.html"
-               role="button"
-               class="btn btn-block btn-primary btn-lg">Login</a>
+        <!-- Verify Password -->
+        <div class="form-group">
+            <input type="password"
+                   class="form-control"
+                   id="ver-password"
+                   placeholder="verify password">
         </div>
-    </div>
+    </form>
     <!-- Register Button -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="register.html"
+            <a href="profile.view.client.html"
                role="button"
-               class="btn btn-block btn-success btn-lg">Register</a>
+               class="btn btn-block btn-primary btn-lg">Register</a>
         </div>
     </div>
-    <!-- back to index... just for assignment 2 -->
-    <a href="../index.html">Back to Homepage</a>
+    <!-- Cancel Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="login.view.client.html"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Cancel</a>
+        </div>
+    </div>
 </div>
-<!-- no bottom navigation bar on login -->
+<!-- no top navigation bar in register -->
 </body>
 </html>

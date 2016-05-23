@@ -7,12 +7,12 @@
     <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Add Website</title>
+    <title>Edit Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<!-- WEBSITE NEW PAGE -->
+<!-- PAGE-EDIT PAGE -->
 <body>
 <!-- Header Navigation Bar -->
 <header>
@@ -21,18 +21,18 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand" href="#">
-                    New Website
+                    Edit Page
                 </a>
-                <!-- Confirm and Save Button -->
+                <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -43,39 +43,49 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    <!-- Website Details -->
+    <!-- Website Details Form -->
     <form>
-        <!-- Name -->
+        <!-- Page Name -->
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="page-name">Page Name</label>
             <input class="form-control"
-                   type="text"
-                   id="name"
-                   placeholder="Name">
+                   type="text" id="page-name"
+                   placeholder="Page Name"
+                   value="Blogging is fun">
         </div>
-        <!-- Description -->
+        <!-- Page Description -->
         <div class="form-group">
-            <label for="desc">Description</label>
-            <textarea class="form-control"
-                      rows="6" id="desc"
-                      placeholder="Description"></textarea>
+            <label for="page-title">Page Title</label>
+            <input class="form-control"
+                   id="page-title"
+                   placeholder="Page Title"
+                   value="Blogging Forever">
         </div>
     </form>
+    <!-- Delete Page -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="page-list.html"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Delete</a>
+        </div>
+    </div>
+
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Link -->
+                <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.html" class="navbar-link">
+                    <a href="../views/user/profile.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
-                <!-- Website-list link to improve user experience -->
+                <!-- Website-list Link Button -->
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="../views/website/website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
@@ -83,6 +93,5 @@
         </div>
     </nav>
 </footer>
-
 </body>
 </html>

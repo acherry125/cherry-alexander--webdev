@@ -7,12 +7,12 @@
     <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Edit Page</title>
+    <title>Add Website</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<!-- PAGE-EDIT PAGE -->
+<!-- WEBSITE NEW PAGE -->
 <body>
 <!-- Header Navigation Bar -->
 <header>
@@ -21,18 +21,18 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="website-list.view.client.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand" href="#">
-                    Edit Page
+                    New Website
                 </a>
-                <!-- Save and Confirm Button -->
+                <!-- Confirm and Save Button -->
                 <p class="navbar-text pull-right">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="website-list.view.client.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -43,49 +43,39 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    <!-- Website Details Form -->
+    <!-- Website Details -->
     <form>
-        <!-- Page Name -->
+        <!-- Name -->
         <div class="form-group">
-            <label for="page-name">Page Name</label>
+            <label for="name">Name</label>
             <input class="form-control"
-                   type="text" id="page-name"
-                   placeholder="Page Name"
-                   value="Blogging is fun">
+                   type="text"
+                   id="name"
+                   placeholder="Name">
         </div>
-        <!-- Page Description -->
+        <!-- Description -->
         <div class="form-group">
-            <label for="page-title">Page Title</label>
-            <input class="form-control"
-                   id="page-title"
-                   placeholder="Page Title"
-                   value="Blogging Forever">
+            <label for="desc">Description</label>
+            <textarea class="form-control"
+                      rows="6" id="desc"
+                      placeholder="Description"></textarea>
         </div>
     </form>
-    <!-- Delete Page -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a href="page-list.html"
-               role="button"
-               class="btn btn-block btn-danger btn-lg">Delete</a>
-        </div>
-    </div>
-
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Button -->
+                <!-- Profile Link -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.html" class="navbar-link">
+                    <a href="../user/profile.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
-                <!-- Website-list Link Button -->
+                <!-- Website-list link to improve user experience -->
                 <p class="navbar-text pull-right">
-                    <a href="../website/website-list.html" class="navbar-link">
+                    <a href="website-list.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
@@ -93,5 +83,6 @@
         </div>
     </nav>
 </footer>
+
 </body>
 </html>

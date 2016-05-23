@@ -7,32 +7,32 @@
     <!-- APPLE META TAGS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Edit Website</title>
+    <title>Add Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
-<!-- WEBSITE EDIT PAGE -->
+<!-- PAGE-NEW PAGE -->
 <body>
 <!-- Header Navigation Bar -->
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <!-- Back Button -->
+                <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand" href="#">
-                    Edit Website
+                    New Page
                 </a>
-                <!-- Save Button -->
+                <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="page-list.html" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -43,55 +43,34 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    <!-- Website information form -->
+    <!-- Page Information Form -->
     <form>
-        <!-- Website Name -->
+        <!-- Name -->
         <div class="form-group">
-            <label for="username">Name</label>
-            <input type="text"
-                   value="Blogging"
-                   class="form-control"
-                   id="username"
-                   placeholder="Name"/>
+            <label for="page-name">Name</label>
+            <input class="form-control" type="text" id="page-name" placeholder="Page Name">
         </div>
-        <!-- Website Description -->
+        <!-- Title -->
         <div class="form-group">
-            <label for="description">Description</label>
-            <textarea rows="8"
-                      id="description"
-                      class="form-control"
-                      placeholder="Description">Lorem Ipsum is simply dummy text.</textarea>
+            <label for="page-title">Title</label>
+            <input class="form-control" type="text" id="page-title" placeholder="Page Title">
         </div>
     </form>
-    <!-- Delete Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a role="button"
-               class="btn btn-danger btn-block btn-lg"
-               href="website-list.html">Delete</a>
-        </div>
-    </div>
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- From wireframe, unspecified as of assignment 2 -->
-                <p class="navbar-text pull-left">
-                    <a href="#" class="navbar-link">
-                        <span class="glyphicon glyphicon-share-alt"></span>
-                    </a>
-                </p>
-                <!-- Profile Link -->
+                <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.html" class="navbar-link">
+                    <a href="../views/user/profile.html" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
-                <!-- Website-list link to improve user experience -->
+                <!-- Website-list Link Button -->
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="../views/website/website-list.html" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
