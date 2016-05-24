@@ -2,19 +2,25 @@
 <!-- No top navigation bar on login -->
 <!-- Main Container -->
 <div class="container">
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <h1>Login</h1>
+    {{model.error}}
     <!-- Login form -->
     <form>
         <div class="form-group">
             <!-- Username -->
-            <input class="form-control"
+            <input ng-model="username"
+                   class="form-control"
                    type="text"
                    id="username"
                    placeholder="username">
         </div>
         <div class="form-group">
             <!-- Password -->
-            <input class="form-control"
+            <input ng-model="password"
+                   class="form-control"
                    type="password"
                    id="password"
                    placeholder="password">
@@ -23,7 +29,7 @@
     <!-- Login Button -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="#/user/1"
+            <a ng-click="model.login(username, password)"
                role="button"
                class="btn btn-block btn-primary btn-lg">Login</a>
         </div>

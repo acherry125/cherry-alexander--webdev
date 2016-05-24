@@ -9,19 +9,33 @@
                 <a class="navbar-brand" href="#">
                     Profile
                 </a>
+                <!-- Save Button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="updateUser()" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                    </a>
+                </p>
             </div>
         </div>
     </nav>
 </header>
+
 <!-- Main Container -->
 <div class="container">
+
+    <div ng-show="" class="alert alert-success">
+        Succesfully updated your profile
+    </div>
+
     <!-- Profile information form -->
     <div class="col-xs-12">
         <form>
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username</label>
-                <input class="form-control"
+                <input ng-model="model.user.username"
+                       class="form-control"
                        type="text"
                        id="username"
                        placeholder="username"
@@ -30,7 +44,8 @@
             <!-- Email -->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control"
+                <input ng-model="model.user.email"
+                       class="form-control"
                        type="email"
                        id="email"
                        placeholder="email"
@@ -39,7 +54,8 @@
             <!-- First Name -->
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input class="form-control"
+                <input ng-model="model.user.firstName"
+                       class="form-control"
                        type="text"
                        id="first-name"
                        placeholder="first name"
@@ -48,7 +64,8 @@
             <!-- Last Name -->
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input class="form-control"
+                <input ng-model="model.user.lastName"
+                       class="form-control"
                        type="text"
                        id="last-name"
                        placeholder="last name"
@@ -64,6 +81,7 @@
                class="btn btn-block btn-primary btn-lg">Websites</a>
         </div>
     </div>
+
     <!-- Logout Button -->
     <div class="row">
         <div class="col-xs-12">
