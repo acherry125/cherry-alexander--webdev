@@ -37,6 +37,15 @@
             })
             .when("/user/:uid/website/:wid/page/:pid", {
             	templateUrl: "views/website/page-edit.view.client.html"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget", {
+                templateUrl: "views/website/widget-list.view.client.html"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
+                templateUrl: "views/website/widget-choose.view.client.html"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
+                templateUrl: "views/website/widget-header.view.client.html"
             });
     };
 })();
