@@ -6,5 +6,5 @@
 
 // IIFE, stop namespace issues, immediately invokes it
 (function(){
-    angular.module("WebAppMaker", []);
+    angular.module("WebAppMaker", ["ngRoute"]);
 })();
