@@ -58,10 +58,11 @@
         vm.login = login;
         vm.hid = "hello world";
 
-        function login($location, username, password) {
+        function login(username, password) {
             for(var i in users) {
                 if (users[i].username === username && users[i].password === password) {
-                    $location.url("/profile/" + users[i]._id);
+                    $location.url("/user/" + users[i]._id);
+                    return;
                 } else {
                     vm.error = "User not found";
                 }
