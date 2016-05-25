@@ -1,6 +1,14 @@
 <!-- REGISTER PAGE -->
 <!-- Main Container -->
 <div class="container">
+    <!-- Success Message -->
+    <div ng-if="model.usernameFail" class="alert alert-success">
+        {{model.passwordVerFail}}
+    </div>
+    <!-- Error Message -->
+    <div ng-if="model.failure" class="alert alert-danger">
+        {{model.failure}}
+    </div>
     <h1>Register</h1>
     <!-- Registration form -->
     <form>
