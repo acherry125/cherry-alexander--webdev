@@ -23,6 +23,7 @@
         };
 
         return api;
+        
         function createUser(user) {
             users.push(user);
         }

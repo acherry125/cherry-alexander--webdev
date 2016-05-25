@@ -14,8 +14,20 @@
         {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ];
-    
-    function RegisterController() {
+
+    function RegisterController(UserService) {
+        var vm = this;
+        vm.register = verifyRegistration();
+        var verifyRegistration = verifyRegistration;
+
+        function register(username, password, verify) {
+            // verify, assign id, add to database
+        }
+
+        function verifyRegistration(username, password, verify) {
+            // check username available, passwords match
+        }
+
 
     }
 
