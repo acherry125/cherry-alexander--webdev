@@ -49,9 +49,10 @@
         }
 
         function updateWebsite(websiteId, website) {
-            for (var i in users) {
-                if (users[i].username === username && users[i].password === password) {
-                    return users[i];
+            for (var i in websites) {
+                if (websites[i]._id === websiteId) {
+                    websites[i] = website;
+                    return;
                 }
             }
         }
