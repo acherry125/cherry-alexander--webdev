@@ -1,3 +1,14 @@
-/**
- * Created by AlexC on 5/25/2016.
- */
+
+(function() {
+
+    angular
+        .module("WebAppMaker")
+        .controller("WebsiteListController", WebsiteListController);
+
+    function WebsiteListController($routeParams) {
+        vm = this;
+        var id = $routeParams["uid"];
+        vm.userId =  id;
+    }
+    
+})();

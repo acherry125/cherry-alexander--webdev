@@ -30,12 +30,13 @@
         }
 
         function findWebsiteByUser(userId) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    return users[i];
+            var result = [];
+            for(var i in websites) {
+                if(websites[i]._id == userId) {
+                    result.push(websites[i]);
                 }
             }
-            return false;
+            return result;
         }
 
         function findWebsiteById(websiteId) {
