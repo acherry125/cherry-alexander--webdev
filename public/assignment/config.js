@@ -40,7 +40,9 @@
             	templateUrl: "views/website/website-new.view.client.html"
             })
             .when("/user/:uid/website/:wid", {
-            	templateUrl: "views/website/website-edit.view.client.html"
+            	templateUrl: "views/website/website-edit.view.client.html",
+                controller: "WebsiteEditController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page", {
             	templateUrl: "views/page/page-list.view.client.html"

@@ -17,7 +17,7 @@
                 </a>
                 <!-- Save Button -->
                 <p class="navbar-text pull-right">
-                    <a href="#/user/1/website" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -28,12 +28,16 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    {{model.websiteId}}
+    {{"is this coming from another controller???"}}
+    {{model.userId}}
     <!-- Website information form -->
     <form>
         <!-- Website Name -->
         <div class="form-group">
             <label for="username">Name</label>
-            <input type="text"
+            <input ng-model="model.name"
+                   type="text"
                    value="Blogging"
                    class="form-control"
                    id="username"
@@ -42,7 +46,8 @@
         <!-- Website Description -->
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea rows="8"
+            <textarea ng-model="model.desc"
+                      rows="8"
                       id="description"
                       class="form-control"
                       placeholder="Description">Lorem Ipsum is simply dummy text.</textarea>
@@ -70,7 +75,7 @@
                 </p>
                 <!-- Profile Link -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.view.client.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
