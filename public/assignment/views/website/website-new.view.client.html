@@ -13,11 +13,12 @@
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand">
-                    New Website {{model.userId}}
+                    New Website
                 </a>
                 <!-- Confirm and Save Button -->
                 <p class="navbar-text pull-right">
-                    <a ng-href="#/user/{{model.userId}}/website" class="navbar-link">
+                    <a ng-click="model.createWebsite(name,description)"
+                       class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -33,7 +34,7 @@
         <!-- Name -->
         <div class="form-group">
             <label for="name">Name</label>
-            <input ng-model="model.website.name"
+            <input ng-model="name"
                    class="form-control"
                    type="text"
                    id="name"
@@ -42,7 +43,7 @@
         <!-- Description -->
         <div class="form-group">
             <label for="desc">Description</label>
-            <textarea ng-model="model.website.description"
+            <textarea ng-model="description"
                       class="form-control"
                       rows="6" id="desc"
                       placeholder="Description"></textarea>

@@ -25,7 +25,8 @@
 
         return api;
         function createWebsite(userId, website) {
-            users.push(user);
+            website["developerId"] = userId;
+            websites.push(website);
         }
 
         function findWebsiteByUser(userId) {
