@@ -13,7 +13,7 @@
         vm.websiteId =  wid;
 
         function init() {
-            vm.pages = PageService.findPageByWebsite(id);
+            //vm.pages = PageService.findPageByWebsiteId(wid);
         }
 
         init();
