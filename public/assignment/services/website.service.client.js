@@ -31,7 +31,7 @@
         function findWebsiteByUser(userId) {
             var result = [];
             for(var i in websites) {
-                if(websites[i]._id == userId) {
+                if(websites[i].developerId == userId) {
                     result.push(websites[i]);
                 }
             }
@@ -39,12 +39,13 @@
         }
 
         function findWebsiteById(websiteId) {
-            for (var i in users) {
-                if (users[i].username === id) {
-                    return users[i];
+            var result = [];
+            for(var i in websites) {
+                if(websites[i]._id == websiteId) {
+                    result.push(websites[i]);
                 }
             }
-            return false;
+            return result;
         }
 
         function updateWebsite(websiteId, website) {
