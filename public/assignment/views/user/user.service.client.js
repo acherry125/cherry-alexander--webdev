@@ -33,7 +33,6 @@
                     return users[i];
                 }
             }
-            return false;
         }
 
         function findUserByUsername(username) {
@@ -60,7 +59,6 @@
                     return;
                 }
             }
-            return -1;
         }
 
         function deleteUser(userId) {

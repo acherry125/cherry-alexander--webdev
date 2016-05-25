@@ -19,7 +19,7 @@
 
     }
 
-    function ProfileController($routeParams, $location) {
+    function ProfileController($routeParams, $location, UserService) {
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
@@ -27,22 +27,16 @@
         
         var id = $routeParams["uid"];
         vm.uId = id;
-        var index = -1;
 
         function init() {
-            for (var ind in users) {
-                if (users[ind]._id === id) {
-                    vm.user = users[ind];
-                    index = ind
-                }
-            }
+            vm.user = UserService.findUserById(vm.uId);
         }
 
         init();
         function updateUser() {
-            if (index in users) {
-                users[index].firstName = vm.user.firstName;
-                users[index].LastName = vm.user.LastName;
+            if (vm.user) {
+                vm.user.firstName = vm.user.firstName;
+                vm.user.LastName = vm.user.LastName;
                 vm.success = "User succesfully updated their profile";
             } else {
                 vm.failure = "Error: User does not exist, cannot update non-existent user";
