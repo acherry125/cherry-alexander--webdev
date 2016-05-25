@@ -13,9 +13,9 @@
 
         function createWebsite(name, description) {
             if(name) {
-                unique = Date.now();
+                var unique = Date.now();
                 unique = unique.toString();
-                website = {"_id": unique, "name": name};
+                var website = {"_id": unique, "name": name};
                 WebsiteService.createWebsite(uid, website);
                 $location.url("/user/" + uid + "/website")
             } else {
