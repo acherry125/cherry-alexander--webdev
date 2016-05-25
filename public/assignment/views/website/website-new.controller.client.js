@@ -18,6 +18,8 @@
                 website = {"_id": unique, "name": name};
                 WebsiteService.createWebsite(uid, website);
                 $location.url("/user/" + uid + "/website")
+            } else {
+                vm.missingName = "New website must be named"
             }
         }
 

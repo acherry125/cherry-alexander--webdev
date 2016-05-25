@@ -17,8 +17,8 @@
                 </a>
                 <!-- Save Button -->
                 <p class="navbar-text pull-right">
-                    <a ng-click=""
-                       ng-href="#/user/{{model.userId}}/website" class="navbar-link">
+                    <a ng-click="model.updateWebsite()"
+                       class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -29,6 +29,10 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    <!-- Warning Message -->
+    <div ng-if="model.missingName" class="alert alert-danger">
+        {{model.missingName}}
+    </div>
     <!-- Website information form -->
     <form>
         <!-- Website Name -->
@@ -36,7 +40,6 @@
             <label for="username">Name</label>
             <input ng-model="model.website.name"
                    type="text"
-                   value="Blogging"
                    class="form-control"
                    id="username"
                    placeholder="Name"/>
@@ -48,7 +51,7 @@
                       rows="8"
                       id="description"
                       class="form-control"
-                      placeholder="Description">Lorem Ipsum is simply dummy text.</textarea>
+                      placeholder="Description"></textarea>
         </div>
     </form>
     <!-- Delete Button -->

@@ -15,14 +15,20 @@
         vm.deleteWebsite = deleteWebsite;
         
         function init() {
-            vm.website = WebsiteService.findWebsiteById(wid);
+            vm.website = angular.copy(WebsiteService.findWebsiteById(wid));
         }
 
         init();
 
         function updateWebsite() {
-            WebsiteService.updateWebsite(wid, vm.website);
-            $location.url("user/" + uid + "/website");
+            if (vm.website.name) {
+                var website = { "_id": wid, "name": vm.website.name, "developerId": uid };
+                WebsiteService.updateWebsite(wid, website);
+                $location.url("user/" + uid + "/website");
+            }
+            else {
+                vm.missingName = "Website must be named"
+            }
         }
 
         function deleteWebsite() {
