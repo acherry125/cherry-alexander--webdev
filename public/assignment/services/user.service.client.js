@@ -38,11 +38,10 @@
 
         function findUserByUsername(username) {
             for (var i in users) {
-                if (users[i].username === id) {
+                if (users[i].username === username) {
                     return users[i];
                 }
             }
-            return false;
         }
 
         function findUserByCredentials(username, password) {

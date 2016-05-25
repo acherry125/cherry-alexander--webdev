@@ -20,19 +20,17 @@
         function register(username, password, verify) {
             // verify, assign id, add to database
             if (verifyRegistration(username, password, verify)) {
-                newUser = {_id: "567", username: username, password: password, firstName: "", lastName: ""};
+                var unique = Date.now();
+                uniqe = unique.toString();
+                newUser = {_id: unique, username: username, password: password, firstName: "", lastName: ""};
                 UserService.createUser(newUser);
-                $location.url("/user/567");
+                $location.url("/user/" + unique);
             }
         }
 
         function verifyRegistration(username, password, verify) {
-            if (false) {
-                vm.userFailure = "Username is already taken";
-                vm.passwordVerFail = "Password and Verify Password fields must match";
-            }
             // check username available (finduserbyusername)
-            else if (false) {
+            if (UserService.findUserByUsername(username)) {
                 vm.failure = "Username is already taken";
             } else if(!(username && password && verify)) {
                 vm.failure = "All fields must be filled in"
