@@ -22,43 +22,43 @@
 
         return api;
 
-        function createPage(userId, website) {
-            website["developerId"] = userId;
-            websites.push(website);
+        function createPage(websiteId, page) {
+            page["websiteId"] = userId;
+            pages.push(page);
         }
 
-        function findPageByWebsiteId(userId) {
+        function findPageByWebsiteId(websiteId) {
             var result = [];
-            for(var i in websites) {
-                if(websites[i].developerId == userId) {
-                    result.push(websites[i]);
+            for(var i in pages) {
+                if(pages[i].websiteId == websiteId) {
+                    result.push(pages[i]);
                 }
             }
             return result;
         }
 
-        function findPageById(websiteId) {
+        function findPageById(pageId) {
             var result = [];
-            for(var i in websites) {
-                if (websites[i]._id == websiteId) {
-                    return websites[i];
+            for(var i in pages) {
+                if (pages[i]._id == pageId) {
+                    return pages[i];
                 }
             }
         }
 
-        function updatePage(websiteId, website) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites[i] = website;
+        function updatePage(pageId, page) {
+            for (var i in pages) {
+                if (pages[i]._id === pageId) {
+                    pages[i] = page;
                     return;
                 }
             }
         }
 
-        function deletePage(websiteId) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites.splice(i, 1);
+        function deletePage(pageId) {
+            for (var i in pages) {
+                if (pages[i]._id === pageId) {
+                    pages.splice(i, 1);
                     return;
                 }
             }
