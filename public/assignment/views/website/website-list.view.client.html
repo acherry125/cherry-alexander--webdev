@@ -18,64 +18,21 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    {{model.websites}}
     <!-- Example Sites hardcoded -->
     <!-- ac-row allows the glyphicons to work -->
-    <div class="row ac-row">
+    <div class="row ac-row" ng-repeat="site in model.websites">
         <!-- stops website title from overlapping with glyphicon -->
         <div class="col-xs-9">
-            <h3><a href="#/user/1/website/1/page">Blogging App</a></h3>
+            <h3><a href="#/user/{{model.userId}}/website/{{site._id}}/page">{{site.name}}</a></h3>
         </div>
         <!-- groups glyphicons and positions them relative to ac-row -->
         <div class="ac-glyphicon-container">
             <!-- edit button -->
-            <a href="#user/1/website/1">
+            <a href="#user/{{model.userId}}/website/{{site._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <!-- pages button, ignore for assignment2 -->
-            <a href="#">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-        </div>
-    </div>
-    <!-- Second Example Site -->
-    <div class="row ac-row">
-        <div class="col-xs-9">
-            <h3><a href="#/user/1/website/1/page">Address Book App</a></h3>
-        </div>
-        <div class="ac-glyphicon-container">
-            <a href="#user/1/website/1">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-        </div>
-    </div>
-    <!-- Third Example Site -->
-    <div class="row ac-row">
-        <div class="col-xs-9">
-            <h3><a href="#/user/1/website/1/page">Script Testing App</a></h3>
-        </div>
-        <div class="ac-glyphicon-container">
-            <a href="#user/1/website/1">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <a href="#">
-                <span class="glyphicon glyphicon-play"></span>
-            </a>
-        </div>
-    </div>
-
-    <div class="row ac-row">
-        <div class="col-xs-9">
-            <h3><a href="#/user/1/website/1/page">Blogger</a></h3>
-        </div>
-        <div class="ac-glyphicon-container">
-            <a href="#user/1/website/1">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <a href="#">
+            <a href="#/user/{{model.userId}}/website/{{site._id}}/page">
                 <span class="glyphicon glyphicon-play"></span>
             </a>
         </div>
