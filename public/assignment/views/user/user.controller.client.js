@@ -29,20 +29,20 @@
         vm.uId = id;
 
         function init() {
-            vm.user = UserService.findUserById(vm.uId);
+            vm.user = angular.copy(UserService.findUserById(id));
         }
 
         init();
+        
         function updateUser() {
             if (vm.user) {
-                vm.user.firstName = vm.user.firstName;
-                vm.user.LastName = vm.user.LastName;
+                UserService.updateUser(id, vm.user);
                 vm.success = "User succesfully updated their profile";
             } else {
                 vm.failure = "Error: User does not exist, cannot update non-existent user";
             }
         }
-        
+
         function navigateToProfile() {
             $location.url("/user/" + id);
         }
