@@ -14,21 +14,24 @@
     <form>
         <!-- Username -->
         <div class="form-group">
-            <input type="text"
+            <input ng-model="username"
+                   type="text"
                    class="form-control"
                    id="username"
                    placeholder="username">
         </div>
         <!-- Password -->
         <div class="form-group">
-            <input type="password"
+            <input ng-model="password"
+                   type="password"
                    class="form-control"
                    id="password"
                    placeholder="password">
         </div>
         <!-- Verify Password -->
         <div class="form-group">
-            <input type="password"
+            <input ng-model="verify"
+                   type="password"
                    class="form-control"
                    id="ver-password"
                    placeholder="verify password">
@@ -37,7 +40,7 @@
     <!-- Register Button -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="#/user/17"
+            <a ng-click="model.register(username, password, verify)"
                role="button"
                class="btn btn-block btn-primary btn-lg">Register</a>
         </div>

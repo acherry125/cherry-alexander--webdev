@@ -12,13 +12,16 @@
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ];
 
-    function RegisterController(UserService) {
+    function RegisterController(UserService, $location) {
         var vm = this;
-        vm.register = verifyRegistration();
+        vm.register = register;
         var verifyRegistration = verifyRegistration;
 
         function register(username, password, verify) {
             // verify, assign id, add to database
+            newUser = {_id: "567", username: username, password: password, firstName: "", lastName: ""};
+            UserService.createUser(newUser);
+            $location.url("/user/567");
         }
 
         function verifyRegistration(username, password, verify) {
@@ -27,8 +30,7 @@
                 vm.passwordVerFail = "Password and Verify Password fields must match"
             }
             else {
-                newUser = {_id: "567", username: "alex", password: "alex", firstName: "", lastName: ""};
-                UserService.createUser(newUser)
+
             }
         }
 
