@@ -2,11 +2,11 @@
 <!-- No top navigation bar on login -->
 <!-- Main Container -->
 <div class="container">
-    <div ng-if="model.error" class="alert alert-danger">
-        {{model.error}}
+    <div ng-if="model.login_error" class="alert alert-danger">
+        {{model.login_error}}
     </div>
     <h1>Login</h1>
-    {{model.error}}
+    {{model.login_error}}
     <!-- Login form -->
     <form>
         <div class="form-group">

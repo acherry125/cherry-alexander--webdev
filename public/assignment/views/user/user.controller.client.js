@@ -47,20 +47,19 @@
         }
     }
 
-    function LoginController($location) {
+    function LoginController($location, UserService) {
         // referring to self (View Model)
         var vm = this;
+        // verifies login credentials
         vm.login = login;
-        vm.hid = "hello world";
-
+        
+        // login handler
         function login(username, password) {
-            for (var i in users) {
-                if (users[i].username === username && users[i].password === password) {
-                    $location.url("/user/" + users[i]._id);
-                    return;
-                } else {
-                    vm.error = "User not found";
-                }
+            user = UserService.findUserByCredentials(username, password);
+            if(user) {
+                $location.url("/user/" + user._id);
+            } else {
+                vm.login_error = "Unable to login";
             }
         }
     }

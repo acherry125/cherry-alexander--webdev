@@ -33,7 +33,7 @@
                     return users[i];
                 }
             }
-            return -1;
+            return false;
         }
 
         function findUserByUsername(username) {
@@ -42,7 +42,7 @@
                     return users[i];
                 }
             }
-            return -1;
+            return false;
         }
 
         function findUserByCredentials(username, password) {
@@ -51,7 +51,6 @@
                     return users[i];
                 }
             }
-            return -1;
         }
 
         function updateUser(userId, user) {
@@ -74,5 +73,5 @@
             return -1;
         }
     }
-    
+
 })();
