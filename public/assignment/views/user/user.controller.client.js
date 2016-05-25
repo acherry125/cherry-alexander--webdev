@@ -24,7 +24,9 @@
         var vm = this;
         vm.updateUser = updateUser;
         vm.navigateToProfile = navigateToProfile;
+        
         var id = $routeParams["uid"];
+        vm.uId = id;
         var index = -1;
 
         function init() {

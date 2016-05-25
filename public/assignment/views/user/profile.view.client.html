@@ -79,7 +79,7 @@
     <!-- Websites Link Button -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="#/user/1/website"
+            <a ng-href="#/user/{{model.uId}}/website"
                role="button"
                class="btn btn-block btn-primary btn-lg">Websites</a>
         </div>
@@ -102,7 +102,7 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.navigateToProfile()" class="navbar-link">
+                    <a ng-href="#/user/{{model.uId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
