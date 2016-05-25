@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="#/user/1/website" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -17,7 +17,7 @@
                 </a>
                 <!-- Confirm and Save Button -->
                 <p class="navbar-text pull-right">
-                    <a href="#/user/1/website" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -33,7 +33,8 @@
         <!-- Name -->
         <div class="form-group">
             <label for="name">Name</label>
-            <input class="form-control"
+            <input ng-model="model.website.name"
+                   class="form-control"
                    type="text"
                    id="name"
                    placeholder="Name">
@@ -41,7 +42,8 @@
         <!-- Description -->
         <div class="form-group">
             <label for="desc">Description</label>
-            <textarea class="form-control"
+            <textarea ng-model="model.website.description"
+                      class="form-control"
                       rows="6" id="desc"
                       placeholder="Description"></textarea>
         </div>
@@ -54,7 +56,7 @@
             <div class="navbar-header">
                 <!-- Profile Link -->
                 <p class="navbar-text pull-right">
-                    <a href="/user/1" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>

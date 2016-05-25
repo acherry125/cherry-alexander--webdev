@@ -8,7 +8,7 @@
                     Websites
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#/user/1/website/new" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website/new" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
@@ -23,16 +23,16 @@
     <div class="row ac-row" ng-repeat="site in model.websites">
         <!-- stops website title from overlapping with glyphicon -->
         <div class="col-xs-9">
-            <h3><a href="#/user/{{model.userId}}/website/{{site._id}}/page">{{site.name}}</a></h3>
+            <h3><a ng-href="#/user/{{model.userId}}/website/{{site._id}}/page">{{site.name}}</a></h3>
         </div>
         <!-- groups glyphicons and positions them relative to ac-row -->
         <div class="ac-glyphicon-container">
             <!-- edit button -->
-            <a href="#user/{{model.userId}}/website/{{site._id}}">
+            <a ng-href="#user/{{model.userId}}/website/{{site._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <!-- pages button, ignore for assignment2 -->
-            <a href="#/user/{{model.userId}}/website/{{site._id}}/page">
+            <a ng-href="#/user/{{model.userId}}/website/{{site._id}}/page">
                 <span class="glyphicon glyphicon-play"></span>
             </a>
         </div>
@@ -45,13 +45,13 @@
             <div class="navbar-header">
                 <!-- Profile Link -->
                 <p class="navbar-text pull-right">
-                    <a href="#/user/" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
                 <!-- Website-list link to improve user experience -->
                 <p class="navbar-text pull-right">
-                    <a href="#/user/1/website" class="navbar-link">
+                    <a ng-href="#/user/1/website" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
