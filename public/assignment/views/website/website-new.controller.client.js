@@ -3,9 +3,9 @@
 
     angular
         .module("WebAppMaker")
-        .controller("WebsiteEditController", WebsiteEditController);
+        .controller("WebsiteNewController", WebsiteNewController);
 
-    function WebsiteEditController($routeParams, WebsiteService) {
+    function WebsiteNewController($routeParams, WebsiteService) {
         vm = this;
         var uid = $routeParams.uid;
         vm.userId = uid;

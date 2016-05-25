@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back Button -->
                 <p class="navbar-text pull-left">
-                    <a href="website-list.view.client.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -28,15 +28,12 @@
 </header>
 <!-- Main Container -->
 <div class="container">
-    {{model.websiteId}}
-    {{"is this coming from another controller???"}}
-    {{model.userId}}
     <!-- Website information form -->
     <form>
         <!-- Website Name -->
         <div class="form-group">
             <label for="username">Name</label>
-            <input ng-model="model.name"
+            <input ng-model="model.website.name"
                    type="text"
                    value="Blogging"
                    class="form-control"
@@ -46,7 +43,7 @@
         <!-- Website Description -->
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea ng-model="model.desc"
+            <textarea ng-model="model.website.description"
                       rows="8"
                       id="description"
                       class="form-control"

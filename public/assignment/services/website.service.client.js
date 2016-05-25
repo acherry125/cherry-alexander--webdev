@@ -41,11 +41,10 @@
         function findWebsiteById(websiteId) {
             var result = [];
             for(var i in websites) {
-                if(websites[i]._id == websiteId) {
-                    result.push(websites[i]);
+                if (websites[i]._id == websiteId) {
+                    return websites[i];
                 }
             }
-            return result;
         }
 
         function updateWebsite(websiteId, website) {
