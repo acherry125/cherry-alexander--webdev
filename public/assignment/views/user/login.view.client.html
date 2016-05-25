@@ -7,7 +7,7 @@
     </div>
     <h1>Login</h1>
     <!-- Login form -->
-    <form>
+    <form ng-keyup="$event.keyCode == 13 && model.login(username,password)">
         <div class="form-group">
             <!-- Username -->
             <input ng-model="username"
