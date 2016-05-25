@@ -2,16 +2,12 @@
 <!-- Main Container -->
 <div class="container">
     <!-- Success Message -->
-    <div ng-if="model.userFailure" class="alert alert-danger">
-        {{model.userFailure}}
-    </div>
-    <!-- Error Message -->
-    <div ng-if="model.passwordVerFail" class="alert alert-danger">
-        {{model.passwordVerFail}}
+    <div ng-if="model.failure" class="alert alert-danger">
+        {{model.failure}}
     </div>
     <h1>Register</h1>
     <!-- Registration form -->
-    <form>
+    <div ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
         <!-- Username -->
         <div class="form-group">
             <input ng-model="username"
@@ -36,7 +32,7 @@
                    id="ver-password"
                    placeholder="verify password">
         </div>
-    </form>
+    </div>
     <!-- Register Button -->
     <div class="row">
         <div class="col-xs-12">

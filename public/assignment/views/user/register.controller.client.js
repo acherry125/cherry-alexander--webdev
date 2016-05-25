@@ -33,11 +33,13 @@
             }
             // check username available (finduserbyusername)
             else if (false) {
-                vm.userFailure = "Username is already taken";
+                vm.failure = "Username is already taken";
+            } else if(!(username && password && verify)) {
+                vm.failure = "All fields must be filled in"
             }
             // check passwords match
             else if (!(password === verify)) {
-                vm.passwordVerFail = "Password and Verify Password fields must match";
+                vm.failure = "Password and Verify Password fields must match";
             }
             // success
             else {
