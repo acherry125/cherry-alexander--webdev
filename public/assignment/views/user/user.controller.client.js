@@ -19,10 +19,11 @@
 
     }
 
-    function ProfileController($routeParams) {
+    function ProfileController($routeParams, $location) {
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
+        vm.navigateToProfile = navigateToProfile;
         var id = $routeParams["uid"];
         var index = -1;
 
@@ -44,6 +45,10 @@
             } else {
                 vm.failure = "Error: User does not exist, cannot update non-existent user";
             }
+        }
+        
+        function navigateToProfile() {
+            $location.url("/user/" + id);
         }
     }
 
