@@ -13,7 +13,6 @@
     function ProfileController($routeParams) {
         // referring to self (View Model)
         var vm = this;
-        vm.hid = "hello world";
         vm.updateUser = updateUser;
         var id = $routeParams["uid"];
         var index = -1;
@@ -33,9 +32,13 @@
         }
         init();
         function updateUser() {
-            users[index].firstName = vm.user.firstName;
-            users[index].LastName = vm.user.LastName;
-            vm.success = "User succesfully";
+            if (index in users) {
+                users[index].firstName = vm.user.firstName;
+                users[index].LastName = vm.user.LastName;
+                vm.success = "User succesfully updated their profile";
+            } else {
+                vm.failure = "Error: User does not exist, cannot update non-existent user";
+            }
         }
     }
     

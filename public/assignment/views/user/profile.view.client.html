@@ -11,7 +11,7 @@
                 </a>
                 <!-- Save Button -->
                 <p class="navbar-text pull-right">
-                    <a ng-click="updateUser()" class="navbar-link">
+                    <a ng-click="model.updateUser()" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -23,11 +23,14 @@
 
 <!-- Main Container -->
 <div class="container">
-
-    <div ng-show="" class="alert alert-success">
-        Succesfully updated your profile
+    <!-- Success Message -->
+    <div ng-if="model.success" class="alert alert-success">
+        {{model.success}}
     </div>
-
+    <!-- Error Message -->
+    <div ng-if="model.failure" class="alert alert-danger">
+        {{model.failure}}
+    </div>
     <!-- Profile information form -->
     <div class="col-xs-12">
         <form>
