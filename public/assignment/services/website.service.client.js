@@ -13,15 +13,14 @@
         { "_id": "789", "name": "Chess",       "developerId": "234" }
     ];
 
-    function UserService() {
+    function WebsiteService() {
 
         var api = {
-            "createUser": createUser,
-            "findUserById": findUserById,
-            "findUserByUsername": findUserByUsername,
-            "findUserByCredentials": findUserByCredentials,
-            "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "createWebsite": createWebsite,
+            "findWebsiteByUser": findWebsiteByUser,
+            "findWebsiteById": findWebsiteById,
+            "updateWebsite": updateWebsite,
+            "deleteWebsite": deleteWebsite
         };
 
         return api;
