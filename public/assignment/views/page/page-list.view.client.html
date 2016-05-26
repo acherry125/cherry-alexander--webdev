@@ -17,7 +17,7 @@
                 </a>
                 <!-- Add Page Button -->
                 <p class="navbar-text pull-right">
-                    <a href="page-new.view.client.html" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
                       <span class="glyphicon glyphicon-plus">
                       </span>
                     </a>
@@ -32,11 +32,15 @@
     <!-- ac-row allows the glyphicons to work -->
     <div ng-repeat="page in model.pages" class="row ac-row">
         <div class="col-xs-9">
-            <h3><a href="#">{{page.name}}</a></h3>
+            <h3>
+                <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                    {{page.name}}
+                </a>
+            </h3>
         </div>
         <!-- groups glyphicons and positions them relative to ac-row -->
         <div class="ac-glyphicon-container">
-            <a href="page-edit.view.client.html">
+            <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </div>
