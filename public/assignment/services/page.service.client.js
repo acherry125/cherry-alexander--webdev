@@ -7,10 +7,7 @@
     pages = [
         { "_id": "321", "name": "Post 1", "websiteId": "456" },
         { "_id": "432", "name": "Post 2", "websiteId": "456" },
-        { "_id": "543", "name": "Post 3", "websiteId": "456" },
-        { "_id": "567", "name": "Post 1", "websiteId": "567" },
-        { "_id": "678", "name": "Post 2", "websiteId": "567" },
-        { "_id": "8900", "name": "Post 3", "websiteId": "789" }
+        { "_id": "543", "name": "Post 3", "websiteId": "456" }
     ];
 
     function PageService() {
