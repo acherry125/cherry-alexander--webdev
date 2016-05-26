@@ -17,19 +17,22 @@
         vm.deletePage = deletePage;
 
         function init() {
-            vm.page = angular.copy(Page.findPageById(pid));
+            vm.page = angular.copy(PageService.findPageById(pid));
+            if(!vm.page) {
+                $location.url("/user/" + uid + "/website/" + wid + "/page");
+            }
         }
 
         init();
 
         function updatePage() {
             if (vm.page.name) {
-                var page = { "_id": pid, "name": vm.page.name, "developerId": uid };
+                var page = { "_id": pid, "name": vm.page.name, "websiteId": wid };
                 PageService.updatePage(pid, page);
                 $location.url("user/" + uid + "/website/" + wid + "/page");
             }
             else {
-                vm.missingName = "Page must be named"
+                vm.missingName = "Name field must not be empty"
             }
         }
 

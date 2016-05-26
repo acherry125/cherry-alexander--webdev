@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="page-list.view.client.html" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -17,7 +17,7 @@
                 </a>
                 <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="page-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.updatePage()" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -28,29 +28,33 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    <!-- Error Message -->
+    <div ng-if="model.missingName" class="alert alert-danger">
+        {{model.missingName}}
+    </div>
     <!-- Website Details Form -->
     <form>
         <!-- Page Name -->
         <div class="form-group">
             <label for="page-name">Page Name</label>
-            <input class="form-control"
+            <input ng-model="model.page.name"
+                   class="form-control"
                    type="text" id="page-name"
-                   placeholder="Page Name"
-                   value="Blogging is fun">
+                   placeholder="Page Name">
         </div>
         <!-- Page Description -->
         <div class="form-group">
             <label for="page-title">Page Title</label>
-            <input class="form-control"
+            <input ng-model="model.page.title"
+                   class="form-control"
                    id="page-title"
-                   placeholder="Page Title"
-                   value="Blogging Forever">
+                   placeholder="Page Title">
         </div>
     </form>
     <!-- Delete Page -->
     <div class="row">
         <div class="col-xs-12">
-            <a href="page-list.view.client.html"
+            <a ng-click="model.deletePage()"
                role="button"
                class="btn btn-block btn-danger btn-lg">Delete</a>
         </div>
@@ -64,7 +68,7 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../views/user/profile.html" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>

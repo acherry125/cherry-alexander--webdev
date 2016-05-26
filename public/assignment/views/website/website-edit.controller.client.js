@@ -16,6 +16,9 @@
         
         function init() {
             vm.website = angular.copy(WebsiteService.findWebsiteById(wid));
+            if(!vm.website) {
+                $location.url("/user/" + uid + "/website/");
+            }
         }
 
         init();
@@ -27,7 +30,7 @@
                 $location.url("user/" + uid + "/website");
             }
             else {
-                vm.missingName = "Website must be named"
+                vm.missingName = "Name field must not be empty  "
             }
         }
 

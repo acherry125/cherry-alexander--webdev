@@ -22,7 +22,7 @@
                 PageService.createPage(uid, page);
                 $location.url("/user/" + uid + "/website/" + wid + "/page")
             } else {
-                vm.missingName = "New Page must be named"
+                vm.missingName = "Name field must not be empty"
             }
         }
 
