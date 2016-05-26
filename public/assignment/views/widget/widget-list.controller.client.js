@@ -14,6 +14,7 @@
         var pid = $routeParams.pid;
         vm.pageId =  pid;
         vm.fixYoutube = fixYoutube;
+        var allowSrc = allowSrc;
         
         vm.lin = "https://www.youtube.com/embed/AM2Ivdi9c4E"
         
@@ -24,12 +25,16 @@
         init();
 
         function fixYoutube(link) {
-            var url = link.replace("watch?v=", "v/");
-            url = url.replace("&feature=youtu.be", "");
-            return url;
+            /* regexp courtesy of
+            http://stackoverflow.com/questions/3452546/
+                        javascript-regex-how-to-get-youtube-video-id-from-url" */
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var id = link.match(regExp);
+            var url = "https://www.youtube.com/embed/" + id[1];
+            return allowSrc(url);
         }
 
-        vm.trustSrc = function(src) {
+        function allowSrc(src) {
             return $sce.trustAsResourceUrl(src);
         }
 
