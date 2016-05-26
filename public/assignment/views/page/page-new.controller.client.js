@@ -19,7 +19,7 @@
                 unique = Date.now();
                 unique = unique.toString();
                 var page = {"_id": unique, "name": name};
-                PageService.createPage(uid, page);
+                PageService.createPage(wid, page);
                 $location.url("/user/" + uid + "/website/" + wid + "/page")
             } else {
                 vm.missingName = "Name field must not be empty"

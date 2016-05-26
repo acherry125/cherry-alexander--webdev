@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="page-list.view.client.html" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -17,7 +17,7 @@
                 </a>
                 <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="page-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.createPage(name, title)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -28,17 +28,29 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    <!-- Error Message -->
+    <div ng-if="model.missingName" class="alert alert-danger">
+        {{model.missingName}}
+    </div>
     <!-- Page Information Form -->
     <form>
         <!-- Name -->
         <div class="form-group">
             <label for="page-name">Name</label>
-            <input class="form-control" type="text" id="page-name" placeholder="Page Name">
+            <input ng-model="name"
+                   class="form-control"
+                   type="text"
+                   id="page-name"
+                   placeholder="Page Name">
         </div>
         <!-- Title -->
         <div class="form-group">
             <label for="page-title">Title</label>
-            <input class="form-control" type="text" id="page-title" placeholder="Page Title">
+            <input ng-model="title"
+                   class="form-control"
+                   type="text"
+                   id="page-title"
+                   placeholder="Page Title">
         </div>
     </form>
 </div>
@@ -49,7 +61,7 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../views/user/profile.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>

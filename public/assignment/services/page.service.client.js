@@ -26,7 +26,7 @@
         return api;
 
         function createPage(websiteId, page) {
-            page["websiteId"] = userId;
+            page["websiteId"] = websiteId;
             pages.push(page);
         }
 
