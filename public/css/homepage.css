@@ -3,9 +3,13 @@
         font-size: 25px;
     }
 
-    .button.expand {
+    .button.large {
         font-size: 2rem;
     }
+}
+
+html {
+    font-size: 18px;
 }
 
 /* standardize fonts, background color */
@@ -36,6 +40,21 @@ input, textarea {
     max-width:100%
 }
 
+.button {
+    border-radius: 1em;
+    background-color: #008CBA;
+    color: white;
+    transition: background-color 100ms ease-out;
+}
+
+.button.large {
+    width: 50%;
+}
+
+.button:hover {
+    background-color: white;
+    color: #008CBA;
+}
 /* link-buttons */
 .link-button {
     background-color: cornflowerblue;
