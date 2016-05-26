@@ -17,7 +17,7 @@
 
         var api = {
             "createWebsite": createWebsite,
-            "findWebsiteByUser": findWebsiteByUser,
+            "findWebsitesByUser": findWebsitesByUser,
             "findWebsiteById": findWebsiteById,
             "updateWebsite": updateWebsite,
             "deleteWebsite": deleteWebsite
@@ -30,7 +30,7 @@
             websites.push(website);
         }
 
-        function findWebsiteByUser(userId) {
+        function findWebsitesByUser(userId) {
             var result = [];
             for(var i in websites) {
                 if(websites[i].developerId == userId) {
