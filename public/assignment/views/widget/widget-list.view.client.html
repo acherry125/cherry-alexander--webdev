@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back Button -->
                 <p class="navbar-text pull-left">
-                    <a href="../page/page-list.view.client.html" class="navbar-link">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -17,7 +17,7 @@
                 </a>
                 <!-- Add Widget Button -->
                 <p class="navbar-text pull-right">
-                    <a href="widget-choose.view.client.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/2" class="navbar-link">
                       <span class="glyphicon glyphicon-plus">
                       </span>
                     </a>
