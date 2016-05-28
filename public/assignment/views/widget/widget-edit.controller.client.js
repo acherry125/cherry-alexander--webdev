@@ -4,7 +4,15 @@
         .module("WebAppMaker")
         .controller("WidgetEditController", WidgetEditController);
     
-    function WidgetEditController(WidgetService) {
+    function WidgetEditController(WidgetService, $routeParams) {
+        var vm = this;
+        vm = this;
+        var uid = $routeParams.uid;
+        vm.userId =  uid;
+        var wid = $routeParams.wid;
+        vm.websiteId =  wid;
+        var pid = $routeParams.pid;
+        vm.pageId =  pid;
         
     }
     
