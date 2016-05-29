@@ -6,14 +6,14 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="widget-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.goBack()" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand">
-                    Widget Edit
+                    {{model.title}}
                 </a>
                 <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
@@ -98,14 +98,8 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.view.client.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                </p>
-                <!-- Website-list link button -->
-                <p class="navbar-text pull-right">
-                    <a href="../../views/website/website-list.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
             </div>

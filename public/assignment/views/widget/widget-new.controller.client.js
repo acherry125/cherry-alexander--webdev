@@ -5,7 +5,7 @@
         .module("WebAppMaker")
         .controller("WidgetNewController", WidgetNewController);
 
-    function WidgetNewController($routeParams) {
+    function WidgetNewController($routeParams, $location) {
         vm = this;
         var uid = $routeParams.uid;
         vm.userId = uid;
@@ -14,8 +14,15 @@
         var pid = $routeParams.pid;
         vm.pageId = pid;
         var type = $routeParams.type;
-        vm.widgetType = type;
-    
+        vm.title = "New Widget"
+        vm.widgetType = type.toLowerCase();
+        vm.goBack = goBack;
+
+        function goBack() {
+            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/new")
+        }
+
+
     }
 
 })();

@@ -13,7 +13,9 @@
         vm.websiteId =  wid;
         var pid = $routeParams.pid;
         vm.pageId =  pid;
-        
+        vm.title = "Widget Edit"
+
+
     }
     
 })();

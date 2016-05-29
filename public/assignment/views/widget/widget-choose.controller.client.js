@@ -17,7 +17,7 @@
         vm.pickWidgetType = pickWidgetType;
 
         function pickWidgetType(type) {
-            $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/new/" + type);
+            $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/new/" + type.toLowerCase());
         }
     }
     
