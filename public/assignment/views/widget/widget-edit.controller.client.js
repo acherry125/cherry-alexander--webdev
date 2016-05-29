@@ -17,6 +17,8 @@
         vm.widgetId =  wgid;
         vm.title = "Widget Edit";
         vm.goBack = goBack;
+        vm.updateWidget = updateWidget;
+        vm.deleteWidget = deleteWidget;
 
         function init() {
             vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
@@ -25,7 +27,17 @@
         init();
 
         function goBack() {
-            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/")
+            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
+        }
+
+        function updateWidget() {
+            WidgetService.updateWidget(wgid, vm.widget);
+            goBack();
+        }
+
+        function deleteWidget() {
+            WidgetService.deleteWidget(wgid);
+            goBack();
         }
 
     }

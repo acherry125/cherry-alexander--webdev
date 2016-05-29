@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a href="/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
                        class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
@@ -26,7 +26,7 @@
     <!-- Header (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a ng-click="model.pickWidgetType('HEADER')">Header</a></h3>
+            <h3><a ng-click="model.createWidget('HEADER')">Header</a></h3>
         </div>
     </div>
     <!-- Label -->
@@ -62,13 +62,13 @@
     <!-- Image (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a ng-click="model.pickWidgetType('IMAGE')">Image</a></h3>
+            <h3><a ng-click="model.createWidget('IMAGE')">Image</a></h3>
         </div>
     </div>
     <!-- YouTube (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a ng-click="model.pickWidgetType('YOUTUBE')">YouTube</a></h3>
+            <h3><a ng-click="model.createWidget('YOUTUBE')">YouTube</a></h3>
         </div>
     </div>
     <!-- Data Table -->

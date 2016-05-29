@@ -76,10 +76,5 @@
                 controller: "WidgetEditController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new/:type", {
-                templateUrl: "views/widget/widget-new.view.client.html",
-                controller: "WidgetNewController",
-                controllerAs: "model"
-            })
     };
 })();
