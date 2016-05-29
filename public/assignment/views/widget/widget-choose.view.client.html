@@ -25,7 +25,7 @@
     <!-- Header (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a href="widget-header.view.client.html">Header</a></h3>
+            <h3><a ng-click="model.pickWidgetType('HEADING')">Header</a></h3>
         </div>
     </div>
     <!-- Label -->
@@ -61,13 +61,13 @@
     <!-- Image (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a href="widget-image.view.client.html">Image</a></h3>
+            <h3><a ng-click="model.pickWidgetType('IMAGE')">Image</a></h3>
         </div>
     </div>
     <!-- YouTube (WORKS) -->
     <div class="row">
         <div class="col-xs-12">
-            <h3><a href="widget-youtube.view.client.html">YouTube</a></h3>
+            <h3><a ng-click="model.pickWidgetType('YOUTUBE')">YouTube</a></h3>
         </div>
     </div>
     <!-- Data Table -->
@@ -90,7 +90,7 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.view.client.html" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>

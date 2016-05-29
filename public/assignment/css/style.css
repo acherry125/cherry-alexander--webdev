@@ -64,6 +64,10 @@ a:hover, a:focus {
     cursor: default;
 }
 
+.container a {
+    cursor: pointer;
+}
+
 /* Override default bootstrap setting */
 .navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
     color: white;

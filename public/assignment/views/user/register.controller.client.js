@@ -21,7 +21,7 @@
             // verify, assign id, add to database
             if (verifyRegistration(username, password, verify)) {
                 var unique = Date.now();
-                uniqe = unique.toString();
+                unique = unique.toString();
                 newUser = {_id: unique, username: username, password: password, firstName: "", lastName: ""};
                 UserService.createUser(newUser);
                 $location.url("/user/" + unique);
