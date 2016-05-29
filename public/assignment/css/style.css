@@ -120,7 +120,7 @@ nav>.container>.navbar-header {
 /* Align youtube videos and images like other content */
 .ac-row .embed-responsive, .ac-row img {
     margin-top: 20px;
-    width: 100%;
+    max-width: 100%;
 }
 
 /* whitespace between button blocks */

@@ -59,7 +59,7 @@
             <!-- IMAGE TEMPLATE -->
             <div ng-switch-when="IMAGE">
                 <div class="col-xs-12">
-                    <img ng-src="{{widget.url}}">
+                    <img ng-src="{{widget.url}}" width={{widget.width}}>
                 </div>
                 <div class="ac-glyphicon-container">
                     <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
