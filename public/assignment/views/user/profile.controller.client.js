@@ -21,7 +21,7 @@
         init();
         
         function updateUser() {
-            if (vm.user) {
+            if (vm.user ) {
                 UserService.updateUser(uid, vm.user);
                 vm.success = "User succesfully updated their profile";
             } else {
