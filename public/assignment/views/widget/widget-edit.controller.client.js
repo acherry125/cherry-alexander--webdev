@@ -15,8 +15,8 @@
         vm.pageId =  pid;
         var wgid = $routeParams.wgid;
         vm.widgetId =  wgid;
-        vm.title = "Widget Edit"
-        vm.goBack = goBack
+        vm.title = "Widget Edit";
+        vm.goBack = goBack;
 
         function init() {
             vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
