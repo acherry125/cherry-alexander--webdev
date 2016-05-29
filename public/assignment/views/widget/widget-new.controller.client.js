@@ -50,24 +50,12 @@
         }
 
         function createYouTube(id) {
-            var youtube = {"_id": id, "name": vm.widget.name, widgetType: "IMAGE", 
+            var youtube = {"_id": id, "name": vm.widget.name, widgetType: "YOUTUBE",
                 "text": vm.widget.text, "width": vm.widget.width, "url": vm.widget.url};
             WidgetService.createWidget(pid, youtube);
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/")
         }
 
-
-        function createWebsite(name, description) {
-            if(name) {
-                var unique = Date.now();
-                unique = unique.toString();
-                var website = {"_id": unique, "name": name};
-                WebsiteService.createWebsite(uid, website);
-                $location.url("/user/" + uid + "/website")
-            } else {
-                vm.missingName = "Name field must not be empty"
-            }
-        }
 
 
     }

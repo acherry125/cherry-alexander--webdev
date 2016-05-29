@@ -17,7 +17,7 @@
                 </a>
                 <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
-                    <a href="widget-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.createWidget()" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -33,7 +33,8 @@
         <!-- Name -->
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text"
+            <input ng-model="model.widget.name"
+                   type="text"
                    value="Title"
                    class="form-control"
                    id="name"
@@ -42,7 +43,8 @@
         <!-- Text -->
         <div class="form-group">
             <label for="text">Text</label>
-            <input type="text"
+            <input ng-model="model.widget.text"
+                   type="text"
                    value="This is a youtube video"
                    class="form-control"
                    id="text"
@@ -50,7 +52,8 @@
         </div>
         <div class="form-group">
             <label for="url">URL</label>
-            <input type="url"
+            <input ng-model="model.widget.url"
+                   type="url"
                    value="https://www.youtube.com/embed/GunaXxJifPA"
                    class="form-control"
                    id="url"
@@ -59,7 +62,8 @@
         <!-- Width -->
         <div class="form-group">
             <label for="width">Width</label>
-            <input type="text"
+            <input ng-model="model.widget.width"
+                   type="text"
                    value="75%"
                    class="form-control"
                    id="width"
