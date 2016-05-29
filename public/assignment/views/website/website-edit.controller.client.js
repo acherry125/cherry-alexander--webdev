@@ -25,7 +25,8 @@
 
         function updateWebsite() {
             if (vm.website.name) {
-                var website = { "_id": wid, "name": vm.website.name, "developerId": uid };
+                var website = { "_id": wid, "name": vm.website.name, 
+                    "description": vm.website.description, "developerId": uid };
                 WebsiteService.updateWebsite(wid, website);
                 $location.url("user/" + uid + "/website");
             }

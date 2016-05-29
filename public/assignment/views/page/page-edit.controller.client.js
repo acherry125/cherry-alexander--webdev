@@ -27,7 +27,7 @@
 
         function updatePage() {
             if (vm.page.name) {
-                var page = { "_id": pid, "name": vm.page.name, "websiteId": wid };
+                var page = { "_id": pid, "name": vm.page.name, "title": vm.page.title, "websiteId": wid };
                 PageService.updatePage(pid, page);
                 $location.url("user/" + uid + "/website/" + wid + "/page");
             }

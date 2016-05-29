@@ -11,11 +11,11 @@
         vm.userId = uid;
         vm.createWebsite = createWebsite;
 
-        function createWebsite(name, description) {
-            if(name) {
+        function createWebsite() {
+            if(vm.website.name) {
                 var unique = Date.now();
                 unique = unique.toString();
-                var website = {"_id": unique, "name": name};
+                var website = {"_id": unique, "name": vm.website.name, "description": vm.website.description};
                 WebsiteService.createWebsite(uid, website);
                 $location.url("/user/" + uid + "/website")
             } else {

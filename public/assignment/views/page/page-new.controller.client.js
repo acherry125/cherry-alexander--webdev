@@ -14,11 +14,11 @@
 
         vm.createPage = createPage;
 
-        function createPage(name, description) {
-            if(name) {
+        function createPage() {
+            if(vm.page.name) {
                 unique = Date.now();
                 unique = unique.toString();
-                var page = {"_id": unique, "name": name};
+                var page = {"_id": unique, "name": vm.page.name, "title": vm.page.title};
                 PageService.createPage(wid, page);
                 $location.url("/user/" + uid + "/website/" + wid + "/page")
             } else {
