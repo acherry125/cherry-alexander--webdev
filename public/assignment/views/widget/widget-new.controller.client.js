@@ -26,12 +26,12 @@
         function createWidget() {
             var unique = Date.now();
             unique = unique.toString();
-            if (vm.widgetType == "HEADER") {
-                createHeader(id);
-            } else if (vm.widgetType == "IMAGE") {
-                createImage(id);
-            } else if (vm.widgetType == "YOUTUBE") {
-                createYouTube(id);
+            if (vm.widgetType == "header") {
+                createHeader(unique);
+            } else if (vm.widgetType == "image") {
+                createImage(unique);
+            } else if (vm.widgetType == "youtube") {
+                createYouTube(unique);
             }
         }
         

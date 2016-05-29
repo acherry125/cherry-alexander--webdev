@@ -17,7 +17,7 @@
                 </a>
                 <!-- Save and Confirm button -->
                 <p class="navbar-text pull-right">
-                    <a href="widget-list.view.client.html" class="navbar-link">
+                    <a ng-click="model.createWidget()" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                     </a>
@@ -33,7 +33,7 @@
         <!-- Name -->
         <div class="form-group">
             <label for="name">Name</label>
-            <input 
+            <input ng-model="model.widget.name"
                    type="text"
                    value="Title"
                    class="form-control"
@@ -43,7 +43,8 @@
         <!-- Text -->
         <div class="form-group">
             <label for="text">Text</label>
-            <input type="text"
+            <input ng-model="model.widget.text"
+                   type="text"
                    value="Gizmodo"
                    class="form-control"
                    id="text"
@@ -52,7 +53,7 @@
         <!-- Size -->
         <div class="form-group">
             <label for="size">Size</label>
-            <select class="form-control" id="size">
+            <select ng-model="model.widget.size" class="form-control" id="size">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
