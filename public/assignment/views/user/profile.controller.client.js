@@ -15,7 +15,7 @@
         vm.uId = uid;
 
         function init() {
-            vm.user = angular.copy(UserService.findUserById(id));
+            vm.user = angular.copy(UserService.findUserById(uid));
         }
 
         init();
