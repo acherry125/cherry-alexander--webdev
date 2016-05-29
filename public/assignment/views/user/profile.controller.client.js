@@ -10,7 +10,6 @@
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
-        vm.navigateToProfile = navigateToProfile;
         
         var uid = $routeParams["uid"];
         vm.uId = uid;
