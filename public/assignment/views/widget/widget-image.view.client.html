@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a ng-if="model.backButton" ng-click="model.goBack()" class="navbar-link">
+                    <a ng-click="model.checkNew" ng-click="model.goBack()" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -106,7 +106,7 @@
             <div class="navbar-header">
                 <!-- Profile Button -->
                 <p class="navbar-text pull-right">
-                    <a href="#/user/{{model.userId}}" class="navbar-link">
+                    <a ng-click="model.checkNew" href="#/user/{{model.userId}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>

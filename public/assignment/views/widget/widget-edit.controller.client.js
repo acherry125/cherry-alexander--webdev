@@ -19,21 +19,25 @@
         vm.goBack = goBack;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        vm.checkNew = checkNew;
         var validityCheck = validityCheck;
 
         function init() {
             vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
-            if (vm.widget.name) {
-                vm.backButton = true;
-            } else {
-                vm.backButton = false;
-            }
         }
 
         init();
 
         function goBack() {
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
+        }
+
+        function checkNew() {
+            var widgetData = angular.copy(WidgetService.findWidgetById(wgid));
+            if (!(widgetData.name)) {
+                // check this
+                WidgetService.deleteWidget(wgid);
+            }
         }
 
         function validityCheck() {
