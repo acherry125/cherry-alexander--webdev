@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a ng-click="model.goBack()" class="navbar-link">
+                    <a ng-if="model.backButton" ng-click="model.goBack()" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -28,6 +28,10 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    <!-- Warning Message -->
+    <div ng-if="model.missingField" class="alert alert-danger">
+        {{model.missingField}}
+    </div>
     <!-- Header Information Form -->
     <form>
         <!-- Name -->

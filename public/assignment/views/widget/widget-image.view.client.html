@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a ng-click="model.goBack()" class="navbar-link">
+                    <a ng-if="model.backButton" ng-click="model.goBack()" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -28,6 +28,10 @@
 </header>
 <!-- Main Container -->
 <div class="container">
+    <!-- Warning Message -->
+    <div ng-if="model.missingField" class="alert alert-danger">
+        {{model.missingField}}
+    </div>
     <!-- Image Information Form -->
     <form>
         <!-- Name -->
@@ -62,9 +66,9 @@
         </div>
         <!-- Width -->
         <div class="form-group">
-            <label for="width">Width</label>
+            <label for="width">Width (percentage of the screen)</label>
             <input ng-model="model.widget.width"
-                   type="text"
+                   type="number"
                    value="100%"
                    class="form-control"
                    id="width"

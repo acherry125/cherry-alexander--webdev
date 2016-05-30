@@ -19,9 +19,15 @@
         vm.goBack = goBack;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
+        var validityCheck = validityCheck;
 
         function init() {
             vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
+            if (vm.widget.name) {
+                vm.backButton = true;
+            } else {
+                vm.backButton = false;
+            }
         }
 
         init();
@@ -30,9 +36,26 @@
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
         }
 
+        function validityCheck() {
+            if (!(vm.widget.name)) {
+                vm.missingField = "Widget must have name";
+            } else if (vm.widget.widgetType == "HEADER" && !(vm.widget.text && vm.widget.size)) {
+                vm.missingField = "Widget must have text and size";
+            } else if (vm.widget.widgetType == "IMAGE" && !(vm.widget.text && vm.widget.url && vm.widget.width)) {
+                vm.missingField = "Widget must have text, url, and width";
+            } else if (vm.widget.widgetType == "YOUTUBE" && !(vm.widget.text && vm.widget.url && vm.widget.width)) {
+                vm.missingField = "Widget must have text, url, and width"
+            } else {
+                vm.missingField = "";
+                return true;
+            }
+        }
+
         function updateWidget() {
-            WidgetService.updateWidget(wgid, vm.widget);
-            goBack();
+            if (validityCheck()) {
+                WidgetService.updateWidget(wgid, vm.widget);
+                goBack();
+            }
         }
 
         function deleteWidget() {
