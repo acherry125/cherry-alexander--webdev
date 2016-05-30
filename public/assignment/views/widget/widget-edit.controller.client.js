@@ -38,6 +38,7 @@
                 // check this
                 WidgetService.deleteWidget(wgid);
             }
+            goBack();
         }
 
         function validityCheck() {
