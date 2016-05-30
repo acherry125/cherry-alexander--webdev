@@ -71,17 +71,21 @@
             <!-- YOUTUBE TEMPLATE -->
             <div ng-switch-when="YOUTUBE">
                 <div class="col-xs-12">
+                    <div class="videoWrapper">
+                        <!-- Copy & Pasted from YouTube -->
+                        <iframe width="{{widget.width}}" height="{{widget.width}}" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
+                    </div>
                     <!-- How can I change the youtube width without messing up the aspect ratio?
 
                     <iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}"
                     frameborder="0" allowfullscreen></iframe>
 
-                    is ugly and I don't like it -->
+                    is ugly and I don't like it
                     <div class="embed-responsive embed-responsive-16by9">
-                        <!-- Figure out how to make the src change -->
+                        <!-- Figure out how to make the src change
                         <iframe class="embed-responsive-item"
                                 ng-src="{{model.fixYoutube(widget.url)}}"
-                                allowfullscreen></iframe>
+                                allowfullscreen></iframe> -->
                     </div>
                 </div>
                 <div class="ac-glyphicon-container">

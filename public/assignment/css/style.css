@@ -123,6 +123,18 @@ nav>.container>.navbar-header {
     max-width: 100%;
 }
 
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* whitespace between button blocks */
 .btn-block {
     margin-bottom: 6px;
