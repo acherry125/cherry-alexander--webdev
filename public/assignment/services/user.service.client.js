@@ -1,4 +1,4 @@
-
+// angular function
 (function() {
     angular
         .module("WebAppMaker")
@@ -11,7 +11,7 @@
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ];
 
-    function UserService() {
+    function UserService($http) {
 
         var api = {
             "createUser": createUser,
@@ -49,11 +49,8 @@
 
         /* Find a user by its username and password */
         function findUserByCredentials(username, password) {
-            for (var i in users) {
-                if (users[i].username === username && users[i].password === password) {
-                    return users[i];
-                }
-            }
+            var url = "http://loalhost:3000/api/user?username=bob&password=bob";
+            return $http.get(url);
         }
 
         /* Update a user with new information */
