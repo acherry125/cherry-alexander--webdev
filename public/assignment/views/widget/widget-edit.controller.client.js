@@ -24,6 +24,9 @@
 
         function init() {
             vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
+            if(!vm.widget) {
+                $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget");
+            }
         }
 
         init();

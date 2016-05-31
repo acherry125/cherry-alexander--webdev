@@ -16,14 +16,13 @@
         vm.fixYoutube = fixYoutube;
         var allowSrc = allowSrc;
         
-        vm.lin = "https://www.youtube.com/embed/AM2Ivdi9c4E"
-        
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(pid);
         }
 
         init();
 
+        /* Turns any youtube link into a trusted embeddable link */
         function fixYoutube(link) {
             /* regexp courtesy of
             http://stackoverflow.com/questions/3452546/

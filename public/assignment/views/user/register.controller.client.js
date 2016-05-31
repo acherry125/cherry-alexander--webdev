@@ -17,6 +17,8 @@
         vm.register = register;
         var verifyRegistration = verifyRegistration;
 
+        
+        /* Registers a new user */ 
         function register(username, password, verify) {
             // verify, assign id, add to database
             if (verifyRegistration(username, password, verify)) {
@@ -28,6 +30,7 @@
             }
         }
 
+        /* helper function to verify registration form */
         function verifyRegistration(username, password, verify) {
             // check username available (finduserbyusername)
             if (UserService.findUserByUsername(username)) {

@@ -15,12 +15,10 @@
         vm.pageId =  pid;
         
         vm.createWidget = createWidget;
+        var createHeader = createHeader;
+        var createImage = createImage;
+        var createYouTube = createYouTube;
 
-        function pickWidgetType(type) {
-            var unique = Date.now();
-            unique = unique.toString();
-            $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/new/" + type.toLowerCase());
-        }
 
         function createWidget(type) {
             var unique = Date.now();

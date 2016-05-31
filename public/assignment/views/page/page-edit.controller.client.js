@@ -16,6 +16,7 @@
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
+        /* Initialize the page's information */
         function init() {
             vm.page = angular.copy(PageService.findPageById(pid));
             if(!vm.page) {

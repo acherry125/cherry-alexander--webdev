@@ -16,6 +16,9 @@
 
         function init() {
             vm.user = angular.copy(UserService.findUserById(uid));
+            if(!vm.user) {
+                $location.url("/");
+            }
         }
 
         init();
