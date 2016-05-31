@@ -25,6 +25,7 @@
                 .findUserByCredentials(username, password)
                 // when the server responds
                 .then(function(response) {
+                    console.log(response);
                     var user = response.data;
                     if(user) {
                         var id = user._id;

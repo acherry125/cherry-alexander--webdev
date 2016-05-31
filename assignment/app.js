@@ -3,6 +3,9 @@
 module.exports = function(app) {
 
 	var userService = require("./services/user.service.server.js")(app);
+	var websiteService = require("./services/website.service.server.js")(app);
+	var pageService = require("./services/page.service.server.js")(app);
+	var widgetService = require("./services/widget.service.server.js")(app);
 
 
 	// listen for incoming get request (using express.js) to this path
@@ -13,32 +16,11 @@ module.exports = function(app) {
 	/*app.get("/say/:message", function(req) {
 		var msg = req.params["message"];
 		console.log(msg);
-	});*/
+	});
 	/* Send it to the browser
 	app.get("/say/:message", function(req, res) {
 		var msg = req.params["message"];
 		res.send("This is the the message " + msg);
-	});
+	})
 	*/
-	 app.get("/say/:message", function(req, res) {
-	 var msg = req.params["message"];
-	 res.send({"message": msg});
-	 });
-
-	users = [
-		{
-			"name": "al"
-		},
-		{
-			"name": "alex"
-		},
-		{
-			"name": "aldo"
-		}
-	];
-
-
-
-
-	
 };

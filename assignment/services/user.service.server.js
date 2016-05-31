@@ -29,6 +29,7 @@ module.exports = function(app) {
         }
     }
 
+    // find a user by their id
     function findUserById(req, res){
         var userId = req.params.userId;
         for(var i in users) {
@@ -40,6 +41,7 @@ module.exports = function(app) {
         res.send({});
     }
 
+    // find a user by their username
     function findUserByUsername(username, res){
         for(var i in users) {
             if (users[i].username === username) {
@@ -50,6 +52,7 @@ module.exports = function(app) {
         res.send({});
     }
 
+    // find a user by their username and password
     function findUserByCredentials(username, password, res){
         for(var i in users) {
             if (users[i].username === username && users[i].password === password) {
@@ -59,5 +62,4 @@ module.exports = function(app) {
         }
         res.send({});
     }
-    
-}
+};
