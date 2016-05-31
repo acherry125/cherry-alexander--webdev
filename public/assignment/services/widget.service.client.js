@@ -37,11 +37,13 @@
 
         return api;
 
+        /* Adds a new widget to the database */
         function createWidget(pageId, widget) {
             widget["pageId"] = pageId;
             widgets.push(widget);
         }
 
+        /* Finds a widget by its page's id */
         function findWidgetsByPageId(pageId) {
             var result = [];
             for(var i in widgets) {
@@ -52,6 +54,7 @@
             return result;
         }
 
+        /* Finds a widget by its id */
         function findWidgetById(widgetId) {
             var result = [];
             for(var i in widgets) {
@@ -61,6 +64,7 @@
             }
         }
 
+        /* Update a widget with new information */
         function updateWidget(widgetId, widget) {
             for (var i in widgets) {
                 if (widgets[i]._id === widgetId) {
@@ -70,6 +74,7 @@
             }
         }
 
+        /* Deletes a widget */
         function deleteWidget(widgetId) {
             for (var i in widgets) {
                 if (widgets[i]._id === widgetId) {

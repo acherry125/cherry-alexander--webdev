@@ -24,10 +24,12 @@
 
         return api;
         
+        /* Adds a new user to the database */ 
         function createUser(user) {
             users.push(user);
         }
-
+        
+        /* Finds a user by its id */ 
         function findUserById(userId) {
             for (var i in users) {
                 if (users[i]._id === userId) {
@@ -36,6 +38,7 @@
             }
         }
 
+        /* Finds a user by its username */
         function findUserByUsername(username) {
             for (var i in users) {
                 if (users[i].username === username) {
@@ -44,6 +47,7 @@
             }
         }
 
+        /* Find a user by its username and password */
         function findUserByCredentials(username, password) {
             for (var i in users) {
                 if (users[i].username === username && users[i].password === password) {
@@ -51,7 +55,8 @@
                 }
             }
         }
-
+        
+        /* Update a user with new information */
         function updateUser(userId, user) {
             for (var i in users) {
                 if (users[i]._id === userId) {
@@ -61,6 +66,7 @@
             }
         }
 
+        /* Delete a user */
         function deleteUser(userId) {
             for (var i in users) {
                 if (users[i]._id === userId) {

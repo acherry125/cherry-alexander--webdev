@@ -21,12 +21,14 @@
         };
 
         return api;
-
+    
+        /* Adds a new page to the database */
         function createPage(websiteId, page) {
             page["websiteId"] = websiteId;
             pages.push(page);
         }
 
+        /* Finds a page by its website id */
         function findPagesByWebsiteId(websiteId) {
             var result = [];
             for(var i in pages) {
@@ -37,6 +39,7 @@
             return result;
         }
 
+        /* Finds a page by its id */
         function findPageById(pageId) {
             var result = [];
             for(var i in pages) {
@@ -45,7 +48,8 @@
                 }
             }
         }
-
+        
+        /* Updates a page with new information */
         function updatePage(pageId, page) {
             for (var i in pages) {
                 if (pages[i]._id === pageId) {
@@ -55,6 +59,7 @@
             }
         }
 
+        /* Deletes the given page */
         function deletePage(pageId) {
             for (var i in pages) {
                 if (pages[i]._id === pageId) {
