@@ -24,7 +24,7 @@
         };
 
         return api;
-        
+
         /* Adds a new user to the database */
         function createWebsite(userId, website) {
             website["developerId"] = userId;

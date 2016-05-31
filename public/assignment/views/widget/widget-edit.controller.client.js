@@ -3,7 +3,7 @@
     angular
         .module("WebAppMaker")
         .controller("WidgetEditController", WidgetEditController);
-    
+
     function WidgetEditController(WidgetService, $routeParams, $location) {
         var vm = this;
         vm = this;
@@ -72,5 +72,5 @@
         }
 
     }
-    
+
 })();

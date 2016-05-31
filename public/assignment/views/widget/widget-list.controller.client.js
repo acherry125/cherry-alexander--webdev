@@ -15,7 +15,7 @@
         vm.pageId =  pid;
         vm.fixYoutube = fixYoutube;
         var allowSrc = allowSrc;
-        
+
         function init() {
             vm.widgets = WidgetService.findWidgetsByPageId(pid);
         }
@@ -25,8 +25,8 @@
         /* Turns any youtube link into a trusted embeddable link */
         function fixYoutube(link) {
             /* regexp courtesy of
-            http://stackoverflow.com/questions/3452546/
-                        javascript-regex-how-to-get-youtube-video-id-from-url" */
+             http://stackoverflow.com/questions/3452546/
+             javascript-regex-how-to-get-youtube-video-id-from-url" */
             var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
             var id = link.match(regExp);
             var url = "https://www.youtube.com/embed/" + id[1];

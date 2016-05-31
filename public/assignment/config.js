@@ -26,49 +26,49 @@
             })
             // register
             .when("/register", {
-            	templateUrl: "views/user/register.view.client.html",
+                templateUrl: "views/user/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
             // profile
             .when("/user/:uid", {
-            	templateUrl: "views/user/profile.view.client.html",
+                templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
             })
             // websites
             .when("/user/:uid/website", {
-            	templateUrl: "views/website/website-list.view.client.html",
+                templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
                 controllerAs: "model"
             })
             // website new
             .when("/user/:uid/website/new", {
-            	templateUrl: "views/website/website-new.view.client.html",
+                templateUrl: "views/website/website-new.view.client.html",
                 controller: "WebsiteNewController",
                 controllerAs: "model"
             })
             // website edit
             .when("/user/:uid/website/:wid", {
-            	templateUrl: "views/website/website-edit.view.client.html",
+                templateUrl: "views/website/website-edit.view.client.html",
                 controller: "WebsiteEditController",
                 controllerAs: "model"
             })
             // pages
             .when("/user/:uid/website/:wid/page", {
-            	templateUrl: "views/page/page-list.view.client.html",
+                templateUrl: "views/page/page-list.view.client.html",
                 controller: "PageListController",
                 controllerAs: "model"
             })
             // page new
             .when("/user/:uid/website/:wid/page/new", {
-            	templateUrl: "views/page/page-new.view.client.html",
+                templateUrl: "views/page/page-new.view.client.html",
                 controller: "PageNewController",
                 controllerAs: "model"
             })
             // page edit
             .when("/user/:uid/website/:wid/page/:pid", {
-            	templateUrl: "views/page/page-edit.view.client.html",
+                templateUrl: "views/page/page-edit.view.client.html",
                 controller: "PageEditController",
                 controllerAs: "model"
             })

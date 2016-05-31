@@ -18,7 +18,7 @@
         var vm = this;
         // verifies login credentials
         vm.login = login;
-        
+
         // login handler
         function login(username, password) {
             user = UserService.findUserByCredentials(username, password);

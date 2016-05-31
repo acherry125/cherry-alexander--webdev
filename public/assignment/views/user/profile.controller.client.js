@@ -10,7 +10,7 @@
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
-        
+
         var uid = $routeParams["uid"];
         vm.uId = uid;
 
@@ -22,7 +22,7 @@
         }
 
         init();
-        
+
         function updateUser() {
             if (vm.user ) {
                 UserService.updateUser(uid, vm.user);

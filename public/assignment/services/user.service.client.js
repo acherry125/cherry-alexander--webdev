@@ -23,13 +23,13 @@
         };
 
         return api;
-        
-        /* Adds a new user to the database */ 
+
+        /* Adds a new user to the database */
         function createUser(user) {
             users.push(user);
         }
-        
-        /* Finds a user by its id */ 
+
+        /* Finds a user by its id */
         function findUserById(userId) {
             for (var i in users) {
                 if (users[i]._id === userId) {
@@ -55,7 +55,7 @@
                 }
             }
         }
-        
+
         /* Update a user with new information */
         function updateUser(userId, user) {
             for (var i in users) {

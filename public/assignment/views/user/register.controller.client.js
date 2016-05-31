@@ -17,8 +17,8 @@
         vm.register = register;
         var verifyRegistration = verifyRegistration;
 
-        
-        /* Registers a new user */ 
+
+        /* Registers a new user */
         function register(username, password, verify) {
             // verify, assign id, add to database
             if (verifyRegistration(username, password, verify)) {

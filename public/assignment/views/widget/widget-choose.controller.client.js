@@ -3,7 +3,7 @@
     angular
         .module("WebAppMaker")
         .controller("WidgetChooseController", WidgetChooseController);
-    
+
     function WidgetChooseController(WidgetService, $routeParams, $location) {
         var vm = this;
         vm = this;
@@ -13,7 +13,7 @@
         vm.websiteId =  wid;
         var pid = $routeParams.pid;
         vm.pageId =  pid;
-        
+
         vm.createWidget = createWidget;
         var createHeader = createHeader;
         var createImage = createImage;
@@ -52,7 +52,7 @@
             WidgetService.createWidget(pid, youtube);
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id)
         }
-        
+
     }
-    
+
 })();

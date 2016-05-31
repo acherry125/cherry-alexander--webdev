@@ -21,7 +21,7 @@
         };
 
         return api;
-    
+
         /* Adds a new page to the database */
         function createPage(websiteId, page) {
             page["websiteId"] = websiteId;
@@ -48,7 +48,7 @@
                 }
             }
         }
-        
+
         /* Updates a page with new information */
         function updatePage(pageId, page) {
             for (var i in pages) {
