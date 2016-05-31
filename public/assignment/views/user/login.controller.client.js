@@ -27,9 +27,10 @@
                 .then(function(response) {
                     var user = response.data;
                     if(user) {
-                        $location.url("/user/" + user._id);
+                        var id = user._id;
+                        $location.url("/user/" + id);
                     } else {
-                        vm.login_error = "Unable to login";
+                        vm.login_error = "User not found";
                     }
                 });
         }

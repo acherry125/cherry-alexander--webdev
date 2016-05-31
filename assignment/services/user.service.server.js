@@ -9,7 +9,6 @@ module.exports = function(app) {
 
     // respond to user queries
     app.get("/api/user", getUsers);
-
     // respond to request for specific user
     app.get("/api/user/:userId", findUserById);
 
@@ -29,27 +28,33 @@ module.exports = function(app) {
 
     function findUserById(req, res){
         var userId = req.params.userId;
-        for(i in users) {
+        for(var i in users) {
             if (users[i]._id === userId) {
                 res.send(users[i]);
+                return;
             }
         }
+        res.send({});
     }
 
     function findUserByUsername(username, res){
-        for(i in users) {
-            if (users[i].name === username) {
+        for(var i in users) {
+            if (users[i].username === username) {
                 res.send(users[i]);
+                return;
             }
         }
+        res.send({});
     }
 
     function findUserByCredentials(username, password, res){
-        for(i in users) {
-            if (users[i].name === username && users[i].password === password) {
+        for(var i in users) {
+            if (users[i].username === username && users[i].password === password) {
                 res.send(users[i]);
+                return;
             }
         }
+        res.send({});
     }
     
 }
