@@ -15,10 +15,20 @@
         vm.uId = uid;
 
         function init() {
-            vm.user = angular.copy(UserService.findUserById(uid));
-            if(!vm.user) {
-                $location.url("/");
-            }
+
+            UserService
+                .findUserById(uid)
+                .then(function(response) {
+                    // get this from github ughhhhhhhhhhh
+                   if(response.data) {
+                       vm.user = response.data;
+                   }
+                    if(!vm.user) {
+                        $location.url("/");
+                    }
+                });
+
+
         }
 
         init();

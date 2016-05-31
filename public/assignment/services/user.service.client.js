@@ -31,11 +31,8 @@
 
         /* Finds a user by its id */
         function findUserById(userId) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    return users[i];
-                }
-            }
+            var url = "/api/user/" + userId;
+            return $http.get(url);
         }
 
         /* Finds a user by its username */
@@ -49,8 +46,8 @@
 
         /* Find a user by its username and password */
         function findUserByCredentials(username, password) {
-            var url = "http://loalhost:3000/api/user?username=bob&password=bob";
-            return $http.get(url);
+            var url = "/api/user?username=bob&password=bob";
+            $http.get(url);
         }
 
         /* Update a user with new information */

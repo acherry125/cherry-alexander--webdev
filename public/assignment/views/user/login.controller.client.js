@@ -21,12 +21,17 @@
 
         // login handler
         function login(username, password) {
-            user = UserService.findUserByCredentials(username, password);
-            if(user) {
-                $location.url("/user/" + user._id);
-            } else {
-                vm.login_error = "Unable to login";
-            }
+            UserService
+                .findUserByCredentials(username, password)
+                // when the server responds
+                .then(function(response) {
+                    var user = response.data;
+                    if(user) {
+                        $location.url("/user/" + user._id);
+                    } else {
+                        vm.login_error = "Unable to login";
+                    }
+                });
         }
     }
 })();
