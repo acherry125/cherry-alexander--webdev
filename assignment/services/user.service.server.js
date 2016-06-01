@@ -14,7 +14,7 @@ module.exports = function(app) {
     // update a user
     app.put("/api/user/:userId", updateUser);
     // delete a user
-    app.put("/api/user/:userId", deleteUser);
+    app.delete("/api/user/:userId", deleteUser);
 
 
     // handle user queries
@@ -76,7 +76,7 @@ module.exports = function(app) {
                 users[i].firstName = user.firstName;
                 users[i].lastName = user.lastName;
                 users[i].email = user.email;
-                res.send(200)
+                res.sendStatus(200)
                 return;
             }
         }
@@ -88,7 +88,7 @@ module.exports = function(app) {
         for (var i in users) {
             if (users[i]._id === id) {
                 users.splice(i, 1);
-                res.send(200);
+                res.sendStatus(200);
                 return;
             }
         }
