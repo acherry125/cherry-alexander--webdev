@@ -102,7 +102,7 @@ module.exports = function(app) {
         var id = (new Date()).getTime() + "";
         res.status(400).send("User with ID"+ id + "not found");
         for (var i in users) {
-            if(users[i].username === username) {
+            if(users[i].username === newUser.username) {
                 res.status(400).send("Username " + newUser.username + " is already in use");
                 return;
             }
