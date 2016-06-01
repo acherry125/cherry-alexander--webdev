@@ -28,12 +28,8 @@
         }
 
         function findWebsiteById(websiteId) {
-            var result = [];
-            for(var i in websites) {
-                if (websites[i]._id == websiteId) {
-                    return websites[i];
-                }
-            }
+            var url = "/api/website/" + websiteId;
+            return $http.get(url);
         }
 
         function updateWebsite(websiteId, website) {

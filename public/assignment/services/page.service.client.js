@@ -24,23 +24,14 @@
 
         /* Finds a page by its website id */
         function findPagesByWebsiteId(websiteId) {
-            var result = [];
-            for(var i in pages) {
-                if(pages[i].websiteId == websiteId) {
-                    result.push(pages[i]);
-                }
-            }
-            return result;
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.get(url);
         }
 
         /* Finds a page by its id */
         function findPageById(pageId) {
-            var result = [];
-            for(var i in pages) {
-                if (pages[i]._id == pageId) {
-                    return pages[i];
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.get(url);
         }
 
         /* Updates a page with new information */

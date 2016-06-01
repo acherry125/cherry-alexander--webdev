@@ -15,10 +15,15 @@
         vm.deleteWebsite = deleteWebsite;
 
         function init() {
-            vm.website = angular.copy(WebsiteService.findWebsiteById(wid));
-            if(!vm.website) {
-                $location.url("/user/" + uid + "/website/");
-            }
+            WebsiteService
+                .findWebsiteById(wid)
+                .then(function(response) {
+                    if(response.data.name) {
+                        vm.website = response.data;
+                    } else {
+                        $location.url("/user/" + uid + "/website/");
+                    }
+                });
         }
 
         init();

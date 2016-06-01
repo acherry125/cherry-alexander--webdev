@@ -24,23 +24,14 @@
 
         /* Finds a widget by its page's id */
         function findWidgetsByPageId(pageId) {
-            var result = [];
-            for(var i in widgets) {
-                if(widgets[i].pageId == pageId) {
-                    result.push(widgets[i]);
-                }
-            }
-            return result;
+            var url = "/api/page/" + pageId + "/widget";
+            return $http.get(url);
         }
 
         /* Finds a widget by its id */
         function findWidgetById(widgetId) {
-            var result = [];
-            for(var i in widgets) {
-                if (widgets[i]._id == widgetId) {
-                    return widgets[i];
-                }
-            }
+            var url = "/api/widget/" + widgetId;
+            return $http.get(url);
         }
 
         /* Update a widget with new information */
