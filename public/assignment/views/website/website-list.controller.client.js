@@ -11,7 +11,12 @@
         vm.userId =  uid;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(uid);
+            WebsiteService
+                .findWebsitesByUser(uid)
+                .then(function(response) {
+                    vm.websites = response.data;
+                });
+
         }
 
         init();

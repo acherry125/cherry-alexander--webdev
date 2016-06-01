@@ -19,7 +19,6 @@
             UserService
                 .findUserById(uid)
                 .then(function(response) {
-                    // get this from github ughhhhhhhhhhh
                    if(response.data) {
                        vm.user = response.data;
                    }
