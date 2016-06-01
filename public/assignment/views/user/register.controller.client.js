@@ -20,14 +20,18 @@
 
         /* Registers a new user */
         function register(username, password, verify) {
-            // verify, assign id, add to database
-            if (verifyRegistration(username, password, verify)) {
-                var unique = Date.now();
-                unique = unique.toString();
-                newUser = {_id: unique, username: username, password: password, firstName: "", lastName: ""};
-                UserService.createUser(newUser);
-                $location.url("/user/" + unique);
-            }
+            newUser = { username: username, password: password, verify: verify};
+            UserService
+                .createUser(newUser)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + response.data);
+                    },
+                    function(error) {
+                        vm.failure = error.data;
+                    }
+                )
+            
         }
 
         /* helper function to verify registration form */

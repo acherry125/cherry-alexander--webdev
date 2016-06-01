@@ -19,7 +19,8 @@
 
         /* Adds a new user to the database */
         function createUser(user) {
-            users.push(user);
+            var url = "/api/user";
+            return $http.post(url, user);
         }
 
         /* Finds a user by its id */
