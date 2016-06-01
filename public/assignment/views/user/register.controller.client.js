@@ -32,20 +32,24 @@
 
         /* helper function to verify registration form */
         function verifyRegistration(username, password, verify) {
-            // check username available (finduserbyusername)
-            if (UserService.findUserByUsername(username)) {
-                vm.failure = "Username is already taken";
-            } else if(!(username && password && verify)) {
-                vm.failure = "All fields must be filled in"
-            }
-            // check passwords match
-            else if (!(password === verify)) {
-                vm.failure = "Password and Verify Password fields must match";
-            }
-            // success
-            else {
-                return true;
-            }
+            UserService
+                .findUserByUsername(username)
+                .then(function(response) {
+                    // check username available (finduserbyusername)
+                    if (response.data._id) {
+                        vm.failure = "Username is already taken";
+                    } else if(!(username && password && verify)) {
+                        vm.failure = "All fields must be filled in"
+                    }
+                    // check passwords match
+                    else if (!(password === verify)) {
+                        vm.failure = "Password and Verify Password fields must match";
+                    }
+                    // success
+                    else {
+                        return true;
+                    }
+                });
         }
 
 

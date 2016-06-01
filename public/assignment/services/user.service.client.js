@@ -42,23 +42,14 @@
 
         /* Update a user with new information */
         function updateUser(userId, user) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    users[i] = user;
-                    return;
-                }
-            }
+            var url = "/api/user/" + userId;
+            return $http.put(url, user);
         }
 
         /* Delete a user */
         function deleteUser(userId) {
-            for (var i in users) {
-                if (users[i]._id === userId) {
-                    users.splice(i, 1);
-                    return;
-                }
-            }
-            return -1;
+            var url = "/api/user/" + userId;
+            return $http.delete(url);
         }
     }
 

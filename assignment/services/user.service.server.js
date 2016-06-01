@@ -11,6 +11,11 @@ module.exports = function(app) {
     app.get("/api/user", getUsers);
     // respond to request for specific user
     app.get("/api/user/:userId", findUserById);
+    // update a user
+    app.put("/api/user/:userId", updateUser);
+    // delete a user
+    app.put("/api/user/:userId", deleteUser);
+
 
     // handle user queries
     function getUsers(req, res) {
@@ -62,4 +67,32 @@ module.exports = function(app) {
         }
         res.send({});
     }
+
+    function updateUser(req, res) {
+        var id = req.params.userId;
+        var user = req.body;
+        for (var i in users) {
+            if (users[i]._id === id) {
+                users[i].firstName = user.firstName;
+                users[i].lastName = user.lastName;
+                users[i].email = user.email;
+                res.send(200)
+                return;
+            }
+        }
+        res.status(400).send("User with ID"+ id + "not found");
+    }
+
+    function deleteUser(req, res) {
+        var id = req.params.userId;
+        for (var i in users) {
+            if (users[i]._id === id) {
+                users.splice(i, 1);
+                res.send(200);
+                return;
+            }
+        }
+        res.status(400).send("User with ID"+ id + "not found");
+    }
+
 };

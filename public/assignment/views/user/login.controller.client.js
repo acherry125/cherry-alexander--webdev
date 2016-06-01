@@ -27,7 +27,7 @@
                 .then(function(response) {
                     console.log(response);
                     var user = response.data;
-                    if(user.username) {
+                    if(user._id) {
                         var id = user._id;
                         $location.url("/user/" + id);
                     } else {

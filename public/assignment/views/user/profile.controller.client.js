@@ -10,8 +10,9 @@
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
+        vm.unregister = unregister;
 
-        var uid = $routeParams["uid"];
+        var uid = $routeParams.uid;
         vm.uId = uid;
 
         function init() {
@@ -19,7 +20,7 @@
             UserService
                 .findUserById(uid)
                 .then(function(response) {
-                   if(response.data) {
+                   if(response.data._id) {
                        vm.user = response.data;
                    }
                     if(!vm.user) {
@@ -33,12 +34,29 @@
         init();
 
         function updateUser() {
-            if (vm.user ) {
-                UserService.updateUser(uid, vm.user);
-                vm.success = "User succesfully updated their profile";
-            } else {
-                vm.failure = "Error: User does not exist, cannot update non-existent user";
-            }
+            UserService
+                .updateUser(uid, vm.user)
+                .then(
+                    function(response) {
+                        vm.success = "User succesfully updated their profile";
+                    },
+                    function(error) {
+                        vm.failure = error.data;
+                    }
+                );
+        }
+        
+        function unregister() {
+            UserService
+                .deleteUser(uid)
+                .then(
+                    function(response) {
+                        $location.url("/");
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                 )
         }
     }
 })();
