@@ -17,16 +17,14 @@
             UserService
                 .findUserByCredentials(username, password)
                 // when the server responds
-                .then(function(response) {
-                    console.log(response);
-                    var user = response.data;
-                    if(user._id) {
-                        var id = user._id;
+                .then(
+                    function(response) {
+                        var id = response.data;
                         $location.url("/user/" + id);
-                    } else {
+                    },
+                    function(error) {
                         vm.login_error = "User not found";
-                    }
-                });
+                    });
         }
     }
 })();

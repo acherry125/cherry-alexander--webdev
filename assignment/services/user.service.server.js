@@ -63,11 +63,11 @@ module.exports = function(app) {
     function findUserByCredentials(username, password, res){
         for(var i in users) {
             if (users[i].username === username && users[i].password === password) {
-                res.send(users[i]);
+                res.send(users[i]._id);
                 return;
             }
         }
-        res.send({});
+        res.status(401).send("User " + username + " not found");
     }
 
     function updateUser(req, res) {
