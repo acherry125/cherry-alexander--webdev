@@ -35,22 +35,46 @@
         function createHeader(id) {
             var header = {"_id": id, "name": "", widgetType: "HEADER",
                 "text": "", "size": ""};
-            WidgetService.createWidget(pid, header);
-            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id)
+            WidgetService
+                .createWidget(pid, header)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
+                    },
+                    function(error) {
+                        vm.error(error);
+                    }
+                )
         }
 
         function createImage(id) {
             var image = {"_id": id, "name": "", widgetType: "IMAGE",
                 "text": "", "width": "", "url": ""};
-            WidgetService.createWidget(pid, image);
-            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id)
+            WidgetService
+                .createWidget(pid, image)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
+                    },
+                    function(error) {
+                        vm.error(error);
+                    }
+                );
         }
 
         function createYouTube(id) {
             var youtube = {"_id": id, "name": "", widgetType: "YOUTUBE",
                 "text": "", "width": "", "url": ""};
-            WidgetService.createWidget(pid, youtube);
-            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id)
+            WidgetService
+                .createWidget(pid, youtube)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
+                    },
+                    function(error) {
+                        vm.error(error);
+                    }
+                );
         }
 
     }

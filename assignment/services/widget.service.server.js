@@ -25,6 +25,8 @@ module.exports = function(app) {
     app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
     // respond to request for specific widget
     app.get("/api/widget/:widgetId", findWidgetById);
+    // create a new widget
+    app.post("/api/page/:pageId/widget", createWidget);
 
     // handle widget queries
     function findAllWidgetsForPage(req, res) {
@@ -39,7 +41,7 @@ module.exports = function(app) {
     }
 
     // find a widget by its id
-    function findWidgetById(req, res){
+    function findWidgetById(req, res) {
         var wgid = req.params.widgetId;
         for(var i in widgets) {
             if (widgets[i]._id === wgid) {
@@ -48,6 +50,15 @@ module.exports = function(app) {
             }
         }
         res.status(404).send("Website with id " + wgid + " not found");
+    }
+
+    // create a new widget
+    function createWidget(req, res) {
+        var pid = req.params.pageId;
+        var newWidget = req.body;
+        widgets.push(newWidget);
+        res.sendStatus(200);
+        
     }
 
 };

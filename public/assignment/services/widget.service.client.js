@@ -19,7 +19,8 @@
         /* Adds a new widget to the database */
         function createWidget(pageId, widget) {
             widget["pageId"] = pageId;
-            widgets.push(widget);
+            var url = "/api/page/" + pageId + "/widget";
+            return $http.post(url, widget);
         }
 
         /* Finds a widget by its page's id */

@@ -53,4 +53,19 @@ module.exports = function(app) {
         res.status(400).send("Website with ID"+ id + "not found");
     }
     
+    // create a new widget
+    function createWebsite(req, res) {
+        var uid = req.params.userId;
+        var newWebsite = req.body;
+        for(var i in websites) {
+            if (websites[i].name === newWebsite.name && websites[i].userId === newWebsite.userId) {
+                    res.status(400).send("Website name " + newWebsite.name + " already in use");
+                return;
+            }
+        }
+        websites.push(newWebsite);
+        res.sendStatus(200);
+
+    }
+    
 };
