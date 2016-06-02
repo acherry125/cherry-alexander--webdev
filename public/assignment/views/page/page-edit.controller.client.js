@@ -18,19 +18,14 @@
 
         /* Initialize the page's information */
         function init() {
-            vm.page = angular.copy(PageService.findPageById(pid));
-            if(!vm.page) {
-                $location.url("/user/" + uid + "/website/" + wid + "/page");
-            }
-
             PageService
-                .findPageById(wid)
+                .findPageById(pid)
                 .then(
                     function(response) {
                         vm.page = response.data;
                     },
                     function(error) {
-                        $location.url("/user/" + uid + "/website/");
+                        $location.url("/user/" + uid + "/website/" + wid + "/page");
                     }
                 );
         }

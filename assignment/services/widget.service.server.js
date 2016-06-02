@@ -47,7 +47,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.send({});
+        res.status(404).send("Website with id " + wgid + " not found");
     }
 
 };

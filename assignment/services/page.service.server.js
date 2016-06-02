@@ -32,7 +32,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.send({});
+        res.status(404).send("Page with id " + pid + " not found");
     }
 
 };

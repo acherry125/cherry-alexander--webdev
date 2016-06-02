@@ -23,10 +23,17 @@
         var validityCheck = validityCheck;
 
         function init() {
-            vm.widget = angular.copy(WidgetService.findWidgetById(wgid));
-            if(!vm.widget) {
-                $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget");
-            }
+            WidgetService
+                .findWidgetById(wgid)
+                .then(
+                    function(response) {
+                        vm.widget = response.data;
+                    },
+                    function(error) {
+                        $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget");
+                    }
+                );
+            
         }
 
         init();
@@ -35,13 +42,26 @@
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
         }
 
-        function checkNew() {
-            var widgetData = angular.copy(WidgetService.findWidgetById(wgid));
-            if (!(widgetData.name)) {
-                // check this
-                WidgetService.deleteWidget(wgid);
-            }
-            goBack();
+        function checkNew(){
+            WidgetService
+                .findWidgetById(wgid)
+                .then(
+                    function(reponse) {
+                        var widgetData = reponse.data;
+                        // check if widget has been saved yet
+                        if(!(widgetData.name)) {
+                            // widget is new, should be deleted
+                            WidgetService.deleteWidget(wgid);
+                        }
+                        // widget has been saved, keep it.
+                        goBack();
+                    },
+                    function(error) {
+                        /* ignore the error, its either ok or there is now
+                        an empty widget */
+                        goBack();
+                    }
+                );
         }
 
         function validityCheck() {
