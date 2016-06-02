@@ -41,6 +41,7 @@
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
         }
 
+        // checks if the widget being edited is a new widget or an existing widget
         function checkNew(){
             WidgetService
                 .findWidgetById(wgid)
@@ -62,6 +63,7 @@
                 );
         }
 
+        // validates that correct fields are populated
         function validityCheck() {
             if (!(vm.widget.name)) {
                 vm.missingField = "Widget must have name";
@@ -77,6 +79,7 @@
             }
         }
 
+        // update the widget TODO
         function updateWidget() {
             if (validityCheck()) {
                 WidgetService.updateWidget(wgid, vm.widget);
@@ -84,6 +87,7 @@
             }
         }
 
+        // delete the widget
         function deleteWidget() {
             WidgetService
                 .deleteWidget(wgid)

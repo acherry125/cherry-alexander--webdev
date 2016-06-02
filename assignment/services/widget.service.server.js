@@ -67,7 +67,7 @@ module.exports = function(app) {
     function deleteWidget(req, res) {
         var wgid = req.params.widgetId;
         for (var i in widgets) {
-            if(widgets[i] === wgid) {
+            if(widgets[i]._id === wgid) {
                 widgets.splice(i, 1);
                 res.sendStatus(200);
                 return;
