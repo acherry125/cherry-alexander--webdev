@@ -46,12 +46,8 @@
 
         /* Deletes the given page */
         function deletePage(pageId) {
-            for (var i in pages) {
-                if (pages[i]._id === pageId) {
-                    pages.splice(i, 1);
-                    return;
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.delete(url);
         }
 
     }

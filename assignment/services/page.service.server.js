@@ -10,6 +10,8 @@ module.exports = function(app) {
     app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
     // respond to request for specific page
     app.get("/api/page/:pageId", findPageById);
+    // respond to request to delete page
+    app.delete("/api/page/:pageId", deletePage);
 
     // handle page queries
     function findAllPagesForWebsite(req, res) {
@@ -33,6 +35,19 @@ module.exports = function(app) {
             }
         }
         res.status(404).send("Page with id " + pid + " not found");
+    }
+
+    // create a new widget
+    function deletePage(req, res) {
+        var pid = req.params.pageId;
+        for (var i in pages) {
+            if(pages[i]._id === pid) {
+                pages.splice(i, 1);
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(400).send("Page " + pid + " does not exist");
     }
 
 };
