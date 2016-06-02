@@ -36,13 +36,21 @@
                 $location.url("user/" + uid + "/website");
             }
             else {
-                vm.missingName = "Name field must not be empty  "
+                vm.error = "Name field must not be empty  "
             }
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(wid);
-            $location.url("user/" + uid + "/website");
+            WebsiteService
+                .deleteWebsite(wid)
+                .then(
+                    function(response) {
+                        $location.url("user/" + uid + "/website");
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
         }
 
     }

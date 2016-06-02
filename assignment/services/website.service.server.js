@@ -13,6 +13,9 @@ module.exports = function(app) {
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
     // respond to request for specific website
     app.get("/api/website/:websiteId", findWebsiteById);
+    // delete website
+    app.delete("/api/website/:websiteId", deleteWebsite);
+
 
     // handle website queries
     function findAllWebsitesForUser(req, res) {
@@ -37,4 +40,17 @@ module.exports = function(app) {
         }
         res.send({});
     }
+
+    function deleteWebsite(req, res) {
+        var id = req.params.websiteId;
+        for (var i in websites) {
+            if (websites[i]._id === id) {
+                websites.splice(i, 1);
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(400).send("Website with ID"+ id + "not found");
+    }
+    
 };
