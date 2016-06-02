@@ -41,7 +41,7 @@
             return $sce.trustAsResourceUrl(src);
         }
 
-        $(".container")
+        $("#widget-container")
             .sortable({axis:"y"});
 
     }
