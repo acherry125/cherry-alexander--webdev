@@ -13,13 +13,19 @@
 
         function createWebsite() {
             if(vm.website.name) {
-                var unique = Date.now();
-                unique = unique.toString();
-                var website = {"_id": unique, "name": vm.website.name, "description": vm.website.description};
-                WebsiteService.createWebsite(uid, website);
-                $location.url("/user/" + uid + "/website")
+                var website = { "name": vm.website.name, "description": vm.website.description};
+                WebsiteService
+                    .createWebsite(uid, website)
+                    .then(
+                    function(response) {
+                        $location.url("/user/" + uid + "/website")
+                    },
+                    function(error) {
+                        vm.error = error.body;
+                    }
+                );
             } else {
-                vm.missingName = "Name field must not be empty"
+                vm.error = "Name field must not be empty"
             }
         }
 

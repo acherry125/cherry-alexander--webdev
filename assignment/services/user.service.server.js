@@ -99,7 +99,6 @@ module.exports = function(app) {
 
     function createUser(req, res) {
         var newUser = req.body;
-        var id = (new Date()).getTime() + "";
         for (var i in users) {
             if(users[i].username === newUser.username) {
                 res.status(403).send("Username " + newUser.username + " is already in use");
@@ -109,8 +108,9 @@ module.exports = function(app) {
         if (!(newUser.password === newUser.verify)) {
             res.status(403).send("Password and Verify Password must match");
         } else {
+            var id = (new Date()).getTime() + "";
             res.send(id);
-            var user = {_id: id, username: newUser.username, password: newUser.password, firstName: "", lastName: ""};
+            var user = {_id: id, username: newUser.username, password: newUser.password};
             users.push(user);
         }
     }

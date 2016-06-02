@@ -18,8 +18,8 @@
 
         /* Adds a new user to the database */
         function createWebsite(userId, website) {
-            var url = "/api/user/" + userId;
-            $http.post(url, website);
+            var url = "/api/user/" + userId + "/website";
+            return $http.post(url, website);
         }
 
         function findWebsitesByUser(userId) {
