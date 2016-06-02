@@ -17,13 +17,14 @@
         function init() {
             WebsiteService
                 .findWebsiteById(wid)
-                .then(function(response) {
-                    if(response.data.name) {
+                .then(
+                    function(response) {
                         vm.website = response.data;
-                    } else {
+                    },
+                    function(error) {
                         $location.url("/user/" + uid + "/website/");
                     }
-                });
+                );
         }
 
         init();

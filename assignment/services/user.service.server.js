@@ -45,7 +45,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.send({});
+        res.status(404).send("User " + userId + " not found");
     }
 
     // find a user by their username
@@ -56,7 +56,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.send({});
+        res.status(404).send("User " + username + " not found");
     }
 
     // find a user by their username and password
@@ -82,7 +82,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(400).send("User with ID"+ id + "not found");
+        res.status(404).send("User with ID"+ id + "not found");
     }
 
     function deleteUser(req, res) {
@@ -94,7 +94,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(400).send("User with ID"+ id + "not found");
+        res.status(404).send("User with ID"+ id + "not found");
     }
 
     function createUser(req, res) {
@@ -102,12 +102,12 @@ module.exports = function(app) {
         var id = (new Date()).getTime() + "";
         for (var i in users) {
             if(users[i].username === newUser.username) {
-                res.status(400).send("Username " + newUser.username + " is already in use");
+                res.status(403).send("Username " + newUser.username + " is already in use");
                 return;
             }
         } 
         if (!(newUser.password === newUser.verify)) {
-            res.status(400).send("Password and Verify Password must match");
+            res.status(403).send("Password and Verify Password must match");
         } else {
             res.send(id);
             var user = {_id: id, username: newUser.username, password: newUser.password, firstName: "", lastName: ""};

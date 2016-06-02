@@ -22,6 +22,17 @@
             if(!vm.page) {
                 $location.url("/user/" + uid + "/website/" + wid + "/page");
             }
+
+            PageService
+                .findPageById(wid)
+                .then(
+                    function(response) {
+                        vm.page = response.data;
+                    },
+                    function(error) {
+                        $location.url("/user/" + uid + "/website/");
+                    }
+                );
         }
 
         init();
@@ -33,13 +44,21 @@
                 $location.url("user/" + uid + "/website/" + wid + "/page");
             }
             else {
-                vm.missingName = "Name field must not be empty"
+                vm.error = "Name field must not be empty"
             }
         }
 
         function deletePage() {
-            PageService.deletePage(pid);
-            $location.url("user/" + uid + "/website/" + wid + "/page");
+        PageService
+            .deletePage(pid)
+            .then(
+                function(response) {
+                    $location.url("user/" + uid + "/website/" + wid + "/page");
+                },
+                function(error) {
+                    vm.error = error.data;
+                }
+            );
         }
 
     }
