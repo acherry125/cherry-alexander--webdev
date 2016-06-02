@@ -17,7 +17,11 @@
         var allowSrc = allowSrc;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(pid);
+            WidgetService
+                .findWidgetsByPageId(pid)
+                .then(function(response) {
+                    vm.widgets = response.data;
+                });
         }
 
         init();
