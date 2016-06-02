@@ -38,7 +38,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.send({});
+        res.sendStatus(400);
     }
 
     function deleteWebsite(req, res) {

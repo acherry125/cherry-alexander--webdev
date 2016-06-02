@@ -47,16 +47,20 @@
         }
         
         function unregister() {
-            UserService
-                .deleteUser(uid)
-                .then(
-                    function(response) {
-                        $location.url("/");
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                 )
+            if (confirm('Are you sure you want to delete your profile?')) {
+                UserService
+                    .deleteUser(uid)
+                    .then(
+                        function(response) {
+                            $location.url("/");
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
+            } else {
+                // Do nothing!
+            }
         }
     }
 })();
