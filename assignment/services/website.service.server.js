@@ -59,7 +59,7 @@ module.exports = function(app) {
     function createWebsite(req, res) {
         var uid = req.params.userId;
         var newWebsite = req.body;
-        if (!newWebsite.name) {
+        if (!newWebsite) {
             res.status(400).send("Website must have name");
             return;
         }
