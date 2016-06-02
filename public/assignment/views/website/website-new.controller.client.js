@@ -12,7 +12,7 @@
         vm.createWebsite = createWebsite;
 
         function createWebsite() {
-            if(vm.website) {
+            if(vm.website && vm.website.name) {
                 var website = { "name": vm.website.name, "description": vm.website.description};
                 WebsiteService
                     .createWebsite(uid, website)

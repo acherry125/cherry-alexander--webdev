@@ -15,12 +15,18 @@
         vm.createPage = createPage;
 
         function createPage() {
-            if(vm.page.name) {
-                unique = Date.now();
-                unique = unique.toString();
-                var page = {"_id": unique, "name": vm.page.name, "title": vm.page.title};
-                PageService.createPage(wid, page);
-                $location.url("/user/" + uid + "/website/" + wid + "/page")
+            if(vm.page && vm.page.name) {
+                var page = { "name": vm.page.name, "title": vm.page.title};
+                PageService
+                    .createPage(wid, page)
+                    .then(
+                        function(response) {
+                            $location.url("/user/" + uid + "/website/" + wid + "/page")
+                        },
+                        function(error) {
+                            vm.error = error.body;
+                        }
+                    );
             } else {
                 vm.error = "Name field must not be empty"
             }

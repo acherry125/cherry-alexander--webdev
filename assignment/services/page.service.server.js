@@ -12,6 +12,9 @@ module.exports = function(app) {
     app.get("/api/page/:pageId", findPageById);
     // respond to request to delete page
     app.delete("/api/page/:pageId", deletePage);
+    // respond to request to create page
+    app.post("/api/website/:websiteId/page", createPage);
+
 
     // handle page queries
     function findAllPagesForWebsite(req, res) {
@@ -48,6 +51,27 @@ module.exports = function(app) {
             }
         }
         res.status(400).send("Page " + pid + " does not exist");
+    }
+
+    // create a new widget
+    function createPage(req, res) {
+        var wid = req.params.websiteId;
+        var newPage = req.body;
+        if (!newPage || !newPage.name) {
+            res.status(400).send("Page must have name");
+            return;
+        }
+        for(var i in pages) {
+            if (pages[i].name === newPage.name && pages[i].websiteId === newPage.websiteId) {
+                res.status(400).send("Page name " + newPage.name + " already in use");
+                return;
+            }
+        }
+        var id = (new Date()).getTime() + "";
+        newPage["_id"] = id;
+        newPage["websiteId"] = wid;
+        pages.push(newPage);
+        res.send(id);
     }
 
 };

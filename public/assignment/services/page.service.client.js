@@ -18,8 +18,8 @@
 
         /* Adds a new page to the database */
         function createPage(websiteId, page) {
-            page["websiteId"] = websiteId;
-            pages.push(page);
+            var url = "/api/website/" + websiteId + "/page";
+            return $http.post(url, page);
         }
 
         /* Finds a page by its website id */
