@@ -110,7 +110,7 @@ module.exports = function(app) {
             res.status(400).send("Password and Verify Password must match");
         } else {
             res.send(id);
-            var user = {username: newUser.username, password: newUser.password, firstName: "", lastName: ""};
+            var user = {_id: id, username: newUser.username, password: newUser.password, firstName: "", lastName: ""};
             users.push(user);
         }
     }
