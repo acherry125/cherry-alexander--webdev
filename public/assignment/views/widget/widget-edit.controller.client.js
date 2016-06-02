@@ -15,7 +15,6 @@
         vm.pageId =  pid;
         var wgid = $routeParams.wgid;
         vm.widgetId =  wgid;
-        vm.title = "Widget Edit";
         vm.goBack = goBack;
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
@@ -50,8 +49,7 @@
                         var widgetData = reponse.data;
                         // check if widget has been saved yet
                         if(!(widgetData.name)) {
-                            // widget is new, should be deleted
-                            WidgetService.deleteWidget(wgid);
+                            deleteWidget();
                         }
                         // widget has been saved, keep it.
                         goBack();
@@ -87,8 +85,15 @@
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(wgid);
-            goBack();
+            WidgetService
+                .deleteWidget(wgid)
+                .then(
+                    function () {
+                        goBack();
+                    },
+                    function() {
+                        vm.missingField = "Oh no";
+                    });
         }
 
     }

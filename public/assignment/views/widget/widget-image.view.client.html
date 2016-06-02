@@ -13,7 +13,7 @@
                 </p>
                 <!-- Page Title -->
                 <a class="navbar-brand">
-                    {{model.title}}
+                    Edit Widget
                 </a>
                 <!-- Save and Confirm Button -->
                 <p class="navbar-text pull-right">
@@ -62,6 +62,7 @@
                    placeholder="Image URL"/>
         </div>
         <!-- Width -->
+        <!-- Throws errors because of type=number -->
         <div class="form-group">
             <label for="width">Width (percentage of the screen)</label>
             <input ng-model="model.widget.width"

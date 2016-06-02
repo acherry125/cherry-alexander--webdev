@@ -27,6 +27,9 @@ module.exports = function(app) {
     app.get("/api/widget/:widgetId", findWidgetById);
     // create a new widget
     app.post("/api/page/:pageId/widget", createWidget);
+    // delete widget
+    app.delete("/api/widget/:widgetId", deleteWidget);
+
 
     // handle widget queries
     function findAllWidgetsForPage(req, res) {
@@ -58,7 +61,19 @@ module.exports = function(app) {
         var newWidget = req.body;
         widgets.push(newWidget);
         res.sendStatus(200);
-        
+    }
+
+    // create a new widget
+    function deleteWidget(req, res) {
+        var wgid = req.params.widgetId;
+        for (var i in widgets) {
+            if(widgets[i] === wgid) {
+                widgets.splice(i, 1);
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(400).send("Widget " + wgid + " does not exist");
     }
 
 };
