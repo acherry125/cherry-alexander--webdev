@@ -100,14 +100,13 @@ module.exports = function(app) {
     function createUser(req, res) {
         var newUser = req.body;
         var id = (new Date()).getTime() + "";
-        res.status(400).send("User with ID"+ id + "not found");
         for (var i in users) {
             if(users[i].username === newUser.username) {
                 res.status(400).send("Username " + newUser.username + " is already in use");
                 return;
             }
         } 
-        if (newUser.password === newUser.verify) {
+        if (!(newUser.password === newUser.verify)) {
             res.status(400).send("Password and Verify Password must match");
         } else {
             res.send(id);
