@@ -42,7 +42,7 @@
         }
 
         $("#widget-container")
-            .sortable({axis:"y"});
+            .sortable({});
 
     }
 
