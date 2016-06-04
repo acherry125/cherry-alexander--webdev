@@ -68,7 +68,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(404).send("Widget " + wgid + " does not exist");
+        res.status(400).send("Widget " + wgid + " does not exist");
     }
 
     // create a new widget
@@ -89,7 +89,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(404).send("Widget " + wgid + " does not exist");
+        res.status(400).send("Widget " + wgid + " does not exist");
     }
 
 };
