@@ -33,8 +33,15 @@
             if (vm.website.name) {
                 var website = { "_id": wid, "name": vm.website.name,
                     "description": vm.website.description, "developerId": uid };
-                WebsiteService.updateWebsite(wid, website);
-                $location.url("user/" + uid + "/website");
+                WebsiteService
+                    .updateWebsite(wid, website)
+                    .then(
+                        function(response) {
+                            $location.url("user/" + uid + "/website");
+                        },
+                        function(error) {
+                            vm.error = error.body;
+                        });
             }
             else {
                 vm.error = "Name field must not be empty  "

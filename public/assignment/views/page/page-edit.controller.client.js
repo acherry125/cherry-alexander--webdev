@@ -35,8 +35,16 @@
         function updatePage() {
             if (vm.page.name) {
                 var page = { "_id": pid, "name": vm.page.name, "title": vm.page.title, "websiteId": wid };
-                PageService.updatePage(pid, page);
-                $location.url("user/" + uid + "/website/" + wid + "/page");
+                PageService
+                    .updatePage(pid, page)
+                    .then(
+                        function(response) {
+                            $location.url("user/" + uid + "/website/" + wid + "/page");
+                        },
+                        function(error) {
+                            vm.error = error.body;
+                        }
+                    );
             }
             else {
                 vm.error = "Name field must not be empty"

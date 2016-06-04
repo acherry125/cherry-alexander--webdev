@@ -26,13 +26,10 @@ module.exports = function(app) {
         if(username && password) {
             // pass response so this function can respond too
             findUserByCredentials(username, password, res);
-            console.log("credential")
         } else if(username) {
             findUserByUsername(username, res);
-            console.log("username")
         } else {
             console.log("other stuff")
-            res.send(users);
         }
     }
 

@@ -36,12 +36,8 @@
 
         /* Updates a page with new information */
         function updatePage(pageId, page) {
-            for (var i in pages) {
-                if (pages[i]._id === pageId) {
-                    pages[i] = page;
-                    return;
-                }
-            }
+            var url = "/api/page/" + pageId;
+            return $http.put(url, page);
         }
 
         /* Deletes the given page */

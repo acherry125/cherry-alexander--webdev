@@ -11,6 +11,8 @@ module.exports = function(app) {
     // respond to request for specific page
     app.get("/api/page/:pageId", findPageById);
     // respond to request to delete page
+    app.put("/api/page/:pageId", updatePage);
+    // respond to request to delete page
     app.delete("/api/page/:pageId", deletePage);
     // respond to request to create page
     app.post("/api/website/:websiteId/page", createPage);
@@ -40,6 +42,19 @@ module.exports = function(app) {
         res.status(404).send("Page with id " + pid + " not found");
     }
 
+    function updatePage(req, res) {
+        var id = req.params.pageId;
+        var update = req.body;
+        for (var i in pages) {
+            if (pages[i]._id === id) {
+                pages[i] = update;
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(404).send("Page with ID"+ id + "not found");
+    }
+    
     // create a new widget
     function deletePage(req, res) {
         var pid = req.params.pageId;
@@ -50,7 +65,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(400).send("Page " + pid + " does not exist");
+        res.status(404).send("Page " + pid + " does not exist");
     }
 
     // create a new widget

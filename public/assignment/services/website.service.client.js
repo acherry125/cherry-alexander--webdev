@@ -33,12 +33,8 @@
         }
 
         function updateWebsite(websiteId, website) {
-            for (var i in websites) {
-                if (websites[i]._id === websiteId) {
-                    websites[i] = website;
-                    return;
-                }
-            }
+            var url = "/api/website/" + websiteId;
+            return $http.put(url, website);
         }
 
         function deleteWebsite(websiteId) {

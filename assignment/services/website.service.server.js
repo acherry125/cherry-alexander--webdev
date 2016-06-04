@@ -13,6 +13,8 @@ module.exports = function(app) {
     app.get("/api/user/:userId/website", findAllWebsitesForUser);
     // respond to request for specific website
     app.get("/api/website/:websiteId", findWebsiteById);
+    // update website
+    app.put("/api/website/:websiteId", updateWebsite);
     // delete website
     app.delete("/api/website/:websiteId", deleteWebsite);
     // create website
@@ -40,7 +42,20 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.sendStatus(400);
+        res.sendStatus(404);
+    }
+
+    function updateWebsite(req, res) {
+        var id = req.params.websiteId;
+        var update = req.body;
+        for (var i in websites) {
+            if (websites[i]._id === id) {
+                websites[i] = update;
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(404).send("Website with ID"+ id + "not found");
     }
 
     function deleteWebsite(req, res) {
@@ -52,7 +67,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(400).send("Website with ID"+ id + "not found");
+        res.status(404).send("Website with ID"+ id + "not found");
     }
     
     // create a new widget
