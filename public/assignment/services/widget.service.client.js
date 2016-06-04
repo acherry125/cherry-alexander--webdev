@@ -37,12 +37,8 @@
 
         /* Update a widget with new information */
         function updateWidget(widgetId, widget) {
-            for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
-                    widgets[i] = widget;
-                    return;
-                }
-            }
+            var url = "/api/widget/" + widgetId; 
+            return $http.put(url, widget);
         }
 
         /* Deletes a widget */

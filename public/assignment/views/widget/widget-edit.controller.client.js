@@ -66,24 +66,32 @@
         // validates that correct fields are populated
         function validityCheck() {
             if (!(vm.widget.name)) {
-                vm.missingField = "Widget must have name";
+                vm.error = "Widget" + vm.widgetType + "must have name";
             } else if (vm.widget.widgetType == "HEADER" && !(vm.widget.text && vm.widget.size)) {
-                vm.missingField = "Widget must have text and size";
-            } else if (vm.widget.widgetType == "IMAGE" && !(vm.widget.text && vm.widget.url && vm.widget.width)) {
-                vm.missingField = "Widget must have text, url, and width";
-            } else if (vm.widget.widgetType == "YOUTUBE" && !(vm.widget.text && vm.widget.url && vm.widget.width)) {
-                vm.missingField = "Widget must have text, url, and width"
+                vm.error = "Header Widget must have text and size";
+            } else if (vm.widget.widgetType == "IMAGE" && !(vm.widget.url && vm.widget.width)) {
+                vm.error = "Image Widget must have url, and width";
+            } else if (vm.widget.widgetType == "YOUTUBE" && !(vm.widget.url && vm.widget.width)) {
+                vm.error = "YouTube Widget must have url, and width"
             } else {
-                vm.missingField = "";
+                vm.error = "";
                 return true;
             }
         }
 
-        // update the widget TODO
+        // update the widget
         function updateWidget() {
             if (validityCheck()) {
-                WidgetService.updateWidget(wgid, vm.widget);
-                goBack();
+                WidgetService
+                    .updateWidget(wgid, vm.widget)
+                    .then(
+                        function(response) {
+                            goBack();
+                        },
+                        function(error) {
+                            vm.error = error.body;
+                        }
+                    );
             }
         }
 
@@ -92,11 +100,11 @@
             WidgetService
                 .deleteWidget(wgid)
                 .then(
-                    function () {
+                    function(response) {
                         goBack();
                     },
-                    function() {
-                        vm.missingField = "Oh no";
+                    function(error) {
+                        vm.error = error.body;
                     });
         }
 

@@ -8,7 +8,7 @@ module.exports = function(app) {
             "size": 4, "text": "Lorem ipsum"},
         { "_id": "345", "name": "giz", "widgetType": "IMAGE", "pageId": "321",
             "width": "100",
-            "url": "http://lorempixel.com/400/200/"},
+            "url": "http://lorempixel.com/1000/500/"},
         { "_id": "456", "name": "giz", "widgetType": "HTML", "pageId": "321",
             "text": "<p>Lorem ipsum</p>"},
         { "_id": "567", "name": "giz", "widgetType": "HEADER", "pageId": "321",
@@ -27,6 +27,8 @@ module.exports = function(app) {
     app.get("/api/widget/:widgetId", findWidgetById);
     // create a new widget
     app.post("/api/page/:pageId/widget", createWidget);
+    // delete widget
+    app.put("/api/widget/:widgetId", updateWidget);
     // delete widget
     app.delete("/api/widget/:widgetId", deleteWidget);
 
@@ -56,6 +58,20 @@ module.exports = function(app) {
     }
 
     // create a new widget
+    function updateWidget(req, res) {
+        var wgid = req.params.widgetId;
+        var update = req.body;
+        for (var i in widgets) {
+            if(widgets[i]._id === wgid) {
+                widgets[i] = update;
+                res.sendStatus(200);
+                return;
+            }
+        }
+        res.status(404).send("Widget " + wgid + " does not exist");
+    }
+
+    // create a new widget
     function createWidget(req, res) {
         var pid = req.params.pageId;
         var newWidget = req.body;
@@ -73,7 +89,7 @@ module.exports = function(app) {
                 return;
             }
         }
-        res.status(400).send("Widget " + wgid + " does not exist");
+        res.status(404).send("Widget " + wgid + " does not exist");
     }
 
 };
