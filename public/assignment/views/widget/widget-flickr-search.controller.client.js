@@ -4,9 +4,20 @@
         .module("WebAppMaker")
         .controller("FlickrImageSearchController", FlickrImageSearchController);
     
-    function FlickrImageSearchController(FlickrService) {
+    function FlickrImageSearchController(FlickrService, $location, $routeParams) {
         var vm = this;
+        var uid = $routeParams.uid;
+        vm.userId =  uid;
+        var wid = $routeParams.wid;
+        vm.websiteId =  wid;
+        var pid = $routeParams.pid;
+        vm.pageId =  pid;
+        var wgid = $routeParams.wgid;
+        vm.widgetId =  wgid;
+
         vm.searchPhotos = searchPhotos;
+        vm.goBack = goBack;
+
         
         function searchPhotos(searchText) {
             FlickrService
@@ -22,6 +33,13 @@
                         vm.error = error.data;
                     }
                 )
+        }
+
+        function goBack() {
+            $location.url("/user/" + uid
+                + "/website/" + wid
+                + "/page/" + pid
+                + "/widget/" + wgid);
         }
 
         function selectPhoto(photo) {

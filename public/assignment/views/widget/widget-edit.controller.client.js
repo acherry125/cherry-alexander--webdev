@@ -19,6 +19,7 @@
         vm.updateWidget = updateWidget;
         vm.deleteWidget = deleteWidget;
         vm.checkNew = checkNew;
+        vm.flickr = flickr;
         var validityCheck = validityCheck;
 
         function init() {
@@ -80,6 +81,15 @@
                 vm.error = "";
                 return true;
             }
+        }
+        
+        // validates that correct fields are populated
+        function flickr() {
+            $location.url("/user/" + uid
+                + "/website/" + wid
+                + "/page/" + pid
+                + "/widget/" + wgid
+                + "/flickr");
         }
 
         // update the widget
