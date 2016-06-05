@@ -97,18 +97,29 @@ module.exports = function(app) {
     }
 
     function uploadImage(req, res) {
+
         var userId      = req.body.userId;
         var websiteId      = req.body.websiteId;
         var pageId      = req.body.pageId;
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
         var myFile        = req.file;
+
+        if(myFile == null) {
+            res.redirect("/assignment/index.html#/user/"
+                + userId + "/website/" + websiteId + "/page/"
+                + pageId + "/widget/" + widgetId);
+            return;
+        }
+        
         var originalname  = myFile.originalname; // file name on user's computer
         var filename      = myFile.filename;     // new file name in upload folder
         var path          = myFile.path;         // full path of uploaded file
         var destination   = myFile.destination;  // folder where file is saved to
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
+
+
 
         for (var i in widgets) {
             if(widgets[i]._id === widgetId) {
