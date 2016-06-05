@@ -44,6 +44,7 @@ a:hover, a:focus {
 /* Make navbar white */
 .navbar {
     background-color: #5d5d5d;
+    opacity: 0.95;
     border-color: #808080;
     padding-left: 10px;
     padding-right: 10px;
