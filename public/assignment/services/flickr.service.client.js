@@ -14,8 +14,8 @@
         
         return api;
 
-        function searchPhotos(searchTerm) {
-            var url = "/api/flickr?term=" + searchTerm;
+        function searchPhotos(searchTerm, page) {
+            var url = "/api/flickr?term=" + searchTerm + "&page=" + page;
             return $http.get(url);
         }
     }

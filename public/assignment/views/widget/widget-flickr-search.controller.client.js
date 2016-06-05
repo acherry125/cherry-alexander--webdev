@@ -14,17 +14,30 @@
         vm.pageId =  pid;
         var wgid = $routeParams.wgid;
         vm.widgetId =  wgid;
+        vm.page = 1;
 
         vm.searchPhotos = searchPhotos;
         vm.selectPhoto = selectPhoto;
         vm.goBack = goBack;
+        vm.nextPage = nextPage;
+        vm.previousPage = previousPage;
 
+        function nextPage() {
+            vm.page += 1;
+            searchPhotos(vm.searchText);
+        }
+
+        function previousPage() {
+            vm.page -= 1;
+            searchPhotos(vm.searchText);
+        }
         
         function searchPhotos(searchText) {
             FlickrService
-                .searchPhotos(searchText)
+                .searchPhotos(searchText, vm.page)
                 .then(
                     function(response) {
+                        vm.searchText = searchText;
                         data = response.data.replace("jsonFlickrApi(","");
                         data = data.substring(0,data.length - 1);
                         data = JSON.parse(data);

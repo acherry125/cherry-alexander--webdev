@@ -8,11 +8,11 @@ module.exports = function(app, requester) {
 
     var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +
         "&format=json&api_key=API_KEY&text=TEXT&sort=relevance&media=photos&page=PAGE" +
-        "&per_page=105&page";
+        "&per_page=105";
 
     function makeRequest(req, res) {
-        term = req.query.term;
-        page = req.query.page;
+        var term = req.query.term;
+        var page = req.query.page;
         url = urlBase.replace("TEXT", term).replace("API_KEY", key).replace("PAGE", page);
         console.log(url);
 
