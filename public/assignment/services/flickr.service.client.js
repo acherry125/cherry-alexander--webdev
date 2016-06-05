@@ -3,10 +3,7 @@
     angular
         .module("WebAppMaker")
         .factory("FlickrService", FlickrService);
-
-    var key = "";
-    var secret = "";
-    
+        
 
     function FlickrService($http) {
 
@@ -19,8 +16,7 @@
 
         function searchPhotos(searchTerm) {
             var url = "/api/flickr?term=" + searchTerm;
-            $http.get(url);
-
+            return $http.get(url);
         }
 
     }
