@@ -27,6 +27,9 @@
                 .then(
                     function(response) {
                         vm.widget = response.data;
+                        if (vm.widget.width == "") {
+                            vm.widget.width = 100;
+                        }
                     },
                     function(error) {
                         $location.url("/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget");

@@ -97,6 +97,9 @@ module.exports = function(app) {
     }
 
     function uploadImage(req, res) {
+        var userId      = req.body.userId;
+        var websiteId      = req.body.websiteId;
+        var pageId      = req.body.pageId;
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
         var myFile        = req.file;
@@ -107,7 +110,16 @@ module.exports = function(app) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        res.redirect("assignment/index.html#/user/1465077590639/website/1465077597011/page/1465077603384/widget/" + widgetId);
+        for (var i in widgets) {
+            if(widgets[i]._id === widgetId) {
+                widgets[i].url = "/uploads/" + filename;
+                // reload the page
+                res.redirect("/assignment/index.html#/user/"
+                    + userId + "/website/" + websiteId + "/page/"
+                    + pageId + "/widget/" + widgetId);
+                return;
+            }
+        }
 
     }
 

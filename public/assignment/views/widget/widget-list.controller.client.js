@@ -21,6 +21,16 @@
                 .findWidgetsByPageId(pid)
                 .then(function(response) {
                     vm.widgets = response.data;
+                    var reloadCheck = false;
+                    for(var i in vm.widgets) {
+                        if(!(vm.widgets[i].name)) {
+                            WidgetService.deleteWidget(vm.widgets[i]._id);
+                            reloadCheck = true;
+                        }
+                    }
+                    if(reloadCheck) {
+                        init();
+                    }
                 });
         }
 
