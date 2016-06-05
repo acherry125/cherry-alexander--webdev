@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="StockShare">
 <head>
-    <meta lang="en" charset="UTF-8" name=viewport content='width=700'>
-    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
-    <title>Project Home Page</title>
+    <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
+    <meta lang="en" charset="UTF-8" name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- APPLE META TAGS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Index</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css">
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Angular File -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!-- Angular Routing File -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <!-- jQuery -->
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"
+              integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+              crossorigin="anonymous"></script>
+    <!-- jQuery UI -->
+    <script   src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+              integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
+              crossorigin="anonymous"></script>
+    <!-- jQuery Touch Punch -->
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <!-- Main File -->
+    <script src="app.js"></script>
+    <!-- Configuration File -->
+    <script src="config.js"></script>
+    <!-- User Service -->
+    <script src="services/user.service.client.js"></script>
+    <!-- User Controllers -->
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+
 </head>
+<!-- INDEX PAGE -->
 <body>
-    <h1>Project Home Page</h1>
-    <a href="../index.html" class="link-button center-button">Back to Homepage</a>
+<!-- Injected html from angular -->
+<div ng-view></div>
 </body>
 </html>

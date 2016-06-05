@@ -1,0 +1,52 @@
+<!-- REGISTER PAGE -->
+<!-- Main Container -->
+<div class="container">
+    <!-- Success Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <h1>Register</h1>
+    <!-- Registration form -->
+    <div ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
+        <!-- Username -->
+        <div class="form-group">
+            <input ng-model="username"
+                   type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="username">
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+            <input ng-model="password"
+                   type="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="password">
+        </div>
+        <!-- Verify Password -->
+        <div class="form-group">
+            <input ng-model="verify"
+                   type="password"
+                   class="form-control"
+                   id="ver-password"
+                   placeholder="verify password">
+        </div>
+    </div>
+    <!-- Register Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a ng-click="model.register(username, password, verify)"
+               role="button"
+               class="btn btn-block btn-primary btn-lg">Register</a>
+        </div>
+    </div>
+    <!-- Cancel Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="#/login"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Cancel</a>
+        </div>
+    </div>
+</div>
