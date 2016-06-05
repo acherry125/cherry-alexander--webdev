@@ -64,29 +64,26 @@
         <!-- Width -->
         <!-- Throws errors because of type=number -->
         <div class="form-group">
-            <label for="width">Width (percentage of the screen)</label>
-            <input ng-model="model.widget.width"
-                   type="number"
-                   class="form-control"
-                   id="width"
-                   placeholder="Width"/>
-        </div>
-        <!-- Upload -->
-        <div class="form-group">
-            <label for="upload">Upload</label>
-            <input type="file"
-                   class="form-control"
-                   id="Upload"/>
+            <label for="width">Width</label>
+            <div class="input-group">
+                <input ng-model="model.widget.width"
+                       type="number"
+                       class="form-control"
+                       id="width"
+                       placeholder="Width"/>
+                <span class="input-group-addon">%</span>
+            </div>
         </div>
     </form>
     <!-- Upload Image Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <button role="button" class="btn btn-primary btn-block btn-lg">
-                Upload Image
-            </button>
-        </div>
-    </div>
+        <form action="/api/upload"  method="post" enctype="multipart/form-data">
+            <input  name="myFile"   type="file" class="form-control"/>
+            <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+            <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+            <br>
+            <button type="submit"   class="btn btn-block btn-lg btn-primary">Upload Image</button>
+        </form>
+
     <!-- Delete Widget Button -->
     <div class="row">
         <div class="col-xs-12">

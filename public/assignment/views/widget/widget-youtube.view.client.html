@@ -64,11 +64,15 @@
         <!-- Width -->
         <div class="form-group">
             <label for="width">Width (in percentage of screen)</label>
-            <input ng-model="model.widget.width"
-                   type="number"
-                   class="form-control"
-                   id="width"
-                   placeholder="Width"/>
+            <div class="input-group">
+                <input ng-model="model.widget.width"
+                       type="number"
+                       class="form-control"
+                       id="width"
+                       placeholder="Width"/>
+                <span class="input-group-addon">%</span>
+            </div>
+
         </div>
     </form>
     <!-- Delete Widget Button -->

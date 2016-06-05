@@ -1,5 +1,8 @@
 module.exports = function(app) {
 
+    var multer = require('multer');
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
     var widgets = [
 
         { "_id": "123", "name": "giz", "widgetType": "HEADER", "pageId": "321",
@@ -31,7 +34,8 @@ module.exports = function(app) {
     app.put("/api/widget/:widgetId", updateWidget);
     // delete widget
     app.delete("/api/widget/:widgetId", deleteWidget);
-
+    // upload image
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
 
     // handle widget queries
     function findAllWidgetsForPage(req, res) {
@@ -90,6 +94,21 @@ module.exports = function(app) {
             }
         }
         res.status(400).send("Widget " + wgid + " does not exist");
+    }
+
+    function uploadImage(req, res) {
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        res.redirect("assignment/index.html#/user/1465077590639/website/1465077597011/page/1465077603384/widget/" + widgetId);
+
     }
 
 };
