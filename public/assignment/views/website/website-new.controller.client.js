@@ -11,7 +11,9 @@
         vm.userId = uid;
         vm.createWebsite = createWebsite;
 
+        // create a website
         function createWebsite() {
+            // check to see if correct fields are filled out
             if(vm.website && vm.website.name) {
                 var website = { "name": vm.website.name, "description": vm.website.description};
                 WebsiteService

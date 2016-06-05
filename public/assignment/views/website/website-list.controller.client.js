@@ -10,6 +10,7 @@
         var uid = $routeParams.uid;
         vm.userId =  uid;
 
+        // load websites
         function init() {
             WebsiteService
                 .findWebsitesByUser(uid)

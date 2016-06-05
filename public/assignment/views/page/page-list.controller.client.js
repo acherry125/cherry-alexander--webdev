@@ -16,9 +16,14 @@
             vm.pages = PageService.findPagesByWebsiteId(wid);
             PageService
                 .findPagesByWebsiteId(wid)
-                .then(function(response) {
-                    vm.pages = response.data;
-                });
+                .then(
+                    function(response) {
+                        vm.pages = response.data;
+                    },
+                    function(error) {
+                        vm.error = error.body;
+                    }
+                );
         }
 
         init();

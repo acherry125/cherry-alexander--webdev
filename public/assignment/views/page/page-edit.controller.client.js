@@ -32,7 +32,9 @@
 
         init();
 
+        /* Update the page */
         function updatePage() {
+            // check for name
             if (vm.page.name) {
                 var page = { "_id": pid, "name": vm.page.name, "title": vm.page.title, "websiteId": wid };
                 PageService
@@ -51,6 +53,7 @@
             }
         }
 
+        // delete page
         function deletePage() {
         PageService
             .deletePage(pid)

@@ -23,7 +23,7 @@
                         $location.url("/user/" + id);
                     },
                     function(error) {
-                        vm.login_error = "User not found";
+                        vm.error = "User not found";
                     });
         }
     }

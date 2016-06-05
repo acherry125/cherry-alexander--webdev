@@ -2,6 +2,7 @@
 // passing our module the express module
 module.exports = function(app, requester) {
 
+	// webservices services
 	var userService = require("./services/user.service.server.js")(app);
 	var websiteService = require("./services/website.service.server.js")(app);
 	var pageService = require("./services/page.service.server.js")(app);

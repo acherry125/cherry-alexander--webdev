@@ -19,7 +19,7 @@
         var createImage = createImage;
         var createYouTube = createYouTube;
 
-
+        // create a new widget
         function createWidget(type) {
             var unique = Date.now();
             unique = unique.toString();
@@ -32,6 +32,7 @@
             }
         }
 
+        // create a new header
         function createHeader(id) {
             var header = {"_id": id, "name": "", widgetType: "HEADER",
                 "text": "", "size": ""};
@@ -47,6 +48,7 @@
                 )
         }
 
+        // create a new image
         function createImage(id) {
             var image = {"_id": id, "name": "", widgetType: "IMAGE",
                 "text": "", "width": "", "url": ""};
@@ -62,6 +64,7 @@
                 );
         }
 
+        // create a new Youtube Widget
         function createYouTube(id) {
             var youtube = {"_id": id, "name": "", widgetType: "YOUTUBE",
                 "text": "", "width": "", "url": ""};

@@ -22,12 +22,14 @@
         vm.flickr = flickr;
         var validityCheck = validityCheck;
 
+        // initialize the page edit
         function init() {
             WidgetService
                 .findWidgetById(wgid)
                 .then(
                     function(response) {
                         vm.widget = response.data;
+                        // create default width
                         if (vm.widget.width == "") {
                             vm.widget.width = 100;
                         }
@@ -41,6 +43,7 @@
 
         init();
 
+        // go back to the widget list
         function goBack() {
             $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/");
         }
@@ -60,8 +63,7 @@
                         goBack();
                     },
                     function(error) {
-                        /* ignore the error, its either ok or there is now
-                        an empty widget */
+                        /* ignore the error, let the widget-list controller handle it */
                         goBack();
                     }
                 );
@@ -120,7 +122,6 @@
                         vm.error = error.body;
                     });
         }
-
     }
 
 })();

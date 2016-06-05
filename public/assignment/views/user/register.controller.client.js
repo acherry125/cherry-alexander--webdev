@@ -29,7 +29,7 @@
                             $location.url("/user/" + response.data);
                         },
                         function (error) {
-                            vm.failure = error.data;
+                            vm.error = error.data;
                         }
                     )
             }
@@ -39,11 +39,11 @@
         /* helper function to verify registration form */
         function verifyLocally(username, password, verify) {
             if(!(username && password && verify)) {
-                vm.failure = "All fields must be filled in"
+                vm.error = "All fields must be filled in"
             }
             // check passwords match
             else if (!(password === verify)) {
-                vm.failure = "Password and Verify Password fields must match";
+                vm.error = "Password and Verify Password fields must match";
             }
             // success
             else {

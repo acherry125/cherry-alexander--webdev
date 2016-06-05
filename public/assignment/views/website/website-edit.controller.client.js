@@ -29,6 +29,7 @@
 
         init();
 
+        // update website
         function updateWebsite() {
             if (vm.website.name) {
                 var website = { "_id": wid, "name": vm.website.name,
@@ -48,6 +49,7 @@
             }
         }
 
+        // delete website
         function deleteWebsite() {
             WebsiteService
                 .deleteWebsite(wid)

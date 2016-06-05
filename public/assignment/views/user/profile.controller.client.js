@@ -12,6 +12,7 @@
         vm.updateUser = updateUser;
         vm.unregister = unregister;
 
+        // user id
         var uid = $routeParams.uid;
         vm.uId = uid;
 
@@ -19,16 +20,15 @@
 
             UserService
                 .findUserById(uid)
-                .then(function(response) {
-                   if(response.data._id) {
-                       vm.user = response.data;
-                   }
-                    if(!vm.user) {
+                .then(
+                    function(response) {
+                        vm.user = response.data;
+                    },
+                    // missing user
+                    function(error) {
                         $location.url("/");
                     }
-                });
-
-
+                );
         }
 
         init();

@@ -14,7 +14,9 @@
 
         vm.createPage = createPage;
 
+        // create a page
         function createPage() {
+            // check for the required fields
             if(vm.page && vm.page.name) {
                 var page = { "name": vm.page.name, "title": vm.page.title};
                 PageService
