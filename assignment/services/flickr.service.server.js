@@ -7,7 +7,7 @@ module.exports = function(app, requester) {
     key = "aa48e87fb459d9d7dfc3391515792913";
 
     var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +
-        "&format=json&api_key=API_KEY&text=TEXT";
+        "&format=json&api_key=API_KEY&text=TEXT&sort=relevance&media=photos";
     
     function makeRequest(req, res) {
         term = req.query.term;
