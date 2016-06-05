@@ -111,7 +111,7 @@ module.exports = function(app) {
                 + pageId + "/widget/" + widgetId);
             return;
         }
-        
+
         var originalname  = myFile.originalname; // file name on user's computer
         var filename      = myFile.filename;     // new file name in upload folder
         var path          = myFile.path;         // full path of uploaded file
@@ -124,6 +124,7 @@ module.exports = function(app) {
         for (var i in widgets) {
             if(widgets[i]._id === widgetId) {
                 widgets[i].url = "/uploads/" + filename;
+                widgets[i].width = Number(width);
                 // reload the page
                 res.redirect("/assignment/index.html#/user/"
                     + userId + "/website/" + websiteId + "/page/"
