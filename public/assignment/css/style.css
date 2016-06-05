@@ -112,6 +112,36 @@ nav>.container>.navbar-header {
     font-size: 2.5em;
 }
 
+/* For flickr image results */
+.ac-grid-img {
+    width: 100%;
+    height: 240px;
+}
+
+/* For flickr image results */
+#ac-flickr-search {
+    margin-bottom: 10px;
+}
+
+
+/* For flickr image results */
+.ac-flickr-img {
+    width: 100%;
+    height: 240px;
+}
+
+/* For flickr image results */
+.ac-flickr-row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/* For flickr image results */
+.ac-flickr-col-xs-4 {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
 /* allow ac-glyphicon-containers to position relative to rows */
 .ac-row {
     position: relative;
