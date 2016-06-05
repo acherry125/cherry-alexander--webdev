@@ -28,8 +28,6 @@ module.exports = function(app) {
             findUserByCredentials(username, password, res);
         } else if(username) {
             findUserByUsername(username, res);
-        } else {
-            console.log("other stuff")
         }
     }
 

@@ -10,6 +10,7 @@ module.exports = function(app, requester) {
         "&format=json&api_key=API_KEY&text=TEXT&sort=relevance&media=photos&page=PAGE" +
         "&per_page=105";
 
+    /* make search request to flickr */
     function makeRequest(req, res) {
         var term = req.query.term;
         var page = req.query.page;
@@ -20,12 +21,10 @@ module.exports = function(app, requester) {
             if (!error && response.statusCode == 200) {
                 var page = body;
                 res.send(page);
-                console.log(page);
                 return;
             } else {
                 var error = error;
                 res.send(page);
-                console.log(error);
                 return;
             }
         })
