@@ -1,4 +1,60 @@
+<!-- WIDGET HEADER PAGE -->
+<!-- Header Navigation Bar -->
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back/Cancel Button -->
+                <p class="navbar-text pull-left">
+                    <a ng-click="model.checkNew()" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    Search Flickr
+                </a>
+                <!-- Save and Confirm button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.updateWidget()" class="navbar-link">
+                      <span class="glyphicon glyphicon-plus">
+                      </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</header>
 <!-- Main Container -->
 <div class="container">
-    {{model.t}}
+    <!-- Warning Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control"/>
+        <span class="input-group-btn">
+            <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+
+
 </div>
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Profile Link Button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.checkNew" href="#/user/{{model.userId}}" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>
