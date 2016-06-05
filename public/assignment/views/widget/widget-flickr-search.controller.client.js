@@ -33,20 +33,26 @@
         }
         
         function searchPhotos(searchText) {
-            FlickrService
-                .searchPhotos(searchText, vm.page)
-                .then(
-                    function(response) {
-                        vm.searchText = searchText;
-                        data = response.data.replace("jsonFlickrApi(","");
-                        data = data.substring(0,data.length - 1);
-                        data = JSON.parse(data);
-                        vm.photos = data.photos;
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                )
+            if(searchText) {
+                vm.error = "";
+                FlickrService
+                    .searchPhotos(searchText, vm.page)
+                    .then(
+                        function(response) {
+                            vm.searchText = searchText;
+                            data = response.data.replace("jsonFlickrApi(","");
+                            data = data.substring(0,data.length - 1);
+                            data = JSON.parse(data);
+                            vm.photos = data.photos;
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
+            } else {
+                vm.error = "Must enter search terms"
+            }
+
         }
 
         function goBack() {

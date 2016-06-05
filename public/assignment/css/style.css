@@ -134,6 +134,7 @@ nav>.container>.navbar-header {
 .ac-flickr-row {
     margin-left: 0px;
     margin-right: 0px;
+    margin-bottom: 10px;
 }
 
 /* For flickr image results */
@@ -214,7 +215,7 @@ h6 {
 
 /***** MEDIA QUERIES ******/
 
-/* increase font size for phones */
+/* small screens */
 @media only screen and (max-device-width: 440px) {
 
     h1 {
@@ -246,4 +247,25 @@ h6 {
         font-size: 2em;
     }
 
+    /* For flickr image results */
+    .ac-flickr-img {
+        height: 8em;
+    }
+
+}
+
+/* small screens */
+@media only screen and (min-device-width: 1024px) {
+    /* For flickr image results */
+    .ac-flickr-img {
+        height: 22em;
+    }
+}
+
+/* small screens */
+@media only screen and (min-device-width: 1440px) {
+    /* For flickr image results */
+    .ac-flickr-img {
+        height: 27em;
+    }
 }
