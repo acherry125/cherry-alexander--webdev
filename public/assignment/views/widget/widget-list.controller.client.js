@@ -53,7 +53,7 @@
 
         // make the widget list sortable (only temporary until page refresh)
         $("#widget-container")
-            .sortable({});
+            .sortable({handle: ".ac-glyphicon-container"});
 
     }
 
