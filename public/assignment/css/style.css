@@ -39,6 +39,22 @@ a:hover, a:focus {
     width: 100%;
 }
 
+/* next button on flickr results */
+.ac-flickr-button-row {
+    position: relative;
+    right: 5px;
+}
+
+/* next button on flickr results */
+.ac-flickr-button-row a {
+    width: 90%;
+}
+
+/* previous button on flickr results */
+#previous-page {
+    width: 100%;
+}
+
 /***** NAVBAR *****/
 
 /* Make navbar white */
@@ -268,6 +284,38 @@ h6 {
     .ac-flickr-img {
         height: 21em;
     }
+
+    /* next button on flickr results */
+    .ac-flickr-button-row {
+        position: relative;
+        right: -15px;
+    }
+
+
+}
+
+/* small screens */
+@media only screen and (min-device-width: 1024px) {
+    /* For flickr image results */
+    .ac-flickr-img {
+        height: 21em;
+    }
+
+    /* next button on flickr results */
+    .ac-flickr-button-row {
+        position: relative;
+        right: -15px;
+    }
+
+
+}/* small screens */
+@media only screen and (min-device-width: 768px) {
+    /* next button on flickr results */
+    .ac-flickr-button-row {
+        position: relative;
+        right: -23px;
+    }
+
 }
 
 /* small screens */
