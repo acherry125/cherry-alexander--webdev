@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("FlickrImageSearchController", FlickrImageSearchController);
     
-    function FlickrImageSearchController(FlickrService, $location, $routeParams) {
+    function FlickrImageSearchController(FlickrService, WidgetService, $location, $routeParams) {
         var vm = this;
         var uid = $routeParams.uid;
         vm.userId =  uid;
@@ -16,6 +16,7 @@
         vm.widgetId =  wgid;
 
         vm.searchPhotos = searchPhotos;
+        vm.selectPhoto = selectPhoto;
         vm.goBack = goBack;
 
         
@@ -43,18 +44,30 @@
         }
 
         function selectPhoto(photo) {
-            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server
+                +"/" + photo.id + "_" + photo.secret + "_b.jpg";
             WidgetService
-                .updateWidget(widgetId, {url: url})
+                .findWidgetById(wgid)
                 .then(
                     function(response) {
-
+                        var oldWidget = response.data;
+                        oldWidget.url = url;
+                        WidgetService
+                            .updateWidget(wgid, oldWidget)
+                            .then(
+                                function(response) {
+                                    goBack();
+                                },
+                                function(error) {
+                                    vm.error = error.body;
+                                }
+                            );
                     },
                     function(error) {
-
+                        vm.error = error.body;
                     }
-                );
+                )
+
         }
 
     }

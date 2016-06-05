@@ -18,7 +18,6 @@
             var url = "/api/flickr?term=" + searchTerm;
             return $http.get(url);
         }
-
     }
 
 })();
