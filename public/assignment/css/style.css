@@ -140,6 +140,7 @@ nav>.container>.navbar-header {
 .ac-flickr-col-xs-4 {
     padding-left: 1px;
     padding-right: 1px;
+    margin-bottom: 2px;
 }
 
 /* allow ac-glyphicon-containers to position relative to rows */
