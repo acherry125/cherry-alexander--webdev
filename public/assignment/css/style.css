@@ -9,6 +9,11 @@ body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/* centers text */
+.ac-center-text {
+    text-align: center;
+}
+
 /* Since its not part of the assignment, hide these optional buttons I've added */
 .glyphicon-home, .glyphicon-share-alt {
     display: none;
@@ -251,7 +256,7 @@ h6 {
 
     /* For flickr image results */
     .ac-flickr-img {
-        height: 8em;
+        height: 7.5em;
     }
 
 }
@@ -260,7 +265,7 @@ h6 {
 @media only screen and (min-device-width: 1024px) {
     /* For flickr image results */
     .ac-flickr-img {
-        height: 22em;
+        height: 21em;
     }
 }
 
@@ -268,6 +273,6 @@ h6 {
 @media only screen and (min-device-width: 1440px) {
     /* For flickr image results */
     .ac-flickr-img {
-        height: 27em;
+        height: 26em;
     }
 }
