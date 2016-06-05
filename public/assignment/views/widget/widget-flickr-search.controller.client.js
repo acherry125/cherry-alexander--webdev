@@ -6,6 +6,7 @@
     
     function FlickrImageSearchController(FlickrService) {
         var vm = this;
+        vm.searchPhotos = searchPhotos;
         
         function searchPhotos(searchText) {
             FlickrService

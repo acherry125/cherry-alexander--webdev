@@ -21,8 +21,8 @@ module.exports = function(app) {
 
     // handle user queries
     function getUsers(req, res) {
-        var username = req.query["username"];
-        var password = req.query["password"];
+        var username = req.query.username;
+        var password = req.query.password;
         if(username && password) {
             // pass response so this function can respond too
             findUserByCredentials(username, password, res);
