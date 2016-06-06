@@ -7,16 +7,16 @@
         $routeProvider
             // landing page
             .when("/landing", {
-                templateUrl: "views/user/landing-page.view.client.html",
+                templateUrl: "views/landing/landing-page.view.client.html",
                 // married to landing-page
-                controller: "LoginController",
+                controller: "LandingPageController",
                 controllerAs: "model"
             })
             // landing page
             .when("/", {
-                templateUrl: "views/user/landing-page.view.client.html",
+                templateUrl: "views/landing/landing-page.view.client.html",
                 // married to logincontroller
-                controller: "LoginController",
+                controller: "LandingPageController",
                 controllerAs: "model"
             })
             // login
