@@ -5,22 +5,22 @@
 
     function Configuration($routeProvider) {
         $routeProvider
+            // landing page
+            .when("/landing", {
+                templateUrl: "views/user/landing-page.view.client.html",
+                // married to landing-page
+                controller: "LoginController",
+                controllerAs: "model"
+            })
+            // landing page
+            .when("/", {
+                templateUrl: "views/user/landing-page.view.client.html",
+                // married to logincontroller
+                controller: "LoginController",
+                controllerAs: "model"
+            })
             // login
             .when("/login", {
-                templateUrl: "views/user/login.view.client.html",
-                // married to logincontroller
-                controller: "LoginController",
-                controllerAs: "model"
-            })
-            // login
-            .when("/", {
-                templateUrl: "views/user/login.view.client.html",
-                // married to logincontroller
-                controller: "LoginController",
-                controllerAs: "model"
-            })
-            // login
-            .when("/default", {
                 templateUrl: "views/user/login.view.client.html",
                 // married to logincontroller
                 controller: "LoginController",
