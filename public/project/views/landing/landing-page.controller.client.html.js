@@ -6,6 +6,13 @@
         .controller("LandingPageController", LandingPageController);
 
     function LandingPageController() {
-
+        vm = this;
+        vm.expanded= false;
+        vm.toggleExpand = toggleExpand;
+        
+        function toggleExpand() {
+            vm.expanded = !vm.expanded;
+        }
+        
     }
 })();

@@ -1,9 +1,40 @@
+.ac-container {
+    padding-top: 5%;
+    max-width: 75em;
+    font-size: 110%;
+}
+
+.ac-landing-title {
+}
+
+.ac-landing-subtitle {
+
+}
+
+.ac-login {
+    padding-right: 2px;
+}
+
+.ac-register {
+    padding-left: 2px;
+}
+
+.ac-landing-button-group {
+    position: absolute;
+    bottom: 10%;
+    left: 15%;
+    width: 70%;
+    margin-right: auto;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 /***** general page layout *****/
 body {
-    /* clear navbar
-    padding-top: 85px;
-    padding-bottom: 85px; */
-    /* display properly */
+    /* clear navbar */
     max-width: 100%;
     overflow-x: hidden;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -14,10 +45,6 @@ body {
     text-align: center;
 }
 
-/* Since its not part of the assignment, hide these optional buttons I've added */
-.glyphicon-home, .glyphicon-share-alt {
-    display: none;
-}
 
 /* for better readability */
 label, .form-control {
@@ -39,182 +66,8 @@ a:hover, a:focus {
     width: 100%;
 }
 
-/* next button on flickr results */
-.ac-flickr-button-row {
-    position: relative;
-    right: 5px;
-}
-
-/* next button on flickr results */
-.ac-flickr-button-row a {
-    width: 90%;
-}
-
-/* previous button on flickr results */
-#previous-page {
-    width: 100%;
-}
-
-/***** NAVBAR *****/
-
-/* Make navbar white */
-.navbar {
-    background-color: #5d5d5d;
-    opacity: 0.95;
-    border-color: #808080;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-/* Give sufficient padding from right screen border */
-.navbar.navbar-fixed-bottom {
-    padding-right: 20px;
-}
-
-/* Space to tap footer glyphicons */
-.navbar.navbar-fixed-bottom .glyphicon{
-    padding-left: 1em;
-}
-
-/* Navbar text is white */
-.navbar .glyphicon, .navbar .navbar-brand {
-    color: white;
-}
-
-/* To stop the user from thinking the title page is clickable */
-.navbar .navbar-brand {
-    cursor: default;
-}
-
-.container a {
-    cursor: pointer;
-}
-
-/* Override default bootstrap setting */
-.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
-    color: white;
-}
-
-/* Profile button should still be blue */
-.navbar .glyphicon-user {
-    color: #337ab7;
-}
-
-/* Make header text more readable */
-.navbar-brand {
-    font-size: 2em;
-    line-height: inherit;
-
-}
-
-/* Standardize header size and stop right
-   glyphicons from floating left */
-nav>.container>.navbar-header {
-    float: none;
-    height: 65px;
-    margin-right: 0px;
-}
-
-/***** Main Content *****/
-
-/* position glyphicons in "...-list" pages to the right */
-.ac-glyphicon-container {
-    position: absolute;
-    margin-top: 19px;
-    background: white;
-    border-style: solid;
-    border-bottom-left-radius: 12px;
-    border-width: 4px;
-    border-color: white;
-    right: 12px;
-}
-
-/* Content glyphicon sizing */
-.ac-glyphicon-container .glyphicon {
-    font-size: 2.5em;
-}
-
-/* For flickr image results */
-.ac-grid-img {
-    width: 100%;
-    height: 240px;
-}
-
-/* For flickr image results */
-#ac-flickr-search {
-    margin-bottom: 10px;
-}
-
-
-/* For flickr image results */
-.ac-flickr-img {
-    width: 100%;
-    height: 240px;
-}
-
-/* For flickr image results */
-.ac-flickr-row {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-}
-
-/* For flickr image results */
-.ac-flickr-col-xs-4 {
-    padding-left: 1px;
-    padding-right: 1px;
-    margin-bottom: 2px;
-}
-
-/* allow ac-glyphicon-containers to position relative to rows */
-.ac-row {
-    position: relative;
-}
-
-/* Align youtube videos and images like other content */
-.ac-row .embed-responsive, .ac-row img {
-    margin-top: 20px;
-    max-width: 100%;
-}
-
-/* for youtube widgets */
-.videoWrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
-    margin-top: 20px;
-    max-width: 100%;
-}
-
-/* for youtube widgets */
-.videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 
 /* whitespace between button blocks */
 .btn-block {
     margin-bottom: 6px;
-}
-
-/***** Text Font Sizes *****/
-/* increase font size for clarity */
-
-/* Align paragraphs like other content, increase size for clarity */
-p {
-    font-size: 1.75em;
-}
-
-h1 {
-    font-size: 3em;
-}
-
-h2 {
-    font-size: 2.5em;
-}
-
-h3 {
-    font-size: 2.3em;
 }

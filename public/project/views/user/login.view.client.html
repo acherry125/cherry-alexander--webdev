@@ -1,7 +1,7 @@
 <!-- LOGIN PAGE -->
 <!-- No top navigation bar on login -->
 <!-- Main Container -->
-<div class="container">
+<div class="container ac-container">
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
@@ -41,7 +41,15 @@
                class="btn btn-block btn-success btn-lg">Register</a>
         </div>
     </div>
+    <!-- Register Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="#/landing"
+               role="button"
+               class="btn btn-block btn-danger btn-lg">Back</a>
+        </div>
+    </div>
     <!-- back to index... just for assignment 2 -->
-    <a href="../../index.html">Back to Homepage</a>
+    <a href="#/landing">Back to Homepage</a>
 </div>
 <!-- no bottom navigation bar on login -->

@@ -1,30 +1,49 @@
-<div class="container ac-center-text">
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>Welcome to StockShare</h1>
+<div class="container ac-container">
+    <!-- Title -->
+    <header>
+        <div class="row ac-landing-title">
+            <div class="col-xs-12">
+                <h1>Welcome to StockShare</h1>
+            </div>
         </div>
-    </div>
-    <div class="row">
+    </header>
+    <!-- Subtitle -->
+    <div class="row ac-landing-subtitle">
         <div class="col-xs-12">
             <h2>The Social Media Platform for Stock Enthusiasts</h2>
         </div>
     </div>
-    <div class="row">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-        </p>
-    </div>
+    <!-- Description -->
     <div class="row">
         <div class="col-xs-12">
-            <a role="button" class="btn btn-lg btn-block btn-primary">Read More</a>
+            <p ng-if="!model.expanded">StockShare is a platform for traders to follow and discuss
+                recent events.
+            </p>
+            <p ng-if="model.expanded">
+                StockShare is a platform for traders to follow and discuss recent events.
+                In Stockshare, you can create a portfolio with its own blog posts, view current
+                prices, comment on specific stocks, and view others comments.
+            </p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-5 col-xs-offset-1">
-            <a role="button" class="btn btn-lg btn-block btn-primary">Login</a>
+    <!-- Bottom buttons -->
+    <div class="ac-landing-button-group">
+        <!-- Read More -->
+        <div class="row">
+            <div class="col-xs-12">
+                <a role="button" ng-click="model.toggleExpand()" class="btn btn-lg btn-block btn-primary">Read More</a>
+            </div>
         </div>
-        <div class="col-xs-5">
-            <a role="button" class="btn btn-lg btn-block btn-primary">Register</a>
+        <div class="row">
+            <!-- Login -->
+            <div class="col-xs-6 ac-login">
+                <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+            </div>
+            <!-- Register -->
+            <div class="col-xs-6 ac-register">
+                <a role="button" ng-href="#/register" class="btn btn-lg btn-block btn-primary">Register</a>
+            </div>
         </div>
     </div>
+
 </div>
