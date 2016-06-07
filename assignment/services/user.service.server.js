@@ -66,10 +66,17 @@ module.exports = function(app, models) {
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    res.json(user);
+                    console.log(user);
+                    if(user === null) {
+                        console.log("null");
+                        res.status(400).send("User and password pair not found")
+                    } else{
+                        console.log("not null");
+                        res.json(user);
+                    }
                 },
                 function(error) {
-                    res.status(400).send("User " + userId + " not found")
+                    res.status(401).send("User  not found")
                 }
             );
 
@@ -85,13 +92,13 @@ module.exports = function(app, models) {
     }
 
     function updateUser(req, res) {
-        var id = req.params.userId;
+        var userId = req.params.userId;
         var user = req.body;
         userModel
-            .findUserById(userId)
+            .updateUser(userId, user)
             .then(
                 function(user) {
-                    res.sendStatus(200);
+                    res.send(user);
                 },
                 function(error) {
                     res.status(400).send("User " + userId + " cannot be updated")

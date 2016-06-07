@@ -17,11 +17,12 @@ module.exports = function(mongoose) {
        return User.create(user);
     }
 
-    function updateUser(newUser) {
+    function updateUser(userId, newUser) {
         return User.update(
             {_id: userId},
             {$set:
                 {
+                    email: newUser.email,
                     firstName: newUser.firstName,
                     lastName: newUser.lastName
                 }
