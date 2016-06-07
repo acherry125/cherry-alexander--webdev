@@ -66,7 +66,7 @@ module.exports = function(app, models) {
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    res.json(user._id);
+                    res.json(user);
                 },
                 function(error) {
                     res.status(400).send("User " + userId + " not found")
@@ -87,6 +87,17 @@ module.exports = function(app, models) {
     function updateUser(req, res) {
         var id = req.params.userId;
         var user = req.body;
+        userModel
+            .findUserById(userId)
+            .then(
+                function(user) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(400).send("User " + userId + " cannot be updated")
+                }
+            );
+        /*
         for (var i in users) {
             if (users[i]._id === id) {
                 users[i].firstName = user.firstName;
@@ -97,6 +108,7 @@ module.exports = function(app, models) {
             }
         }
         res.status(404).send("User with ID"+ id + "not found");
+        */
     }
 
     function deleteUser(req, res) {
@@ -118,7 +130,7 @@ module.exports = function(app, models) {
             .createUser(newUser)
             .then(
                 function(user) {
-                    res.json(user);
+                    res.json(user._id);
                 },
                 function(error) {
                     res.status(400).send("error")

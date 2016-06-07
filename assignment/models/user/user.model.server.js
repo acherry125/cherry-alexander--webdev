@@ -17,8 +17,17 @@ module.exports = function(mongoose) {
        return User.create(user);
     }
 
-    function updateUser() {
+    function updateUser(newUser) {
+        return User.update(
+            {_id: userId},
+            {$set:
+                {
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName
+                }
+            }
 
+        )
     }
     
     function deleteUser(userId) {

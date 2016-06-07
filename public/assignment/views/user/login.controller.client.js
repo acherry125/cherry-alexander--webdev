@@ -19,7 +19,7 @@
                 // when the server responds
                 .then(
                     function(response) {
-                        var id = response.data;
+                        var id = response.data._id;
                         $location.url("/user/" + id);
                     },
                     function(error) {
