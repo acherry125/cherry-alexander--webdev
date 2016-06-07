@@ -21,8 +21,8 @@ module.exports = function(mongoose) {
 
     }
     
-    function deleteUser() {
-
+    function deleteUser(userId) {
+        return User.remove({_id: userId})
     }
     
     function findUserById(userId) {
@@ -34,7 +34,7 @@ module.exports = function(mongoose) {
     }
 
     function findUserByCredentials(username, password) {
-        return User.findOne({username:username, password:password});
+        return User.findOne({"username":username, "password":password});
     }    
     
     

@@ -62,6 +62,18 @@ module.exports = function(app, models) {
 
     // find a user by their username and password
     function findUserByCredentials(username, password, res){
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    res.json(user._id);
+                },
+                function(error) {
+                    res.status(400).send("User " + userId + " not found")
+                }
+            );
+
+        /*
         for(var i in users) {
             if (users[i].username === username && users[i].password === password) {
                 res.send(users[i]._id);
@@ -69,6 +81,7 @@ module.exports = function(app, models) {
             }
         }
         res.status(401).send("User " + username + " not found");
+        */
     }
 
     function updateUser(req, res) {
