@@ -1,5 +1,7 @@
 
-module.exports = function(app, requester) {
+module.exports = function(app) {
+
+    var request = require('request');
     
     // respond to page queries
     app.get("/api/flickr", makeRequest);
@@ -17,7 +19,7 @@ module.exports = function(app, requester) {
         url = urlBase.replace("TEXT", term).replace("API_KEY", key).replace("PAGE", page);
         console.log(url);
 
-        requester(url, function (error, response, body) {
+        request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var page = body;
                 res.send(page);

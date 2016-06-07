@@ -1,5 +1,7 @@
-module.exports = function(app) {
+module.exports = function(app, models) {
 
+    var userModel = models.userModel;
+    
     var users = [
         {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
         {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
@@ -94,6 +96,20 @@ module.exports = function(app) {
 
     function createUser(req, res) {
         var newUser = req.body;
+        
+        userModel
+            .createUser(newUser)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(error) {
+                    res.status(400).send("error")
+                }
+            );
+        
+        /*
+        var newUser = req.body;
         for (var i in users) {
             if(users[i].username === newUser.username) {
                 res.status(403).send("Username " + newUser.username + " is already in use");
@@ -108,6 +124,7 @@ module.exports = function(app) {
             var user = {_id: id, username: newUser.username, password: newUser.password};
             users.push(user);
         }
+        */
     }
 
 };
