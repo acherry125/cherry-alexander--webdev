@@ -66,12 +66,9 @@ module.exports = function(app, models) {
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    console.log(user);
                     if(user === null) {
-                        console.log("null");
                         res.status(400).send("User and password pair not found")
                     } else{
-                        console.log("not null");
                         res.json(user);
                     }
                 },
@@ -119,7 +116,19 @@ module.exports = function(app, models) {
     }
 
     function deleteUser(req, res) {
-        var id = req.params.userId;
+        var userId = req.params.userId;
+
+        userModel
+            .deleteUser(userId)
+            .then(
+                function(user) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(404).send("User with ID"+ userId + "not found");
+                }
+            );
+        /*
         for (var i in users) {
             if (users[i]._id === id) {
                 users.splice(i, 1);
@@ -128,6 +137,7 @@ module.exports = function(app, models) {
             }
         }
         res.status(404).send("User with ID"+ id + "not found");
+        */
     }
 
     function createUser(req, res) {
