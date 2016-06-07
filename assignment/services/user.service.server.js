@@ -36,13 +36,17 @@ module.exports = function(app, models) {
     // find a user by their id
     function findUserById(req, res){
         var userId = req.params.userId;
-        for(var i in users) {
-            if (users[i]._id === userId) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.status(404).send("User " + userId + " not found");
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(error) {
+                    res.status(400).send("User " + userId + " not found")
+                }
+            );
     }
 
     // find a user by their username

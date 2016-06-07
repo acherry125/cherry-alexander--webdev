@@ -25,16 +25,16 @@ module.exports = function(mongoose) {
 
     }
     
-    function findUserById() {
-
+    function findUserById(userId) {
+        return User.findById(userId);
     }
     
     function findUserByUsername() {
 
     }
 
-    function findUserByCredentials() {
-
+    function findUserByCredentials(username, password) {
+        return User.findOne({username:username, password:password});
     }    
     
     

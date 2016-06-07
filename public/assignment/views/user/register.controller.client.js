@@ -26,7 +26,7 @@
                     .createUser(newUser)
                     .then(
                         function (response) {
-                            $location.url("/user/" + response.data);
+                            $location.url("/user/" + response.data._id);
                         },
                         function (error) {
                             vm.error = error.data;
