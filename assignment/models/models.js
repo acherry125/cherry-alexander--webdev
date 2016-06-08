@@ -4,7 +4,7 @@ module.exports = function() {
 
     /* found here, makes it work with OpenShift */
     // http://stackoverflow.com/questions/29073657/mongoose-openshift-connection
-    var url = '127.0.0.1:27017/' + process.env.OPENSHIFT_APP_NAME;
+    var url = '127.0.0.1:27017/second';
 
 	// if OPENSHIFT env variables are present, use the available connection info:
 	if (process.env.OPENSHIFT_MONGODB_DB_URL) {

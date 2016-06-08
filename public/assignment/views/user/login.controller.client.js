@@ -14,17 +14,25 @@
 
         // login handler
         function login(username, password) {
-            UserService
-                .findUserByCredentials(username, password)
-                // when the server responds
-                .then(
-                    function(response) {
-                        var id = response.data._id;
-                        $location.url("/user/" + id);
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    });
+            if(verifyLogin(username, password)) {
+                UserService
+                    .findUserByCredentials(username, password)
+                    // when the server responds
+                    .then(
+                        function(response) {
+                            var id = response.data._id;
+                            $location.url("/user/" + id);
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        });
+            } else {
+                vm.error = "Please enter a Username and Password";
+            }
+        }
+
+        function verifyLogin(username, password) {
+            return (username && password);
         }
     }
 })();
