@@ -4,7 +4,7 @@
     angular
         .module("WebAppMaker")
         // naming controller and binding it to function
-        .controller("LoginController", LoginController);
+        .controller("LoginController", LoginController)
 
     function LoginController($location, UserService) {
         // referring to self (View Model)
