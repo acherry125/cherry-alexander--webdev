@@ -37,6 +37,12 @@
 
         /* Find a user by its username and password */
         function findUserByCredentials(username, password) {
+            if(username === '' || password === '') {
+                // figure this out!!!
+                var username = '';
+                var password = '';
+                
+            }
             var url = "/api/user?username=" + username + "&password=" + password;
             return $http.get(url);
         }

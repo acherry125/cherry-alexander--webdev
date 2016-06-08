@@ -67,12 +67,13 @@ module.exports = function(app, models) {
             .then(
                 function(user) {
                     if(user === null) {
-                        res.status(400).send("User and password pair not found")
+                        res.status(401).send("User and password pair not found")
                     } else{
                         res.json(user);
                     }
                 },
                 function(error) {
+                    console.log("creds error");
                     res.status(401).send("User  not found")
                 }
             );
