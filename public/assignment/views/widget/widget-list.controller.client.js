@@ -51,6 +51,10 @@
             return $sce.trustAsResourceUrl(src);
         }
 
+        function getTrustedHTML() {
+
+        }
+
         // make the widget list sortable (only temporary until page refresh)
         $("#widget-container")
             .sortable({handle: ".ac-glyphicon-container"});

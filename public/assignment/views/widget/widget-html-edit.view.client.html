@@ -1,0 +1,50 @@
+<!-- WIDGET HEADER PAGE -->
+<!-- Header Navigation Bar -->
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back/Cancel Button -->
+                <p class="navbar-text pull-left">
+                    <a ng-click="model.checkNew()" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    Edit Widget
+                </a>
+                <!-- Save and Confirm button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.updateWidget()" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<!-- figure this out -->
+<div text-angular ng-model="model.html"></div>
+
+<div ng-bind-html="model.html"></div>
+
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Profile Link Button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.checkNew" href="#/user/{{model.userId}}" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>

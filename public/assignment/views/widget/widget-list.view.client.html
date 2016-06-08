@@ -82,6 +82,8 @@
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
             </div>
+            <!-- HTML TEMPLATE -->
+            <div ng-switch-when="HTML" ng-bind-html="model.getTrustedHtml(widget._id)"></div>
         </div>
     </div>
 </div>

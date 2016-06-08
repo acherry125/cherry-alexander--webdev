@@ -29,6 +29,8 @@
                 createImage(unique);
             } else if (type == "YOUTUBE") {
                 createYouTube(unique);
+            } else if (type == "HTML") {
+                createHTML(unique);
             }
         }
 
@@ -70,6 +72,21 @@
                 "text": "", "width": "", "url": ""};
             WidgetService
                 .createWidget(pid, youtube)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
+                    },
+                    function(error) {
+                        vm.error(error);
+                    }
+                );
+        }
+
+        // create a new Youtube Widget
+        function createHTML(id) {
+            var html = {"_id": id, "name": "", widgetType: "HTML" };
+            WidgetService
+                .createWidget(pid, html)
                 .then(
                     function(response) {
                         $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
