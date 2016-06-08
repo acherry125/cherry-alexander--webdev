@@ -1,7 +1,9 @@
 module.exports = function() {
 
     var mongoose = require('mongoose');
-    //mongoose.connect('mongodb://localhost/test');
+
+    /* found here, makes it work with OpenShift */
+    // http://stackoverflow.com/questions/29073657/mongoose-openshift-connection
     var url = '127.0.0.1:27017/' + process.env.OPENSHIFT_APP_NAME;
 
 	// if OPENSHIFT env variables are present, use the available connection info:
@@ -23,6 +25,7 @@ module.exports = function() {
 	});
 
 	db.on('disconnected', connect);
+	/* end of found on the internet portion */
 
     var userModel = require("./user/user.model.server.js")(mongoose);
     var websiteModel = require("./website/website.model.server.js")(mongoose);
