@@ -5,8 +5,8 @@ module.exports = function(mongoose) {
 
     var api = {
         "createPage": createPage,
-        "updateUser": updatePage,
-        "deleteUser": deletePage,
+        "updatePage": updatePage,
+        "deletePage": deletePage,
         "findPageById": findPageById,
         "findAllPagesForWebsite": findAllPagesForWebsite
     };
@@ -41,7 +41,7 @@ module.exports = function(mongoose) {
     }
 
     function findAllPagesForWebsite(wid) {
-        return Page.findOne({"_website":wid});
+        return Page.find({"_website":wid});
     }
 
 };
