@@ -117,7 +117,7 @@ module.exports = function(app, models) {
             );
     }
 
-    function createUser(req, res) {
+    function createWebsiteForUser(req, res) {
         var newUser = req.body;
         // check if password and verify match
         if (!(newUser.password === newUser.verify)) {

@@ -25,7 +25,8 @@ module.exports = function() {
         return Widget.findOne({_id: widgetId})
     }
 
-    function createWidget(widget) {
+    function createWidget(pageId, widget) {
+        widget._page = pageId;
         return Widget.create(widget);
     }
 
@@ -54,6 +55,10 @@ module.exports = function() {
     }
 
     function deleteWidget(widgetId) {
+        return Widget.remove({_id: widgetId})
+    }
+
+    function reorderWidget(pageId, start, end) {
         return Widget.remove({_id: widgetId})
     }
 

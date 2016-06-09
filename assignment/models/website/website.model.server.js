@@ -25,7 +25,8 @@ module.exports = function() {
         return Website.findOne({_id: websiteId})
     }
 
-    function createWebsite(website) {
+    function createWebsiteForUser(userId, website) {
+        website._user = userId;
         return Website.create(website);
     }
     

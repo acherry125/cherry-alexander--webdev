@@ -96,8 +96,6 @@ module.exports = function(app, models) {
             res.status(400).send("Website must have name");
             return;
         }
-        // give website its user id
-        newWebsite["_user"] = userId;
         // check if website by this name already exists
         websiteModel
             .findAllWebsitesForUser(userId)
@@ -123,7 +121,7 @@ module.exports = function(app, models) {
     // creates a website once the checks have been made
     function createWebsiteHelper(userId, newWebsite, res) {
         websiteModel
-            .createWebsite(newWebsite)
+            .createWebsite(userId, newWebsite)
             .then(
                 function(website) {
                     res.send(website._id);

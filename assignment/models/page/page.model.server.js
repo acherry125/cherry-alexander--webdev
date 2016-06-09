@@ -12,7 +12,8 @@ module.exports = function(mongoose) {
     };
     return api;
 
-    function createPage(page) {
+    function createPage(websiteId, page) {
+        page._website = websiteId;
         return Page.create(page);
     }
 
