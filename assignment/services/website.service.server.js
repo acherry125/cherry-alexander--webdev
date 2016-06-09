@@ -120,6 +120,7 @@ module.exports = function(app, models) {
 
     }
 
+    // creates a website once the checks have been made
     function createWebsiteHelper(userId, newWebsite, res) {
         websiteModel
             .createWebsite(newWebsite)
