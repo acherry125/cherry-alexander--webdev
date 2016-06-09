@@ -14,6 +14,7 @@ module.exports = function(mongoose) {
 
     function createPage(websiteId, page) {
         page._website = websiteId;
+        page.date = new Date();
         return Page.create(page);
     }
 

@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
         email: String,
         phone: String,
         websites: [{type: mongoose.Schema.Types.ObjectId, ref: "Widget"}],
-        dateCreated: {type: Date, default: (new Date())},
+        dateCreated: Date
     }, {collection: "user"});
 
     return UserSchema;

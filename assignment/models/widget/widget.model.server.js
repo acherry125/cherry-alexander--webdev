@@ -27,6 +27,7 @@ module.exports = function() {
 
     function createWidget(pageId, widget) {
         widget._page = pageId;
+        widget.date = new Date();
         return Widget.create(widget);
     }
 

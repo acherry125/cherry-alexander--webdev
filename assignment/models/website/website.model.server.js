@@ -27,6 +27,7 @@ module.exports = function() {
 
     function createWebsiteForUser(userId, website) {
         website._user = userId;
+        website.date = new Date();
         return Website.create(website);
     }
     

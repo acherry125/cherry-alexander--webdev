@@ -17,8 +17,7 @@ module.exports = function(mongoose) {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
-        dateCreated: {type: Date, default: (new Date())},
-
+        dateCreated: Date
     }, {collection: "widget"});
 
     return WidgetSchema;
