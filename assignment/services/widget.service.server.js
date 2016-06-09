@@ -39,10 +39,10 @@ module.exports = function(app) {
 
     // handle widget queries
     function findAllWidgetsForPage(req, res) {
-        var pid = req.params.pageId;
+        var pageId = req.params.pageId;
         var result = [];
         for(var i in widgets) {
-            if (widgets[i].pageId === pid) {
+            if (widgets[i].pageId === pageId) {
                 result.push(widgets[i]);
             }
         }
@@ -77,7 +77,7 @@ module.exports = function(app) {
 
     // create a new widget
     function createWidget(req, res) {
-        var pid = req.params.pageId;
+        var pageId = req.params.pageId;
         var newWidget = req.body;
         widgets.push(newWidget);
         res.sendStatus(200);

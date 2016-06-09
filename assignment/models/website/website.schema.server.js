@@ -6,6 +6,7 @@ module.exports = function(mongoose) {
         description: String,
         pages: [{type: mongoose.Schema.Types.ObjectId, ref: "Page"}],
         dateCreated: {type: Date, default: (new Date())},
+        dateCreated: {type: Date, default: (new Date())},
     }, {collection: "website"});
     
     return WebsiteSchema;

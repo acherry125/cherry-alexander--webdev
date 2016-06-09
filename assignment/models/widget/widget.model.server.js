@@ -7,42 +7,54 @@ module.exports = function() {
     var Widget = mongoose.model("Widget", WidgetSchema);
 
     var api = {
-        "findAllWebsitesForUser": findAllWebsitesForUser,
-        "findWebsiteById" : findWebsiteById,
-        "createWebsite" : createWebsite,
-        "updateWebsite" : updateWebsite,
-        "deleteWebsite" : deleteWebsite
+        "findAllWidgetsForPage": findAllWidgetsForPage,
+        "findWidgetById" : findWidgetById,
+        "createWidget" : createWidget,
+        "updateWidget" : updateWidget,
+        "deleteWidget" : deleteWidget
     };
 
     return api;
 
 
-    function findAllWebsitesForUser(userId) {
-        return Widget.find({_user: userId})
+    function findAllWidgetsForPage(pageId) {
+        return Widget.find({_user: pageId})
     }
 
-    function findWebsiteById(websiteId) {
-        return Widget.findOne({_id: websiteId})
+    function findWidgetById(widgetId) {
+        return Widget.findOne({_id: widgetId})
     }
 
-    function createWebsite(website) {
-        return Widget.create(website);
+    function createWidget(widget) {
+        return Widget.create(widget);
     }
 
-    function updateWebsite(websiteId, website) {
+    function updateWidget(widgetId, widget) {
         return Widget.update(
-            {_id: websiteId},
+            {_id: widgetId},
             {
                 $set: {
-                    name: website.name,
-                    description: website.description
+                    name: widget.name,
+                    text: widget.text,
+                    placeholder: widget.placeholder,
+                    description: widget.description,
+                    url: widget.url,
+                    // might be a problem
+                    width: widget.width,
+                    height: widget.height,
+                    rows: widget.rows,
+                    size: widget.size,
+                    class: widget.class,
+                    icon: widget.icon,
+                    deletable: widget.deletable,
+                    formatted: widget.formatted,
                 }
             }
         )
     }
 
-    function deleteWebsite(websiteId) {
-        return Widget.remove({_id: websiteId})
+    function deleteWidget(widgetId) {
+        return Widget.remove({_id: widgetId})
     }
 
 };

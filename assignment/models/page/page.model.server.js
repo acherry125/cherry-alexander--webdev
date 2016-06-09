@@ -30,12 +30,12 @@ module.exports = function(mongoose) {
         )
     }
 
-    function deletePage(pid) {
-        return Page.remove({_id: pid})
+    function deletePage(pageId) {
+        return Page.remove({_id: pageId})
     }
 
-    function findPageById(pid) {
-        return Page.findById(pid);
+    function findPageById(pageId) {
+        return Page.findById(pageId);
     }
 
     function findAllPagesForWebsite(wid) {

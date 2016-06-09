@@ -32,14 +32,14 @@ module.exports = function(app) {
 
     /* find a page by its id */
     function findPageById(req, res){
-        var pid = req.params.pageId;
+        var pageId = req.params.pageId;
         for(var i in pages) {
-            if (pages[i]._id === pid) {
+            if (pages[i]._id === pageId) {
                 res.send(pages[i]);
                 return;
             }
         }
-        res.status(404).send("Page with id " + pid + " not found");
+        res.status(404).send("Page with id " + pageId + " not found");
     }
 
     /* update a page */
@@ -58,15 +58,15 @@ module.exports = function(app) {
     
     /* create a new widget */
     function deletePage(req, res) {
-        var pid = req.params.pageId;
+        var pageId = req.params.pageId;
         for (var i in pages) {
-            if(pages[i]._id === pid) {
+            if(pages[i]._id === pageId) {
                 pages.splice(i, 1);
                 res.sendStatus(200);
                 return;
             }
         }
-        res.status(404).send("Page " + pid + " does not exist");
+        res.status(404).send("Page " + pageId + " does not exist");
     }
 
     /* create a new widget */
