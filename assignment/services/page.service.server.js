@@ -24,7 +24,7 @@ module.exports = function(app) {
     function findAllPagesForWebsite(req, res) {
         var wid = req.params.websiteId;
         pageModel
-            .findAllPagesForWebsite(userId)
+            .findAllPagesForWebsite(wid)
             .then(
                 function(pages) {
                     res.json(pages);
@@ -38,13 +38,20 @@ module.exports = function(app) {
     /* find a page by its id */
     function findPageById(req, res){
         var pageId = req.params.pageId;
-        for(var i in pages) {
-            if (pages[i]._id === pageId) {
-                res.send(pages[i]);
-                return;
-            }
-        }
-        res.status(404).send("Page with id " + pageId + " not found");
+        pageModel
+            .findPageById(pageId)
+            .then(
+                function(page) {
+                    if(page === null) {
+                        res.status(404).send("Page " + pageId + " not found")
+                    } else {
+                        res.json(page);
+                    }
+                },
+                function(error) {
+                    res.status(404).send("Page " + pageId + " not found")
+                }
+            );
     }
 
     /* update a page */
