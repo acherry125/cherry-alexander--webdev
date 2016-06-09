@@ -94,7 +94,7 @@ module.exports = function(app, models) {
             .updateUser(userId, user)
             .then(
                 function(user) {
-                    res.send(user);
+                    res.sendStatus(200);
                 },
                 function(error) {
                     res.status(400).send("User " + userId + " cannot be updated")

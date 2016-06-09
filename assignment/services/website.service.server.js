@@ -54,16 +54,23 @@ module.exports = function(app, models) {
     }
 
     function updateWebsite(req, res) {
-        var id = req.params.websiteId;
-        var update = req.body;
-        for (var i in websites) {
-            if (websites[i]._id === id) {
-                websites[i] = update;
-                res.sendStatus(200);
-                return;
-            }
+        var wid = req.params.websiteId;
+        var website = req.body;
+
+        if(website && website.name) {
+            websiteModel
+                .updateWebsite(wid, website)
+                .then(
+                    function(response) {
+                        res.sendStatus(200);
+                    },
+                    function(error) {
+                        res.status(400).send("Website " + wid + " cannot be updated")
+                    }
+                );
+        } else {
+            res.status(400).send("Website must have a name");
         }
-        res.status(404).send("Website with ID"+ id + "not found");
     }
 
     function deleteWebsite(req, res) {
