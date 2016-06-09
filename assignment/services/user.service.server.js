@@ -2,13 +2,6 @@ module.exports = function(app, models) {
 
     var userModel = models.userModel;
     
-    var users = [
-        {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
-        {_id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley"},
-        {_id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia"},
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
-    ];
-
     // respond to user queries
     app.get("/api/user", getUsers);
     // respond to request for specific user
@@ -41,7 +34,11 @@ module.exports = function(app, models) {
             .findUserById(userId)
             .then(
                 function(user) {
-                    res.json(user);
+                    if(user === null) {
+                        res.status(400).send("User " + userId + " not found")
+                    } else {
+                        res.json(user);
+                    }
                 },
                 function(error) {
                     res.status(400).send("User " + userId + " not found")
