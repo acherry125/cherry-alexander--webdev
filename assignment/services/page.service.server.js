@@ -78,18 +78,39 @@ module.exports = function(app) {
             res.status(400).send("Page must have name");
             return;
         }
-        // check if page name already exists
-        for(var i in pages) {
-            if (pages[i].name === newPage.name && pages[i].websiteId === newPage.websiteId) {
-                res.status(400).send("Page name " + newPage.name + " already in use");
-                return;
-            }
-        }
-        var id = (new Date()).getTime() + "";
-        newPage["_id"] = id;
-        newPage["websiteId"] = wid;
-        pages.push(newPage);
-        res.send(id);
+        // check if website by this name already exists
+        pageMode
+            .findAllPagesForWebsite(wid)
+            .then(
+                function(pages) {
+                    for(var i in pages) {
+                        if(pages[i].name === newPage.name) {
+                            res.status(400).send("Page name " + newPage.name + " already in use");
+                            return;
+                        }
+                    }
+                    // create the website
+                    createPageHelper(wid, newPage, res);
+                },
+                function(error) {
+                    res.status(400).send("Could not create page, please try again");
+                }
+            );
     }
+
+    // creates a page once the checks have been made
+    function createPageHelper(wid, newPage, res) {
+        websiteModel
+            .createWebsiteForUser(wid, newPage)
+            .then(
+                function(page) {
+                    res.send(page._id);
+                },
+                function(error) {
+                    res.status(400).send("Could not create page, please try again");
+                }
+            );
+    }
+
 
 };

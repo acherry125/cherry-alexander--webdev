@@ -6,6 +6,7 @@
         .controller("WidgetListController", WidgetListController)
         .directive("sortableList", SortableList);
 
+    // sorting directive function (see if this can be moved to a directive folder)
     function SortableList() {
         function linker(scope, element, attributes) {
             $(element)
