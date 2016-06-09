@@ -68,28 +68,30 @@ module.exports = function(app, models) {
 
     function deleteWebsite(req, res) {
         var id = req.params.websiteId;
-        for (var i in websites) {
-            if (websites[i]._id === id) {
-                websites.splice(i, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.status(404).send("Website with ID"+ id + "not found");
+        websiteModel
+            .deleteWebsite(id)
+            .then(
+                function(website) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(404).send("Could not delete website, please try again");
+                }
+            );
     }
     
     // create a new widget
     function createWebsite(req, res) {
         var userId = req.params.userId;
         var newWebsite = req.body;
-
-
+        // check if website has a name
         if (!newWebsite || !newWebsite.name) {
             res.status(400).send("Website must have name");
             return;
         }
-
+        // give website its user id
         newWebsite["_user"] = userId;
+        // check if website by this name already exists
         websiteModel
             .findAllWebsitesForUser(userId)
             .then(
@@ -100,6 +102,7 @@ module.exports = function(app, models) {
                             return;
                         }
                     }
+                    // create the website
                     createWebsiteHelper(userId, newWebsite, res);
                 },
                 function(error) {
@@ -118,7 +121,7 @@ module.exports = function(app, models) {
                     res.send(website._id);
                 },
                 function(error) {
-                    res.sendStatus(400);
+                    res.status(400).send("Could not create website, please try again");
                 }
             );
     }
