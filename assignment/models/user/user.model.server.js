@@ -14,7 +14,7 @@ module.exports = function(mongoose) {
     return api;
     
     function createUser(user) {
-        user.date = new Date();
+        user.dateCreated = new Date();
         return User.create(user);
     }
 
