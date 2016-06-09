@@ -27,8 +27,8 @@
         </div>
     </nav>
 </header>
-<!-- Main Container -->
-<div class="container" id="widget-container">
+    <!-- Main Container -->
+<div sortable-list class="container" id="widget-container">
     <!-- One switch case for every implemented widget type -->
     <div ng-repeat="widget in model.widgets" class="row ac-row">
         <div ng-switch="widget.widgetType">
@@ -89,7 +89,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Footer Navigation Bar -->
 <footer>

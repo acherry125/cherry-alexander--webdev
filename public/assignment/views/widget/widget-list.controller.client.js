@@ -3,7 +3,20 @@
 
     angular
         .module("WebAppMaker")
-        .controller("WidgetListController", WidgetListController);
+        .controller("WidgetListController", WidgetListController)
+        .directive("sortableList", SortableList);
+
+    function SortableList() {
+        function linker(scope, element, attributes) {
+            $(element)
+                .sortable({
+                    handle: ".ac-glyphicon-container"
+                });
+        }
+        return {
+            link: linker
+        }
+    }
 
     function WidgetListController($routeParams, $sce, WidgetService) {
         vm = this;
@@ -15,6 +28,7 @@
         vm.pageId =  pid;
         vm.fixYoutube = fixYoutube;
         var allowSrc = allowSrc;
+
 
         function init() {
             WidgetService
@@ -55,10 +69,30 @@
 
         }
 
+        function SortableDirective() {
+            function sortLinker(scope, element, atrributes) {
+                var data = scope.data;
+                $(element)
+                    .find("#widget-container")
+                    .sortable({
+                        start: function() {
+                            console.log("sorting began");
+                        },
+                        stop: function() {
+                            console.log("sorting stopped")
+                        }
+                    });
+            }
+            return {
+                scope: {},
+                link: sortLinker
+            }
+        }
+        /*
         // make the widget list sortable (only temporary until page refresh)
         $("#widget-container")
             .sortable({handle: ".ac-glyphicon-container"});
-
+        */
     }
 
 })();
