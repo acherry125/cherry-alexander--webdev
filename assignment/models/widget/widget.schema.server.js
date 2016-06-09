@@ -7,7 +7,6 @@ module.exports = function(mongoose) {
         text: String,
         placeholder: String,
         description: String,
-        description: String,
         url: String,
         // might be a problem
         width: String,
