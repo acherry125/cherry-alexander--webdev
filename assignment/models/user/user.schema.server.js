@@ -11,7 +11,7 @@ module.exports = function(mongoose) {
         dateCreate: {type: Date, default: Date.now()},
         dateUpdated: Data
         */
-    }, /* this will set the collection name */ {collection: "user"});
+    }, {collection: "user"});
 
     return UserSchema;
 

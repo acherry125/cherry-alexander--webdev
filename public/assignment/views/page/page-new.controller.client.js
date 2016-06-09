@@ -26,7 +26,7 @@
                             $location.url("/user/" + uid + "/website/" + wid + "/page")
                         },
                         function(error) {
-                            vm.error = error.body;
+                            vm.error = error.data;
                         }
                     );
             } else {

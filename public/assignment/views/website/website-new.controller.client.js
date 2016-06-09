@@ -23,7 +23,7 @@
                         $location.url("/user/" + uid + "/website")
                     },
                     function(error) {
-                        vm.error = error.body;
+                        vm.error = error.data;
                     }
                 );
             } else {

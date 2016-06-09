@@ -1,4 +1,6 @@
-module.exports = function(app) {
+module.exports = function(app, models) {
+
+    var websiteModel = models.websiteModel;
 
     var websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" },
@@ -23,26 +25,32 @@ module.exports = function(app) {
 
     // handle website queries
     function findAllWebsitesForUser(req, res) {
-        var uid = req.params.userId;
-        var result = [];
-        for(var i in websites) {
-            if (websites[i].developerId === uid) {
-                result.push(websites[i]);
-            }
-        }
-        res.send(result);
+        var userId = req.params.userId;
+        websiteModel
+            .findAllWebsitesForUser(userId)
+            .then(
+                function(websites) {
+                    res.json(websites);
+                },
+                function(error) {
+                    res.status(404).send("Cannot search for websites right now")
+                }
+            );
     }
-    
+
     // find a website by its id
     function findWebsiteById(req, res){
         var wid = req.params.websiteId;
-        for(var i in websites) {
-            if (websites[i]._id === wid) {
-                res.send(websites[i]);
-                return;
-            }
-        }
-        res.sendStatus(404);
+        websiteModel
+            .findWebsiteById(wid)
+            .then(
+                function(website) {
+                    res.json(website);
+                },
+                function(error) {
+                    res.status(404).send("Website " + wid + " not found")
+                }
+            );
     }
 
     function updateWebsite(req, res) {
@@ -72,23 +80,47 @@ module.exports = function(app) {
     
     // create a new widget
     function createWebsite(req, res) {
-        var uid = req.params.userId;
+        var userId = req.params.userId;
         var newWebsite = req.body;
+
+
         if (!newWebsite || !newWebsite.name) {
             res.status(400).send("Website must have name");
             return;
         }
-        for(var i in websites) {
-            if (websites[i].name === newWebsite.name && websites[i].userId === newWebsite.userId) {
-                    res.status(400).send("Website name " + newWebsite.name + " already in use");
-                return;
-            }
-        }
-        var id = (new Date()).getTime() + "";
-        newWebsite["_id"] = id;
-        newWebsite["developerId"] = uid;
-        websites.push(newWebsite);
-        res.send(id);
+
+        newWebsite["_user"] = userId;
+        websiteModel
+            .findAllWebsitesForUser(userId)
+            .then(
+                function(websites) {
+                    for(var i in websites) {
+                        if(websites[i].name === newWebsite.name) {
+                            res.status(400).send("Website name " + newWebsite.name + " already in use");
+                            return;
+                        }
+                    }
+                    createWebsiteHelper(userId, newWebsite, res);
+                },
+                function(error) {
+                    res.status(400).send("Could not create website, please try again");
+                }
+            )
+
+
+    }
+
+    function createWebsiteHelper(userId, newWebsite, res) {
+        websiteModel
+            .createWebsite(newWebsite)
+            .then(
+                function(website) {
+                    res.send(website._id);
+                },
+                function(error) {
+                    res.sendStatus(400);
+                }
+            );
     }
     
 };

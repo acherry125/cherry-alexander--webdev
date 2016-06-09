@@ -51,13 +51,21 @@ module.exports = function(app, models) {
 
     // find a user by their username
     function findUserByUsername(username, res){
-        for(var i in users) {
-            if (users[i].username === username) {
-                res.send(users[i]);
-                return;
-            }
-        }
-        res.status(404).send("User " + username + " not found");
+        userModel
+            .findUserByUsername(username)
+            .then(
+                function(user) {
+                    if(user === null) {
+                        res.status(404).send("User " + username + " not found");
+                    } else{
+                        res.json(user);
+                    }
+                },
+                function(error) {
+                    console.log("creds error");
+                    res.status(404).send("User " + username + " not found");
+                }
+            );
     }
 
     // find a user by their username and password
@@ -77,16 +85,6 @@ module.exports = function(app, models) {
                     res.status(401).send("User  not found")
                 }
             );
-
-        /*
-        for(var i in users) {
-            if (users[i].username === username && users[i].password === password) {
-                res.send(users[i]._id);
-                return;
-            }
-        }
-        res.status(401).send("User " + username + " not found");
-        */
     }
 
     function updateUser(req, res) {
@@ -102,18 +100,6 @@ module.exports = function(app, models) {
                     res.status(400).send("User " + userId + " cannot be updated")
                 }
             );
-        /*
-        for (var i in users) {
-            if (users[i]._id === id) {
-                users[i].firstName = user.firstName;
-                users[i].lastName = user.lastName;
-                users[i].email = user.email;
-                res.sendStatus(200)
-                return;
-            }
-        }
-        res.status(404).send("User with ID"+ id + "not found");
-        */
     }
 
     function deleteUser(req, res) {
@@ -129,21 +115,38 @@ module.exports = function(app, models) {
                     res.status(404).send("User with ID"+ userId + "not found");
                 }
             );
-        /*
-        for (var i in users) {
-            if (users[i]._id === id) {
-                users.splice(i, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.status(404).send("User with ID"+ id + "not found");
-        */
     }
 
     function createUser(req, res) {
         var newUser = req.body;
-        
+        // check if password and verify match
+        if (!(newUser.password === newUser.verify)) {
+            res.status(400).send("Password and Verify Password must match");
+            return;
+        }
+        // check if the username is in the database already
+        userModel
+            .findUserByUsername(newUser.username)
+            .then(
+                function(response) {
+                    // user is not in database, create user
+                    if(response === null) {
+                        createUserHelper(newUser, res);
+                    } else{
+                        // user is in the database, do not create user
+                        res.status(400).send("Username is already taken");
+                    }
+                },
+                // database error, fire error
+                function(error) {
+                    res.status(400).send("Could not register user");
+                }
+            )
+    }
+
+    // after initial checks, actually create the user
+    function createUserHelper(newUser, res) {
+        // create the user
         userModel
             .createUser(newUser)
             .then(
@@ -151,27 +154,10 @@ module.exports = function(app, models) {
                     res.json(user._id);
                 },
                 function(error) {
-                    res.status(400).send("error")
+                    res.status(400).send("Cannot create user");
                 }
             );
-        
-        /*
-        var newUser = req.body;
-        for (var i in users) {
-            if(users[i].username === newUser.username) {
-                res.status(403).send("Username " + newUser.username + " is already in use");
-                return;
-            }
-        } 
-        if (!(newUser.password === newUser.verify)) {
-            res.status(403).send("Password and Verify Password must match");
-        } else {
-            var id = (new Date()).getTime() + "";
-            res.send(id);
-            var user = {_id: id, username: newUser.username, password: newUser.password};
-            users.push(user);
-        }
-        */
     }
+
 
 };
