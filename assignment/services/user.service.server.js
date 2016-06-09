@@ -18,7 +18,7 @@ module.exports = function(app, models) {
     // delete a user
     app.delete("/api/user/:userId", deleteUser);
     // Create a user
-    app.post("/api/user", createUser);
+    app.post("/api/user", createWebsiteForUser);
 
 
     // handle user queries

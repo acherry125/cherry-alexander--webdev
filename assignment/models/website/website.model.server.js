@@ -9,7 +9,7 @@ module.exports = function() {
     var api = {
         "findAllWebsitesForUser": findAllWebsitesForUser,
         "findWebsiteById" : findWebsiteById,
-        "createWebsite" : createWebsite,
+        "createWebsiteForUser" : createWebsiteForUser,
         "updateWebsite" : updateWebsite,
         "deleteWebsite" : deleteWebsite
     };

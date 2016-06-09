@@ -121,7 +121,7 @@ module.exports = function(app, models) {
     // creates a website once the checks have been made
     function createWebsiteHelper(userId, newWebsite, res) {
         websiteModel
-            .createWebsite(userId, newWebsite)
+            .createWebsiteForUser(userId, newWebsite)
             .then(
                 function(website) {
                     res.send(website._id);
