@@ -1,0 +1,45 @@
+module.exports = function(mongoose) {
+
+    var PageSchema = require("./page.schema.server.js")(mongoose);
+    var Page = mongoose.model("Page", PageSchema);
+
+    var api = {
+        "createPage": createPage,
+        "updateUser": updatePage,
+        "deleteUser": deletePage,
+        "findPageById": findPageById,
+        "findAllPagesForWebsite": findAllPagesForWebsite
+    };
+    return api;
+
+    function createPage(page) {
+        return Page.create(page);
+    }
+
+    function updatePage(wid, newPage) {
+        return Page.update(
+            {_id: wid},
+            {$set:
+            {
+                name: newPage.name,
+                title: newPage.title,
+                description: newPage.description
+            }
+            }
+
+        )
+    }
+
+    function deletePage(pid) {
+        return Page.remove({_id: pid})
+    }
+
+    function findPageById(pid) {
+        return Page.findById(pid);
+    }
+
+    function findAllPagesForWebsite(wid) {
+        return Page.findOne({"_website":wid});
+    }
+
+};
