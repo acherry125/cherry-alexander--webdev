@@ -60,7 +60,7 @@ module.exports = function() {
     }
 
     function reorderWidget(pageId, start, end) {
-        return Widget.remove({_id: widgetId})
+        //return Widget.remove({_id: widgetId})
     }
 
 };
