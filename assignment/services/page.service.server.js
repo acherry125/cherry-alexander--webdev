@@ -1,5 +1,7 @@
 module.exports = function(app) {
 
+    var pageModel = models.pageModel;
+
     var pages = [
         { "_id": "321", "name": "Post 1", "websiteId": "456" },
         { "_id": "432", "name": "Post 2", "websiteId": "456" },
@@ -44,29 +46,38 @@ module.exports = function(app) {
 
     /* update a page */
     function updatePage(req, res) {
-        var id = req.params.pageId;
-        var update = req.body;
-        for (var i in pages) {
-            if (pages[i]._id === id) {
-                pages[i] = update;
-                res.sendStatus(200);
-                return;
-            }
+        var pageId = req.params.pageId;
+        var page = req.body;
+
+        if(page && page.name) {
+            pageModel
+                .updatePage(pageId, page)
+                .then(
+                    function(response) {
+                        res.sendStatus(200);
+                    },
+                    function(error) {
+                        res.status(400).send("Page " + wid + " cannot be updated")
+                    }
+                );
+        } else {
+            res.status(400).send("Page must have a name");
         }
-        res.status(404).send("Page with ID"+ id + "not found");
     }
     
     /* create a new widget */
     function deletePage(req, res) {
         var pageId = req.params.pageId;
-        for (var i in pages) {
-            if(pages[i]._id === pageId) {
-                pages.splice(i, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.status(404).send("Page " + pageId + " does not exist");
+        pageModel
+            .deletePage(pageId)
+            .then(
+                function(page) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(404).send("Could not delete page, please try again");
+                }
+            );
     }
 
     /* create a new widget */
@@ -79,7 +90,7 @@ module.exports = function(app) {
             return;
         }
         // check if website by this name already exists
-        pageMode
+        pageModel
             .findAllPagesForWebsite(wid)
             .then(
                 function(pages) {
@@ -100,8 +111,8 @@ module.exports = function(app) {
 
     // creates a page once the checks have been made
     function createPageHelper(wid, newPage, res) {
-        websiteModel
-            .createWebsiteForUser(wid, newPage)
+        pageModel
+            .createPage(wid, newPage)
             .then(
                 function(page) {
                     res.send(page._id);
