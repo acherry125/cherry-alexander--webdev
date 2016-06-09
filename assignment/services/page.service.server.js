@@ -23,13 +23,16 @@ module.exports = function(app) {
     /* handle page queries */
     function findAllPagesForWebsite(req, res) {
         var wid = req.params.websiteId;
-        var result = [];
-        for(var i in pages) {
-            if (pages[i].websiteId === wid) {
-                result.push(pages[i]);
-            }
-        }
-        res.send(result);
+        pageModel
+            .findAllPagesForWebsite(userId)
+            .then(
+                function(pages) {
+                    res.json(pages);
+                },
+                function(error) {
+                    res.status(404).send("Cannot search for pages right now")
+                }
+            );
     }
 
     /* find a page by its id */
