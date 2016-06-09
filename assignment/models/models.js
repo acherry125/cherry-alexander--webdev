@@ -16,7 +16,7 @@ module.exports = function() {
     var userModel = require("./user/user.model.server.js")(mongoose);
     var websiteModel = require("./website/website.model.server.js")(mongoose);
     var pageModel = require("./page/page.model.server.js")(mongoose);
-    var widgetModel;
+    var widgetModel = require("./widget/widgetsd.model.server.js")(mongoose);
 
     var models = {
         userModel: userModel,

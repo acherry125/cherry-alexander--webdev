@@ -23,6 +23,7 @@ module.exports = function(mongoose) {
             {$set:
                 {
                     email: newUser.email,
+                    phone: newUser.phone,
                     firstName: newUser.firstName,
                     lastName: newUser.lastName
                 }

@@ -6,11 +6,10 @@ module.exports = function(mongoose) {
         firstName: String,
         lastName: String,
         // can use a regex to make the email too
-        email: String
-        /*
-        dateCreate: {type: Date, default: Date.now()},
-        dateUpdated: Data
-        */
+        email: String,
+        phone: String,
+        websites: [{type: mongoose.Schema.Types.ObjectId, ref: "Widget"}],
+        dateCreated: {type: Date, default: (new Date())},
     }, {collection: "user"});
 
     return UserSchema;
