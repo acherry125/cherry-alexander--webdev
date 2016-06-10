@@ -1,7 +1,9 @@
-module.exports = function(app) {
+module.exports = function(app, models) {
 
     var multer = require('multer');
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
+    var widgetModel = models.widgetModel;
 
     var widgets = [
 
@@ -40,60 +42,92 @@ module.exports = function(app) {
     // handle widget queries
     function findAllWidgetsForPage(req, res) {
         var pageId = req.params.pageId;
-        var result = [];
-        for(var i in widgets) {
-            if (widgets[i].pageId === pageId) {
-                result.push(widgets[i]);
-            }
-        }
-        res.send(result);
+        widgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(
+                function(widget) {
+                    res.json(widget);
+                },
+                function(error) {
+                    res.status(400).send("Cannot search for widgets right now")
+                }
+            );
     }
 
     // find a widget by its id
     function findWidgetById(req, res) {
         var wgid = req.params.widgetId;
-        for(var i in widgets) {
-            if (widgets[i]._id === wgid) {
-                res.send(widgets[i]);
-                return;
-            }
-        }
-        res.status(404).send("Website with id " + wgid + " not found");
+        widgetModel
+            .findWidgetById(wgid)
+            .then(
+                function(widget) {
+                    if(widget === null) {
+                        res.status(404).send("Widget " + wgid + " not found")
+                    } else {
+                        res.json(widget);
+                    }
+                },
+                function(error) {
+                    res.status(404).send("Widget " + wgid + " not found")
+                }
+            );
     }
 
     // create a new widget
     function updateWidget(req, res) {
         var wgid = req.params.widgetId;
-        var update = req.body;
-        for (var i in widgets) {
-            if(widgets[i]._id === wgid) {
-                widgets[i] = update;
-                res.sendStatus(200);
-                return;
-            }
+        var widget = req.body;
+
+        if(widget && widget.name) {
+            widgetModel
+                .updateWidget(wgid, widget)
+                .then(
+                    function(response) {
+                        res.sendStatus(200);
+                    },
+                    function(error) {
+                        res.status(400).send("Widget " + wgid + " cannot be updated")
+                    }
+                );
+        } else {
+            res.status(400).send("Widget must have a name");
         }
-        res.status(400).send("Widget " + wgid + " does not exist");
     }
 
     // create a new widget
     function createWidget(req, res) {
         var pageId = req.params.pageId;
         var newWidget = req.body;
-        widgets.push(newWidget);
-        res.sendStatus(200);
+        // create the widget
+        widgetModel
+            .createWidget(pageId, newWidget)
+            .then(
+                function(widget) {
+                    res.send(widget._id);
+                },
+                function(error) {
+                    res.status(400).send("Could not create widget, please try again");
+                }
+            );
+    }
+    
+    function createWidgetHelper(pid, newWidget, res) {
+
     }
 
     // create a new widget
     function deleteWidget(req, res) {
         var wgid = req.params.widgetId;
-        for (var i in widgets) {
-            if(widgets[i]._id === wgid) {
-                widgets.splice(i, 1);
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.status(400).send("Widget " + wgid + " does not exist");
+        widgetModel
+            .deleteWidget(wgid)
+            .then(
+                function(widget) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(400).send("Could not delete widget, please try again");
+                }
+            );
     }
 
     function uploadImage(req, res) {

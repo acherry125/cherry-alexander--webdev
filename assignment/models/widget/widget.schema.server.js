@@ -9,8 +9,8 @@ module.exports = function(mongoose) {
         description: String,
         url: String,
         // might be a problem
-        width: String,
-        height: String,
+        width: Number,
+        height: Number,
         rows: Number,
         size: Number,
         class: String,

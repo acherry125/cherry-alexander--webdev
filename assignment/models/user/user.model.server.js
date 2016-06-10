@@ -6,13 +6,21 @@ module.exports = function(mongoose) {
     var api = {
         "createUser": createUser,
         "updateUser": updateUser,
+        "addWebsiteToUser": addWebsiteToUser,
         "deleteUser": deleteUser,
         "findUserById": findUserById,
         "findUserByUsername": findUserByUsername,
         "findUserByCredentials": findUserByCredentials
     };
     return api;
-    
+
+    function addWebsiteToUser(userId, websiteId) {
+        return User.update(
+            {_id :userId},
+            {$push: {"websites": websiteId}}
+        )
+    }
+
     function createUser(user) {
         user.dateCreated = new Date();
         return User.create(user);

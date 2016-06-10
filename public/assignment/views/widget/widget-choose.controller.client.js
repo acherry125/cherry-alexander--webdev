@@ -21,43 +21,43 @@
 
         // create a new widget
         function createWidget(type) {
-            var unique = Date.now();
-            unique = unique.toString();
             if (type == "HEADER") {
-                createHeader(unique);
+                createHeader();
             } else if (type == "IMAGE") {
-                createImage(unique);
+                createImage();
             } else if (type == "YOUTUBE") {
-                createYouTube(unique);
+                createYouTube();
             } else if (type == "HTML") {
-                createHTML(unique);
+                createHTML();
             }
         }
 
         // create a new header
-        function createHeader(id) {
-            var header = {"_id": id, "name": "", widgetType: "HEADER",
+        function createHeader() {
+            var header = {"name": "", widgetType: "HEADER",
                 "text": "", "size": ""};
             WidgetService
                 .createWidget(pid, header)
                 .then(
                     function(response) {
+                        var id = response.data;
                         $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
                     },
                     function(error) {
-                        vm.error(error);
+                        vm.error = error.data;
                     }
                 )
         }
 
         // create a new image
-        function createImage(id) {
-            var image = {"_id": id, "name": "", widgetType: "IMAGE",
+        function createImage() {
+            var image = {"name": "", widgetType: "IMAGE",
                 "text": "", "width": "", "url": ""};
             WidgetService
                 .createWidget(pid, image)
                 .then(
                     function(response) {
+                        var id = response.data;
                         $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
                     },
                     function(error) {
@@ -67,13 +67,14 @@
         }
 
         // create a new Youtube Widget
-        function createYouTube(id) {
-            var youtube = {"_id": id, "name": "", widgetType: "YOUTUBE",
+        function createYouTube() {
+            var youtube = {"name": "", widgetType: "YOUTUBE",
                 "text": "", "width": "", "url": ""};
             WidgetService
                 .createWidget(pid, youtube)
                 .then(
                     function(response) {
+                        var id = response.data;
                         $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
                     },
                     function(error) {
@@ -83,12 +84,13 @@
         }
 
         // create a new Youtube Widget
-        function createHTML(id) {
-            var html = {"_id": id, "name": "", widgetType: "HTML" };
+        function createHTML() {
+            var html = {"name": "", widgetType: "HTML" };
             WidgetService
                 .createWidget(pid, html)
                 .then(
                     function(response) {
+                        var id = response.data;
                         $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
                     },
                     function(error) {
