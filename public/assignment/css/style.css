@@ -131,6 +131,7 @@ nav>.container>.navbar-header {
     border-width: 4px;
     border-color: white;
     right: 12px;
+    z-index: 5;
 }
 
 /* Content glyphicon sizing */
@@ -182,7 +183,7 @@ nav>.container>.navbar-header {
 }
 
 /* for youtube widgets */
-.videoWrapper {
+.ac-video-wrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
@@ -192,10 +193,15 @@ nav>.container>.navbar-header {
 }
 
 /* for youtube widgets */
-.videoWrapper iframe {
+.ac-video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* for input widgets */
+.ac-list-input {
+    margin-top: 20px;
 }
 
 /* whitespace between button blocks */
@@ -205,7 +211,7 @@ nav>.container>.navbar-header {
 
 /* placeholder for sortable list */
 .ui-state-highlight {
-    height: 4.75em;
+    height: 10em;
     background: #cccccc;
     border-color: #cccccc;
 }

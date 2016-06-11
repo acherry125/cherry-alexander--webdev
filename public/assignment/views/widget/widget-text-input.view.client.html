@@ -28,14 +28,21 @@
 </header>
 
 <div class="container">
-        <label for="text">Text</label>
-        <input ng-model="model.widget.text" id="text" class="form-control"/>
-        <label for="rows">Rows</label>
-        <input ng-model="model.widget.rows" id="rows" class="form-control" type="number"/>
-        <label for="placeholder">Placeholder</label>
-        <input ng-model="model.widget.placeholder" id="placeholder" class="form-control"/>
-        <label for="formatted">Formatted</label>
-        <input ng-model="model.widget.formatted" id="formatted"  type="checkbox"/>
+    <!-- Warning Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <!-- TEXT INPUT Input Fields -->
+    <label for="text">Name</label>
+    <input ng-model="model.widget.name" id="name" class="form-control"/>
+    <label for="text">Text</label>
+    <input ng-model="model.widget.text" id="text" class="form-control"/>
+    <label for="rows">Rows</label>
+    <input ng-model="model.widget.rows" id="rows" class="form-control" type="number"/>
+    <label for="placeholder">Placeholder</label>
+    <input ng-model="model.widget.placeholder" id="placeholder" class="form-control"/>
+    <label for="formatted">Formatted</label>
+    <input ng-model="model.widget.formatted" id="formatted"  type="checkbox"/>
 
     <br>
     <!-- Delete Widget Button -->

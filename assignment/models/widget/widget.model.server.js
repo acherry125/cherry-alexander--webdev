@@ -49,7 +49,7 @@ module.exports = function() {
                     class: widget.class,
                     icon: widget.icon,
                     deletable: widget.deletable,
-                    formatted: widget.formatted,
+                    formatted: widget.formatted
                 }
             }
         )

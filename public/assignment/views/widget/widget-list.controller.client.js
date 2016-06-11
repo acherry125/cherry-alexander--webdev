@@ -33,6 +33,11 @@
         vm.getTrustedHTML = getTrustedHTML;
 
 
+        vm.miniToolbar = [['bold','italics','underline','strikeThrough'],
+            ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent']];
+
+
         function init() {
             WidgetService
                 .findWidgetsByPageId(String(pid))

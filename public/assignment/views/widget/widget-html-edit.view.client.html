@@ -28,7 +28,11 @@
 </header>
 
 <div class="container">
-
+    <!-- Warning Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <!-- HTML Input Fields -->
     <label for="name">Name</label>
     <input id="name" class="form-control" type="text" ng-model="model.widget.name">
     <label for="html-box">Html</label>
