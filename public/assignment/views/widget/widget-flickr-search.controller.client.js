@@ -96,6 +96,9 @@
                         var oldWidget = response.data;
                         // add new url
                         oldWidget.url = url;
+                        if(oldWidget.name == null) {
+                            oldWidget.name = "Flickr " + wgid;
+                        }
                         WidgetService
                             // update widget
                             .updateWidget(wgid, oldWidget)
