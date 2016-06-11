@@ -211,7 +211,7 @@ nav>.container>.navbar-header {
 
 /* placeholder for sortable list */
 .ui-state-highlight {
-    height: 10em;
+    height: 7em;
     background: #cccccc;
     border-color: #cccccc;
 }

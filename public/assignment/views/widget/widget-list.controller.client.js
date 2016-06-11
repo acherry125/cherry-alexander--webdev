@@ -4,23 +4,8 @@
     angular
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController)
-        .directive("sortableList", SortableList);
 
-    // sorting directive function (see if this can be moved to a directive folder)
-    function SortableList() {
-        function linker(scope, element, attributes) {
-            $(element)
-                .sortable({
-                    placeholder: "ui-state-highlight",
-                    handle: ".glyphicon-align-justify"
-                });
-        }
-        return {
-            link: linker
-        }
-    }
-
-    function WidgetListController($routeParams, $sce, $location, WidgetService) {
+    function WidgetListController($scope, $routeParams, $sce, $location, WidgetService) {
         vm = this;
         var uid = $routeParams.uid;
         vm.userId =  uid;
@@ -83,34 +68,6 @@
         function editWidget(wgid) {
             $location.url("/user/" + uid + "/website/" + wid + "/page/"+ pid + "/widget/" + wgid)
         }
-
-        /*
-        function SortableDirective() {
-            function sortLinker(scope, element, atrributes) {
-                var data = scope.data;
-                $(element)
-                    .find("#widget-container")
-                    .sortable({
-                        placeholder: "ui-state-highlight",
-                        start: function() {
-                            console.log("sorting began");
-                        },
-                        stop: function() {
-                            console.log("sorting stopped")
-                        }
-                    });
-            }
-            return {
-                scope: {},
-                link: sortLinker
-            }
-        }
-        */
-        /*
-        // make the widget list sortable (only temporary until page refresh)
-        $("#widget-container")
-            .sortable({handle: ".ac-glyphicon-container"});
-        */
     }
 
 })();
