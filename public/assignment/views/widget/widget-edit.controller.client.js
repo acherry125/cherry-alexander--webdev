@@ -30,8 +30,8 @@
                     function(response) {
                         vm.widget = response.data;
                         // create default width
-                        if (vm.widget.width == "") {
-                            vm.widget.width = 100;
+                        if (vm.widget.type == "HEADING") {
+                            vm.widget.size = String(vm.widget.size);
                         }
                     },
                     function(error) {
