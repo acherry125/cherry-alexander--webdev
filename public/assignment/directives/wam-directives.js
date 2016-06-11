@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .directive("wamSortable", WamSortable);
 
-    // sorting directive function (see if this can be moved to a directive folder)
+    // sorting directive function
     function WamSortable() {
         function linker(scope, element, attributes) {
             $(element)
@@ -20,9 +20,7 @@
                         endIndex = ui.item.index();
                         console.log(endIndex);
                         if(endIndex != startIndex) {
-
-                           // scope.reorder(startIndex, endIndex, scope.pageId)
-
+                            scope.reorder(startIndex, endIndex);
                         }
                     }
 
@@ -30,8 +28,7 @@
         }
         return {
             scope : {
-                reorder : "&",
-                pageId: "="
+                reorder : "="
             },
             link: linker
         }

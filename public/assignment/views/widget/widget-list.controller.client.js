@@ -17,6 +17,7 @@
         var allowSrc = allowSrc;
         vm.getTrustedHTML = getTrustedHTML;
         vm.editWidget = editWidget;
+        vm.reorder = reorder;
 
         vm.style = "{background: red}";
 
@@ -67,6 +68,14 @@
         
         function editWidget(wgid) {
             $location.url("/user/" + uid + "/website/" + wid + "/page/"+ pid + "/widget/" + wgid)
+        }
+        
+        function reorder(startIndex, endIndex) {
+            WidgetService
+                .reorderWidgets(pageId, startIndex, endIndex)
+                .then(
+                    /// do thisssss
+                )
         }
     }
 

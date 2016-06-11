@@ -28,7 +28,8 @@
     </nav>
 </header>
     <!-- Main Container -->
-<div wam-sortable class="container" id="widget-container">
+<div class="container">
+<wam-sortable reorder="model.reorder" page-id="'fifty'">
     <!-- One switch case for every implemented widget type -->
     <div ng-repeat="widget in model.widgets" class="row ac-row">
         <div ng-switch="widget.type">
@@ -117,7 +118,8 @@
             </div>
         </div>
     </div>
-</div>
+</wam-sortable>
+    </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
