@@ -21,7 +21,7 @@
 
         // create a new widget
         function createWidget(type) {
-            types = ["HEADING", "IMAGE", "YOUTUBE", "IMAGE", "YOUTUBE", "HTML", "TEXT"];
+            types = ["HEADING", "IMAGE", "YOUTUBE", "IMAGE", "YOUTUBE", "HTML", "INPUT"];
             if (types.indexOf(type) == -1) {
                 $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget");
             } else {
