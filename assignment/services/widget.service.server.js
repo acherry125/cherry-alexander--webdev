@@ -110,10 +110,6 @@ module.exports = function(app, models) {
                 }
             );
     }
-    
-    function createWidgetHelper(pid, newWidget, res) {
-
-    }
 
     // create a new widget
     function deleteWidget(req, res) {

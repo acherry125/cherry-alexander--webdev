@@ -31,9 +31,9 @@
 <div sortable-list class="container" id="widget-container">
     <!-- One switch case for every implemented widget type -->
     <div ng-repeat="widget in model.widgets" class="row ac-row">
-        <div ng-switch="widget.widgetType">
+        <div ng-switch="widget.type">
             <!-- HEADER TEMPLATE -->
-            <div ng-switch-when="HEADER">
+            <div ng-switch-when="HEADING">
                 <div class="col-xs-12">
                     <div ng-switch="widget.size">
                         <h1 ng-switch-when="1">{{widget.text}}</h1>

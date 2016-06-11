@@ -21,21 +21,27 @@
 
         // create a new widget
         function createWidget(type) {
-            if (type == "HEADER") {
-                createHeader();
-            } else if (type == "IMAGE") {
-                createImage();
-            } else if (type == "YOUTUBE") {
-                createYouTube();
-            } else if (type == "HTML") {
-                createHTML();
+            types = ["HEADING", "IMAGE", "YOUTUBE", "IMAGE", "YOUTUBE", "HTML", "TEXT"];
+            if (types.indexOf(type) == -1) {
+                $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget");
+            } else {
+                var widget = {"type": type};
+                WidgetService
+                    .createWidget(pid, widget)
+                    .then(
+                        function(response) {
+                            var id = response.data;
+                            $location.url("/user/" + uid + "/website/"  + wid + "/page/" + pid + "/widget/" + id);
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
             }
         }
 
         // create a new header
         function createHeader() {
-            var header = {"name": "", widgetType: "HEADER",
-                "text": "", "size": ""};
             WidgetService
                 .createWidget(pid, header)
                 .then(
@@ -51,8 +57,7 @@
 
         // create a new image
         function createImage() {
-            var image = {"name": "", widgetType: "IMAGE",
-                "text": "", "width": "", "url": ""};
+            var image = {"type": "IMAGE"};
             WidgetService
                 .createWidget(pid, image)
                 .then(
@@ -68,8 +73,7 @@
 
         // create a new Youtube Widget
         function createYouTube() {
-            var youtube = {"name": "", widgetType: "YOUTUBE",
-                "text": "", "width": "", "url": ""};
+            var youtube = {"type": "YOUTUBE"};
             WidgetService
                 .createWidget(pid, youtube)
                 .then(
@@ -85,7 +89,7 @@
 
         // create a new Youtube Widget
         function createHTML() {
-            var html = {"name": "", widgetType: "HTML" };
+            var html = {"type": "HTML" };
             WidgetService
                 .createWidget(pid, html)
                 .then(
