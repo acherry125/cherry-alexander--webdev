@@ -203,6 +203,13 @@ nav>.container>.navbar-header {
     margin-bottom: 6px;
 }
 
+/* placeholder for sortable list */
+.ui-state-highlight {
+    height: 4.75em;
+    background: #cccccc;
+    border-color: #cccccc;
+}
+
 /***** Text Font Sizes *****/
 /* increase font size for clarity */
 

@@ -28,9 +28,21 @@
 </header>
 
 <div class="container">
-    <div text-angular ng-model="model.html"></div>
 
-    <div ng-bind-html="model.html"></div>
+    <label for="name">Name</label>
+    <input id="name" class="form-control" type="text" ng-model="model.widget.name">
+    <label for="html-box">Html</label>
+    <div ng-model="model.widget.text" text-angular id="html-box"></div>
+
+    <!-- Delete Widget Button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <a role="button"
+               class="btn btn-danger btn-block btn-lg"
+               ng-click="model.deleteWidget()">Delete</a>
+        </div>
+    </div>
+
 </div>
 
 <!-- Footer Navigation Bar -->

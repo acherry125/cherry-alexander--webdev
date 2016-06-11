@@ -11,7 +11,8 @@
         function linker(scope, element, attributes) {
             $(element)
                 .sortable({
-                    handle: ".ac-glyphicon-container"
+                    placeholder: "ui-state-highlight",
+                    handle: ".glyphicon-align-justify"
                 });
         }
         return {
@@ -29,6 +30,7 @@
         vm.pageId =  pid;
         vm.fixYoutube = fixYoutube;
         var allowSrc = allowSrc;
+        vm.getTrustedHTML = getTrustedHTML;
 
 
         function init() {
@@ -66,16 +68,18 @@
             return $sce.trustAsResourceUrl(src);
         }
 
-        function getTrustedHTML() {
-
+        function getTrustedHTML(html) {
+            return $sce.trustAsHtml(html);
         }
 
+        /*
         function SortableDirective() {
             function sortLinker(scope, element, atrributes) {
                 var data = scope.data;
                 $(element)
                     .find("#widget-container")
                     .sortable({
+                        placeholder: "ui-state-highlight",
                         start: function() {
                             console.log("sorting began");
                         },
@@ -89,6 +93,7 @@
                 link: sortLinker
             }
         }
+        */
         /*
         // make the widget list sortable (only temporary until page refresh)
         $("#widget-container")

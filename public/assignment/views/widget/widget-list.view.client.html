@@ -83,7 +83,17 @@
                 </div>
             </div>
             <!-- HTML TEMPLATE -->
-            <div ng-switch-when="HTML" ng-bind-html="model.getTrustedHtml(widget._id)"></div>
+            <div ng-switch-when="HTML">
+                <div class="col-xs-12">
+                    <div class="ac-glyphicon-container">
+                        <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </div>
+                    <div ng-bind-html="model.getTrustedHTML(widget.text)"></div>
+                </div>
+            </div>
             <div ng-switch-when="TEXT">
 
             </div>
