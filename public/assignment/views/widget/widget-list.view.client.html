@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="ac-glyphicon-container">
-                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <a ng-click="model.editWidget(widget._id)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
@@ -57,7 +57,7 @@
                     <img ng-src="{{widget.url}}" width="{{widget.width}}%">
                 </div>
                 <div class="ac-glyphicon-container">
-                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <a ng-click="model.editWidget(widget._id)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="ac-glyphicon-container">
-                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <a ng-click="model.editWidget(widget._id)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
@@ -88,24 +88,28 @@
                     <div ng-bind-html="model.getTrustedHTML(widget.text)"></div>
                 </div>
                 <div class="ac-glyphicon-container">
-                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <a ng-click="model.editWidget(widget._id)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
             </div>
+            <!-- INPUT TEMPLATE -->
             <div ng-switch-when="INPUT">
                 <div class="col-xs-12">
-                <div ng-if="widget.formatted" class="ac-list-input" text-angular
-                     ta-toolbar="{{model.miniToolbar}}"></div>
-                <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
-                       placeholder="{{widget.textInput.placeholder}}" class="form-control ac-list-input"/>
-                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
-                rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
-                class="form-control ac-list-input">{{widget.text}}</textarea>
-                    </div>
+                    <div ng-if="widget.formatted"
+                         class="ac-list-input"
+                         text-angular
+                         ta-toolbar="{{model.miniToolbar}}"></div>
+                    <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                           placeholder="{{widget.placeholder}}"
+                           class="form-control ac-list-input"/>
+                    <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                              rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                              class="form-control ac-list-input">{{widget.text}}</textarea>
+                </div>
                 <div class="ac-glyphicon-container">
-                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <a ng-click="model.editWidget(widget._id)">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                     <span class="glyphicon glyphicon-align-justify"></span>

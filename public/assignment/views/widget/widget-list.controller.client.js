@@ -20,7 +20,7 @@
         }
     }
 
-    function WidgetListController($routeParams, $sce, WidgetService) {
+    function WidgetListController($routeParams, $sce, $location, WidgetService) {
         vm = this;
         var uid = $routeParams.uid;
         vm.userId =  uid;
@@ -31,6 +31,7 @@
         vm.fixYoutube = fixYoutube;
         var allowSrc = allowSrc;
         vm.getTrustedHTML = getTrustedHTML;
+        vm.editWidget = editWidget;
 
         vm.style = "{background: red}";
 
@@ -77,6 +78,10 @@
 
         function getTrustedHTML(html) {
             return $sce.trustAsHtml(html);
+        }
+        
+        function editWidget(wgid) {
+            $location.url("/user/" + uid + "/website/" + wid + "/page/"+ pid + "/widget/" + wgid)
         }
 
         /*
