@@ -65,11 +65,11 @@
             </div>
             <!-- YOUTUBE TEMPLATE -->
             <div ng-switch-when="YOUTUBE">
-                <div class="col-xs-12">
+                <div class="col-xs-12" ng-style="myStyle={'width':widget.width + '%'}">
                     <div class="ac-video-wrapper">
                         <!-- Copy & Pasted from YouTube -->
-                        <iframe width="{{widget.width}}%"
-                                height="{{widget.width}}%"
+                        <iframe width="100%"
+                                height="100%"
                                 src="{{model.fixYoutube(widget.url)}}"
                                 frameborder="0"
                                 allowfullscreen></iframe>
@@ -85,23 +85,17 @@
             <!-- HTML TEMPLATE -->
             <div ng-switch-when="HTML">
                 <div class="col-xs-12">
-                    <div class="ac-glyphicon-container">
-                        <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
                     <div ng-bind-html="model.getTrustedHTML(widget.text)"></div>
+                </div>
+                <div class="ac-glyphicon-container">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
             </div>
             <div ng-switch-when="INPUT">
                 <div class="col-xs-12">
-                    <div class="ac-glyphicon-container">
-                        <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                        <span class="glyphicon glyphicon-align-justify"></span>
-                    </div>
                 <div ng-if="widget.formatted" class="ac-list-input" text-angular
                      ta-toolbar="{{model.miniToolbar}}"></div>
                 <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
@@ -110,6 +104,12 @@
                 rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
                 class="form-control ac-list-input">{{widget.text}}</textarea>
                     </div>
+                <div class="ac-glyphicon-container">
+                    <a ng-href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
             </div>
         </div>
     </div>

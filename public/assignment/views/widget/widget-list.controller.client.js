@@ -32,6 +32,8 @@
         var allowSrc = allowSrc;
         vm.getTrustedHTML = getTrustedHTML;
 
+        vm.style = "{background: red}";
+
 
         vm.miniToolbar = [['bold','italics','underline','strikeThrough'],
             ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
