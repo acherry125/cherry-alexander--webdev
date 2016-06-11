@@ -9,14 +9,14 @@ module.exports = function(mongoose) {
         description: String,
         url: String,
         // might be a problem
-        width: Number,
-        height: Number,
-        rows: Number,
-        size: Number,
+        width: {type: Number, default: 100},
+        height: {type: Number, default: 100},
+        rows: {type: Number, default: 1},
+        size: {type: Number, default: 1},
         class: String,
         icon: String,
-        deletable: Boolean,
-        formatted: Boolean,
+        deletable: {type: Boolean, default: false},
+        formatted: {type: Boolean, default: false},
         dateCreated: Date
     }, {collection: "widget"});
 

@@ -73,11 +73,11 @@
         function validityCheck() {
             if (!(vm.widget.name)) {
                 vm.error = "Widget " + vm.widgetType + " must have name";
-            } else if (vm.widget.widgetType == "HEADER" && !(vm.widget.text && vm.widget.size)) {
+            } else if (vm.widget.type == "HEADING" && !(vm.widget.text && vm.widget.size)) {
                 vm.error = "Header Widget must have text and size";
-            } else if (vm.widget.widgetType == "IMAGE" && !(vm.widget.url && vm.widget.width)) {
+            } else if (vm.widget.type == "IMAGE" && !(vm.widget.url && vm.widget.width)) {
                 vm.error = "Image Widget must have url, and width";
-            } else if (vm.widget.widgetType == "YOUTUBE" && !(vm.widget.url && vm.widget.width)) {
+            } else if (vm.widget.type == "YOUTUBE" && !(vm.widget.url && vm.widget.width)) {
                 vm.error = "YouTube Widget must have url, and width"
             } else {
                 vm.error = "";

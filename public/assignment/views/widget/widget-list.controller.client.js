@@ -33,7 +33,7 @@
 
         function init() {
             WidgetService
-                .findWidgetsByPageId(pid)
+                .findWidgetsByPageId(String(pid))
                 .then(function(response) {
                     vm.widgets = response.data;
                     var reloadCheck = false;

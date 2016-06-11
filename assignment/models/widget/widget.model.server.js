@@ -18,7 +18,7 @@ module.exports = function() {
 
 
     function findAllWidgetsForPage(pageId) {
-        return Widget.find({_user: pageId})
+        return Widget.find({_page: pageId})
     }
 
     function findWidgetById(widgetId) {
