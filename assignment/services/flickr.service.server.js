@@ -1,6 +1,7 @@
 
 module.exports = function(app) {
 
+    // request module
     var request = require('request');
     
     // respond to page queries
