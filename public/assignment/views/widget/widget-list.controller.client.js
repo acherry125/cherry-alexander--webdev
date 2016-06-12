@@ -74,7 +74,16 @@
             WidgetService
                 .reorderWidgets(pageId, startIndex, endIndex)
                 .then(
-                    /// do thisssss
+                    function(response) {
+                        
+                    },
+                    function(error) {
+                        /*
+                        reload the page so the user doens't think
+                        dragging worked
+                        */
+                        init();
+                    }
                 )
         }
     }
