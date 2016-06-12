@@ -55,6 +55,25 @@ module.exports = function(mongoose) {
                         return false;
                     }
                     var widgets = response.data.widgets;
+                    var newWidgets = [];
+                    var moved = widgets[start];
+                    for(x in widgets) {
+                        if(start < end) {
+                            if(x != start) {
+                                newWidgets.push(widgets[x])
+                            }
+                            if(x == end) {
+                                newWidgets.push(moved);
+                            }
+                        }
+                        if(x < start) {
+                            if(x!= start) {
+                                if(x == end) {
+                                    newWidgets
+                                }
+                            }
+                        }
+                    }
                     // < reorder widgets here >
                     var newPage = response.data;
                     newPage.widgets = newWidgets;

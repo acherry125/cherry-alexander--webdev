@@ -60,7 +60,27 @@ module.exports = function() {
     }
 
     function reorderWidget(pageId, start, end) {
-        //return Widget.remove({_id: widgetId})
+        findAllWidgetsForPage(pageId)
+            .then(
+                function(response) {
+                    var widgets = response.data;
+                    for (x in widgets) {
+                        var order = widgets[x].order;
+                        if (order === start) {
+                            order = end;
+                        }
+                        if (start < end) {
+                            if (order <= end && order > start) {
+                                widgets[x].order -= 1;
+                            }
+                        } else {
+                            if (order >= end && order < start) {
+                                widgets[x].order += 1;
+                            }
+                        }
+                    }
+                });
+
     }
 
 };

@@ -81,8 +81,8 @@ module.exports = function(app, models) {
         var pid = req.params.pageId;
         var start = req.query.start;
         var end = req.query.end;
-        pageModel
-            .reorderWidgetsInPage(pid, start, end)
+        widgetModel
+            .reorderWidget(pid, start, end)
             .then(
                 function(response) {
                     res.sendStatus(200);

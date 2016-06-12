@@ -12,7 +12,7 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "reorderWidgets": reorderWidget
+            "reorderWidgets": reorderWidgets
         };
 
         return api;

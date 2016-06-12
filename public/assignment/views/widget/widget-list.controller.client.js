@@ -3,7 +3,7 @@
 
     angular
         .module("WebAppMaker")
-        .controller("WidgetListController", WidgetListController)
+        .controller("WidgetListController", WidgetListController);
 
     function WidgetListController($scope, $routeParams, $sce, $location, WidgetService) {
         vm = this;
@@ -69,13 +69,13 @@
         function editWidget(wgid) {
             $location.url("/user/" + uid + "/website/" + wid + "/page/"+ pid + "/widget/" + wgid)
         }
-        
-        function reorder(startIndex, endIndex) {
-            WidgetService
-                .reorderWidgets(pageId, startIndex, endIndex)
-                .then(
-                    function(response) {
-                        
+
+       function reorder(startIndex, endIndex) {
+           WidgetService
+               .reorderWidgets(pageId, startIndex, endIndex)
+               .then(
+                   function(response) {
+    
                     },
                     function(error) {
                         /*
@@ -85,7 +85,7 @@
                         init();
                     }
                 )
-        }
+       }
     }
 
 })();
