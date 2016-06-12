@@ -28,7 +28,28 @@ module.exports = function() {
     function createWidget(pageId, widget) {
         widget._page = pageId;
         widget.dateCreated = new Date();
-        return Widget.create(widget);
+        findAllWidgetsForPage(pageId)
+            .then(
+                function(response) {
+                    var count = response.length;
+                    // set equal to count (zero indexing)
+                    widget.order = count;
+                    Widget.create(widget)
+                        .then(
+                            function(response) {
+                                return response;
+                            },
+                            function(error) {
+                                return error;
+                            }
+                        )
+                },
+                function(error) {
+                    return error;
+                }
+            );
+
+
     }
 
     function updateWidget(widgetId, widget) {
@@ -67,9 +88,8 @@ module.exports = function() {
                     for (x in widgets) {
                         var order = widgets[x].order;
                         if (order === start) {
-                            order = end;
-                        }
-                        if (start < end) {
+                            widgets[x].order = end;
+                        } else if (start < end) {
                             if (order <= end && order > start) {
                                 widgets[x].order -= 1;
                             }
@@ -78,7 +98,9 @@ module.exports = function() {
                                 widgets[x].order += 1;
                             }
                         }
+                        updateWidget(pageId, widgets[x]);
                     }
+
                 });
 
     }

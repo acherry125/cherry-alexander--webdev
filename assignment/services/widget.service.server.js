@@ -119,16 +119,17 @@ module.exports = function(app, models) {
         var pageId = req.params.pageId;
         var newWidget = req.body;
         // create the widget
-        widgetModel
-            .createWidget(pageId, newWidget)
-            .then(
-                function(widget) {
-                    res.send(widget._id);
-                },
-                function(error) {
-                    res.status(400).send("Could not create widget, please try again");
-                }
-            );
+        var response = widgetModel.createWidget(pageId, newWidget);
+        console.log(response);
+        res.sendStatus(200);
+            // .then(
+            //     function(widget) {
+            //         res.send(widget._id);
+            //     },
+            //     function(error) {
+            //         res.status(400).send("Could not create widget, please try again");
+            //     }
+            // );
     }
 
     // create a new widget
