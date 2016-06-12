@@ -4,6 +4,7 @@ module.exports = function(app, models) {
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
 
     var widgetModel = models.widgetModel;
+    var pageModel = models.pageModel;
 
     var widgets = [
 
@@ -32,6 +33,8 @@ module.exports = function(app, models) {
     app.get("/api/widget/:widgetId", findWidgetById);
     // create a new widget
     app.post("/api/page/:pageId/widget", createWidget);
+    // reorder a widget
+    app.put("/api/page/:pageId/widget", reorderWidget);
     // delete widget
     app.put("/api/widget/:widgetId", updateWidget);
     // delete widget
@@ -71,6 +74,23 @@ module.exports = function(app, models) {
                     res.status(404).send("Widget " + wgid + " not found")
                 }
             );
+    }
+
+    // reorder the widget
+    function reorderWidget(req, res) {
+        var pid = req.params.pageId;
+        var start = req.query.start;
+        var end = req.query.end;
+        pageModel
+            .reorderWidgetsInPage(pid, start, end)
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.status(400).send(error.data);
+                }
+            )
     }
 
     // create a new widget
