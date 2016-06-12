@@ -90,7 +90,7 @@ module.exports = function(app, models) {
                 function(error) {
                     res.status(400).send(error.data);
                 }
-            )
+            );
     }
 
     // create a new widget
