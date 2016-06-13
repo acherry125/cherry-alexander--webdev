@@ -9,11 +9,19 @@
     <!-- Registration form -->
     <div class="ac-form" ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
         <!-- Username -->
-        <div class="form-group">
+        <div class="form-group has-failure has-feedback">
             <input ng-model="username"
                    type="text"
                    class="form-control"
-                   id="username"
+                   id="username-failure"
+                   placeholder="username">
+        </div>
+        <!-- Username -->
+        <div class="form-group has-success has-feedback">
+            <input ng-model="username"
+                   type="text"
+                   class="form-control"
+                   id="username-success"
                    placeholder="username">
         </div>
         <!-- Password -->

@@ -82,15 +82,12 @@ module.exports = function(app, models) {
         var start = req.query.start;
         var end = req.query.end;
         widgetModel
-            .reorderWidget(pid, start, end)
+            .findAllWidgetsForPage(pid)
             .then(
-                function(response) {
+                function (response) {
+                    widgetModel.reorderWidget(response, start, end);
                     res.sendStatus(200);
-                },
-                function(error) {
-                    res.status(400).send(error.data);
-                }
-            );
+                })
     }
 
     // create a new widget
@@ -119,17 +116,16 @@ module.exports = function(app, models) {
         var pageId = req.params.pageId;
         var newWidget = req.body;
         // create the widget
-        var response = widgetModel.createWidget(pageId, newWidget);
-        console.log(response);
-        res.sendStatus(200);
-            // .then(
-            //     function(widget) {
-            //         res.send(widget._id);
-            //     },
-            //     function(error) {
-            //         res.status(400).send("Could not create widget, please try again");
-            //     }
-            // );
+        widgetModel
+            .createWidget(pageId, newWidget)
+            .then(
+                function(widget) {
+                    res.send(widget._id);
+                },
+                function(error) {
+                    res.status(400).send("Could not create widget, please try again");
+                }
+            );
     }
 
     // create a new widget
@@ -171,19 +167,30 @@ module.exports = function(app, models) {
         var mimetype      = myFile.mimetype;
 
 
-
-        for (var i in widgets) {
-            if(widgets[i]._id === widgetId) {
-                widgets[i].url = "/uploads/" + filename;
-                widgets[i].width = Number(width);
-                // reload the page
-                res.redirect("/assignment/index.html#/user/"
-                    + userId + "/website/" + websiteId + "/page/"
-                    + pageId + "/widget/" + widgetId);
-                return;
-            }
-        }
-
+        widgetModel
+            .findWidgetById(widgetId)
+            .then(
+                function(widget) {
+                    widget.url = "/uploads/" + filename;
+                    widget.width = Number(width);
+                    widgetModel
+                        .updateWidget(widget._id, widget)
+                        .then(
+                            function(response) {
+                                // reload the page
+                                res.redirect("/assignment/index.html#/user/"
+                                    + userId + "/website/" + websiteId + "/page/"
+                                    + pageId + "/widget/" + widgetId)
+                            },
+                            function(error) {
+                                res.send(error);
+                            }
+                        )
+                },
+                function(error) {
+                    res.send(error);
+                }
+            );
     }
 
 };

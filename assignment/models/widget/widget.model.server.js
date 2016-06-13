@@ -9,6 +9,7 @@ module.exports = function() {
     var api = {
         "findAllWidgetsForPage": findAllWidgetsForPage,
         "findWidgetById" : findWidgetById,
+        "reorderWidget" : reorderWidget,
         "createWidget" : createWidget,
         "updateWidget" : updateWidget,
         "deleteWidget" : deleteWidget
@@ -18,37 +19,25 @@ module.exports = function() {
 
 
     function findAllWidgetsForPage(pageId) {
-        return Widget.find({_page: pageId})
+        return Widget.find({_page: pageId}).sort({order: 1});
     }
 
     function findWidgetById(widgetId) {
         return Widget.findOne({_id: widgetId})
     }
 
+
     function createWidget(pageId, widget) {
         widget._page = pageId;
         widget.dateCreated = new Date();
-        findAllWidgetsForPage(pageId)
+        return Widget
+            .count({_page: pageId})
             .then(
-                function(response) {
-                    var count = response.length;
-                    // set equal to count (zero indexing)
+                function(count) {
                     widget.order = count;
-                    Widget.create(widget)
-                        .then(
-                            function(response) {
-                                return response;
-                            },
-                            function(error) {
-                                return error;
-                            }
-                        )
-                },
-                function(error) {
-                    return error;
-                }
-            );
-
+                    return Widget.create(widget);
+            }
+        );
 
     }
 
@@ -70,7 +59,8 @@ module.exports = function() {
                     class: widget.class,
                     icon: widget.icon,
                     deletable: widget.deletable,
-                    formatted: widget.formatted
+                    formatted: widget.formatted,
+                    order: widget.order
                 }
             }
         )
@@ -80,28 +70,38 @@ module.exports = function() {
         return Widget.remove({_id: widgetId})
     }
 
-    function reorderWidget(pageId, start, end) {
-        findAllWidgetsForPage(pageId)
-            .then(
-                function(response) {
-                    var widgets = response.data;
-                    for (x in widgets) {
-                        var order = widgets[x].order;
-                        if (order === start) {
-                            widgets[x].order = end;
-                        } else if (start < end) {
-                            if (order <= end && order > start) {
-                                widgets[x].order -= 1;
-                            }
-                        } else {
-                            if (order >= end && order < start) {
-                                widgets[x].order += 1;
-                            }
-                        }
-                        updateWidget(pageId, widgets[x]);
-                    }
+    function reorderWidget(widgets, start_string, end_string) {
+        var start = Number(start_string);
+        var end = Number(end_string);
+        var i;
+        for (i in widgets) {
+            var order = widgets[i].order;
+            if (order == start) {
+                widgets[i].order = end;
+            } else if (start < end) {
+                if (order <= end && order > start) {
+                    widgets[i].order -= 1;
+                }
+            } else {
+                if (order < start && order >= end) {
+                    widgets[i].order += 1;
+                }
+            }
+        }
 
-                });
+        for(x in widgets) {
+            var widgOrder = widgets[x].order;
+            Widget.update({_id: widgets[x]._id}, {$set:{order: widgOrder}}, {multi: true})
+                .then(
+                    function(response) {
+                        console.log(response)
+                    },
+                    function(error) {
+                        console.log(response)
+                    }
+                )
+        }
+
 
     }
 

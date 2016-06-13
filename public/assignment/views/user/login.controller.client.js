@@ -28,6 +28,8 @@
                         });
             } else {
                 vm.error = "Please enter a Username and Password";
+                vm.name_failure = true;
+                vm.password_failure = true;
             }
         }
 

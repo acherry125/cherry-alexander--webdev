@@ -72,7 +72,7 @@
 
        function reorder(startIndex, endIndex) {
            WidgetService
-               .reorderWidgets(pageId, startIndex, endIndex)
+               .reorderWidgets(pid, startIndex, endIndex)
                .then(
                    function(response) {
     

@@ -49,7 +49,7 @@
 
         /* Updates Server with new widget Order */
         function reorderWidgets(pageId, startInd, endInd) {
-            var url = "/page/" + pageId + "/widget?start=" + startInd + "&end=" + endInd;
+            var url = "/api/page/" + pageId + "/widget?start=" + startInd + "&end=" + endInd;
             return $http.put(url)
         }
 
