@@ -4,10 +4,17 @@
 }
 
 .ac-landing-button-group {
-    position: absolute;
-    left: 15%;
-    width: 70%;
-    margin-right: auto;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    color: #337ab7;
+    background: white;
+    padding: 5px 0 5px 0;
+}
+
+.ac-landing-button-group .btn {
+    margin: 0;
 }
 
 .row {
@@ -19,16 +26,21 @@
 html {
     font-size: 14px;
     background-color: #F53240;
+    padding: 0 0.5em 1em 0.5em;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 body {
-    /* clear navbar */
+    overflow-y: scroll;
+    height: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    font-family: "Alegreya Sans", sans-serif;
     font-size: 16px;
     color: #FFF;
     background-color: #02C8A7;
+    font-family: "Alegreya Sans", sans-serif;
+    padding: 2em 0 0 0;
 }
 
 /* centers text */

@@ -127,7 +127,7 @@ module.exports = function(app, models) {
         if(req.isAuthenticated()) {
             res.json(req.user);
         } else {
-            res.send(0);
+            res.send("0");
         }
     }
 

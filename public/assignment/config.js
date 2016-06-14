@@ -117,17 +117,22 @@
             UserService
                 .checkLoggedIn()
                 .then(
-                    function(user) {
+                    function(response) {
+                        var user = response.data;
                         console.log(user);
                         if(user == '0') {
                             deferred.reject();
+                            $rootScope.currentUser = null;
+                            // change location here $location
                         } else {
+                            $rootScope.currentUser = user;
                             deferred.resolve();
                         }
                     },
                     function(error) {
                         console.log(error);
                         deferred.reject();
+                        $rootScope.currentUser = null;
                     }
                 );
             /*
