@@ -32,7 +32,6 @@ module.exports = function(app, models) {
                     }
                 },
                 function(error) {
-                    console.log("creds error");
                     res.status(401).send("User  not found")
                 }
             );

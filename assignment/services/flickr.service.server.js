@@ -18,7 +18,6 @@ module.exports = function(app) {
         var term = req.query.term;
         var page = req.query.page;
         url = urlBase.replace("TEXT", term).replace("API_KEY", key).replace("PAGE", page);
-        console.log(url);
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {

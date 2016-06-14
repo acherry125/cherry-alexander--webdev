@@ -94,10 +94,8 @@ module.exports = function() {
             Widget.update({_id: widgets[x]._id}, {$set:{order: widgOrder}}, {multi: true})
                 .then(
                     function(response) {
-                        console.log(response)
                     },
                     function(error) {
-                        console.log(response)
                     }
                 )
         }
