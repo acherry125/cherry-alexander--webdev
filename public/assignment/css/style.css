@@ -6,7 +6,7 @@ body {
     /* display properly */
     max-width: 100%;
     overflow-x: hidden;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 /* centers text */
