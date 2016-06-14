@@ -1,6 +1,6 @@
 module.exports = function(app, models) {
 
-    var userModel = models.userModel;
+    var plannerModel = models.plannerModel;
 
     // respond to user queries
     app.get("/api/user", getUsers);
@@ -176,5 +176,6 @@ module.exports = function(app, models) {
                 }
             );
     }
+
 
 };
