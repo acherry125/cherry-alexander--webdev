@@ -8,8 +8,7 @@ module.exports = function(app, models) {
     // respond to user queries
     app.get("/api/user", getUsers);
     // login
-    app.post("/api/login", login);
-    // respond to request for specific user
+    app.post("/api/login", passport.authenticate('wam'), login);
     app.get("/api/user/:userId", findUserById);
     // update a user
     app.put("/api/user/:userId", updateUser);
@@ -18,23 +17,53 @@ module.exports = function(app, models) {
     // Create a user
     app.post("/api/user", createWebsiteForUser);
 
-    function login(req, res) {
-        var username = req.body.username;
-        var password = req.body.password;
+    passport.use('wam', new LocalStrategy(localStragey));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(
+                function(user) {
+                    done(null, user);
+                },
+                function(error) {
+                    done(error, null);
+                }
+            )
+    }
+
+    function localStrategy(username, password, done) {
         userModel
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    if(user === null) {
-                        res.status(401).send("User and password pair not found")
-                    } else{
-                        res.json(user);
+                    if (user.username === username && user.password === password) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
                     }
                 },
                 function(error) {
-                    res.status(401).send("User  not found")
+                    if (err) {
+                        return done(error);
+                    }
                 }
             );
+    }
+
+    function login(req, res) {
+        var user = req.user;
+        res.json(user);
     }
 
 
@@ -46,7 +75,7 @@ module.exports = function(app, models) {
             // pass response so this function can respond too
             findUserByCredentials(username, password, req, res);
         } else if(username) {
-            findUserByUsername(username, res);
+            findUserByUsername(username, req, res);
         }
     }
 
@@ -71,7 +100,7 @@ module.exports = function(app, models) {
     }
 
     // find a user by their username
-    function findUserByUsername(username, res){
+    function findUserByUsername(username, req, res){
         userModel
             .findUserByUsername(username)
             .then(
@@ -90,7 +119,7 @@ module.exports = function(app, models) {
     }
 
     // find a user by their username and password
-    function findUserByCredentials(username, password, res){
+    function findUserByCredentials(username, password, req, res){
         userModel
             .findUserByCredentials(username, password)
             .then(
