@@ -19,6 +19,7 @@
 /***** general page layout *****/
 html {
     font-size: 14px;
+    background-color: #F53240;
 }
 
 body {
@@ -27,6 +28,8 @@ body {
     overflow-x: hidden;
     font-family: "Alegreya Sans", sans-serif;
     font-size: 16px;
+    color: #F7F5E6;
+    background-color: #02C8A7;
 }
 
 /* centers text */
