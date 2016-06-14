@@ -1,6 +1,19 @@
 var express = require('express');
 var app = express();
 
+// cookie parsing
+var cookieParser = require('cookie-parser');
+// session
+var session = require('express-session');
+var passport = require('passport');
+
+app.use(cookieParser());
+// change secret to session variable
+app.use(session({ secret: 'thesecret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

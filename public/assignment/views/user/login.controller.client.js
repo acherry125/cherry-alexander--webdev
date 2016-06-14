@@ -16,7 +16,7 @@
         function login(username, password) {
             if(verifyLogin(username, password)) {
                 UserService
-                    .findUserByCredentials(username, password)
+                    .login(username, password)
                     // when the server responds
                     .then(
                         function(response) {

@@ -10,6 +10,7 @@
             "createUser": createUser,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
+            "login": login,
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
             "deleteUser": deleteUser
@@ -35,9 +36,18 @@
             return $http.get(url);
         }
 
+        function login(username, password) {
+            var url = "/api/login";
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post(url, user);
+        }
+
         /* Find a user by its username and password */
         function findUserByCredentials(username, password) {
-            var url = "/api/user?username=" + username + "&password=" + password;
+            var url = "/api/login?username=" + username + "&password=" + password;
             return $http.get(url);
         }
 

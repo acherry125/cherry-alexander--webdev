@@ -1,9 +1,14 @@
 module.exports = function(app, models) {
 
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+
     var userModel = models.userModel;
     
     // respond to user queries
     app.get("/api/user", getUsers);
+    // login
+    app.post("/api/login", login);
     // respond to request for specific user
     app.get("/api/user/:userId", findUserById);
     // update a user
@@ -13,6 +18,26 @@ module.exports = function(app, models) {
     // Create a user
     app.post("/api/user", createWebsiteForUser);
 
+    function login(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if(user === null) {
+                        res.status(401).send("User and password pair not found")
+                    } else{
+                        res.json(user);
+                    }
+                },
+                function(error) {
+                    console.log("creds error");
+                    res.status(401).send("User  not found")
+                }
+            );
+    }
+
 
     // handle user queries
     function getUsers(req, res) {
@@ -20,7 +45,7 @@ module.exports = function(app, models) {
         var password = req.query.password;
         if(username && password) {
             // pass response so this function can respond too
-            findUserByCredentials(username, password, res);
+            findUserByCredentials(username, password, req, res);
         } else if(username) {
             findUserByUsername(username, res);
         }
