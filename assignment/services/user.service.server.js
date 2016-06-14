@@ -15,6 +15,7 @@ module.exports = function(app, models) {
     // respond to user queries
     app.get("/api/user", getUsers);
     app.get("/api/user/:userId", findUserById);
+    app.get("/api/loggedIn", loggedIn);
     // update a user
     app.put("/api/user/:userId", updateUser);
     // delete a user
@@ -120,6 +121,14 @@ module.exports = function(app, models) {
     function logout(req, res) {
         req.logout();
         res.sendStatus(200);
+    }
+
+    function loggedIn(req, res) {
+        if(req.isAuthenticated()) {
+            res.json(req.user);
+        } else {
+            res.send(0);
+        }
     }
 
     // handle user queries

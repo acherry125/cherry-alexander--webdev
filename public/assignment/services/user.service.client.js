@@ -15,7 +15,8 @@
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
             "deleteUser": deleteUser,
-            "logout": logout
+            "logout": logout,
+            "checkLoggedIn": checkLoggedIn
         };
 
         return api;
@@ -75,6 +76,11 @@
         function logout() {
             var url = "/api/logout";
             return $http.post(url);
+        }
+        
+        function checkLoggedIn() {
+            var url = "/api/loggedIn";
+            return $http.get(url);
         }
     }
 
