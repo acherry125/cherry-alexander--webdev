@@ -26,10 +26,6 @@ module.exports = function(app, models) {
     }
 
     function deserializeUser(user, done) {
-        done(null, user);
-    }
-
-    function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)
             .then(
