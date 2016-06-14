@@ -12,7 +12,7 @@
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ];
 
-    function RegisterController(UserService, $location) {
+    function RegisterController(UserService, $location, $rootScope) {
         var vm = this;
         vm.register = register;
         var verifyRegistration = verifyRegistration;
@@ -23,10 +23,12 @@
             if(verifyLocally(username, password, verify)) {
                 newUser = {username: username, password: password, verify: verify};
                 UserService
-                    .createUser(newUser)
+                    .register(newUser)
                     .then(
                         function (response) {
-                            $location.url("/user/" + response.data);
+                            var user = response.data;
+                            $rootScope.currentUser = user;
+                            $location.url("/user/" + user._id);
                         },
                         function (error) {
                             vm.error = error.data;

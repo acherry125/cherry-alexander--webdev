@@ -4,27 +4,35 @@ var LocalStrategy = require('passport-local').Strategy;
 module.exports = function(app, models) {
 
     var userModel = models.userModel;
-    
+
+    // login
+    // if passport approves request, login is invoked. Else 403
+    app.post("/api/login", passport.authenticate('WebAppMaker'), login);
+    // Create a user
+    app.post("/api/user", createUser);
+    app.post("/api/register", register);
+    app.post("/api/logout", logout);
     // respond to user queries
     app.get("/api/user", getUsers);
-    // login
-    app.post("/api/login", passport.authenticate('wam'), login);
     app.get("/api/user/:userId", findUserById);
     // update a user
     app.put("/api/user/:userId", updateUser);
     // delete a user
     app.delete("/api/user/:userId", deleteUser);
-    // Create a user
-    app.post("/api/user", createWebsiteForUser);
 
-    passport.use('wam', new LocalStrategy(localStrategy));
+
+
+    passport.use('WebAppMaker', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
+    // called right before sending to the client, this is what is put in the cookie
     function serializeUser(user, done) {
+        // places the entire user in the cookie
         done(null, user);
     }
-
+    
+    // handles the cookie the browser gives back after they login
     function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)
@@ -50,7 +58,7 @@ module.exports = function(app, models) {
                     }
                 },
                 function(error) {
-                    if (err) {
+                    if (error) {
                         return done(error);
                     }
                 }
@@ -58,10 +66,61 @@ module.exports = function(app, models) {
     }
 
     function login(req, res) {
+        // passport places this user here
         var user = req.user;
         res.json(user);
     }
 
+    function register(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        var verify = req.body.verify;
+        userModel
+            // find username
+            .findUserByUsername(username)
+            // username check complete
+            .then(
+                // database succesful
+                function(user) {
+                    if(user != null) {
+                        res.status(401).send("User already exists");
+                    } else {
+                        return userModel
+                            .createUser(req.body)
+                    }
+                },
+                // database error
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
+            // userModel.createUser returns to then and then goes here
+            // createUser request completed
+            .then(
+                // database success
+                function(user) {
+                    if(user) {
+                        // passport doesn't support promises, so we pass it a callback function
+                        req.login(user, function(error) {
+                            if(error) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
+    }
+
+    // logout
+    function logout(req, res) {
+        req.logout();
+        res.sendStatus(200);
+    }
 
     // handle user queries
     function getUsers(req, res) {
@@ -163,7 +222,7 @@ module.exports = function(app, models) {
             );
     }
 
-    function createWebsiteForUser(req, res) {
+    function createUser(req, res) {
         var newUser = req.body;
         // check if password and verify match
         if (!(newUser.password === newUser.verify)) {

@@ -8,12 +8,14 @@
 
         var api = {
             "createUser": createUser,
+            "register": register,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
             "login": login,
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "logout": logout
         };
 
         return api;
@@ -21,6 +23,12 @@
         /* Adds a new user to the database */
         function createUser(user) {
             var url = "/api/user";
+            return $http.post(url, user);
+        }
+
+        /* Adds a new user to the database */
+        function register(user) {
+            var url = "/api/register";
             return $http.post(url, user);
         }
 
@@ -61,6 +69,12 @@
         function deleteUser(userId) {
             var url = "/api/user/" + userId;
             return $http.delete(url);
+        }
+        
+        /* logout */
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url);
         }
     }
 

@@ -6,11 +6,12 @@
         .controller("ProfileController", ProfileController);
 
 
-    function ProfileController($routeParams, $location, UserService) {
+    function ProfileController($routeParams, $location, $rootScope, UserService) {
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
         vm.unregister = unregister;
+        vm.logout = logout;
 
         // user id
         var uid = $routeParams.uid;
@@ -61,6 +62,20 @@
             } else {
                 // Do nothing!
             }
+        }
+        
+        function logout() {
+            $rootScope.currentUser = null;
+            UserService
+                .logout()
+                .then(
+                    function(response) {
+                        $location.url("/");
+                    },
+                    function(error) {
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

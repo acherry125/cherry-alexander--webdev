@@ -6,7 +6,7 @@
         // naming controller and binding it to function
         .controller("LoginController", LoginController);
 
-    function LoginController($location, UserService) {
+    function LoginController($location, $rootScope, UserService) {
         // referring to self (View Model)
         var vm = this;
         // verifies login credentials
@@ -20,11 +20,14 @@
                     // when the server responds
                     .then(
                         function(response) {
-                            var id = response.data._id;
+                            var user = response.data;
+                            $rootScope.currentUser = user;
+                            var id = user._id;
                             $location.url("/user/" + id);
                         },
                         function(error) {
-                            vm.error = error.data;
+                            // figure out why this doesn't display
+                            vm.error = "Invalid username password combination";
                         });
             } else {
                 vm.error = "Please enter a Username and Password";
