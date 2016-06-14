@@ -4,25 +4,6 @@
     font-size: 110%;
 }
 
-.ac-landing-title {
-}
-
-.ac-landing-subtitle {
-
-}
-
-.ac-top-login {
-}
-
-
-.ac-bottom-login {
-    padding-right: 2px;
-}
-
-.ac-register {
-    padding-left: 2px;
-}
-
 .ac-landing-button-group {
     position: absolute;
     left: 15%;
@@ -36,11 +17,16 @@
 }
 
 /***** general page layout *****/
+html {
+    font-size: 14px;
+}
+
 body {
     /* clear navbar */
     max-width: 100%;
     overflow-x: hidden;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Alegreya Sans", sans-serif;
+    font-size: 16px;
 }
 
 /* centers text */
