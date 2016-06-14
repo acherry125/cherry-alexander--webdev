@@ -1,7 +1,7 @@
 module.exports = function(mongoose) {
     
     var UserSchema = require("./user.schema.server.js")(mongoose);
-    var User = mongoose.model("User", UserSchema);
+    var User = mongoose.model("EventUser", UserSchema);
     
     var api = {
         "createUser": createUser,

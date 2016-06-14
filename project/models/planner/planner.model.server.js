@@ -1,7 +1,7 @@
 module.exports = function(mongoose) {
     
     var PlannerSchema = require("./planner.schema.server.js")(mongoose);
-    var Planner = mongoose.model("Planner", PlannerSchema);
+    var Planner = mongoose.model("EventPlanner", PlannerSchema);
     
     var api = {
         "createUser": createUser,

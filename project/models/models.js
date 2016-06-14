@@ -1,6 +1,8 @@
 module.exports = function() {
 
     var mongoose = require('mongoose');
+    /*
+    // not necessary, already done in assignments
     var connectionString = 'mongodb://127.0.0.1:27017/webdev';
 
     if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -11,10 +13,10 @@ module.exports = function() {
             process.env.OPENSHIFT_APP_NAME;
     }
     mongoose.connect(connectionString);
-
+    */
 
     var userModel = require("./user/user.model.server.js")(mongoose);
-    var plannerModel = require("./user/planner.model.server.js")(mongoose);
+    var plannerModel = require("./planner/planner.model.server.js")(mongoose);
     
     var models = {
         userModel: userModel,
