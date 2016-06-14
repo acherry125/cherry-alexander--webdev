@@ -9,7 +9,7 @@
     left: 0;
     width: 100%;
     color: #337ab7;
-    background: white;
+    background: #f4f4f4;
     padding: 5px 0 5px 0;
 }
 
@@ -26,13 +26,13 @@
 html {
     font-size: 14px;
     background-color: #F53240;
-    padding: 0 0.5em 1em 0.5em;
+    padding: 1.25em 0.5em 1.25em 0.5em;
     height: 100%;
     overflow-y: hidden;
 }
 
 body {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
     max-width: 100%;
     overflow-x: hidden;
@@ -40,7 +40,7 @@ body {
     color: #FFF;
     background-color: #02C8A7;
     font-family: "Alegreya Sans", sans-serif;
-    padding: 2em 0 0 0;
+    padding: 0.5em 0 0 0;
 }
 
 /* centers text */

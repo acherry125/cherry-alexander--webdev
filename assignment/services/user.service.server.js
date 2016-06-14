@@ -7,7 +7,7 @@ module.exports = function(app, models) {
 
     // login
     // if passport approves request, login is invoked. Else 403
-    app.post("/api/login", passport.authenticate('WebAppMaker'), login);
+    app.post("/api/login", login);//passport.authenticate('WebAppMaker'), login);
     // Create a user
     app.post("/api/user", createUser);
     app.post("/api/register", register);
