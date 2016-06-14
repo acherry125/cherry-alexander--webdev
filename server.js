@@ -8,8 +8,8 @@ var session = require('express-session');
 var passport = require('passport');
 
 app.use(cookieParser());
-// change secret to session variable
-app.use(session({ secret: 'thesecret' }));
+// change secret to session variable, and check out resave and saveUnitialized docs
+app.use(session({ secret: 'thesecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 

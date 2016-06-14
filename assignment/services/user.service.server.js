@@ -17,7 +17,7 @@ module.exports = function(app, models) {
     // Create a user
     app.post("/api/user", createWebsiteForUser);
 
-    passport.use('wam', new LocalStrategy(localStragey));
+    passport.use('wam', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
