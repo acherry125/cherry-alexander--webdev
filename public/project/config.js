@@ -35,8 +35,8 @@
             // profile
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
-                //controller: "ProfileController",
-                //controllerAs: "model"
+                controller: "ProfileController",
+                controllerAs: "model"
             })
     };
 })();
