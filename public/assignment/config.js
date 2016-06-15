@@ -136,20 +136,6 @@
                         $rootScope.currentUser = null;
                     }
                 );
-            /*
-            var deferred = $q.defer();
-            $http.get('/api/loggedin').success(function(user) {
-                $rootScope.errorMessage = null;
-                if (user !== '0') {
-                    $rootScope.currentUser = user;
-                    deferred.resolve();
-                } else {
-                    deferred.reject();
-                    $location.url('/');
-                }
-            });
-            return deferred.promise;
-            */
         };
 
     };

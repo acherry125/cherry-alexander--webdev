@@ -245,7 +245,7 @@ module.exports = function(app, models) {
                 function(response) {
                     // user is not in database, create user
                     if(response === null) {
-                        createUserHelper(newUser, res);
+                        return userModel.createUser(newUser);
                     } else{
                         // user is in the database, do not create user
                         res.status(400).send("Username is already taken");
@@ -256,13 +256,6 @@ module.exports = function(app, models) {
                     res.status(400).send("Could not register user");
                 }
             )
-    }
-
-    // after initial checks, actually create the user
-    function createUserHelper(newUser, res) {
-        // create the user
-        userModel
-            .createUser(newUser)
             .then(
                 function(user) {
                     res.json(user._id);
@@ -270,7 +263,7 @@ module.exports = function(app, models) {
                 function(error) {
                     res.status(400).send("Cannot create user");
                 }
-            );
+            )
     }
 
 
