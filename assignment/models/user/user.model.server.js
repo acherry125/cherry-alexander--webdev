@@ -10,7 +10,8 @@ module.exports = function(mongoose) {
         "deleteUser": deleteUser,
         "findUserById": findUserById,
         "findUserByUsername": findUserByUsername,
-        "findUserByCredentials": findUserByCredentials
+        "findUserByCredentials": findUserByCredentials,
+        "findUserByFacebookId": findUserByFacebookId
     };
     return api;
 
@@ -55,7 +56,10 @@ module.exports = function(mongoose) {
 
     function findUserByCredentials(username, password) {
         return User.findOne({"username":username, "password":password});
-    }    
-    
+    }
+
+    function findUserByFacebookId(facebookId) {
+        return User.findOne({'facebook.id': facebookId});
+    }
     
 };

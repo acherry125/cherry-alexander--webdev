@@ -7,8 +7,8 @@ module.exports = function(app) {
     // respond to page queries
     app.get("/api/flickr", makeRequest);
 
-    key = "aa48e87fb459d9d7dfc3391515792913";
-
+    key = process.env.FLICKR;
+    
     var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search" +
         "&format=json&api_key=API_KEY&text=TEXT&sort=relevance&media=photos&page=PAGE" +
         "&per_page=105";
