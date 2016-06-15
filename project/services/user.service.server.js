@@ -87,7 +87,6 @@ module.exports = function(app, models) {
 
     // find a user by their username and password
     function findUserByCredentials(username, password, req, res){
-        console.log("searching for creds");
         userModel
             .findUserByCredentials(username, password)
             .then(
