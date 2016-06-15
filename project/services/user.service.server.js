@@ -13,7 +13,7 @@ module.exports = function(app, models) {
     // delete a user
     app.delete("/event/api/user/:userId", deleteUser);
     // Create a user
-    app.post("/event/api/user", createWebsiteForUser);
+    app.post("/event/api/user", createUser);
 
     function login(req, res) {
         var username = req.body.username;
@@ -134,7 +134,7 @@ module.exports = function(app, models) {
             );
     }
 
-    function createWebsiteForUser(req, res) {
+    function createUser(req, res) {
         var newUser = req.body;
         // check if password and verify match
         if (!(newUser.password === newUser.verify)) {
