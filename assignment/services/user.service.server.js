@@ -32,7 +32,7 @@ module.exports = function(app, models) {
         // places the entire user in the cookie
         done(null, user);
     }
-    
+
     // handles the cookie the browser gives back after they login
     function deserializeUser(user, done) {
         userModel

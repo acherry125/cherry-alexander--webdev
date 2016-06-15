@@ -123,6 +123,7 @@
                         if(user == '0') {
                             deferred.reject();
                             $rootScope.currentUser = null;
+                            $location.url("/");
                             // change location here $location
                         } else {
                             $rootScope.currentUser = user;
