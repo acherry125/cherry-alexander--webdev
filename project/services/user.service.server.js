@@ -86,20 +86,20 @@ module.exports = function(app, models) {
     }
 
     // find a user by their username and password
-    function findUserByCredentials(username, password, res){
+    function findUserByCredentials(username, password, req, res){
+        console.log("searching for creds");
         userModel
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
                     if(user === null) {
-                        res.status(401).send("User and password pair not found")
+                        res.status(400).send("User and password pair not found")
                     } else{
                         res.json(user);
                     }
                 },
                 function(error) {
-                    console.log("creds error");
-                    res.status(401).send("User  not found")
+                    res.status(401).send("User not found")
                 }
             );
     }
