@@ -52,10 +52,10 @@ module.exports = function(app, models) {
             .findUserByCredentials(username, password)
             .then(
                 function(user) {
-                    if (user === null) {
-                        return done(null, false);
-                    } else {
+                    if (user.username === username && user.password === password) {
                         return done(null, user);
+                    } else {
+                        return done(null, false);
                     }
                 },
                 function(error) {
