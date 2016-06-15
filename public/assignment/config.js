@@ -121,7 +121,6 @@
                 .then(
                     function(response) {
                         var user = response.data;
-                        console.log(user);
                         // not logged in
                         if(user == '0') {
                             deferred.reject();
@@ -141,7 +140,6 @@
                     },
                     // error from server
                     function(error) {
-                        console.log(error);
                         deferred.reject();
                         $rootScope.currentUser = null;
                     }
