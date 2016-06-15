@@ -83,7 +83,7 @@ module.exports = function(app, models) {
             .then(
                 // database succesful
                 function(user) {
-                    if(user != null) {
+                    if(user !== null) {
                         res.status(401).send("User already exists");
                     } else {
                         return userModel

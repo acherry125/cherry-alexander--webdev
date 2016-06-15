@@ -110,10 +110,13 @@
             });
 
         // how to tell if user is logged in
-        function checkLoggedIn($q, $timeout, $http, $location, $rootScope, UserService) {
+        function checkLoggedIn($q, $timeout, $http, $location, $rootScope, $route, UserService) {
 
             var deferred = $q.defer();
+            
 
+            uid = $route.current.params.uid;
+            
             UserService
                 .checkLoggedIn()
                 .then(
@@ -125,6 +128,10 @@
                             $rootScope.currentUser = null;
                             $location.url("/");
                             // change location here $location
+                        } else if (user._id != uid) {
+                            deferred.reject();
+                            $rootScope.currentUser = user;
+                            $location.url("/");
                         } else {
                             $rootScope.currentUser = user;
                             deferred.resolve();
