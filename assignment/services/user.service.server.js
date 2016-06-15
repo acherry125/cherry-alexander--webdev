@@ -1,6 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(app, models) {
 
@@ -41,7 +42,7 @@ module.exports = function(app, models) {
     passport.use('WebAppMaker', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-    
+
     function facebookStrategy(token, refreshToken, profile, done) {
         userModel
             .findUserByFacebookId(profile.id)
@@ -83,15 +84,21 @@ module.exports = function(app, models) {
 
     function localStrategy(username, password, done) {
         userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
+                    // no such user
                     if (user === null) {
                         return done(null, false);
-                    } else {
+                    // password correct!
+                    } else if (bcrypt.compareSync(password, user.password)) {
                         return done(null, user);
+                    // password incorrect
+                    } else {
+                        return done(null, false);
                     }
                 },
+                // database error
                 function(error) {
                     if (error) {
                         return done(error);
@@ -119,7 +126,10 @@ module.exports = function(app, models) {
                 function(user) {
                     if(user !== null) {
                         res.status(401).send("User already exists");
+                    } else if (password != verify) {
+                        res.status(401).send("Password and Verify Password Fields must match");
                     } else {
+                        req.body.password = bcrypt.hashSync(req.body.password);
                         return userModel
                             .createUser(req.body)
                     }
