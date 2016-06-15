@@ -114,8 +114,7 @@
 
             var deferred = $q.defer();
             
-
-            uid = $route.current.params.uid;
+            var uid = $route.current.params.uid;
             
             UserService
                 .checkLoggedIn()
@@ -123,20 +122,24 @@
                     function(response) {
                         var user = response.data;
                         console.log(user);
+                        // not logged in
                         if(user == '0') {
                             deferred.reject();
                             $rootScope.currentUser = null;
                             $location.url("/");
                             // change location here $location
+                        // trying to access someone else's account    
                         } else if (user._id != uid) {
                             deferred.reject();
                             $rootScope.currentUser = user;
                             $location.url("/");
+                        // logged into correct account    
                         } else {
                             $rootScope.currentUser = user;
                             deferred.resolve();
                         }
                     },
+                    // error from server
                     function(error) {
                         console.log(error);
                         deferred.reject();
