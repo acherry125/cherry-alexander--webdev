@@ -6,6 +6,6 @@
 
 // IIFE, stop namespace issues, immediately invokes it
 (function(){
-    angular.module("StockShare", ["ngRoute"]);
+    angular.module("EventHorizon", ["ngRoute"]);
 })();
  

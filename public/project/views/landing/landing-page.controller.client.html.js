@@ -1,7 +1,7 @@
 
 (function() {
     angular
-        .module("StockShare")
+        .module("EventHorizon")
         // naming controller and binding it to function
         .controller("LandingPageController", LandingPageController);
 

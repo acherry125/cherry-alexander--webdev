@@ -3,17 +3,17 @@ module.exports = function(app, models) {
     var userModel = models.userModel;
 
     // respond to user queries
-    app.get("/api/user", getUsers);
+    app.get("/event/api/user", getUsers);
     // login
-    app.post("/api/login", login);
+    app.post("/event/api/login", login);
     // respond to request for specific user
-    app.get("/api/user/:userId", findUserById);
+    app.get("/event/api/user/:userId", findUserById);
     // update a user
-    app.put("/api/user/:userId", updateUser);
+    app.put("/event/api/user/:userId", updateUser);
     // delete a user
-    app.delete("/api/user/:userId", deleteUser);
+    app.delete("/event/api/user/:userId", deleteUser);
     // Create a user
-    app.post("/api/user", createWebsiteForUser);
+    app.post("/event/api/user", createWebsiteForUser);
 
     function login(req, res) {
         var username = req.body.username;
@@ -50,7 +50,6 @@ module.exports = function(app, models) {
     // find a user by their id
     function findUserById(req, res){
         var userId = req.params.userId;
-
         userModel
             .findUserById(userId)
             .then(

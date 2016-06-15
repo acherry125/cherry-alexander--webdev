@@ -146,7 +146,7 @@ module.exports = function(app, models) {
     // find a user by their id
     function findUserById(req, res){
         var userId = req.params.userId;
-
+        console.log("assignment");
         userModel
             .findUserById(userId)
             .then(

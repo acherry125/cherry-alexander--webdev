@@ -71,13 +71,13 @@
             var url = "/api/user/" + userId;
             return $http.delete(url);
         }
-        
+
         /* logout */
         function logout() {
             var url = "/api/logout";
             return $http.post(url);
         }
-        
+
         function checkLoggedIn() {
             var url = "/api/loggedIn";
             return $http.get(url);

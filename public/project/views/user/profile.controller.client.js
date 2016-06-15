@@ -2,7 +2,7 @@
 
 (function() {
     angular
-        .module("StockShare")
+        .module("EventHorizon")
         .controller("ProfileController", ProfileController);
 
 

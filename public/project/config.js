@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("StockShare")
+        .module("EventHorizon")
         .config(Configuration);
 
     function Configuration($routeProvider) {
