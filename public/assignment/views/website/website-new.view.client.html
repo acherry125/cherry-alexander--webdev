@@ -35,15 +35,21 @@
         {{model.error}}
     </div>
     <!-- Website Details -->
-    <form>
+    <form name="wNewForm">
         <!-- Name -->
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': wNewForm.name.$error.required && model.error}">
             <label for="name">Name</label>
             <input ng-model="model.website.name"
                    class="form-control"
                    type="text"
+                   name="name"
                    id="name"
+                   required
                    placeholder="Name">
+            <label for="name"
+                   class="control-label"
+                   ng-show="wNewForm.name.$error.required && model.error">Name is required</label>
         </div>
         <!-- Description -->
         <div class="form-group">

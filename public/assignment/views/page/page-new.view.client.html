@@ -33,15 +33,21 @@
         {{model.error}}
     </div>
     <!-- Page Information Form -->
-    <form>
+    <form name="pNewForm">
         <!-- Name -->
-        <div class="form-group">
-            <label for="page-name">Name</label>
+        <div class="form-group"
+             ng-class="{ 'has-error': pNewForm.name.$error.required && model.error}">
+        <label for="name">Name</label>
             <input ng-model="model.page.name"
                    class="form-control"
                    type="text"
-                   id="page-name"
+                   name="name"
+                   id="name"
+                   required
                    placeholder="Page Name">
+            <label for="name"
+                   class="control-label"
+                   ng-show="pNewForm.name.$error.required && model.error">Name is required</label>
         </div>
         <!-- Title -->
         <div class="form-group">
