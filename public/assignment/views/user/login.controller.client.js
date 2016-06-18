@@ -39,6 +39,11 @@
         }
 
         function verifyLogin(username, password) {
+            uClass = "form-group has-error";
+            pClass = "form-group has-error";
+            $("#username-wrap").attr("class", uClass);
+            $("#password-wrap").attr("class", pClass);
+
             return (username && password);
         }
     }

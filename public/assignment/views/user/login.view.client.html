@@ -9,25 +9,38 @@
         {{model.info}}
     </div>
     <h1>Login</h1>
+
     <!-- Login form -->
-    <div class="ac-form" ng-keyup="$event.keyCode == 13 && model.login(username,password)">
-        <div class="form-group">
-            <!-- Username -->
+    <form name="loginForm"
+          class="ac-form"
+          novalidate
+          ng-keyup="$event.keyCode == 13 && model.login(username,password)">
+        <!-- Username -->
+        <div class="form-group" id="username-wrap">
             <input ng-model="username"
                    class="form-control"
                    type="text"
                    id="username"
+                   name="username"
                    placeholder="username">
+            <label for="username"
+                   class="control-label"
+                   ng-show="!loginForm.username.$modelValue && model.error">Username must be filled out</label>
         </div>
-        <div class="form-group">
-            <!-- Password -->
+        <!-- Password -->
+        <div class="form-group" id="password-wrap">
             <input ng-model="password"
                    class="form-control"
                    type="password"
+                   name="password"
                    id="password"
                    placeholder="password">
+            <label for="password"
+                   class="control-label"
+                   ng-show="!loginForm.password.$modelValue && model.error">Password must be filled out</label>
         </div>
-    </div>
+
+    </form>
     <!-- Login Button -->
     <div class="row">
         <div class="col-xs-12">

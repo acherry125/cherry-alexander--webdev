@@ -9,6 +9,10 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
+.has-error .control-label {
+    margin-bottom: 0px;
+}
+
 /* centers text */
 .ac-center-text {
     text-align: center;
