@@ -33,15 +33,21 @@
         {{model.error}}
     </div>
     <!-- Youtube Widget Information Form -->
-    <form>
+    <form name="youtubeForm">
         <!-- Name -->
-        <div class="form-group">
-            <label for="name">Name</label>
+        <div class="form-group"
+             ng-class="{ 'has-error': youtubeForm.name.$error.required && model.error }">
+        <label for="name">Name</label>
             <input ng-model="model.widget.name"
                    type="text"
                    class="form-control"
+                   name="name"
                    id="name"
+                   required
                    placeholder="Name"/>
+            <label for="name"
+                   class="control-label"
+                   ng-show="youtubeForm.name.$error.required && model.error">Name is required</label>
         </div>
         <!-- Text -->
         <div class="form-group">
