@@ -33,28 +33,49 @@
         {{model.error}}
     </div>
     <!-- TEXT INPUT Input Fields -->
-    <form>
-        <div class="form-group">
+    <form name="inputForm">
+        <div class="form-group"
+             ng-class="{ 'has-error': inputForm.name.$error.required && model.error}">
             <label for="name">Name</label>
-            <input ng-model="model.widget.name" id="name" class="form-control"/>
+            <input ng-model="model.widget.name"
+                   class="form-control"
+                   type="text"
+                   name="name"
+                   id="name"
+                   required
+                   placeholder="name"/>
+            <label for="name"
+                   class="control-label"
+                   ng-show="inputForm.name.$error.required && model.error">Name is required</label>
         </div>
         <div class="form-group">
             <label for="text">Text</label>
-            <input ng-model="model.widget.text" id="text" class="form-control"/>
+            <input ng-model="model.widget.text"
+                   id="text"
+                   type="text"
+                   placeholder="text"
+                   class="form-control"/>
         </div>
         <div class="form-group">
             <label for="rows">Rows</label>
-            <input ng-model="model.widget.rows" id="rows" class="form-control" type="number"/>
+            <input ng-model="model.widget.rows"
+                   id="rows"
+                   class="form-control"
+                   type="number"/>
         </div>
         <div class="form-group">
             <label for="placeholder">Placeholder</label>
-            <input ng-model="model.widget.placeholder" id="placeholder" class="form-control"/>
+            <input ng-model="model.widget.placeholder"
+                   type="text"
+                   id="placeholder"
+                   placeholder="helpful text grayed out like this"
+                   class="form-control"/>
         </div>
         <div class="form-group">
             <label for="formatted">Formatted</label>
             <input ng-model="model.widget.formatted" id="formatted"  type="checkbox"/>
         </div>
-        
+
     </form>
 
     <!-- Delete Widget Button -->

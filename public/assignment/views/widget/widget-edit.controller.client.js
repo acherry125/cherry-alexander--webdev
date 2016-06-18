@@ -72,7 +72,10 @@
         // validates that correct fields are populated
         function validityCheck() {
             if (!(vm.widget.name)) {
-                vm.error = "Widget " + vm.widget.type + " must have name";
+                var type = vm.widget.type;
+                var first = type[0];
+                var rest = type.substring(1).toLowerCase();
+                vm.error = first + rest + " widget must have name";
             } else if (vm.widget.type == "HEADING" && !(vm.widget.text && vm.widget.size)) {
                 vm.error = "Header Widget must have text and size";
             } else if (vm.widget.type == "IMAGE" && !(vm.widget.url && vm.widget.width)) {
