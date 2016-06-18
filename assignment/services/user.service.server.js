@@ -23,8 +23,8 @@ module.exports = function(app, models) {
     // for Facebook callback
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/#/user',
-            failureRedirect: '/#/login'
+            successRedirect: '/assignment/index.html#/user/redirect',
+            failureRedirect: '/assignment/index.html#/login'
         }));
     // update a user
     app.put("/api/user/:userId", updateUser);
@@ -44,20 +44,32 @@ module.exports = function(app, models) {
     passport.deserializeUser(deserializeUser);
 
     function facebookStrategy(token, refreshToken, profile, done) {
+        var id = profile.id;
+        console.log(profile);
+        console.log(profile.displayName);
         userModel
-            .findUserByFacebookId(profile.id)
+            .findUserByFacebookId(id)
             .then(
                 function(user) {
-                    if (user === null) {
-                        return done(null, false);
-                    } else {
+                    if(user) {
                         return done(null, user);
+                    } else {
+                        var newUser = {
+                            username: profile.displayName.replace(/ /g, ''),
+                            facebook: {
+                                id: profile.id,
+                                token: token,
+                                displayName: profile.displayName
+                            }
+                        };
+                        return userModel
+                            .createUser(newUser);
                     }
-                },
-                function(error) {
-                    if (error) {
-                        return done(error);
-                    }
+                }
+            )
+            .then(
+                function (user) {
+                    return done(null, user);
                 }
             );
     }

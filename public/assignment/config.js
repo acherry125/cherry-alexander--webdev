@@ -129,9 +129,9 @@
                             // change location here $location
                         // trying to access someone else's account    
                         } else if (user._id != uid) {
-                            deferred.reject();
+                            deferred.resolve();
                             $rootScope.currentUser = user;
-                            $location.url("/");
+                            $location.url("/user/" + user._id);
                         // logged into correct account    
                         } else {
                             $rootScope.currentUser = user;

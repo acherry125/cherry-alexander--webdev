@@ -17,7 +17,7 @@
         var uid = $routeParams.uid;
         vm.uId = uid;
 
-        function init() {
+        function init() {            
 
             UserService
                 .findUserById(uid)
