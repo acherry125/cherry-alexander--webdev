@@ -15,6 +15,7 @@
         // login handler
         function login(username, password) {
             if(verifyLogin(username, password)) {
+                vm.error = "";  
                 vm.info = "Checking for user...";
                 UserService
                     .login(username, password)
@@ -30,20 +31,15 @@
                             vm.info = "";
                             // figure out why this doesn't display
                             vm.error = "Invalid username password combination";
+                            vm.wrongError = true;
                         });
             } else {
                 vm.error = "Please enter a Username and Password";
-                vm.name_failure = true;
-                vm.password_failure = true;
+                vm.wrongError = false;
             }
         }
 
         function verifyLogin(username, password) {
-            uClass = "form-group has-error";
-            pClass = "form-group has-error";
-            $("#username-wrap").attr("class", uClass);
-            $("#password-wrap").attr("class", pClass);
-
             return (username && password);
         }
     }

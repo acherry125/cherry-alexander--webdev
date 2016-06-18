@@ -42,8 +42,13 @@
 
         /* helper function to verify registration form */
         function verifyLocally(username, password, verify) {
+            var successClass = "form-group";
+            var errorClass = "form-group has-error";
+            var uClass, pClass, vClass;
+
             if(!(username && password && verify)) {
-                vm.error = "All fields must be filled in"
+                vm.error = "All fields must be filled in";
+
             }
             // check passwords match
             else if (!(password === verify)) {

@@ -16,28 +16,32 @@
           novalidate
           ng-keyup="$event.keyCode == 13 && model.login(username,password)">
         <!-- Username -->
-        <div class="form-group" id="username-wrap">
+        <div class="form-group"
+             ng-class="{ 'has-error': loginForm.username.$error.required && model.error || model.wrongError }">
             <input ng-model="username"
                    class="form-control"
                    type="text"
                    id="username"
                    name="username"
+                   required
                    placeholder="username">
             <label for="username"
                    class="control-label"
-                   ng-show="!loginForm.username.$modelValue && model.error">Username must be filled out</label>
+                   ng-show="!loginForm.username.$modelValue && model.error">Username is required</label>
         </div>
         <!-- Password -->
-        <div class="form-group" id="password-wrap">
+        <div class="form-group"
+             ng-class="{ 'has-error': loginForm.password.$error.required && model.error || model.wrongError}">
             <input ng-model="password"
                    class="form-control"
                    type="password"
                    name="password"
                    id="password"
+                   required
                    placeholder="password">
             <label for="password"
                    class="control-label"
-                   ng-show="!loginForm.password.$modelValue && model.error">Password must be filled out</label>
+                   ng-show="!loginForm.password.$modelValue && model.error">Password is required</label>
         </div>
 
     </form>

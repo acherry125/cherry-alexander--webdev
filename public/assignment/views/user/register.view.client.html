@@ -8,33 +8,51 @@
         {{model.info}}
     </div>
     <h1>Register</h1>
+
     <!-- Registration form -->
-    <div class="ac-form" ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
+    <form name="regForm"
+          class="ac-form"
+          ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
         <!-- Username -->
-        <div class="form-group has-failure has-feedback">
+        <div class="form-group" ng-class="{ 'has-error': regForm.username.$error.required && model.error }"">
             <input ng-model="username"
                    type="text"
                    class="form-control"
+                   name="username"
                    id="username"
+                   required
                    placeholder="username">
+            <label for="username"
+                   class="control-label"
+                   ng-show="!regForm.username.$modelValue && model.error">Username is required</label>
         </div>
         <!-- Password -->
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': regForm.password.$error.required && model.error }">
             <input ng-model="password"
                    type="password"
                    class="form-control"
+                   name="password"
                    id="password"
+                   required
                    placeholder="password">
+            <label for="password"
+                   class="control-label"
+                   ng-show="!regForm.password.$modelValue && model.error">Password is required</label>
         </div>
         <!-- Verify Password -->
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': regForm.verify.$error.required && model.error }">
             <input ng-model="verify"
                    type="password"
                    class="form-control"
-                   id="ver-password"
+                   name="verify"
+                   id="verify"
+                   required
                    placeholder="verify password">
+            <label for="verify"
+                   class="control-label"
+                   ng-show="!regForm.verify.$modelValue && model.error">Verify Field is required</label>
         </div>
-    </div>
+    </form>
     <!-- Register Button -->
     <div class="row">
         <div class="col-xs-12">
