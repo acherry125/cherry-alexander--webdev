@@ -20,6 +20,8 @@
              ng-class="{ 'has-error': loginForm.username.$error.required && model.error || model.wrongError }">
             <input ng-model="username"
                    class="form-control"
+                   autocorrect="off"
+                   autocapitalize="off"
                    type="text"
                    id="username"
                    name="username"
