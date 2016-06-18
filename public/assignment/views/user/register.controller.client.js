@@ -20,7 +20,9 @@
 
         /* Registers a new user */
         function register(username, password, verify) {
+            vm.dupUser = false;
             if(verifyLocally(username, password, verify)) {
+                vm.error = "";
                 vm.info = "Creating user...";
                 newUser = {username: username, password: password, verify: verify};
                 UserService
@@ -32,7 +34,8 @@
                             $location.url("/user/" + user._id);
                         },
                         function (error) {
-                            vm.error = "";
+                            vm.info = "";
+                            vm.dupUser = true;
                             vm.error = error.data;
                         }
                     )

@@ -14,7 +14,8 @@
           class="ac-form"
           ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
         <!-- Username -->
-        <div class="form-group" ng-class="{ 'has-error': regForm.username.$error.required && model.error }"">
+        <div class="form-group"
+             ng-class="{ 'has-error': regForm.username.$error.required && model.error || model.dupUser}">
             <input ng-model="username"
                    type="text"
                    class="form-control"
@@ -25,9 +26,13 @@
             <label for="username"
                    class="control-label"
                    ng-show="!regForm.username.$modelValue && model.error">Username is required</label>
+            <label for="username"
+                   class="control-label"
+                   ng-show="model.dupUser && regForm.username.$modelValue">Username already taken</label>
         </div>
         <!-- Password -->
-        <div class="form-group" ng-class="{ 'has-error': regForm.password.$error.required && model.error }">
+        <div class="form-group"
+             ng-class="{ 'has-error': regForm.password.$error.required && model.error }">
             <input ng-model="password"
                    type="password"
                    class="form-control"
@@ -40,7 +45,8 @@
                    ng-show="!regForm.password.$modelValue && model.error">Password is required</label>
         </div>
         <!-- Verify Password -->
-        <div class="form-group" ng-class="{ 'has-error': regForm.verify.$error.required && model.error }">
+        <div class="form-group"
+             ng-class="{ 'has-error': regForm.verify.$error.required && model.error }">
             <input ng-model="verify"
                    type="password"
                    class="form-control"
