@@ -79,7 +79,10 @@
                 vm.error = "Image Widget must have url, and width";
             } else if (vm.widget.type == "YOUTUBE" && !(vm.widget.url && vm.widget.width)) {
                 vm.error = "YouTube Widget must have url, and width"
-            } else {
+            } else if(vm.widget.type == "HTML" && !(vm.widget.text)) {
+                vm.error = "HTML Widget must text"
+            }
+            else {
                 vm.error = "";
                 return true;
             }

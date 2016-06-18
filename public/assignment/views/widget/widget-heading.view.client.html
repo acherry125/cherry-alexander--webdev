@@ -33,15 +33,21 @@
         {{model.error}}
     </div>
     <!-- Header Information Form -->
-    <form>
+    <form name="headingForm">
         <!-- Name -->
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': headingForm.name.$error.required && model.error}">
             <label for="name">Name</label>
             <input ng-model="model.widget.name"
                    type="text"
                    class="form-control"
+                   name="name"
                    id="name"
+                   required
                    placeholder="Name"/>
+            <label for="name"
+                   class="control-label"
+                   ng-show="headingForm.name.$error.required && model.error">Name is required</label>
         </div>
         <!-- Text -->
         <div class="form-group">

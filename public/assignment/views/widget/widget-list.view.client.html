@@ -104,6 +104,7 @@
                          ta-toolbar="{{model.miniToolbar}}"></div>
                     <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
                            placeholder="{{widget.placeholder}}"
+                           value="{{widget.text}}"
                            class="form-control ac-list-input"/>
                     <textarea ng-if="!widget.formatted && (widget.rows > 1)"
                               rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
