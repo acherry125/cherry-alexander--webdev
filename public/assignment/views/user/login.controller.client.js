@@ -15,6 +15,7 @@
         // login handler
         function login(username, password) {
             if(verifyLogin(username, password)) {
+                vm.info = "Checking for user...";
                 UserService
                     .login(username, password)
                     // when the server responds
@@ -26,6 +27,7 @@
                             $location.url("/user/" + id);
                         },
                         function(error) {
+                            vm.info = "";
                             // figure out why this doesn't display
                             vm.error = "Invalid username password combination";
                         });

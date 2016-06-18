@@ -21,6 +21,7 @@
         /* Registers a new user */
         function register(username, password, verify) {
             if(verifyLocally(username, password, verify)) {
+                vm.info = "Creating user...";
                 newUser = {username: username, password: password, verify: verify};
                 UserService
                     .register(newUser)
@@ -31,6 +32,7 @@
                             $location.url("/user/" + user._id);
                         },
                         function (error) {
+                            vm.error = "";
                             vm.error = error.data;
                         }
                     )
