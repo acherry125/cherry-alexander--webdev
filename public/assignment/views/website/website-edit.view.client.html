@@ -34,21 +34,29 @@
         {{model.error}}
     </div>
     <!-- Website information form -->
-    <form>
+    <form name="wEditForm">
         <!-- Website Name -->
-        <div class="form-group">
-            <label for="username">Name</label>
+        <div class="form-group"
+             ng-class="{ 'has-error': wEditForm.name.$error.required && model.error}">
+            <label for="name">Name</label>
             <input ng-model="model.website.name"
                    type="text"
                    class="form-control"
-                   id="username"
+                   name="name"
+                   id="name"
+                   required
                    placeholder="Name"/>
+            <label for="name"
+                   class="control-label"
+                   ng-show="wEditForm.name.$error.required && model.error">Username is required</label>
         </div>
         <!-- Website Description -->
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': wEditForm.desc.$error.required && model.error}">
             <label for="description">Description</label>
             <textarea ng-model="model.website.description"
                       rows="8"
+                      name="desc"
                       id="description"
                       class="form-control"
                       placeholder="Description"></textarea>

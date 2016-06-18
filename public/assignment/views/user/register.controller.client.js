@@ -56,9 +56,11 @@
             // check passwords match
             else if (!(password === verify)) {
                 vm.error = "Password and Verify Password fields must match";
+                vm.matchError = true;
             }
             // success
             else {
+                vm.matchError = false;
                 return true;
             }
         };

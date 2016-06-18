@@ -27,7 +27,7 @@
                    placeholder="username">
             <label for="username"
                    class="control-label"
-                   ng-show="!loginForm.username.$modelValue && model.error">Username is required</label>
+                   ng-show="loginForm.username.$error.required && model.error">Username is required</label>
         </div>
         <!-- Password -->
         <div class="form-group"
@@ -41,7 +41,7 @@
                    placeholder="password">
             <label for="password"
                    class="control-label"
-                   ng-show="!loginForm.password.$modelValue && model.error">Password is required</label>
+                   ng-show="loginForm.password.$error && model.error">Password is required</label>
         </div>
 
     </form>
