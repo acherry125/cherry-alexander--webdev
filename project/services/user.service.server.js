@@ -1,191 +1,39 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function(app, models) {
 
     var userModel = models.userModel;
 
-    // login
-    // if passport approves request, login is invoked. Else 403
-    app.post("/api/login", passport.authenticate('WebAppMaker'), login);
-    // Create a user
-    app.post("/api/user", createUser);
-    app.post("/api/register", register);
-    app.post("/api/logout", logout);
     // respond to user queries
-    app.get("/api/user", getUsers);
-    app.get("/api/user/:userId", findUserById);
-    app.get("/api/loggedIn", loggedIn);
-    // login through facebook
-    app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    // for Facebook callback
-    app.get('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/assignment/index.html#/user/redirect',
-            failureRedirect: '/assignment/index.html#/login'
-        }));
+    app.get("/event/api/user", getUsers);
+    // login
+    app.post("/event/api/login", login);
+    // respond to request for specific user
+    app.get("/event/api/user/:userId", findUserById);
     // update a user
-    app.put("/api/user/:userId", updateUser);
+    app.put("/event/api/user/:userId", updateUser);
     // delete a user
-    app.delete("/api/user/:userId", deleteUser);
-
-    // facebook config
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };
-
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.use('WebAppMaker', new LocalStrategy(localStrategy));
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        var id = profile.id;
-        console.log(profile);
-        console.log(profile.displayName);
-        userModel
-            .findUserByFacebookId(id)
-            .then(
-                function(user) {
-                    if(user) {
-                        return done(null, user);
-                    } else {
-                        var newUser = {
-                            username: profile.displayName.replace(/ /g, ''),
-                            facebook: {
-                                id: profile.id,
-                                token: token,
-                                displayName: profile.displayName
-                            }
-                        };
-                        return userModel
-                            .createUser(newUser);
-                    }
-                }
-            )
-            .then(
-                function (user) {
-                    return done(null, user);
-                }
-            );
-    }
-
-    // called right before sending to the client, this is what is put in the cookie
-    function serializeUser(user, done) {
-        // places the entire user in the cookie
-        done(null, user);
-    }
-
-    // handles the cookie the browser gives back after they login
-    function deserializeUser(user, done) {
-        userModel
-            .findUserById(user._id)
-            .then(
-                function(user) {
-                    done(null, user);
-                },
-                function(error) {
-                    done(error, null);
-                }
-            )
-    }
-
-    function localStrategy(username, password, done) {
-        userModel
-            .findUserByUsername(username)
-            .then(
-                function(user) {
-                    // no such user
-                    if (user === null) {
-                        return done(null, false);
-                        // password correct!
-                    } else if (bcrypt.compareSync(password, user.password)) {
-                        return done(null, user);
-                        // password incorrect
-                    } else {
-                        return done(null, false);
-                    }
-                },
-                // database error
-                function(error) {
-                    if (error) {
-                        return done(error);
-                    }
-                }
-            );
-    }
+    app.delete("/event/api/user/:userId", deleteUser);
+    // Create a user
+    app.post("/event/api/user", createUser);
 
     function login(req, res) {
-        // passport places this user here
-        var user = req.user;
-        res.json(user);
-    }
-
-    function register(req, res) {
         var username = req.body.username;
         var password = req.body.password;
-        var verify = req.body.verify;
         userModel
-        // find username
-            .findUserByUsername(username)
-            // username check complete
+            .findUserByCredentials(username, password)
             .then(
-                // database succesful
                 function(user) {
-                    if(user !== null) {
-                        res.status(401).send("User already exists");
-                    } else if (password != verify) {
-                        res.status(401).send("Password and Verify Password Fields must match");
-                    } else {
-                        req.body.password = bcrypt.hashSync(req.body.password);
-                        return userModel
-                            .createUser(req.body)
-                    }
-                },
-                // database error
-                function(error) {
-                    res.status(400).send(error);
-                }
-            )
-            // userModel.createUser returns to then and then goes here
-            // createUser request completed
-            .then(
-                // database success
-                function(user) {
-                    if(user) {
-                        // passport doesn't support promises, so we pass it a callback function
-                        req.login(user, function(error) {
-                            if(error) {
-                                res.status(400).send(err);
-                            } else {
-                                res.json(user);
-                            }
-                        });
+                    if(user === null) {
+                        res.status(401).send("User and password pair not found")
+                    } else{
+                        res.json(user);
                     }
                 },
                 function(error) {
-                    res.status(400).send(error);
+                    res.status(401).send("User  not found")
                 }
-            )
+            );
     }
 
-    // logout
-    function logout(req, res) {
-        req.logout();
-        res.sendStatus(200);
-    }
-
-    function loggedIn(req, res) {
-        if(req.isAuthenticated()) {
-            res.json(req.user);
-        } else {
-            res.send("0");
-        }
-    }
 
     // handle user queries
     function getUsers(req, res) {
@@ -195,7 +43,7 @@ module.exports = function(app, models) {
             // pass response so this function can respond too
             findUserByCredentials(username, password, req, res);
         } else if(username) {
-            findUserByUsername(username, req, res);
+            findUserByUsername(username, res);
         }
     }
 
@@ -219,7 +67,7 @@ module.exports = function(app, models) {
     }
 
     // find a user by their username
-    function findUserByUsername(username, req, res){
+    function findUserByUsername(username, res){
         userModel
             .findUserByUsername(username)
             .then(
@@ -244,14 +92,13 @@ module.exports = function(app, models) {
             .then(
                 function(user) {
                     if(user === null) {
-                        res.status(401).send("User and password pair not found")
+                        res.status(400).send("User and password pair not found")
                     } else{
                         res.json(user);
                     }
                 },
                 function(error) {
-                    console.log("creds error");
-                    res.status(401).send("User  not found")
+                    res.status(401).send("User not found")
                 }
             );
     }
@@ -300,7 +147,7 @@ module.exports = function(app, models) {
                 function(response) {
                     // user is not in database, create user
                     if(response === null) {
-                        return userModel.createUser(newUser);
+                        createUserHelper(newUser, res);
                     } else{
                         // user is in the database, do not create user
                         res.status(400).send("Username is already taken");
@@ -311,6 +158,13 @@ module.exports = function(app, models) {
                     res.status(400).send("Could not register user");
                 }
             )
+    }
+
+    // after initial checks, actually create the user
+    function createUserHelper(newUser, res) {
+        // create the user
+        userModel
+            .createUser(newUser)
             .then(
                 function(user) {
                     res.json(user._id);
@@ -318,8 +172,7 @@ module.exports = function(app, models) {
                 function(error) {
                     res.status(400).send("Cannot create user");
                 }
-            )
+            );
     }
-
 
 };
