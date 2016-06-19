@@ -49,7 +49,9 @@
                 controllerAs: "model"
             })
             .when("/event/:eid", {
-                templateUrl: "views/event/event-face.view.client.html"
+                templateUrl: "views/event/event-face.view.client.html",
+                controller: "EventFaceController",
+                controllerAs: "model"
             })
 
             
