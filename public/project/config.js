@@ -53,6 +53,11 @@
                 controller: "EventFaceController",
                 controllerAs: "model"
             })
+            .when("/event/:eid/edit", {
+                templateUrl: "views/event/event-edit.view.client.html",
+                controller: "EventEditController",
+                controllerAs: "model"
+            })
 
             
     };
