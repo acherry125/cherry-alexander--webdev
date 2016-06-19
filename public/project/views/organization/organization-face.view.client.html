@@ -1,1 +1,103 @@
-Here is organization face
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back Button -->
+                <p class="navbar-text pull-left">
+                    <a href="#/search" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    <!-- {{model.name}} -->
+                    Organizer Name!
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container ac-nav-allow">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Hosted by: <b><a href="#/poster/24324232">NORTHEASTERN UNIVERSITY</a></b></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <h2 ng-if="model.address">Here is the address!</h2>
+                <h2 ng-if="!model.address">No address listed</h2>
+            </div>
+            <div>
+                <h2 ng-if="model.phone">Here is the phone number!</h2>
+                <h2 ng-if="!model.phone">No phone number listed</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <h2>Organizer Name!</h2>
+            </div>
+            <div class="row">
+                <button class="btn btn-warning btn-lg">Message the organizer!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                In at rutrum sapien, eget ultrices ante. Vivamus elementum nunc
+                tellus, eu porttitor neque mattis eu. Vivamus quis justo quam.
+                Cras molestie aliquam enim quis hendrerit. Mauris nunc diam,
+                rhoncus sit amet imperdiet in, sodales elementum tellus. Pellentesque
+                mattis quam tortor, sit amet sollicitudin libero accumsan id. Aenean
+                at ultricies metus, eget commodo arcu. Donec id lacinia odio, sit amet
+                vulputate nulla. <br>
+
+                Maecenas enim ligula, posuere at felis a, facilisis semper felis.
+                Sed congue sodales mauris, a dictum arcu venenatis et. Vestibulum
+                imperdiet feugiat nisi, non accumsan odio convallis maximus. Vestibulum
+                luctus libero at neque dictum hendrerit. Nulla facilisi. Vestibulum ante
+                ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                Vestibulum ac luctus nisl, quis vulputate erat. Phasellus imperdiet lacus
+                eget quam malesuada ultrices. Maecenas id quam fermentum, auctor libero at,
+                lobortis est. Sed volutpat massa in magna malesuada, in efficitur nisl fermentum.
+                Praesent in mattis quam. Cum sociis natoque penatibus et magnis dis parturient
+                montes, nascetur ridiculus mus. Cras at consequat eros. Aliquam tempus
+                vulputate hendrerit.
+            </h3>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Login Button -->
+                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/login" class="navbar-link">
+                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+
+                    </a>
+                </p>
+                <!-- Account Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/account" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/home" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>
