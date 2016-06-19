@@ -1,5 +1,30 @@
+/***** general page layout *****/
+html {
+    font-size: 14px;
+    background-color: #F53240;
+    padding: 1.25em 0.5em 1.25em 0.5em;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    overflow-y: auto;
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #02C8A7;
+    font-family: "Alegreya Sans", sans-serif;
+    padding: 5em 0 0 0;
+}
+
 .ng-scope > .container {
     margin-bottom: 5em;
+}
+
+ul {
+    list-style: none;
 }
 
 #map-row {
@@ -11,6 +36,11 @@
     width: 100%;
     height: 350px;
     margin-top: 10px;
+}
+
+.ac-event-list {
+    height: 400px;
+    overflow-y: scroll;
 }
 
 /* highlight glyphicons when focused for clarity */
@@ -99,27 +129,6 @@ nav>.container>.navbar-header {
 .row {
     margin-right: 0;
     margin-left: 0;
-}
-
-/***** general page layout *****/
-html {
-    font-size: 14px;
-    background-color: #F53240;
-    padding: 1.25em 0.5em 1.25em 0.5em;
-    height: 100%;
-    overflow-y: hidden;
-}
-
-body {
-    overflow-y: auto;
-    height: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    font-size: 16px;
-    color: #FFF;
-    background-color: #02C8A7;
-    font-family: "Alegreya Sans", sans-serif;
-    padding: 5em 0 0 0;
 }
 
 /* centers text */
