@@ -42,8 +42,16 @@
                 templateUrl: "views/map/map.view.client.html",
                 controller: "MapController",
                 controllerAs: "model"
-            }
+            })
+            .when("/search", {
+                templateUrl: "views/landing/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
+            .when("/event/:eid", {
+                templateUrl: "views/event/event-face.view.client.html"
+            })
 
-            )
+            
     };
 })();

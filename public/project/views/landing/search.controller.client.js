@@ -2,11 +2,12 @@
 (function() {
     angular
         .module("EventHorizon")
-        .controller("MapController", MapController);
+        .controller("SearchController", SearchController);
 
-
-    function MapController($routeParams, $location, UserService) {
+    function SearchController() {
         vm = this;
+        vm.searchTerm = "";
+        vm.mapDisplay = false;
 
         function init() {
             map_init();
@@ -23,15 +24,13 @@
                 mapOptions);
 
             var input = /** @type {HTMLInputElement} */(
-                document.getElementById('map-input'));
+                document.getElementById('search'));
 
             // Create the autocomplete helper, and associate it with
             // an HTML text input box.
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.bindTo('bounds', map);
-
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
+            
             var infowindow = new google.maps.InfoWindow();
             var marker = new google.maps.Marker({
                 map: map
@@ -68,13 +67,12 @@
                 if(!phone) {
                     phone = "";
                 }
-                
+
                 infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
                     place.formatted_address + '<br>' + phone + '</div>');
                 infowindow.open(map, marker);
             });
         }
-
     }
-    
+
 })();

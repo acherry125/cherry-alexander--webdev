@@ -3,7 +3,70 @@
 }
 
 #map-row {
+    margin-top: 10px;
     color: black;
+}
+
+/* highlight glyphicons when focused for clarity */
+a .glyphicon:hover {
+    color: red;
+}
+
+/* Space to tap footer glyphicons */
+.navbar.navbar-fixed-bottom .glyphicon{
+    padding-left: 1em;
+}
+
+/* Navbar text is black */
+.navbar .glyphicon, .navbar .navbar-brand {
+    color: black;
+}
+
+/* Profile button should still be blue */
+.navbar .glyphicon-user {
+    color: #337ab7;
+}
+
+/* Standardize header size and stop right
+   glyphicons from floating left */
+nav>.container>.navbar-header {
+    float: none;
+    height: 65px;
+    margin-right: 0px;
+}
+
+/* Make header text more readable */
+.navbar-brand {
+    font-size: 2em;
+    line-height: inherit;
+}
+
+.navbar p {
+    font-size: 1.75em;
+}
+
+/* Give sufficient padding from right screen border */
+.navbar.navbar-fixed-bottom {
+    padding-right: 20px;
+}
+
+/* Make navbar black */
+.navbar {
+    background-color: #00b3b3;
+    opacity: 0.9999;
+    border-color: #00cccc;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* To stop the user from thinking the title page is clickable */
+.navbar .navbar-brand {
+    cursor: default;
+}
+
+
+.ac-form-group {
+    margin-bottom: 5px;
 }
 
 #map-input {
@@ -61,7 +124,7 @@ body {
 
 /* for better readability */
 label, .form-control {
-    font-size: 16px;
+    font-size: 22px;
 }
 
 /* highlight glyphicons when focused for clarity */
@@ -71,7 +134,12 @@ a .glyphicon:hover {
 
 /* comply with requirements */
 a:hover, a:focus {
+
+}
+
+.navbar-default .navbar-brand:hover {
     text-decoration: none;
+    color: black;
 }
 
 /* potentially useful class */

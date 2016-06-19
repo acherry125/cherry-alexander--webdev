@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <form>
+            <div class="form-group ac-form-group">
+                <label for="search">Search for an event near you!</label>
+                <input ng-model="searchTerm" type="text" id="search" class="form-control">
+            </div>
+        </form>
+        <button ng-click="model.searchMap(searchTerm)"
+                class="btn btn-lg btn-block btn-primary">Submit</button>
+    </div>
+    <div class="row" id="map-row">
+        <div id="map" style="width:100%;height:350px;"></div>
+    </div>
+</div>
