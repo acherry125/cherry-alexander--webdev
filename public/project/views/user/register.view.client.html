@@ -33,12 +33,17 @@
                    placeholder="verify password">
         </div>
     </div>
+    <!-- Create Poster
+    <div class="ac-form-group form-group">
+        <input class="ac-checkbox" type="checkbox" id="check">
+        <label for="check">Register as Event Poster</label>
+    </div>
     <!-- Register Button -->
     <a ng-click="model.register(username, password, verify)"
        role="button"
        class="btn btn-block btn-primary btn-lg">Register</a>
     <!-- Cancel Button -->
-    <a href="#/landing"
+    <a ng-click="model.goBack()"
        role="button"
        class="btn btn-block btn-danger btn-lg">Cancel</a>
 </div>

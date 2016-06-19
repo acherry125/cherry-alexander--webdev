@@ -1,4 +1,24 @@
-<div class="container">
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back Button -->
+                <p class="navbar-text pull-left">
+                    <a href="#/" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    <!-- {{model.name}} -->
+                    Events
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container ac-nav-allow">
     <div class="row">
         <form>
             <div class="form-group ac-form-group">
@@ -14,14 +34,42 @@
             <div id="map" class="ac-map-box"></div>
         </div>
         <div class="col-md-6 ac-event-list">
-                <h1>PAX East</h1>
+                <h1><a ng-href="#/event/dummy">PAX East</a></h1>
                 <h1>Outdoor Ballroom Dancing</h1>
                 <h1>Sir Scoops Alot Boston Extravanganza</h1>
                 <h1>Freedom Trail Honorary Common Celebration</h1>
                 <h1>Freedom Trail Honorary Common Celebration</h1>
                 <h1>Freedom Trail Honorary Common Celebration</h1>
-
-
         </div>
     </div>
 </div>
+
+
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Login Button -->
+                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/login" class="navbar-link">
+                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+
+                    </a>
+                </p>
+                <!-- Account Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/account" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/home" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>

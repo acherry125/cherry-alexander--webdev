@@ -26,20 +26,16 @@
         </div>
     </form>
     <!-- Login Button -->
-    <div class="row">
-        <a ng-click="model.login(username, password)"
-           role="button"
-           class="btn btn-block btn-primary btn-lg">Login</a>
-    </div>
+    <a ng-click="model.login(username, password)"
+       role="button"
+       class="btn btn-block btn-primary btn-lg">Login</a>
     <!-- Register Button -->
     <a href="#/register"
        role="button"
        class="btn btn-block btn-success btn-lg">Register</a>
     <!-- Register Button -->
-    <a href="#/landing"
+    <a ng-click="model.goBack()"
        role="button"
        class="btn btn-block btn-danger btn-lg">Back</a>
-    <!-- back to index... just for assignment 2 -->
-    <a href="#/landing">Back to Homepage</a>
 </div>
 <!-- no bottom navigation bar on login -->

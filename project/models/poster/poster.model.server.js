@@ -1,6 +1,6 @@
 module.exports = function(mongoose) {
     
-    var PlannerSchema = require("./planner.schema.server.js")(mongoose);
+    var PlannerSchema = require("./poster.schema.server.js")(mongoose);
     var Planner = mongoose.model("EventPlanner", PlannerSchema);
     
     var api = {

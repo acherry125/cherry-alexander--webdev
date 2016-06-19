@@ -6,7 +6,7 @@ module.exports = function(app) {
 
     // user services
     var userService = require("./services/user.service.server.js")(app, models);
-    var plannerService = require("./services/planner.service.server.js")(app, models);
+    var posterService = require("./services/poster.service.server.js")(app, models);
 
 
 };

@@ -27,7 +27,7 @@
     </nav>
 </header>
 <!-- Main Container -->
-<div class="container">
+<div class="container ac-nav-allow">
     <!-- Error Message -->
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
@@ -89,13 +89,14 @@
                       id="event-desc"
                       placeholder="Event Time"></textarea>
         </div>
-        <!-- Upload Image Button -->
-        <form action="/api/event/upload"  method="post" enctype="multipart/form-data">
-            <input required name="myFile"   type="file" class="form-control"/>
-            <input  name="eventId" value="{{model.widget._id}}"   style="display: none"/>
-            <input  name="posterId" value="{{model.posterId}}"   style="display: none"/>
-            <button type="submit"  class="btn btn-block btn-lg btn-primary">Upload Image</button>
-        </form>
+    </form>
+    <!-- Upload Image Button -->
+    <form action="/api/event/upload"  method="post" enctype="multipart/form-data">
+        <input required name="myFile"   type="file" class="form-control"/>
+        <input  name="eventId" value="{{model.widget._id}}"   style="display: none"/>
+        <input  name="posterId" value="{{model.posterId}}"   style="display: none"/>
+        <br>
+        <button type="submit" class="btn btn-block btn-lg btn-primary" id="image-submit-button">Upload Image</button>
     </form>
     <!-- Delete Page -->
     <div class="row">
@@ -103,17 +104,29 @@
            role="button"
            class="btn btn-block btn-danger btn-lg">Delete</a>
     </div>
-
 </div>
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Button -->
-                <p class="navbar-text pull-right">
-                    <a ng-href="" class="navbar-link">
+                <!-- Login Button -->
+                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/login" class="navbar-link">
+                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+
+                    </a>
+                </p>
+                <!-- Account Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/account" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/home" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
             </div>

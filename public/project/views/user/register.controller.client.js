@@ -16,6 +16,7 @@
         var vm = this;
         vm.register = register;
         var verifyRegistration = verifyRegistration;
+        vm.goBack = goBack;
 
 
         /* Registers a new user */
@@ -51,6 +52,9 @@
             }
         };
 
+        function goBack() {
+            $location.url("/landing")
+        }
 
     }
 })();

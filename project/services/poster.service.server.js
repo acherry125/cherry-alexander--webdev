@@ -1,6 +1,6 @@
 module.exports = function(app, models) {
 
-    var plannerModel = models.plannerModel;
+    var posterModel = models.posterModel;
 
     // respond to user queries
     app.get("/event/api/user", getUsers);

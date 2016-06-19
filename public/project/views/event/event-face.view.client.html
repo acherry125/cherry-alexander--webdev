@@ -19,7 +19,7 @@
     </nav>
 </header>
 
-<div class="container">
+<div class="container ac-nav-allow">
     <div class="row">
         <div class="col-md-8">
             <h2>Here is the date!</h2>
@@ -93,17 +93,28 @@
     </div>
 </div>
 
-
-
 <!-- Footer Navigation Bar -->
 <footer>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Link -->
-                <p class="navbar-text pull-right">
-                    <a href="" class="navbar-link">
+                <!-- Login Button -->
+                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/login" class="navbar-link">
+                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+
+                    </a>
+                </p>
+                <!-- Account Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/account" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/home" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>
             </div>

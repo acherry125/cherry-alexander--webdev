@@ -11,6 +11,7 @@
         var vm = this;
         // verifies login credentials
         vm.login = login;
+        vm.goBack = goBack;
 
         // login handler
         function login(username, password) {
@@ -25,6 +26,10 @@
                     function(error) {
                         vm.error = "User not found";
                     });
+        }
+        
+        function goBack() {
+            $location.url("/")
         }
     }
 })();
