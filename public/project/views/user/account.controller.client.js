@@ -3,7 +3,7 @@
 (function() {
     angular
         .module("EventHorizon")
-        .controller("ProfileController", AccountController);
+        .controller("AccountController", AccountController);
 
 
     function AccountController($routeParams, $location, UserService) {

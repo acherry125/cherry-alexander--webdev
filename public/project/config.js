@@ -58,7 +58,17 @@
                 controller: "EventEditController",
                 controllerAs: "model"
             })
+            .when("/organization/:oid", {
+                templateUrl: "views/organization/organization-face.view.client.html",
+                controller: "OrganizationFaceController",
+                controllerAs: "model"
+            })
+            .when("/organization/:oid/edit", {
+                templateUrl: "views/organization/organization-edit.view.client.html",
+                controller: "OrganizationEditController",
+                controllerAs: "model"
+            })
 
-            
+
     };
 })();

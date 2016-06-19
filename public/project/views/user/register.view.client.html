@@ -5,6 +5,9 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
+    <div ng-if="model.info" class="alert alert-info">
+        {{model.info}}
+    </div>
     <h1>Register</h1>
     <!-- Registration form -->
     <div ng-keyup="$event.keyCode == 13 && model.register(username, password, verify)">
@@ -35,7 +38,8 @@
     </div>
     <!-- Create Poster -->
     <div class="ac-form-group form-group">
-        <input class="ac-checkbox" type="checkbox" id="check">
+        <input ng-model="model.poster"
+               class="ac-checkbox" type="checkbox" id="check">
         <label for="check">Register as Event Poster</label>
     </div>
     <!-- Register Button -->

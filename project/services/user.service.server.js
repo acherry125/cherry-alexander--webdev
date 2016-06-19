@@ -1,50 +1,195 @@
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = function(app, models) {
 
     var userModel = models.userModel;
 
+    // login
+    // if passport approves request, login is invoked. Else 403
+    app.post("/event/api/login", passport.authenticate('EventHorizon'), login);
+    // Create a user
+    app.post("/event/api/register", register);
+    app.post("/event/api/logout", logout);
     // respond to user queries
     app.get("/event/api/user", getUsers);
-    // login
-    app.post("/event/api/login", login);
-    // respond to request for specific user
     app.get("/event/api/user/:userId", findUserById);
+    app.get("/event/api/loggedIn", loggedIn);
+    // login through facebook
+    app.get ('/event/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+    // for Facebook callback
+    app.get('/event/auth/facebook/callback',
+        passport.authenticate('facebook', {
+            successRedirect: '/project/index.html#/user/redirect',
+            failureRedirect: '/project/index.html#/login'
+        }));
     // update a user
     app.put("/event/api/user/:userId", updateUser);
     // delete a user
     app.delete("/event/api/user/:userId", deleteUser);
-    // Create a user
-    app.post("/event/api/user", createUser);
 
-    function login(req, res) {
-        var username = req.body.username;
-        var password = req.body.password;
+    // facebook config
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+
+    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+    passport.use('EventHorizon', new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    function facebookStrategy(token, refreshToken, profile, done) {
+        var id = profile.id;
+        console.log(profile);
+        console.log(profile.displayName);
         userModel
-            .findUserByCredentials(username, password)
+            .findUserByFacebookId(id)
             .then(
                 function(user) {
-                    if(user === null) {
-                        res.status(401).send("User and password pair not found")
-                    } else{
-                        res.json(user);
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var newUser = {
+                            username: profile.displayName.replace(/ /g, ''),
+                            facebook: {
+                                id: profile.id,
+                                token: token,
+                                displayName: profile.displayName
+                            }
+                        };
+                        return userModel
+                            .createUser(newUser);
                     }
-                },
-                function(error) {
-                    res.status(401).send("User  not found")
+                }
+            )
+            .then(
+                function (user) {
+                    return done(null, user);
                 }
             );
     }
 
+    // called right before sending to the client, this is what is put in the cookie
+    function serializeUser(user, done) {
+        // places the entire user in the cookie
+        done(null, user);
+    }
+
+    // handles the cookie the browser gives back after they login
+    function deserializeUser(user, done) {
+        userModel
+            .findUserById(user._id)
+            .then(
+                function(user) {
+                    done(null, user);
+                },
+                function(error) {
+                    done(error, null);
+                }
+            )
+    }
+
+    function localStrategy(username, password, done) {
+        userModel
+            .findUserByUsername(username)
+            .then(
+                function(user) {
+                    // no such user
+                    if (user === null) {
+                        return done(null, false);
+                        // password correct!
+                    } else if (bcrypt.compareSync(password, user.password)) {
+                        return done(null, user);
+                        // password incorrect
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                // database error
+                function(error) {
+                    if (error) {
+                        return done(error);
+                    }
+                }
+            );
+    }
+
+    function login(req, res) {
+        // passport places this user here
+        var user = req.user;
+        res.json(user);
+    }
+
+    function register(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        var verify = req.body.verify;
+        userModel
+            // find username
+            .findUserByUsername(username)
+            // username check complete
+            .then(
+                // database successful
+                function(user) {
+                    if(user !== null) {
+                        res.status(401).send("User already exists");
+                    } else if (password != verify) {
+                        res.status(401).send("Password and Verify Password Fields must match");
+                    } else {
+                        req.body.password = bcrypt.hashSync(req.body.password);
+                        return userModel
+                            .createUser(req.body)
+                    }
+                },
+                // database error
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
+            // userModel.createUser returns to then and then goes here
+            // createUser request completed
+            .then(
+                // database success
+                function(user) {
+                    if(user) {
+                        // passport doesn't support promises, so we pass it a callback function
+                        req.login(user, function(error) {
+                            if(error) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(error) {
+                    res.status(400).send(error);
+                }
+            )
+    }
+
+    // logout
+    function logout(req, res) {
+        req.logout();
+        res.sendStatus(200);
+    }
+
+    function loggedIn(req, res) {
+        if(req.isAuthenticated()) {
+            res.json(req.user);
+        } else {
+            res.send("0");
+        }
+    }
 
     // handle user queries
     function getUsers(req, res) {
         var username = req.query.username;
-        var password = req.query.password;
-        if(username && password) {
-            // pass response so this function can respond too
-            findUserByCredentials(username, password, req, res);
-        } else if(username) {
-            findUserByUsername(username, res);
-        }
+        findUserByUsername(username, req, res);
     }
 
     // find a user by their id
@@ -67,7 +212,7 @@ module.exports = function(app, models) {
     }
 
     // find a user by their username
-    function findUserByUsername(username, res){
+    function findUserByUsername(username, req, res){
         userModel
             .findUserByUsername(username)
             .then(
@@ -81,24 +226,6 @@ module.exports = function(app, models) {
                 function(error) {
                     console.log("creds error");
                     res.status(404).send("User " + username + " not found");
-                }
-            );
-    }
-
-    // find a user by their username and password
-    function findUserByCredentials(username, password, req, res){
-        userModel
-            .findUserByCredentials(username, password)
-            .then(
-                function(user) {
-                    if(user === null) {
-                        res.status(400).send("User and password pair not found")
-                    } else{
-                        res.json(user);
-                    }
-                },
-                function(error) {
-                    res.status(401).send("User not found")
                 }
             );
     }
@@ -133,46 +260,5 @@ module.exports = function(app, models) {
             );
     }
 
-    function createUser(req, res) {
-        var newUser = req.body;
-        // check if password and verify match
-        if (!(newUser.password === newUser.verify)) {
-            res.status(400).send("Password and Verify Password must match");
-            return;
-        }
-        // check if the username is in the database already
-        userModel
-            .findUserByUsername(newUser.username)
-            .then(
-                function(response) {
-                    // user is not in database, create user
-                    if(response === null) {
-                        createUserHelper(newUser, res);
-                    } else{
-                        // user is in the database, do not create user
-                        res.status(400).send("Username is already taken");
-                    }
-                },
-                // database error, fire error
-                function(error) {
-                    res.status(400).send("Could not register user");
-                }
-            )
-    }
-
-    // after initial checks, actually create the user
-    function createUserHelper(newUser, res) {
-        // create the user
-        userModel
-            .createUser(newUser)
-            .then(
-                function(user) {
-                    res.json(user._id);
-                },
-                function(error) {
-                    res.status(400).send("Cannot create user");
-                }
-            );
-    }
 
 };

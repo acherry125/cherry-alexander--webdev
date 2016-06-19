@@ -7,8 +7,7 @@ module.exports = function(mongoose) {
         lastName: String,
         // can use a regex to make the email too
         email: String,
-        phone: String,
-        websites: [{type: mongoose.Schema.Types.ObjectId, ref: "Widget"}],
+        poster: {type: Boolean, default: false},
         dateCreated: Date
     }, {collection: "event-user"});
 

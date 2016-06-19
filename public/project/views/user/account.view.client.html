@@ -22,7 +22,7 @@
 </header>
 
 <!-- Main Container -->
-<div class="container">
+<div class="container ac-nav-allow">
     <!-- Success Message -->
     <div ng-if="model.success" class="alert alert-success">
         {{model.success}}
@@ -32,72 +32,58 @@
         {{model.failure}}
     </div>
     <!-- Profile information form -->
-    <div class="col-xs-12">
-        <form>
-            <!-- Username -->
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input ng-model="model.user.username"
-                       class="form-control"
-                       type="text"
-                       id="username"
-                       disabled
-                       placeholder="username">
-            </div>
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input ng-model="model.user.email"
-                       class="form-control"
-                       type="email"
-                       id="email"
-                       placeholder="email">
-            </div>
-            <!-- First Name -->
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input ng-model="model.user.firstName"
-                       class="form-control"
-                       type="text"
-                       id="first-name"
-                       placeholder="first name">
-            </div>
-            <!-- Last Name -->
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input ng-model="model.user.lastName"
-                       class="form-control"
-                       type="text"
-                       id="last-name"
-                       placeholder="last name">
-            </div>
-        </form>
-    </div>
+    <form>
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
+                   class="form-control"
+                   type="text"
+                   id="username"
+                   disabled
+                   placeholder="username">
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input ng-model="model.user.email"
+                   class="form-control"
+                   type="email"
+                   id="email"
+                   placeholder="email">
+        </div>
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName"
+                   class="form-control"
+                   type="text"
+                   id="first-name"
+                   placeholder="first name">
+        </div>
+        <!-- Last Name -->
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName"
+                   class="form-control"
+                   type="text"
+                   id="last-name"
+                   placeholder="last name">
+        </div>
+    </form>
     <!-- Websites Link Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a ng-href="#/user/{{model.uId}}/website"
-               role="button"
-               class="btn btn-block btn-primary btn-lg">Websites</a>
-        </div>
-    </div>
-
+    <a ng-href="#/user/{{model.uId}}/website"
+       role="button"
+       class="btn btn-block btn-primary btn-lg">Websites</a>
     <!-- Logout Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a href="#/login"
-               role="button"
-               class="btn btn-block btn-warning btn-lg">Logout</a>
-        </div>
-    </div>
+    <a href="#/login"
+       role="button"
+       class="btn btn-block btn-warning btn-lg">Logout</a>
     <!-- Unregister Button -->
-    <div class="row">
-        <div class="col-xs-12">
-            <a ng-click="model.unregister()"
-               role="button"
-               class="btn btn-block btn-danger btn-lg">Delete Profile</a>
-        </div>
-    </div>
+    <a ng-click="model.unregister()"
+       role="button"
+       class="btn btn-block btn-danger btn-lg">Delete Profile</a>
+
 </div>
 <!-- Footer Navigation Bar -->
 <!-- Footer Navigation Bar -->
@@ -105,12 +91,6 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Profile Button -->
-                <p class="navbar-text pull-right">
-                    <a ng-href="#/user/{{model.uId}}" class="navbar-link">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                </p>
             </div>
         </div>
     </nav>

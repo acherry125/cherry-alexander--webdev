@@ -62,6 +62,10 @@ a .glyphicon:hover {
     color: red;
 }
 
+a {
+    cursor: pointer;
+}
+
 /* Space to tap footer glyphicons */
 .navbar.navbar-fixed-bottom .glyphicon{
     padding-left: 1em;
