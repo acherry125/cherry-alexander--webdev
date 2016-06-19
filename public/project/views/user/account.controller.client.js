@@ -3,10 +3,10 @@
 (function() {
     angular
         .module("EventHorizon")
-        .controller("ProfileController", ProfileController);
+        .controller("ProfileController", AccountController);
 
 
-    function ProfileController($routeParams, $location, UserService) {
+    function AccountController($routeParams, $location, UserService) {
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
@@ -38,7 +38,7 @@
                 .updateUser(uid, vm.user)
                 .then(
                     function(response) {
-                        vm.success = "User succesfully updated their profile";
+                        vm.success = "User succesfully updated their information";
                     },
                     function(error) {
                         vm.failure = error.data;
@@ -47,7 +47,7 @@
         }
         
         function unregister() {
-            if (confirm('Are you sure you want to delete your profile?')) {
+            if (confirm('Are you sure you want to delete your account?')) {
                 UserService
                     .deleteUser(uid)
                     .then(

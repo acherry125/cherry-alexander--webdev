@@ -2,6 +2,17 @@
     margin-bottom: 3em;
 }
 
+#map-row {
+    color: black;
+}
+
+#map-input {
+    max-width: 50%;
+    margin-top: 8px;
+    font-family: Roboto, sans-serif;
+}
+
+
 .ac-landing-button-group {
     position: fixed;
     top: 0px;

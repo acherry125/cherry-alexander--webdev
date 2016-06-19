@@ -32,11 +32,18 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            // profile
+            // account
             .when("/user/:uid", {
-                templateUrl: "views/user/profile.view.client.html",
-                controller: "ProfileController",
+                templateUrl: "views/user/account.view.client.html",
+                controller: "AccountController",
                 controllerAs: "model"
             })
+            .when("/map", {
+                templateUrl: "views/map/map.view.client.html",
+                controller: "MapController",
+                controllerAs: "model"
+            }
+
+            )
     };
 })();
