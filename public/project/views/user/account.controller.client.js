@@ -14,7 +14,7 @@
 
         // user id
         var uid = $routeParams.uid;
-        vm.uId = uid;
+        vm.uid = uid;
 
         function init() {
 
@@ -26,6 +26,7 @@
                     },
                     // missing user
                     function(error) {
+                        vm.error = error.data;
                         $location.url("/");
                     }
                 );

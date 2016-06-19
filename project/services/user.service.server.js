@@ -202,6 +202,7 @@ module.exports = function(app, models) {
                     if(user === null) {
                         res.status(400).send("User " + userId + " not found")
                     } else {
+                        user.password = "";
                         res.json(user);
                     }
                 },
