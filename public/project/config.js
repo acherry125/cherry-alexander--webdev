@@ -32,65 +32,101 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            // register
+            // home page
             .when("/user/:uid", {
                 templateUrl: "views/user/home.view.client.html",
                 controller: "HomeController",
                 controllerAs: "model",
-                resolve: { loggedIn: checkLoggedIn }
+                resolve: { loggedIn: loggedInSensitive }
             })
             // account
             .when("/user/:uid/account", {
                 templateUrl: "views/user/account.view.client.html",
                 controller: "AccountController",
                 controllerAs: "model",
-                resolve: { loggedIn: checkLoggedIn }
+                resolve: { loggedIn: loggedInSensitive }
             })
+            // messages
             .when("/user/:uid/messages", {
                 templateUrl: "views/user/messages.view.client.html",
                 controller: "UserMessagesController",
                 controllerAs: "model",
-                resolve: { loggedIn: checkLoggedIn }
+                resolve: { loggedIn: loggedInSensitive }
             })
+            // experiment map
             .when("/map", {
                 templateUrl: "views/map/map.view.client.html",
                 controller: "MapController",
                 controllerAs: "model"
             })
+            // search page
             .when("/search", {
                 templateUrl: "views/landing/search.view.client.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
             })
+            // event public page
             .when("/event/:eid", {
                 templateUrl: "views/event/event-face.view.client.html",
                 controller: "EventFaceController",
                 controllerAs: "model",
-                resolve: { }
+                resolve: { loggedIn: loggedInPublic }
                 // implement logic to check if user is poster and runs this event loggedIn: checkLoggedIn 
             })
+            // event edit page
             .when("/event/:eid/edit", {
                 templateUrl: "views/event/event-edit.view.client.html",
                 controller: "EventEditController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
             })
+            // organization public page
             .when("/organization/:oid", {
                 templateUrl: "views/organization/organization-face.view.client.html",
                 controller: "OrganizationFaceController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
             })
+            // organization edit page
             .when("/organization/:oid/edit", {
                 templateUrl: "views/organization/organization-edit.view.client.html",
                 controller: "OrganizationEditController",
                 controllerAs: "model",
-                resolve: { }
+                resolve: { loggedIn: loggedInPublic }
                 // implement logic to check if user is poster and owns this organization loggedIn: checkLoggedIn
             });
     
 
+        function loggedInPublic($q, $timeout, $http, $location, $rootScope, $route, UserService) {
+            var deferred = $q.defer();
+            var uid = $route.current.params.uid;
+
+            UserService
+                .checkLoggedIn()
+                .then(
+                    function(response) {
+                        var user = response.data;
+                        // not logged in
+                        if(user == '0') {
+                            deferred.resolve();
+                            $rootScope.currentUser = null;
+                        } else {
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    // error from server
+                    function(error) {
+                        deferred.resolve();
+                        $rootScope.currentUser = null;
+                    }
+                );
+            
+        }
 
         // how to tell if user is logged in
-        function checkLoggedIn($q, $timeout, $http, $location, $rootScope, $route, UserService) {
+        function loggedInSensitive($q, $timeout, $http, $location, $rootScope, $route, UserService) {
 
             var deferred = $q.defer();
 

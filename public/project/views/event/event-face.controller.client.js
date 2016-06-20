@@ -4,8 +4,11 @@
         .controller("EventFaceController", EventFaceController);
 
 
-    function EventFaceController($routeParams, $location, UserService) {
+    function EventFaceController($routeParams, $location, $rootScope, UserService) {
         vm = this;
+
+        vm.user = $rootScope.currentUser;
+
 
         function init() {
             map_init();

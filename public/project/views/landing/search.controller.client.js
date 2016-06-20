@@ -4,10 +4,13 @@
         .module("EventHorizon")
         .controller("SearchController", SearchController);
 
-    function SearchController() {
+    function SearchController($rootScope) {
         vm = this;
         vm.searchTerm = "";
         vm.mapDisplay = false;
+
+        // just for rendering, doesn't allow access to anything sensitive
+        vm.user = $rootScope.currentUser;
 
         function init() {
             map_init();

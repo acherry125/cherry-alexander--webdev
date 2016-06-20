@@ -6,7 +6,7 @@
             <div class="navbar-header">
                 <!-- Back/Cancel Button -->
                 <p class="navbar-text pull-left">
-                    <a ng-href="" class="navbar-link">
+                    <a ng-href="#/event/{{model.eid}}" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                     </a>
@@ -110,22 +110,15 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Login Button -->
-                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
-                    <a href="#/login" class="navbar-link">
-                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
-
-                    </a>
-                </p>
                 <!-- Account Button -->
-                <p ng-if="model.loggedIn" class="navbar-text pull-right">
-                    <a href="#/account" class="navbar-link">
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.user._id}}/account" class="navbar-link">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
                 </p>
                 <!-- Home Button -->
-                <p ng-if="model.loggedIn" class="navbar-text pull-right">
-                    <a href="#/home" class="navbar-link">
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.user._id}}" class="navbar-link">
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </p>

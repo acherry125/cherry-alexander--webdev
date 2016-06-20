@@ -11,7 +11,6 @@
         vm.uid = userId;
         
         
-        
         function init() {
             UserService
                 .findUserById(userId)
