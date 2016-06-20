@@ -24,11 +24,11 @@ module.exports = function(mongoose) {
     }
     
     function findEventById(eventId) {
-        return;
+        Event.findOne({_id: eventId});
     }
     
     function findEventsForOrganization(organizationId) {
-        return;
+        Event.find({_organization : organizationId})
     }
     
     return api;
