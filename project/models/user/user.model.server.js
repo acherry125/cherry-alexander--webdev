@@ -15,6 +15,8 @@ module.exports = function(mongoose) {
 
     function createUser(user) {
         user.dateCreated = new Date();
+        user.organizations = [];
+        user.messages = [];
         return User.create(user);
     }
 

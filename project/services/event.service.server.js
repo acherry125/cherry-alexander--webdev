@@ -11,7 +11,7 @@ module.exports = function(app, models) {
     // find an event by id
     app.get("/api/project/event/:eid", findEventById);
     // find all events for an organization
-    app.get("/api/project/organization/:oid/event", findEventForOrganization);
+    app.get("/api/project/organization/:oid/event", findEventsForOrganization);
 
     // create an organization for a user
     function createEvent(req, res) {
@@ -34,7 +34,7 @@ module.exports = function(app, models) {
     }
 
     // find all organizations for a poster
-    function findEventForOrganization(req, res) {
+    function findEventsForOrganization(req, res) {
         res.sendStatus(200);
     }
 
