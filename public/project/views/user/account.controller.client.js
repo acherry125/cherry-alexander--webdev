@@ -10,6 +10,7 @@
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
+        vm.logout = logout;
         vm.unregister = unregister;
 
         // user id
@@ -62,6 +63,20 @@
             } else {
                 // Do nothing!
             }
+        }
+
+        function logout() {
+            $rootScope.currentUser = null;
+            UserService
+                .logout()
+                .then(
+                    function(response) {
+                        $location.url("/");
+                    },
+                    function(error) {
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();
