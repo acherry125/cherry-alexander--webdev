@@ -65,7 +65,7 @@
 </div>
 <!-- login buttons -->
 <div class="ac-landing-button-group">
-    <div class="row">
+    <div class="row" ng-if="!model.user">
         <!-- Login -->
         <div class="col-xs-5">
             <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
@@ -74,10 +74,23 @@
         <div class="col-xs-5">
             <a role="button" ng-href="#/register" class="btn btn-lg btn-block btn-primary">Sign Up</a>
         </div>
-        <div class="col-xs-2" id="search-glyph-container">
+        <div class="col-xs-2" id="ac-search-container-public">
             <a role="button"
                ng-href="#/search"
                class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
         </div>
+    </div>
+    <div class="row" ng-if="model.user">
+        <div class="col-xs-6">
+            <a role="button"
+               ng-href="#/user/{{model.user._id}}"
+               class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-home"></span></a>
+        </div>
+        <div class="col-xs-6">
+            <a role="button"
+               ng-href="#/search"
+               class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
+        </div>
+
     </div>
 </div>

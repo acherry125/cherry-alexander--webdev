@@ -156,10 +156,12 @@ nav>.container>.navbar-header {
     margin-bottom: 0px;
 }
 
-#search-glyph-container {
+#search-glyph-container-public {
     padding-left: 0.5px;
     padding-right: 10px;
 }
+
+
 
 .row {
     margin-right: 0;

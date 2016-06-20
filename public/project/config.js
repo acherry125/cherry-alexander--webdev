@@ -10,14 +10,16 @@
                 templateUrl: "views/landing/landing-page.view.client.html",
                 // married to landing-page
                 controller: "LandingPageController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
             })
             // landing page
             .when("/", {
                 templateUrl: "views/landing/landing-page.view.client.html",
                 // married to logincontroller
                 controller: "LandingPageController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
             })
             // login
             .when("/login", {
@@ -81,6 +83,13 @@
                 controllerAs: "model",
                 resolve: { loggedIn: loggedInPublic }
             })
+            // event add page
+            .when("/organization/:oid/addEvent", {
+                templateUrl: "views/event/event-add.view.client.html",
+                controller: "EventAddController",
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
+            })
             // organization public page
             .when("/organization/:oid", {
                 templateUrl: "views/organization/organization-face.view.client.html",
@@ -95,8 +104,15 @@
                 controllerAs: "model",
                 resolve: { loggedIn: loggedInPublic }
                 // implement logic to check if user is poster and owns this organization loggedIn: checkLoggedIn
-            });
-    
+            })
+            // organization add page
+            .when("/user/:uid/addOrganization", {
+                templateUrl: "views/event/organization-add.view.client.html",
+                controller: "OrganizationAddController",
+                controllerAs: "model",
+                resolve: { loggedIn: loggedInPublic }
+            })
+        
 
         function loggedInPublic($q, $timeout, $http, $location, $rootScope, $route, UserService) {
             var deferred = $q.defer();

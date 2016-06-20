@@ -25,6 +25,10 @@
         }
         
         init();
+        
+        function addOrganization() {
+            $location.url("/url/" + userId + "/addOrganization")
+        }
 
 
     }

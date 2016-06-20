@@ -1,0 +1,122 @@
+<!-- Event-EDIT PAGE -->
+<!-- Header Navigation Bar -->
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back/Cancel Button -->
+                <p class="navbar-text pull-left">
+                    <a ng-href="#/organization/{{model.oid}}" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    Edit Event
+                </a>
+                <!-- Save and Confirm Button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.createEvent()" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Main Container -->
+<div class="container ac-nav-allow">
+    <!-- Error Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <!-- Website Details Form -->
+    <form name="eEditForm">
+        <!-- Page Name -->
+        <div class="form-group"
+             ng-class="{ 'has-error': eEditForm.name.$error.required && model.error}">
+            <label for="name">Event Name</label>
+            <input ng-model="model.event.name"
+                   class="form-control"
+                   type="text"
+                   name="name"
+                   id="name"
+                   required
+                   placeholder="Event Name">
+            <label for="name"
+                   class="control-label"
+                   ng-show="eEditForm.name.$error.required && model.error">Name is required</label>
+        </div>
+        <!-- Event Date -->
+        <div class="form-group">
+            <label for="event-date">Event Date</label>
+            <input ng-model="model.event.date"
+                   class="form-control"
+                   type="date"
+                   name="event-date"
+                   id="event-date"
+                   placeholder="Event Date">
+        </div>
+        <!-- Event Time of Day -->
+        <div class="form-group">
+            <label for="event-time">Event Time</label>
+            <input ng-model="model.event.time"
+                   class="form-control"
+                   type="time"
+                   name="event-time"
+                   id="event-time"
+                   placeholder="Event Time">
+        </div>
+        <!-- Event Location -->
+        <div class="form-group">
+            <label for="event-time">Event Location</label>
+            <input ng-model="model.event.location"
+                   class="form-control"
+                   type="text"
+                   name="event-location"
+                   id="event-location"
+                   placeholder="Event Location">
+        </div>
+        <!-- Event Description -->
+        <div class="form-group">
+            <label for="event-desc">Event Description</label>
+            <textarea ng-model="model.event.time"
+                      class="form-control"
+                      name="event-desc"
+                      rows="5"
+                      id="event-desc"
+                      placeholder="Event Time"></textarea>
+        </div>
+    </form>
+    <!-- Upload Image Button -->
+    <form action="/api/event/upload"  method="post" enctype="multipart/form-data">
+        <input required name="myFile"   type="file" class="form-control"/>
+        <input  name="eventId" value="{{model.widget._id}}"   style="display: none"/>
+        <input  name="posterId" value="{{model.posterId}}"   style="display: none"/>
+        <br>
+        <button type="submit" class="btn btn-block btn-lg btn-primary" id="image-submit-button">Upload Image</button>
+    </form>
+</div>
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Account Button -->
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.user._id}}/account" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p class="navbar-text pull-right">
+                    <a href="#/user/{{model.user._id}}" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>

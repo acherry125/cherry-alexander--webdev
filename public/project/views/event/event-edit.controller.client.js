@@ -4,11 +4,11 @@
         .controller("EventEditController", EventEditController);
 
 
-    function EventEditController($routeParams, $location, $rootScope, UserService) {
+    function EventEditController($routeParams, $location, $rootScope, EventService) {
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
-
+        vm.updateEvent = updateEvent;
         vm.user = $rootScope.currentUser;
 
 
@@ -17,6 +17,10 @@
         }
 
         init();
+        
+        function updateEvent() {
+            return;
+        }
 
         
 

@@ -4,7 +4,7 @@
         .controller("EventFaceController", EventFaceController);
 
 
-    function EventFaceController($routeParams, $location, $rootScope, UserService) {
+    function EventFaceController($routeParams, $location, $rootScope, EventService) {
         vm = this;
 
         vm.user = $rootScope.currentUser;
