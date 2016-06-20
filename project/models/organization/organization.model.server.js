@@ -8,29 +8,46 @@ module.exports = function(mongoose) {
         "updateOrganization": updateOrganization,
         "removeOrganization": removeOrganization,
         "findOrganizationById": findOrganizationById,
+        "findOrganizationsByName": findOrganizationsByName,
         "findOrganizationsForPoster": findOrganizationsForPoster
     };
     return api;
 
 
     function createOrganization(posterId, organization) {
-        return;
+        organization.dateCreated = new Date();
+        Organization.create(organization);
     }
     
     function updateOrganization(organizationId, organization) {
-        return;
+        return Organization.update(
+            {_id: organizationId},
+            {$set:
+            {
+                name: organization.name,
+                phone: organization.phone,
+                location: organization.location,
+                description: organization.description
+            }
+            }
+
+        )
     }
     
     function removeOrganization(posterId, organizationId) {
-        return;
+        return Organization.remove({_id: organizationId})
+    }
+    
+    function findOrganizationsByName(organizationName) {
+        return Organization.find({name: organizationName})
     }
     
     function findOrganizationById(organizationId) {
-        return;
+        return Organization.findById(organizationId)
     }
     
     function findOrganizationsForPoster(posterId) {
-        return;
+        return Organization.find({_poster: posterId})
     }
     
     

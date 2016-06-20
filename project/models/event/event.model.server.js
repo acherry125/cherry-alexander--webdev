@@ -8,30 +8,49 @@ module.exports = function(mongoose) {
         "updateEvent": updateEvent,
         "removeEvent": removeEvent,
         "findEventById": findEventById,
+        "findEventsByName": findEventsByName,
         "findEventsForOrganization": findEventsForOrganization
     };
-    
+
+    return api;
+
     function createEvent(organizationId, event) {
-        return;
+        event.dateCreated = new Date();
+        return Event.create(event);
     }
     
     function updateEvent(eventId, event) {
-        return;
+        return Event.update(
+            {_id: eventId},
+            {$set:
+            {
+                name: event.name,
+                description: event.description,
+                date: event.date,
+                time: event.time,
+                location: event.location
+            }
+            }
+
+        )
     }
     
     function removeEvent(organizationId, eventId) {
-        return;
+        return Event.remove({_id: eventId});
+    }
+
+    function findEventsByName(eventName) {
+        return Event.find({name: eventName});
     }
     
     function findEventById(eventId) {
-        Event.findOne({_id: eventId});
+        return Event.findById(eventId);
     }
     
     function findEventsForOrganization(organizationId) {
-        Event.find({_organization : organizationId})
+        return Event.find({_organization : organizationId})
     }
-    
-    return api;
+
     
 };
     
