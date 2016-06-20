@@ -7,6 +7,9 @@
 
     function OrganizationEditController($routeParams, $location, UserService) {
         vm = this;
+        var organizationId = $routeParams.oid;
+        vm.oid = organizationId;
+        
 
     }
 

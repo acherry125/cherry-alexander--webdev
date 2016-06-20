@@ -8,6 +8,8 @@
     function OrganizationFaceController($routeParams, $location, UserService) {
         vm = this;
 
+        vm.validatedUser = true;
+
     }
 
 })();

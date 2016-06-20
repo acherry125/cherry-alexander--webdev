@@ -1,1 +1,118 @@
-Here is organization edit
+<!-- Organization-EDIT PAGE -->
+<!-- Header Navigation Bar -->
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Back/Cancel Button -->
+                <p class="navbar-text pull-left">
+                    <a ng-href="#/organization/{{model.oid}}" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </a>
+                </p>
+                <!-- Page Title -->
+                <a class="navbar-brand">
+                    Edit Organization
+                </a>
+                <!-- Save and Confirm Button -->
+                <p class="navbar-text pull-right">
+                    <a ng-click="model.updateOrganization()" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Main Container -->
+<div class="container ac-nav-allow">
+    <!-- Error Message -->
+    <div ng-if="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <!-- Organization Details Form -->
+    <form name="oEditForm">
+        <!-- Organization Name -->
+        <div class="form-group"
+             ng-class="{ 'has-error': oEditForm.name.$error.required && model.error}">
+            <label for="name">Organization Name</label>
+            <input ng-model="model.org.name"
+                   class="form-control"
+                   type="text"
+                   name="name"
+                   id="name"
+                   required
+                   placeholder="Name">
+            <label for="name"
+                   class="control-label"
+                   ng-show="oEditForm.name.$error.required && model.error">Name is required</label>
+        </div>
+        <!-- Organization Number -->
+        <div class="form-group">
+            <label for="event-time">Contact Number</label>
+            <input ng-model="model.org.phone"
+                   class="form-control"
+                   type="tel"
+                   name="event-time"
+                   id="event-time"
+                   placeholder="Phone Number">
+        </div>
+        <!-- Organization Location -->
+        <div class="form-group">
+            <label for="event-time">Office Location</label>
+            <input ng-model="model.org.location"
+                   class="form-control"
+                   type="text"
+                   name="event-location"
+                   id="event-location"
+                   placeholder="Location">
+        </div>
+        <!-- Organization Description -->
+        <div class="form-group">
+            <label for="event-desc">Organization Description</label>
+            <textarea ng-model="model.org.time"
+                      class="form-control"
+                      name="event-desc"
+                      rows="5"
+                      id="event-desc"
+                      placeholder="Organization Description"></textarea>
+        </div>
+    </form>
+
+    <!-- Delete Organization -->
+    <div class="row">
+        <a ng-click="model.deleteEvent()"
+           role="button"
+           class="btn btn-block btn-danger btn-lg">Delete</a>
+    </div>
+</div>
+<!-- Footer Navigation Bar -->
+<footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Login Button -->
+                <p ng-if="!model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/login" class="navbar-link">
+                        <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+
+                    </a>
+                </p>
+                <!-- Account Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/account" class="navbar-link">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </p>
+                <!-- Home Button -->
+                <p ng-if="model.loggedIn" class="navbar-text pull-right">
+                    <a href="#/home" class="navbar-link">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </nav>
+</footer>

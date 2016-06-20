@@ -14,6 +14,30 @@
 
         init();
 
+        function map_address_init() {
+            var mapOptions = {
+                center: {lat: 42.34003, lng: -71.089797},
+                zoom: 13
+            };
+            var map = new google.maps.Map(document.getElementById('map'),
+                mapOptions);
+
+            var geocoder = new google.maps.Geocoder;
+
+            geocoder.geocode({'address': 'Boston'}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    console.log(results);
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
         function map_init() {
             var mapOptions = {
                 center: {lat: 42.34003, lng: -71.089797},

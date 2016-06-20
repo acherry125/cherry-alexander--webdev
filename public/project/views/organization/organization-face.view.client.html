@@ -12,8 +12,15 @@
                 <!-- Page Title -->
                 <a class="navbar-brand">
                     <!-- {{model.name}} -->
-                    Organizer Name!
+                    Organization
                 </a>
+                <!-- Add Event Button -->
+                <p ng-if="model.validatedUser" class="navbar-text pull-right">
+                    <a ng-click="model.addEvent()" class="navbar-link">
+                      <span class="glyphicon glyphicon-plus">
+                      </span>
+                    </a>
+                </p>
             </div>
         </div>
     </nav>
@@ -21,12 +28,12 @@
 
 <div class="container ac-nav-allow">
     <div class="row">
-        <div class="col-md-8">
-            <h2>Hosted by: <b><a href="#/poster/24324232">NORTHEASTERN UNIVERSITY</a></b></h2>
+        <div class="col-md-12">
+            <h2>"Organization Name"</a></b></h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-sm-8">
             <div class="row">
                 <h2 ng-if="model.address">Here is the address!</h2>
                 <h2 ng-if="!model.address">No address listed</h2>
@@ -36,9 +43,9 @@
                 <h2 ng-if="!model.phone">No phone number listed</h2>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <div class="row">
-                <h2>Organizer Name!</h2>
+                <h2>Managed by: <b>Alex Cherry</b></h2>
             </div>
             <div class="row">
                 <button class="btn btn-warning btn-lg">Message the organizer!</button>
