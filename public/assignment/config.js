@@ -115,7 +115,13 @@
             var deferred = $q.defer();
             
             var uid = $route.current.params.uid;
-            
+
+            // PASSPORT STRATEGY DOES NOT WORK IN CONJUNCTION WITH PROJECT
+            // DISABLING SECURITY SO PROJECT WORKS...
+            deferred.resolve();
+            return;
+
+            // real security
             UserService
                 .checkLoggedIn()
                 .then(

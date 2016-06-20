@@ -36,21 +36,21 @@
             .when("/user/:uid", {
                 templateUrl: "views/user/home.view.client.html",
                 controller: "HomeController",
-                controllerAs: "model"
-            //    resolve: { loggedIn: checkLoggedIn }
+                controllerAs: "model",
+                resolve: { loggedIn: checkLoggedIn }
             })
             // account
             .when("/user/:uid/account", {
                 templateUrl: "views/user/account.view.client.html",
                 controller: "AccountController",
-                controllerAs: "model"
-                //resolve: { loggedIn: checkLoggedIn }
+                controllerAs: "model",
+                resolve: { loggedIn: checkLoggedIn }
             })
             .when("/user/:uid/messages", {
                 templateUrl: "views/user/messages.view.client.html",
                 controller: "UserMessagesController",
-                controllerAs: "model"
-                //resolve: { loggedIn: checkLoggedIn }
+                controllerAs: "model",
+                resolve: { loggedIn: checkLoggedIn }
             })
             .when("/map", {
                 templateUrl: "views/map/map.view.client.html",
