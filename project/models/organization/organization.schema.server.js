@@ -6,6 +6,7 @@ module.exports = function(mongoose) {
         location: String,
         description: String,
         poster: {type: mongoose.Schema.Types.ObjectId, ref: "EventUser"},
+        events: [{type: mongoose.Schema.Types.ObjectId, ref: "Event"}],
         dateCreated: Date
     }, {collection: "event-organization"});
 
