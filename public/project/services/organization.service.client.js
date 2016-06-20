@@ -11,7 +11,7 @@
             "updateOrganization" : updateOrganization,
             "removeOrganization" : removeOrganization,
             "findOrganizationById" : findOrganizationById,
-            "findOrganizationByPoster" : findOrganizationByPoster
+            "findOrganizationForPoster" : findOrganizationForPoster
         };
 
         return api;
@@ -32,7 +32,7 @@
             return;
         }
         
-        function findOrganizationByPoster(posterId) {
+        function findOrganizationForPoster(posterId) {
             return;
         }
     }
