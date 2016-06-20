@@ -8,18 +8,18 @@ module.exports = function(app, models) {
 
     // login
     // if passport approves request, login is invoked. Else 403
-    app.post("/event/api/login", passport.authenticate('EventHorizon'), login);
+    app.post("/api/project/login", passport.authenticate('EventHorizon'), login);
     // Create a user
-    app.post("/event/api/register", register);
-    app.post("/event/api/logout", logout);
+    app.post("/api/project/register", register);
+    app.post("/api/project/logout", logout);
     // respond to user queries
-    app.get("/event/api/user", getUsers);
-    app.get("/event/api/user/:userId", findUserById);
-    app.get("/event/api/loggedIn", loggedIn);
+    app.get("/api/project/user", getUsers);
+    app.get("/api/project/user/:userId", findUserById);
+    app.get("/api/project/loggedIn", loggedIn);
     // update a user
-    app.put("/event/api/user/:userId", updateUser);
+    app.put("/api/project/user/:userId", updateUser);
     // delete a user
-    app.delete("/event/api/user/:userId", deleteUser);
+    app.delete("/api/project/user/:userId", deleteUser);
 
     passport.use('EventHorizon', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);

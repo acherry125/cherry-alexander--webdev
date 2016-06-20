@@ -8,7 +8,9 @@ module.exports = function() {
 
 
     var models = {
-        userModel: userModel
+        userModel: userModel,
+        eventModel: eventModel,
+        organizationModel: organizationModel
     };
 
     return models;
