@@ -1,6 +1,5 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 
 module.exports = function(app, models) {
@@ -17,61 +16,14 @@ module.exports = function(app, models) {
     app.get("/event/api/user", getUsers);
     app.get("/event/api/user/:userId", findUserById);
     app.get("/event/api/loggedIn", loggedIn);
-    // login through facebook
-    app.get ('/event/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    // for Facebook callback
-    app.get('/event/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/project/index.html#/user/redirect',
-            failureRedirect: '/project/index.html#/login'
-        }));
     // update a user
     app.put("/event/api/user/:userId", updateUser);
     // delete a user
     app.delete("/event/api/user/:userId", deleteUser);
 
-    // facebook config
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };
-
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
     passport.use('EventHorizon', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        var id = profile.id;
-        console.log(profile);
-        console.log(profile.displayName);
-        userModel
-            .findUserByFacebookId(id)
-            .then(
-                function(user) {
-                    if(user) {
-                        return done(null, user);
-                    } else {
-                        var newUser = {
-                            username: profile.displayName.replace(/ /g, ''),
-                            facebook: {
-                                id: profile.id,
-                                token: token,
-                                displayName: profile.displayName
-                            }
-                        };
-                        return userModel
-                            .createUser(newUser);
-                    }
-                }
-            )
-            .then(
-                function (user) {
-                    return done(null, user);
-                }
-            );
-    }
 
     // called right before sending to the client, this is what is put in the cookie
     function serializeUser(user, done) {

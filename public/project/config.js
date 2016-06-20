@@ -37,8 +37,7 @@
                 templateUrl: "views/user/home.view.client.html",
                 controller: "HomeController",
                 controllerAs: "model"
-                //resolve: { loggedIn: checkLoggedIn }
-
+            //    resolve: { loggedIn: checkLoggedIn }
             })
             // account
             .when("/user/:uid/account", {
