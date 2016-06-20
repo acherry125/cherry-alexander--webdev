@@ -70,6 +70,12 @@
                    id="last-name"
                    placeholder="last name">
         </div>
+        <!-- Create Poster -->
+        <div class="ac-form-group form-group">
+            <input ng-model="model.user.poster"
+                   class="ac-checkbox" type="checkbox" id="check">
+            <label for="check">Register as Event Poster</label>
+        </div>
     </form>
     <!-- HomePage Link Button -->
     <a ng-href="#/user/{{model.uid}}"

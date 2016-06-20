@@ -25,7 +25,8 @@ module.exports = function(mongoose) {
                 {
                     email: newUser.email,
                     firstName: newUser.firstName,
-                    lastName: newUser.lastName
+                    lastName: newUser.lastName,
+                    poster: newUser.poster
                 }
             }
 
