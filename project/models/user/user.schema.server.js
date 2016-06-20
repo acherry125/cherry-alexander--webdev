@@ -8,6 +8,7 @@ module.exports = function(mongoose) {
         // can use a regex to make the email too
         email: String,
         poster: {type: Boolean, default: false},
+        messages: [{type: {from: String, message: String}}],
         dateCreated: Date
     }, {collection: "event-user"});
 

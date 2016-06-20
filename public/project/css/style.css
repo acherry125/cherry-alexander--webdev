@@ -21,6 +21,11 @@ body {
     padding: 2.5em 0 0 0;
 }
 
+#tiny-message-box {
+    resize: none;
+    position: relative;
+}
+
 .ac-nav-allow {
     padding: 2em 15px 0 15px;
 }
@@ -75,7 +80,7 @@ a {
 
 /* Navbar text is black */
 .navbar .glyphicon, .navbar .navbar-brand {
-    color: black;
+    color: white;
 }
 
 /* Profile button should still be blue */
@@ -180,11 +185,6 @@ label {
 a .glyphicon:hover {
     color: red;
 }
-
-a {
-    color: inherit;
-}
-
 /* comply with requirements */
 a:hover, a:focus {
     text-decoration: none;
@@ -192,7 +192,7 @@ a:hover, a:focus {
 
 .navbar-default .navbar-brand:hover {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .row img {

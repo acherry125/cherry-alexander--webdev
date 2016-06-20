@@ -26,7 +26,7 @@
             if(verifyLocally(username, password, verify)) {
                 vm.error = "";
                 vm.info = "Creating user...";
-                newUser = {username: username, password: password, verify: verify, poster: vm.poster };
+                newUser = {username: username, password: password, verify: verify, poster: vm.poster, messages: [] };
                 UserService
                     .register(newUser)
                     .then(

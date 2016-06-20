@@ -48,7 +48,14 @@
                 <h2>Managed by: <b>Alex Cherry</b></h2>
             </div>
             <div class="row">
-                <button class="btn btn-warning btn-lg">Message the organizer!</button>
+                <button ng-click="model.toggleMessage()" class="btn btn-warning btn-lg">Message the organizer!</button>
+                <textarea ng-if="model.messageActive"
+                          ng-model="model.messageContent"
+                          rows="5" id="tiny-message-box"
+                          placeholder="Write your message here"
+                          class="form-control"></textarea>
+                <button ng-if="model.messageActive" class="btn btn-block btn-primary">Send</button>
+
             </div>
         </div>
     </div>
@@ -77,6 +84,17 @@
                 vulputate hendrerit.
             </h3>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Reviews</h1>
+        </div>
+    </div>
+    <div class="row">
+        <ul>
+            <li><h3>5 Stars out of 5!</h3></li>
+            <li><h3>Really great business!</h3></li>
+        </ul>
     </div>
 </div>
 

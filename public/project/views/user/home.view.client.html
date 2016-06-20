@@ -13,20 +13,57 @@
                 <a class="navbar-brand">
                     Home Page
                 </a>
+                <!-- Search Button -->
+                <p class="navbar-text pull-right" id="search-glyph-container">
+                    <a role="button"
+                       ng-href="#/search"
+                       class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
+                    </a>
+                </p>
             </div>
         </div>
     </nav>
 </header>
 <div class="container ac-nav-allow">
-    <div ng-if="model.user.poster">
-        <div class="row">
-            Here are your posted events
+    <div ng-if="model.user.poster" class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+            <div class="row">
+                <h1>
+                    Events Posted
+                </h1>
+            </div>
+            <div class="row">
+                <h3><a ng-href="#/event/343242">Posted Event 1</a></h3>
+                <h3><a>Posted Event 2</a></h3>
+                <h3><a>Posted Event 3</a></h3>
+                <h3><a>Posted Event 4</a></h3>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="row">
+                <h1>
+                    Events Following
+                </h1>
+            </div>
+            <div class="row">
+                <h3><a>Event 1</a></h3>
+                <h3><a>Event 2</a></h3>
+                <h3><a>Event 3</a></h3>
+                <h3><a>Event 4</a></h3>
+            </div>
         </div>
     </div>
-    <div class="row">
+
+    <div ng-if="!model.user.poster" class="row">
         <h1>
-            home page {{model.user.username}}
+            Here are your followed events
         </h1>
+        <ul>
+            <li><h3>Event 1</h3></li>
+            <li><h3>Event 2</h3></li>
+            <li><h3>Event 3</h3></li>
+            <li><h3>Event 4</h3></li>
+        </ul>
     </div>
 </div>
 <footer>

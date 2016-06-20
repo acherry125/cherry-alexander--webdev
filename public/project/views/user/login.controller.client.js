@@ -6,7 +6,7 @@
         // naming controller and binding it to function
         .controller("LoginController", LoginController);
 
-    function LoginController($location, UserService, $rootScope) {
+    function LoginController($location, $rootScope, UserService, $rootScope) {
         // referring to self (View Model)
         var vm = this;
         // verifies login credentials

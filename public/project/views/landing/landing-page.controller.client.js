@@ -5,7 +5,7 @@
         // naming controller and binding it to function
         .controller("LandingPageController", LandingPageController);
 
-    function LandingPageController() {
+    function LandingPageController($rootScope) {
         vm = this;
         vm.expanded= false;
         vm.toggleExpand = toggleExpand;

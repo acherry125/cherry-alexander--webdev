@@ -6,7 +6,7 @@
         .controller("AccountController", AccountController);
 
 
-    function AccountController($routeParams, $location, UserService) {
+    function AccountController($routeParams, $rootScope, $location, UserService) {
         // referring to self (View Model)
         var vm = this;
         vm.updateUser = updateUser;
