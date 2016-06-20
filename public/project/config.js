@@ -107,7 +107,7 @@
             })
             // organization add page
             .when("/user/:uid/addOrganization", {
-                templateUrl: "views/event/organization-add.view.client.html",
+                templateUrl: "views/organization/organization-add.view.client.html",
                 controller: "OrganizationAddController",
                 controllerAs: "model",
                 resolve: { loggedIn: loggedInPublic }

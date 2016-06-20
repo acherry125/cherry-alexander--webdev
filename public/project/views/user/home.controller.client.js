@@ -9,6 +9,7 @@
         vm = this;
         userId = $routeParams.uid;
         vm.uid = userId;
+        vm.addOrganization = addOrganization;
         
         
         function init() {
@@ -27,7 +28,7 @@
         init();
         
         function addOrganization() {
-            $location.url("/url/" + userId + "/addOrganization")
+            $location.url("/user/" + userId + "/addOrganization")
         }
 
 

@@ -27,10 +27,12 @@
 <div class="container ac-nav-allow">
     <!-- Visible to Posters only -->
     <div ng-if="model.user.poster" class="row">
-        <button ng-click="" class="btn btn-lg btn-block btn-primary">Post New Event</button>
         <div class="col-sm-6 col-sm-offset-1">
             <div class="row">
                 <h1>Organizations</h1>
+            </div>
+            <div>
+                <button ng-click="model.addOrganization()" class="btn btn-lg btn-primary">Add New Organization</button>
             </div>
             <div class="row">
                 <h3><a ng-href="#/organization/dummy">Farmer's Union</a></h3>
