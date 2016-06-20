@@ -7,11 +7,11 @@
     function EventService($http) {
 
         var api = {
-            "registerOrganization" : registerOrganization,
-            "updateOrganization" : updateOrganization,
-            "removeOrganization" : removeOrganization,
-            "findOrganizationById" : findOrganizationById,
-            "findOrganizationByPoster" : findOrganizationByPoster
+            "registerEvent" : registerEvent,
+            "updateEvent" : updateEvent,
+            "removeEvent" : removeEvent,
+            "findEventById" : findEventById,
+            "findEventByOrganization" : findEventByOrganization
         };
 
         return api;
