@@ -63,7 +63,7 @@
             })
             // search page
             .when("/search", {
-                templateUrl: "views/landing/search.view.client.html",
+                templateUrl: "views/search/search.view.client.html",
                 controller: "SearchController",
                 controllerAs: "model",
                 resolve: { loggedIn: loggedInPublic }
