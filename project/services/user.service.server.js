@@ -190,6 +190,12 @@ module.exports = function(app, models) {
     function updateUser(req, res) {
         var userId = req.params.userId;
         var user = req.body;
+
+        if(!user || !user.name) {
+            res.status(400).send("User must have name");
+            return;
+        }
+
         userModel
             .updateUser(userId, user)
             .then(
@@ -204,7 +210,12 @@ module.exports = function(app, models) {
     
     function followEvent(req, res) {
         var userId = req.params.userId;
-        var eventId = req.body.event;
+        var event = req.body;
+
+        if(!userId || !event || !event._id || !event.name) {
+            res.status(400).send("Cannot follow event");
+            return;
+        }
 
         userModel
             .findUserById(userId)
@@ -213,7 +224,7 @@ module.exports = function(app, models) {
                     if(user === null) {
                         res.status(400).send("User does not exist");
                     } else {
-                        user.followed.push(eventId);
+                        user.followed.push(event);
                         return userModel.updateUser(userId, user)
                     }
                 },
@@ -228,8 +239,6 @@ module.exports = function(app, models) {
                 function(error) {
                     res.send(error);
                 }
-
-
             )
         
     }

@@ -21,9 +21,9 @@
         return api;
         
         /* has the given user follow the given event */
-        function followEvent(userId, eventId) {
+        function followEvent(userId, event) {
             var url = "/api/project/user/" + userId + "/event/";
-            return $http.put(url, {event: eventId})
+            return $http.put(url, event)
         }
         
         /* Adds a new user to the database */

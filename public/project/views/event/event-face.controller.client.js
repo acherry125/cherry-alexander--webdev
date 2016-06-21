@@ -4,11 +4,12 @@
         .controller("EventFaceController", EventFaceController);
 
 
-    function EventFaceController($routeParams, $location, $rootScope, EventService, OrganizationService) {
+    function EventFaceController($routeParams, $location, $rootScope, EventService, OrganizationService, UserService) {
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
         vm.editEvent = editEvent;
+        vm.followEvent = followEvent;
 
         vm.user = $rootScope.currentUser;
 
@@ -29,7 +30,7 @@
                 .then(
                     function(response) {
                         vm.orgName = response.data.name;
-                        if(vm.user._id === response.data._poster) {
+                        if(vm.user && vm.user._id === response.data._poster) {
                             vm.authorizedUser = true;
                         }
                     },
@@ -58,6 +59,19 @@
 
         function editEvent() {
             $location.url("/event/" + eventId + "/edit")
+        }
+
+        function followEvent() {
+            UserService
+                .followEvent(vm.user._id, {name: vm.event.name, _id: eventId})
+                .then(
+                    function(response) {
+                        console.log(response);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
         }
 
     }
