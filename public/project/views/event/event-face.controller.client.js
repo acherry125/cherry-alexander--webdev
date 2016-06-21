@@ -4,7 +4,7 @@
         .controller("EventFaceController", EventFaceController);
 
 
-    function EventFaceController($routeParams, $location, $rootScope, EventService) {
+    function EventFaceController($routeParams, $location, $rootScope, EventService, OrganizationService) {
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
@@ -19,6 +19,16 @@
                 .then(
                     function(response) {
                         vm.event = response.data;
+                        var organizationId = vm.event._organization;
+                        return OrganizationService.findOrganizationById(organizationId);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
+                .then(
+                    function(response) {
+                        vm.orgName = response.data.name;
                     },
                     function(error) {
                         vm.error = error.data;
