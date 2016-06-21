@@ -5,7 +5,7 @@
         .controller("OrganizationFaceController", OrganizationFaceController);
 
 
-    function OrganizationFaceController($routeParams, $location, $rootScope, EventService, OrganizationService) {
+    function OrganizationFaceController($routeParams, $location, $rootScope, EventService, OrganizationService, UserService) {
         vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
@@ -23,10 +23,19 @@
                 .findOrganizationById(organizationId)
                 .then(
                     function(response) {
-                        vm.organization = response.data;
+                        vm.org = response.data;
+                        return UserService.findUserById(vm.org._poster);
                     },
                     function(error) {
-                        vm.error = error;
+                        vm.error = error.data;
+                    }
+                )
+                .then(
+                    function(response) {
+                        vm.posterName = response.data.username;
+                    },
+                    function(error) {
+                        vm.error = error.data;
                     }
                 )
             

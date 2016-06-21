@@ -54,7 +54,7 @@ module.exports = function(app, models) {
 
     // find an organization by id
     function findOrganizationById(req,res) {
-        var organizationId = req.params.orgId;
+        var organizationId = req.params.oid;
         organizationModel
             .findOrganizationById(organizationId)
             .then(
