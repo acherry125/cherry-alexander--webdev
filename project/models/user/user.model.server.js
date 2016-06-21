@@ -17,6 +17,7 @@ module.exports = function(mongoose) {
         user.dateCreated = new Date();
         user.organizations = [];
         user.messages = [];
+        user.followed = [];
         return User.create(user);
     }
 
