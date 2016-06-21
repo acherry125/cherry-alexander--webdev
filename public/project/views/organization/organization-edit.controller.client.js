@@ -28,18 +28,28 @@
         }
         
         init();
-        
+
         function updateOrganization() {
-            OrganizationService
-                .updateOrganization(organizationId, vm.org)
-                .then(
-                    function(response) {
-                        $location.url("/organization/" + organizationId)
-                    },
-                    function(error) {
-                        vm.error = error;
-                    }
-                )
+            if(verifyOrganization(vm.org)) {
+                OrganizationService
+                    .updateOrganization(organizationId, vm.org)
+                    .then(
+                        function(response) {
+                            $location.url("/organization/" + organizationId)
+                        },
+                        function(error) {
+                            vm.error = error;
+                        }
+                    )
+            }
+
+        }
+
+        function verifyOrganization(org) {
+            if(!org || !org.name) {
+                vm.error = "Organization must have a name";
+                return false;
+            }
         }
 
         function deleteOrganization() {
