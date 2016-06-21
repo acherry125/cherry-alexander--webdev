@@ -23,6 +23,7 @@
                 .findOrganizationById(organizationId)
                 .then(
                     function(response) {
+                        // location does not work
                         vm.org = response.data;
                         return UserService.findUserById(vm.org._poster);
                     },
