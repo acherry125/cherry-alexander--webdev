@@ -14,6 +14,7 @@
         vm.messageActive = false;
         vm.toggleMessage = toggleMessage;
         vm.addEvent = addEvent;
+        vm.editOrganization = editOrganization;
 
         vm.user = $rootScope.currentUser;
 
@@ -24,6 +25,10 @@
 
         function addEvent() {
             $location.url("/organization/" + organizationId + "/addEvent");
+        }
+
+        function editOrganization() {
+            $location.url("/organization/" + organizationId + "/edit");
         }
 
     }
