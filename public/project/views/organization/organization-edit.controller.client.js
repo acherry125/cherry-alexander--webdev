@@ -14,13 +14,31 @@
         vm.user = $rootScope.currentUser;
         
         function init() {
-            return;
+            OrganizationService
+                .findOrganizationById(organizationId)
+                .then(
+                    function(response) {
+                        vm.org = response.data;
+                    },
+                    function(error) {
+                        vm.error = error;
+                    }
+                );
         }
         
         init();
         
         function updateOrganization() {
-            return;
+            OrganizationService
+                .updateOrganization(organizationId, vm.org)
+                .then(
+                    function(response) {
+                        console.log(response);
+                    },
+                    function(error) {
+                        vm.error = error;
+                    }
+                )
         }
         
 

@@ -110,7 +110,7 @@ nav>.container>.navbar-header {
 
 /* Make header text more readable */
 .navbar-brand {
-    font-size: 2em;
+    font-size: 1.75em;
     line-height: inherit;
 }
 
@@ -135,6 +135,7 @@ nav>.container>.navbar-header {
 /* To stop the user from thinking the title page is clickable */
 .navbar .navbar-brand {
     cursor: default;
+    font-size: 1.75em;
 }
 
 .alert {

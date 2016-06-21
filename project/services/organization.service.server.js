@@ -44,7 +44,20 @@ module.exports = function(app, models) {
 
     // update an organization
     function updateOrganization(req, res) {
-        res.sendStatus(200);
+        var organization = req.body;
+        var organizationId = req.params.oid;
+        
+        organizationModel
+            .updateOrganization(organizationId, organization)
+            .then(
+                function(organization) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+        
     }
 
     // remove an organization
