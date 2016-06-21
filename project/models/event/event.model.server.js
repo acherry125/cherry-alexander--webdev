@@ -9,7 +9,8 @@ module.exports = function(mongoose) {
         "removeEvent": removeEvent,
         "findEventById": findEventById,
         "findEventsByName": findEventsByName,
-        "findEventsForOrganization": findEventsForOrganization
+        "findEventsForOrganization": findEventsForOrganization,
+        "findAllEvents": findAllEvents
     };
 
     return api;
@@ -52,6 +53,10 @@ module.exports = function(mongoose) {
         return Event.find({_organization : organizationId})
     }
 
+    function findAllEvents() {
+        return Event.find({});
+    }
+    
     
 };
     

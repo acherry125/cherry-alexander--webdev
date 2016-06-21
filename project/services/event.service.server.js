@@ -10,8 +10,8 @@ module.exports = function(app, models) {
     app.delete("/api/project/event/:eid", removeEvent);
     // find an event by id
     app.get("/api/project/event/:eid", findEventById);
-    // find events by name (has query param)
-    app.get("/api/project/event", findEventsByName);
+    // find events
+    app.get("/api/project/event", findEvents);
     // find all events for an organization
     app.get("/api/project/organization/:oid/event", findEventsForOrganization);
 
@@ -57,8 +57,37 @@ module.exports = function(app, models) {
     }
 
     // find organizations by name
-    function findEventsByName(req,res) {
-        res.sendStatus(200);
+    function findEvents(req,res) {
+        var eventName = req.query.eventName;
+        if(eventName) {
+            // username request
+            eventModel
+                .findEventsByName(eventName)
+                .then(
+                    function(event) {
+                        if(event === null) {
+                            res.status(404).send("Event " + eventName + " not found");
+                        } else {
+                            res.json(event);
+                        }
+                    }, 
+                    function(error) {
+                        res.send(error);
+                    }
+                )
+        } else {
+            // all events request
+            eventModel
+                .findAllEvents()
+                .then(
+                    function(events) {
+                        res.json({elements: events});
+                    },
+                    function(error) {
+                        res.send(error);
+                    }
+                )
+        }
     }
 
 

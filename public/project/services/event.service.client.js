@@ -12,7 +12,8 @@
             "removeEvent" : removeEvent,
             "findEventById" : findEventById,
             "findEventsByName" : findEventsByName,
-            "findEventsForOrganization" : findEventsForOrganization
+            "findEventsForOrganization" : findEventsForOrganization,
+            "findAllEvents": findAllEvents
         };
 
         return api;
@@ -34,11 +35,17 @@
         }
 
         function findEventsByName(eventName) {
-            return;
+            var url = "/api/project/event?eventName=" + eventName;
+            return $http.get(url)
         }
 
         function findEventsForOrganization(organizationId) {
             return $http.get("/api/project/organization/" + organizationId + "/event");
+        }
+        
+        function findAllEvents() {
+            var url = "/api/project/event";
+            return $http.get(url)
         }
 
     }
