@@ -54,7 +54,21 @@ module.exports = function(app, models) {
 
     // find an organization by id
     function findOrganizationById(req,res) {
-        res.sendStatus(200);
+        var organizationId = req.params.orgId;
+        organizationModel
+            .findOrganizationById(organizationId)
+            .then(
+                function(organization) {
+                    if(organization === null) {
+                        res.status(404).send("Organization not found")
+                    } else {
+                        res.json(organization);
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
     }
 
     // find organizations by name
