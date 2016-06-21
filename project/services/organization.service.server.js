@@ -46,6 +46,11 @@ module.exports = function(app, models) {
     function updateOrganization(req, res) {
         var organization = req.body;
         var organizationId = req.params.oid;
+
+        if(!organization || !organization.name) {
+            res.status(400).send("Organization must have a name");
+            return;
+        }
         
         organizationModel
             .updateOrganization(organizationId, organization)

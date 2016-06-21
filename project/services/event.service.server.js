@@ -43,7 +43,24 @@ module.exports = function(app, models) {
 
     // update an organization
     function updateEvent(req, res) {
-        res.sendStatus(200);
+        var eventId = req.params.eid;
+        var event = req.body;
+
+        if(!event || !event.name) {
+            res.status(400).send("Event must have a name");
+            return;
+        }
+
+        eventModel
+            .updateEvent(eventId, event)
+            .then(
+                function(event) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
     }
 
     // remove an organization
