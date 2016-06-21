@@ -248,31 +248,36 @@ module.exports = function(app, models) {
     function unfollowEvent(req, res) {
         var userId = req.params.uid;
         var eventId = req.params.eid;
-
+        // validate request
         if(!userId || !eventId) {
             res.status(400).send("Cannot unfollow event");
             return;
         }
-
+        // get the user being updated
         userModel
             .findUserById(userId)
             .then(
                 function(user) {
+                    // if this user doesn't exist
                     if(user === null) {
                         res.status(400).send("User does not exist");
                     } else {
                         var index = -1;
+                        // find user objects index since indexOf only works with ref
                         for(var i in user.followed) {
                             if(user.followed[i]._id.toString() === eventId) {
                                 index = i;
                                 break;
                             }
                         }
+                        // user not found
                         if (index === -1) {
                             res.status(400).send("You are not following this event");
                             return;
                         }
+                        // remove user if found
                         user.followed.splice(index, 1);
+                        // update the user model
                         return userModel.updateUser(userId, user)
                     }
                 },
@@ -282,9 +287,11 @@ module.exports = function(app, models) {
             )
             .then(
                 function(user) {
+                    // success
                     res.sendStatus(200);
                 },
                 function(error) {
+                    // database error
                     res.send(error);
                 }
             )
