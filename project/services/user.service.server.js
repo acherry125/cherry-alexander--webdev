@@ -20,6 +20,8 @@ module.exports = function(app, models) {
     app.get("/api/project/loggedIn", loggedIn);
     // update a user
     app.put("/api/project/user/:userId", updateUser);
+    // makes user follow event
+    app.put("/api/project/user/:userId/event", followEvent);
     // delete a user
     app.delete("/api/project/user/:userId", deleteUser);
 
@@ -198,6 +200,38 @@ module.exports = function(app, models) {
                     res.status(400).send("User " + userId + " cannot be updated")
                 }
             );
+    }
+    
+    function followEvent(req, res) {
+        var userId = req.params.userId;
+        var eventId = req.body.event;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function(user) {
+                    if(user === null) {
+                        res.status(400).send("User does not exist");
+                    } else {
+                        user.followed.push(eventId);
+                        return userModel.updateUser(userId, user)
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(user) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+
+
+            )
+        
     }
 
     function deleteUser(req, res) {
