@@ -37,8 +37,10 @@
         function verifyEvent(event) {
             if(!event || !event.name) {
                 vm.error = "Name field is required";
+                return false;
             } else {
                 vm.error = "";
+                return true;
             }
         }
 

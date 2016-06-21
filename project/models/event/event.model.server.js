@@ -16,6 +16,7 @@ module.exports = function(mongoose) {
 
     function createEvent(organizationId, event) {
         event.dateCreated = new Date();
+        event._organization = organizationId;
         return Event.create(event);
     }
     
