@@ -151,16 +151,27 @@ nav>.container>.navbar-header {
     padding: 5px 0 5px 0;
 }
 
+/* make buttons fit more appropriately on public landing page */
 .ac-landing-button-group .btn {
     margin-top: 4px;
     margin-bottom: 0px;
 }
 
-#search-glyph-container-public {
-    padding-left: 0.5px;
-    padding-right: 10px;
+/* Gives more space in public landing page buttons */
+.ac-landing-button-group .row > div {
+    margin-right: 0px;
 }
 
+/* search button for public landing page */
+#ac-search-container-public {
+    padding-left: 0.5px;
+    padding-right: 0px;
+}
+
+/* signup button for public landing page */
+#ac-sign-up-public {
+    margin-left: -10px;
+}
 
 
 .row {
