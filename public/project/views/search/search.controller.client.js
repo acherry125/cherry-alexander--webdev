@@ -4,7 +4,7 @@
         .module("EventHorizon")
         .controller("SearchController", SearchController);
 
-    function SearchController($rootScope) {
+    function SearchController($rootScope, EventService) {
         vm = this;
         vm.searchTerm = "";
         vm.mapDisplay = false;
@@ -13,7 +13,18 @@
         vm.user = $rootScope.currentUser;
 
         function init() {
+            EventService
+                .findAllEvents()
+                .then(
+                    function(response) {
+                        vm.events = response.data.elements;
+                    },
+                    function(error) {
+                        vm.error = error;
+                    }
+                );
             map_init();
+
         }
 
         init();

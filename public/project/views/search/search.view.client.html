@@ -34,12 +34,8 @@
             <div id="map" class="ac-map-box"></div>
         </div>
         <div class="col-md-6 ac-event-list">
-                <h1><a ng-href="#/event/dummy">PAX East</a></h1>
-                <h1>Outdoor Ballroom Dancing</h1>
-                <h1>Sir Scoops Alot Boston Extravanganza</h1>
-                <h1>Freedom Trail Honorary Common Celebration</h1>
-                <h1>Freedom Trail Honorary Common Celebration</h1>
-                <h1>Freedom Trail Honorary Common Celebration</h1>
+                <h1 ng-repeat="event in model.events"><a ng-href="#/event/{{event._id}}">{{event.name}}</a></h1>
+
         </div>
     </div>
 </div>
