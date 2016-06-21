@@ -42,11 +42,11 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="row">
-                <h2 ng-if="model.org.address">{{model.org.address}}</h2>
-                <h2 ng-if="!model.org.address">No address listed</h2>
+                <h2 ng-if="model.org.location">{{model.org.location}}</h2>
+                <h2 ng-if="!model.org.location">No address listed</h2>
             </div>
             <div>
-                <h2 ng-if="model.org.phone">Here is the phone number!</h2>
+                <h2 ng-if="model.org.phone">{{model.org.phone}}</h2>
                 <h2 ng-if="!model.org.phone">No phone number listed</h2>
             </div>
         </div>
