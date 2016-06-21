@@ -23,14 +23,14 @@
             })
             // login
             .when("/login", {
-                templateUrl: "views/user/login.view.client.html",
+                templateUrl: "views/credential/login.view.client.html",
                 // married to logincontroller
                 controller: "LoginController",
                 controllerAs: "model"
             })
             // register
             .when("/register", {
-                templateUrl: "views/user/register.view.client.html",
+                templateUrl: "views/credential/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
             })
