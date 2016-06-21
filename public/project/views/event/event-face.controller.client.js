@@ -10,6 +10,7 @@
         vm.eid = eventId;
         vm.editEvent = editEvent;
         vm.followEvent = followEvent;
+        vm.unfollowEvent = unfollowEvent;
 
         vm.user = $rootScope.currentUser;
 
@@ -30,8 +31,20 @@
                 .then(
                     function(response) {
                         vm.orgName = response.data.name;
-                        if(vm.user && vm.user._id === response.data._poster) {
-                            vm.authorizedUser = true;
+                        if(vm.user) {
+                            if (vm.user._id === response.data._poster) {
+                                vm.authorizedUser = true;
+                            }
+                            var followed = vm.user.followed;
+                            // redundant but stops page from loading the wrong button first
+                            vm.notFollowed = true;
+                            for(var i in vm.user.followed) {
+                                if(followed[i]._id === eventId) {
+                                    vm.followed = true;
+                                    vm.notFollowed = false;
+                                    break;
+                                }
+                            }
                         }
                     },
                     function(error) {
@@ -66,7 +79,22 @@
                 .followEvent(vm.user._id, {name: vm.event.name, _id: eventId})
                 .then(
                     function(response) {
-                        console.log(response);
+                        // again, very redundant but needed to make buttons load right
+                        vm.followed = true;
+                        vm.notFollowed = false;
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
+        }
+
+        function unfollowEvent() {
+            UserService
+                .unfollowEvent(vm.user._id, eventId)
+                .then(
+                    function(response) {
+                        vm.followed = false;
                     },
                     function(error) {
                         vm.error = error.data;

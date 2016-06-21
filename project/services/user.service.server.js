@@ -22,6 +22,7 @@ module.exports = function(app, models) {
     app.put("/api/project/user/:uid", updateUser);
     // makes user follow event
     app.put("/api/project/user/:uid/event", followEvent);
+    // unfollow event
     app.delete("/api/project/user/:uid/event/:eid", unfollowEvent);
     // delete a user
     app.delete("/api/project/user/:uid", deleteUser);

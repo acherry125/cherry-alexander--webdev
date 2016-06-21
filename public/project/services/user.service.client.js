@@ -8,6 +8,7 @@
 
         var api = {
             "followEvent": followEvent,
+            "unfollowEvent": unfollowEvent,
             "register": register,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
@@ -24,6 +25,12 @@
         function followEvent(userId, event) {
             var url = "/api/project/user/" + userId + "/event/";
             return $http.put(url, event)
+        }
+
+        /* unfollows an event */
+        function unfollowEvent(userId, eventId) {
+            var url = "/api/project/user/" + userId + "/event/" + eventId;
+            return $http.delete(url);
         }
         
         /* Adds a new user to the database */

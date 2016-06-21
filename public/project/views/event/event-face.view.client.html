@@ -59,7 +59,11 @@
                 <h2 ng-if="!model.event.location">No location provided</h2>
             </div>
             <div class="row" ng-if="model.user">
-                <button ng-click="model.followEvent()"
+                <button ng-if="model.followed"
+                        ng-click="model.unfollowEvent()"
+                        class="btn btn-lg btn-danger">Cancel Attending</button>
+                <button ng-if="model.notFollowed"
+                        ng-click="model.followEvent()"
                         class="btn btn-warning btn-lg">Attend this Event</button>
             </div>
         </div>
@@ -110,7 +114,11 @@
             <div class="navbar-header">
                 <!-- Attend Event Button -->
                 <p ng-if="model.user" class="navbar-text pull-left">
-                    <button ng-click="model.followEvent()"
+                    <button ng-if="model.followed"
+                            ng-click="model.unfollowEvent()"
+                            class="btn btn-lg btn-danger">Cancel Attending</button>
+                    <button ng-if="model.notFollowed"
+                            ng-click="model.followEvent()"
                             class="btn btn-warning btn-lg">Attend this Event</button>
                 </p>
                 <!-- Login Button -->
