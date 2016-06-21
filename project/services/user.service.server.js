@@ -263,7 +263,7 @@ module.exports = function(app, models) {
                     } else {
                         var index = -1;
                         for(var i in user.followed) {
-                            if(user.followed[i]._id === eventId) {
+                            if(user.followed[i]._id.toString() === eventId) {
                                 index = i;
                                 break;
                             }

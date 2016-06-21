@@ -94,7 +94,9 @@
                 .unfollowEvent(vm.user._id, eventId)
                 .then(
                     function(response) {
+                        // redundant, but necessary, see other comments
                         vm.followed = false;
+                        vm.notFollowed = true;
                     },
                     function(error) {
                         vm.error = error.data;
