@@ -7,7 +7,7 @@
     function OrganizationService($http) {
 
         var api = {
-            "registerOrganization" : registerOrganization,
+            "createOrganization" : createOrganization,
             "updateOrganization" : updateOrganization,
             "removeOrganization" : removeOrganization,
             "findOrganizationById" : findOrganizationById,
@@ -16,8 +16,9 @@
 
         return api;
 
-        function registerOrganization(posterId, organization) {
-            return $http.post("/api/project/user/" + posterId + "/organization", event)
+        function createOrganization(posterId, organization) {
+            var url = "/api/project/user/" + posterId + "/organization";
+            return $http.post(url, event)
         }
         
         function updateOrganization(organizationId, organization) {

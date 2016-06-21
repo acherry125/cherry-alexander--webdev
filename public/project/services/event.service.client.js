@@ -7,7 +7,7 @@
     function EventService($http) {
 
         var api = {
-            "registerEvent" : registerEvent,
+            "createEvent" : createEvent,
             "updateEvent" : updateEvent,
             "removeEvent" : removeEvent,
             "findEventById" : findEventById,
@@ -16,7 +16,7 @@
 
         return api;
 
-        function registerEvent(organizationId, event) {
+        function createEvent(organizationId, event) {
             return $http.post("/api/project/organization/" + organizationId + "/event", event);
         }
 
