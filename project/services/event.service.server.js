@@ -15,7 +15,28 @@ module.exports = function(app, models) {
 
     // create an organization for a user
     function createEvent(req, res) {
-        res.sendStatus(200);
+        var event = req.body;
+        var orgId = req.params.oid;
+
+        if(!event || !event.name) {
+            res.status(400).send("Event must have a name");
+            return;
+        }
+
+        eventModel
+            .createEvent(orgId, event)
+            .then(
+                function(event) {
+                    if(event) {
+                        res.sendStatus(200);
+                    }
+                },
+                function(error) {
+                    // think about what error to send
+                    res.send(error);
+                }
+            );
+
     }
 
     // update an organization

@@ -15,8 +15,28 @@ module.exports = function(app, models) {
 
     // create an organization for a user
     function createOrganization(req, res) {
-        //organization._poster = posterId;
-        res.sendStatus(200);
+        var organization = req.body;
+        var posterId = req.params.uid;
+
+        if(!organization || !organization.name) {
+            res.status(400).send("Organization must have a name");
+            return;
+        }
+
+        organizationModel
+            .createOrganization(posterId, organization)
+            .then(
+                function(org) {
+                    if(org) {
+                        res.sendStatus(200);
+                    }
+                },
+                function(error) {
+                    // think about what error to send
+                    res.send(error);
+                }
+            );
+        
     }
 
     // update an organization

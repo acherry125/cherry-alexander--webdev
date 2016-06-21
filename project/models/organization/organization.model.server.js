@@ -16,6 +16,7 @@ module.exports = function(mongoose) {
 
     function createOrganization(posterId, organization) {
         organization.dateCreated = new Date();
+        organization._poster = posterId;
         Organization.create(organization);
     }
     
