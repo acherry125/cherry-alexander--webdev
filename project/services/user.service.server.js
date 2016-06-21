@@ -14,7 +14,9 @@ module.exports = function(app, models) {
     app.post("/api/project/logout", logout);
     // respond to user queries
     app.get("/api/project/user", getUsers);
+    // find user by id
     app.get("/api/project/user/:userId", findUserById);
+    // check if user is logged in
     app.get("/api/project/loggedIn", loggedIn);
     // update a user
     app.put("/api/project/user/:userId", updateUser);
