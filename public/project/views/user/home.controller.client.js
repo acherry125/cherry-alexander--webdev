@@ -5,24 +5,25 @@
         .controller("HomeController", HomeController);
 
 
-    function HomeController($routeParams, $location, $rootScope, UserService) {
-        vm = this;
-        userId = $routeParams.uid;
+    function HomeController($routeParams, $location, $rootScope, OrganizationService, EventService) {
+        var vm = this;
+        var userId = $routeParams.uid;
         vm.uid = userId;
         vm.addOrganization = addOrganization;
         
         
         function init() {
-            UserService
-                .findUserById(userId)
+            OrganizationService
+                .findOrganizationForPoster(userId)
                 .then(
                     function(response) {
-                        vm.user = response.data;
+                        vm.organizations = response.data;
                     },
                     function(error) {
                         vm.error = error.data;
                     }
-                )
+                );
+            // do one for events too
         }
         
         init();

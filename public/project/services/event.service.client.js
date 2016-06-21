@@ -11,7 +11,8 @@
             "updateEvent" : updateEvent,
             "removeEvent" : removeEvent,
             "findEventById" : findEventById,
-            "findEventForOrganization" : findEventForOrganization
+            "findEventsByName" : findEventByName,
+            "findEventsForOrganization" : findEventsForOrganization
         };
 
         return api;
@@ -32,7 +33,11 @@
             return;
         }
 
-        function findEventForOrganization(organizationId) {
+        function findEventsByName(eventName) {
+            return;
+        }
+
+        function findsEventsForOrganization(organizationId) {
             return;
         }
 

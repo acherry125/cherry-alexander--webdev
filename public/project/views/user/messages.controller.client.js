@@ -6,8 +6,8 @@
 
 
     function UserMessagesController($routeParams, $location, UserService) {
-        vm = this;
-        userId = $routeParams.uid;
+        var vm = this;
+        var userId = $routeParams.uid;
         vm.uid = userId;
 
         function init() {

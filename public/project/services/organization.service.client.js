@@ -11,7 +11,8 @@
             "updateOrganization" : updateOrganization,
             "removeOrganization" : removeOrganization,
             "findOrganizationById" : findOrganizationById,
-            "findOrganizationForPoster" : findOrganizationForPoster
+            "findOrganizationsByName" : findOrganizationsByName,
+            "findOrganizationsForPoster" : findOrganizationsForPoster
         };
 
         return api;
@@ -32,9 +33,13 @@
         function findOrganizationById(organizationId) {
             return;
         }
-        
-        function findOrganizationForPoster(posterId) {
+
+        function findOrganizationsByName(organizationName) {
             return;
+        }
+        
+        function findOrganizationsForPoster(posterId) {
+            return $http.get("/api/project/user/" + posterId + "/organization")
         }
     }
 
