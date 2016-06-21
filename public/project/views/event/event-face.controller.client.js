@@ -9,6 +9,7 @@
         var eventId = $routeParams.eid;
         vm.eid = eventId;
         vm.validatedUser = true;
+        vm.editEvent = editEvent;
 
         vm.user = $rootScope.currentUser;
 
@@ -51,6 +52,10 @@
                 map: map,
                 position: {lat: 42.34003, lng: -71.089797}
             });
+        }
+
+        function editEvent() {
+            $location.url("/event/" + eventId + "/edit")
         }
 
     }

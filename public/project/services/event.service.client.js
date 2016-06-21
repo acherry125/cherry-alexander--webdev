@@ -19,15 +19,18 @@
         return api;
 
         function createEvent(organizationId, event) {
-            return $http.post("/api/project/organization/" + organizationId + "/event", event);
+            var url = "/api/project/organization/" + organizationId + "/event";
+            return $http.post(url, event);
         }
 
         function updateEvent(eventId, event) {
-            return;
+            var url = "/api/project/event/" + eventId;
+            return $http.put(url, event)
         }
 
         function removeEvent(eventId) {
-            return;
+            var url = "/api/project/event/" + eventId;
+            return $http.delete(url);
         }
 
         function findEventById(eventId) {
@@ -41,7 +44,8 @@
         }
 
         function findEventsForOrganization(organizationId) {
-            return $http.get("/api/project/organization/" + organizationId + "/event");
+            var url = "/api/project/organization/" + organizationId + "/event";
+            return $http.get(url);
         }
         
         function findAllEvents() {

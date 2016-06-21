@@ -13,13 +13,31 @@
 
 
         function init() {
-            
+            EventService
+                .findEventById(eventId)
+                .then(
+                    function(response) {
+                        vm.event = response.data;
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
         }
 
         init();
         
         function updateEvent() {
-            return;
+            EventService
+                .updateEvent
+                .then(
+                    function(response) {
+                        $location.url("/event/" + eventId);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
         }
 
         

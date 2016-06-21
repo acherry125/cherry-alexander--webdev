@@ -33,7 +33,7 @@
                 .updateOrganization(organizationId, vm.org)
                 .then(
                     function(response) {
-                        console.log(response);
+                        $location.url("/organization/" + organizationId)
                     },
                     function(error) {
                         vm.error = error;
