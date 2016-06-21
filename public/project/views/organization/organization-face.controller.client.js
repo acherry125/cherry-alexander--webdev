@@ -5,7 +5,7 @@
         .controller("OrganizationFaceController", OrganizationFaceController);
 
 
-    function OrganizationFaceController($routeParams, $location, $rootScope, OrganizationService) {
+    function OrganizationFaceController($routeParams, $location, $rootScope, EventService) {
         vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
@@ -18,7 +18,21 @@
 
         vm.user = $rootScope.currentUser;
 
-
+        function init() {
+            EventService
+                .findEventsForOrganization(organizationId)
+                .then(
+                    function(response) {
+                        vm.organizations = response.data.elements;
+                    },
+                    function(error) {
+                        vm.error = "";
+                    }
+                )
+        }
+        
+        init();
+        
         function toggleMessage() {
             vm.messageActive = !vm.messageActive;
         }

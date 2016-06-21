@@ -38,7 +38,7 @@
         }
 
         function findEventsForOrganization(organizationId) {
-            return;
+            return $http.get("/api/project/organization/" + organizationId + "/event");
         }
 
     }
