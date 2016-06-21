@@ -23,7 +23,7 @@
                 .findEventsForOrganization(organizationId)
                 .then(
                     function(response) {
-                        vm.organizations = response.data.elements;
+                        vm.events = response.data.elements;
                     },
                     function(error) {
                         vm.error = "";
