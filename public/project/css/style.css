@@ -85,7 +85,7 @@ a {
 
 /* Profile button should still be blue */
 .navbar .glyphicon-user {
-    color: #337ab7;
+    color: #006080;
 }
 
 .navbar .btn.btn-lg.btn-block {
@@ -117,7 +117,7 @@ nav>.container>.navbar-header {
 
 /* Make navbar black */
 .navbar {
-    background-color: #00b3b3;
+    background-color: #009999;
     opacity: 0.9999;
     border-color: #00cccc;
     padding-left: 10px;
