@@ -31,7 +31,8 @@
         }
 
         function findEventById(eventId) {
-            return;
+            var url = "/api/project/event/" + eventId;
+            return $http.get(url);
         }
 
         function findEventsByName(eventName) {

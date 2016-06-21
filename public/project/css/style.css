@@ -43,6 +43,10 @@ body {
     width: 32px;
 }
 
+.ac-face-header {
+    color: #d75428;
+}
+
 .ng-scope > .container {
     margin-bottom: 5em;
 }

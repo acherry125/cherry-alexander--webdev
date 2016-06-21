@@ -6,11 +6,24 @@
 
     function EventFaceController($routeParams, $location, $rootScope, EventService) {
         vm = this;
+        var eventId = $routeParams.eid;
+        vm.eid = eventId;
+        vm.validatedUser = true;
 
         vm.user = $rootScope.currentUser;
 
 
         function init() {
+            EventService
+                .findEventById(eventId)
+                .then(
+                    function(response) {
+                        vm.event = response.data;
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                );
             map_init();
         }
 

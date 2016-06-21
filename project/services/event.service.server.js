@@ -53,7 +53,22 @@ module.exports = function(app, models) {
 
     // find an organization by id
     function findEventById(req,res) {
-        res.sendStatus(200);
+        var eventId = req.params.eid;
+
+        eventModel
+            .findEventById(eventId)
+            .then(
+                function(event) {
+                    if(event === null) {
+                        res.status(404).send("Event not found");
+                    } else {
+                        res.json(event);
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
     }
 
     // find organizations by name
