@@ -10,6 +10,7 @@
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
         vm.updateOrganization = updateOrganization;
+        vm.deleteOrganization = deleteOrganization;
         
         vm.user = $rootScope.currentUser;
         
