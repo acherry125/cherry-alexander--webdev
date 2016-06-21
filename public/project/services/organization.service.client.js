@@ -23,23 +23,29 @@
         }
         
         function updateOrganization(organizationId, organization) {
-            return;
+            var url = "/api/project/organization/" + organizationId;
+            return $http.put(url, organization);
         }
         
         function removeOrganization(organizationId) {
-            return;
-        } 
+            var url = "/api/project/organization/" + organizationId;
+            return $http.delete(url)        
+        }
+        
         
         function findOrganizationById(organizationId) {
-            return;
+            var url = "/api/project/organization/" + organizationId;
+            return $http.get(url)
         }
 
         function findOrganizationsByName(organizationName) {
-            return;
+            var url = "/api/project/organization?orgName=" + organizationName;
+            return $http.get(url);
         }
         
         function findOrganizationsForPoster(posterId) {
-            return $http.get("/api/project/user/" + posterId + "/organization")
+            var url = "/api/project/user/" + posterId + "/organization";
+            return $http.get(url)
         }
     }
 

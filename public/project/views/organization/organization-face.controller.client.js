@@ -5,7 +5,7 @@
         .controller("OrganizationFaceController", OrganizationFaceController);
 
 
-    function OrganizationFaceController($routeParams, $location, $rootScope, EventService) {
+    function OrganizationFaceController($routeParams, $location, $rootScope, EventService, OrganizationService) {
         vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
@@ -19,6 +19,17 @@
         vm.user = $rootScope.currentUser;
 
         function init() {
+            OrganizationService
+                .findOrganizationById(organizationId)
+                .then(
+                    function(response) {
+                        vm.organization = response.data;
+                    },
+                    function(error) {
+                        vm.error = error;
+                    }
+                )
+            
             EventService
                 .findEventsForOrganization(organizationId)
                 .then(

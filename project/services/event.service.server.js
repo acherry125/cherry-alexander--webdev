@@ -64,12 +64,8 @@ module.exports = function(app, models) {
             eventModel
                 .findEventsByName(eventName)
                 .then(
-                    function(event) {
-                        if(event === null) {
-                            res.status(404).send("Event " + eventName + " not found");
-                        } else {
-                            res.json(event);
-                        }
+                    function(events) {
+                        res.json({elements: events});
                     }, 
                     function(error) {
                         res.send(error);
