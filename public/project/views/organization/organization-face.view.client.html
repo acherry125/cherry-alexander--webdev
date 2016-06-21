@@ -12,14 +12,14 @@
                 <!-- Page Title -->
                 <a class="navbar-brand">Organization</a>
                 <!-- Add Event Button -->
-                <p ng-if="model.validatedUser" class="navbar-text pull-right" id="ac-add-event-wrap">
+                <p ng-if="model.ownerUser" class="navbar-text pull-right" id="ac-add-event-wrap">
                     <a ng-click="model.addEvent()" class="navbar-link">
                       <span class="glyphicon glyphicon-plus">
                       </span>
                     </a>
                 </p>
                 <!-- Edit Organization Button -->
-                <p ng-if="model.validatedUser" class="navbar-text pull-right" id="ac-edit-org-cog">
+                <p ng-if="model.ownerUser" class="navbar-text pull-right" id="ac-edit-org-cog">
                     <a ng-click="model.editOrganization()" class="navbar-link">
                       <span class="glyphicon glyphicon-cog">
                       </span>

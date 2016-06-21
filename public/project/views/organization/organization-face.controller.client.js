@@ -10,7 +10,6 @@
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
 
-        vm.validatedUser = true;
         vm.messageActive = false;
         vm.toggleMessage = toggleMessage;
         vm.addEvent = addEvent;
@@ -25,6 +24,9 @@
                     function(response) {
                         // location does not work
                         vm.org = response.data;
+                        if(vm.org._poster == vm.user._id) {
+                            vm.ownerUser = true;
+                        }
                         return UserService.findUserById(vm.org._poster);
                     },
                     function(error) {

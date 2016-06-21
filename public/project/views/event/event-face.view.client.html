@@ -11,7 +11,7 @@
                 </p>
                 <a class="navbar-brand">Event Info</a>
                 <!-- Edit Event Button -->
-                <p ng-if="model.validatedUser" class="navbar-text pull-right">
+                <p ng-if="model.authorizedUser" class="navbar-text pull-right">
                     <a ng-click="model.editEvent()" class="navbar-link">
                       <span class="glyphicon glyphicon-cog">
                       </span>
@@ -108,7 +108,7 @@
         <div class="container">
             <div class="navbar-header">
                 <!-- Attend Event Button -->
-                <p class="navbar-text pull-left">
+                <p ng-if="model.user" class="navbar-text pull-left">
                     <button class="btn btn-warning btn-lg">Attend this Event</button>
                 </p>
                 <!-- Login Button -->

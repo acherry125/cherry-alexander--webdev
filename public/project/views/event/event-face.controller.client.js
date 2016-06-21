@@ -8,7 +8,6 @@
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
-        vm.validatedUser = true;
         vm.editEvent = editEvent;
 
         vm.user = $rootScope.currentUser;
@@ -30,6 +29,9 @@
                 .then(
                     function(response) {
                         vm.orgName = response.data.name;
+                        if(vm.user._id === response.data._poster) {
+                            vm.authorizedUser = true;
+                        }
                     },
                     function(error) {
                         vm.error = error.data;
