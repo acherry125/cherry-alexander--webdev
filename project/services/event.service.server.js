@@ -65,7 +65,17 @@ module.exports = function(app, models) {
 
     // remove an organization
     function removeEvent(req, res) {
-        res.sendStatus(200);
+        var eventId = req.params.eid;
+        eventModel
+            .removeEvent(eventId)
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            );
     }
 
     // find an organization by id

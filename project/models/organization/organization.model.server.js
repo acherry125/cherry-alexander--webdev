@@ -35,7 +35,7 @@ module.exports = function(mongoose) {
         )
     }
     
-    function removeOrganization(posterId, organizationId) {
+    function removeOrganization(organizationId) {
         return Organization.remove({_id: organizationId})
     }
     

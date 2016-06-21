@@ -8,8 +8,10 @@
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
-        vm.updateEvent = updateEvent;
         vm.user = $rootScope.currentUser;
+        vm.updateEvent = updateEvent;
+        vm.deleteEvent = deleteEvent;
+
 
 
         function init() {
@@ -33,6 +35,19 @@
                 .then(
                     function(response) {
                         $location.url("/event/" + eventId);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
+        }
+        
+        function deleteEvent() {
+            EventService
+                .removeEvent(eventId)
+                .then(
+                    function(response) {
+                        $location.url("/organization/" + vm.event._organization);
                     },
                     function(error) {
                         vm.error = error.data;

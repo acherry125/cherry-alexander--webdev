@@ -37,7 +37,7 @@ module.exports = function(mongoose) {
         )
     }
     
-    function removeEvent(organizationId, eventId) {
+    function removeEvent(eventId) {
         return Event.remove({_id: eventId});
     }
 

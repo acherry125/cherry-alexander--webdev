@@ -40,7 +40,19 @@
                     }
                 )
         }
-        
+
+        function deleteOrganization() {
+            OrganizationService
+                .removeOrganization(organizationId)
+                .then(
+                    function(response) {
+                        $location.url("/user/" + vm.org._poster);
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
+        }
 
     }
 
