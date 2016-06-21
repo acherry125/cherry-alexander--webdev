@@ -19,7 +19,28 @@
         init();
 
         function createOrganization() {
-            return;
+            if(verifyOrganization(vm.org)) {
+                OrganizationService
+                    .createOrganization(posterId, vm.org)
+                    .then(
+                        function(response) {
+                            $location.url("/user/" + userId);
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
+            }
+        }
+
+        function verifyOrganization(org) {
+            if(!org || !org.name) {
+                vm.error = "Name field is required";
+                return false;
+            } else {
+                vm.error = "";
+                return true;
+            }
         }
 
     }

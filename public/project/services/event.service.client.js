@@ -16,8 +16,8 @@
 
         return api;
 
-        function registerEvent(organizationId, eventName) {
-            return;
+        function registerEvent(organizationId, event) {
+            return $http.post("/api/project/organization/" + organizationId + "/event", event);
         }
 
         function updateEvent(eventId, event) {

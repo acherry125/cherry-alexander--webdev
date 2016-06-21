@@ -129,6 +129,11 @@ nav>.container>.navbar-header {
     cursor: default;
 }
 
+.alert {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1.25em;
+}
 
 .ac-form-group {
     margin-bottom: 5px;

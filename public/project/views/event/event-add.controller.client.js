@@ -20,7 +20,26 @@
         init();
         
         function createEvent() {
-            return;
+            if(verifyEvent(vm.event)) {
+                EventService
+                    .createEvent(organizationId, vm.event)
+                    .then(
+                        function(response) {
+                            $location.url("/organization/" + organizationId);
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
+            }
+        }
+
+        function verifyEvent(event) {
+            if(!event || !event.name) {
+                vm.error = "Name field is required";
+            } else {
+                vm.error = "";
+            }
         }
 
 

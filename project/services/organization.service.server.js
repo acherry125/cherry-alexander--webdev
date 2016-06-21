@@ -15,6 +15,7 @@ module.exports = function(app, models) {
 
     // create an organization for a user
     function createOrganization(req, res) {
+        //organization._poster = posterId;
         res.sendStatus(200);
     }
 
