@@ -18,7 +18,7 @@
 
         function createOrganization(posterId, organization) {
             var url = "/api/project/user/" + posterId + "/organization";
-            return $http.post(url, event)
+            return $http.post(url, organization)
         }
         
         function updateOrganization(organizationId, organization) {
