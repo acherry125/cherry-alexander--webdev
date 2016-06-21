@@ -306,6 +306,7 @@ module.exports = function(app, models) {
             .deleteUser(userId)
             .then(
                 function(user) {
+                    req.logout();
                     res.sendStatus(200);
                 },
                 function(error) {
