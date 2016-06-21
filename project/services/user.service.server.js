@@ -15,15 +15,16 @@ module.exports = function(app, models) {
     // respond to user queries
     app.get("/api/project/user", getUsers);
     // find user by id
-    app.get("/api/project/user/:userId", findUserById);
+    app.get("/api/project/user/:uid", findUserById);
     // check if user is logged in
     app.get("/api/project/loggedIn", loggedIn);
     // update a user
-    app.put("/api/project/user/:userId", updateUser);
+    app.put("/api/project/user/:uid", updateUser);
     // makes user follow event
-    app.put("/api/project/user/:userId/event", followEvent);
+    app.put("/api/project/user/:uid/event", followEvent);
+    app.delete("/api/project/user/:uid/event/:eid", unfollowEvent);
     // delete a user
-    app.delete("/api/project/user/:userId", deleteUser);
+    app.delete("/api/project/user/:uid", deleteUser);
 
     passport.use('EventHorizon', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -150,7 +151,7 @@ module.exports = function(app, models) {
 
     // find a user by their id
     function findUserById(req, res){
-        var userId = req.params.userId;
+        var userId = req.params.uid;
         userModel
             .findUserById(userId)
             .then(
@@ -188,7 +189,7 @@ module.exports = function(app, models) {
     }
 
     function updateUser(req, res) {
-        var userId = req.params.userId;
+        var userId = req.params.uid;
         var user = req.body;
 
         if(!user || !user.name) {
@@ -209,7 +210,7 @@ module.exports = function(app, models) {
     }
     
     function followEvent(req, res) {
-        var userId = req.params.userId;
+        var userId = req.params.uid;
         var event = req.body;
 
         if(!userId || !event || !event._id || !event.name) {
@@ -243,8 +244,55 @@ module.exports = function(app, models) {
         
     }
 
+    function unfollowEvent(req, res) {
+        var userId = req.params.uid;
+        var eventId = req.params.eid;
+
+        if(!userId || !eventId) {
+            res.status(400).send("Cannot unfollow event");
+            return;
+        }
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function(user) {
+                    if(user === null) {
+                        res.status(400).send("User does not exist");
+                    } else {
+                        var index = -1;
+                        for(var i in user.followed) {
+                            if(user.followed[i]._id === eventId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if (index === -1) {
+                            res.status(400).send("You are not following this event");
+                            return;
+                        }
+                        user.followed.splice(index, 1);
+                        return userModel.updateUser(userId, user)
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(user) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+
+    }
+
+
     function deleteUser(req, res) {
-        var userId = req.params.userId;
+        var userId = req.params.uid;
 
         userModel
             .deleteUser(userId)
