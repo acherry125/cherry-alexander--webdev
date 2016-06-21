@@ -17,6 +17,7 @@
 
         vm.user = $rootScope.currentUser;
 
+        /* load all elements of this organization */
         function init() {
             OrganizationService
                 .findOrganizationById(organizationId)
@@ -24,7 +25,8 @@
                     function(response) {
                         // location does not work
                         vm.org = response.data;
-                        if(vm.org._poster == vm.user._id) {
+                        // determine if this user own the page
+                        if(vm.user && vm.org._poster === vm.user._id) {
                             vm.ownerUser = true;
                         }
                         return UserService.findUserById(vm.org._poster);
@@ -33,6 +35,7 @@
                         vm.error = error.data;
                     }
                 )
+                // set the poster for this organization
                 .then(
                     function(response) {
                         vm.posterName = response.data.username;
@@ -40,8 +43,8 @@
                     function(error) {
                         vm.error = error.data;
                     }
-                )
-            
+                );
+            // find the events for this organization
             EventService
                 .findEventsForOrganization(organizationId)
                 .then(

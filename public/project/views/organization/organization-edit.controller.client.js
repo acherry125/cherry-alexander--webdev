@@ -12,8 +12,10 @@
         vm.updateOrganization = updateOrganization;
         vm.deleteOrganization = deleteOrganization;
         
+        /* defined in config resolve function */
         vm.user = $rootScope.currentUser;
         
+        /* initiates page */
         function init() {
             OrganizationService
                 .findOrganizationById(organizationId)
@@ -29,6 +31,7 @@
         
         init();
 
+        /* Update an organization with new information */
         function updateOrganization() {
             if(verifyOrganization(vm.org)) {
                 OrganizationService
@@ -45,6 +48,7 @@
 
         }
 
+        /* verify that organization has all required fields */
         function verifyOrganization(org) {
             if(!org || !org.name) {
                 vm.error = "Organization must have a name";
@@ -52,6 +56,7 @@
             }
         }
 
+        /* deletes the organization */
         function deleteOrganization() {
             OrganizationService
                 .removeOrganization(organizationId)

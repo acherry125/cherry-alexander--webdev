@@ -13,11 +13,13 @@
         vm.user = $rootScope.currentUser;
 
         function init() {
+            // put check in to make sure this is a poster
             return;
         }
 
         init();
 
+        /* Create this organization */
         function createOrganization() {
             if(verifyOrganization(vm.org)) {
                 OrganizationService
@@ -33,6 +35,7 @@
             }
         }
 
+        /* verify that organization has all required fields */
         function verifyOrganization(org) {
             if(!org || !org.name) {
                 vm.error = "Name field is required";
