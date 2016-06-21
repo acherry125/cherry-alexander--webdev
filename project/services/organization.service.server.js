@@ -11,6 +11,8 @@ module.exports = function(app, models) {
     app.delete("/api/project/organization/:oid", removeOrganization);
     // find an organization by id
     app.get("/api/project/organization/:oid", findOrganizationById);
+    // find organizations by name (has query param)
+    app.get("/api/project/organization", findOrganizationsByName);
     // find all organizations for a poster
     app.get("/api/project/user/:uid/organization", findOrganizationsForPoster);
 
@@ -52,6 +54,11 @@ module.exports = function(app, models) {
 
     // find an organization by id
     function findOrganizationById(req,res) {
+        res.sendStatus(200);
+    }
+
+    // find organizations by name
+    function findOrganizationsByName(req,res) {
         res.sendStatus(200);
     }
 

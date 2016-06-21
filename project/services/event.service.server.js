@@ -10,6 +10,8 @@ module.exports = function(app, models) {
     app.delete("/api/project/event/:eid", removeEvent);
     // find an event by id
     app.get("/api/project/event/:eid", findEventById);
+    // find events by name (has query param)
+    app.get("/api/project/event", findEventsByName);
     // find all events for an organization
     app.get("/api/project/organization/:oid/event", findEventsForOrganization);
 
@@ -53,6 +55,12 @@ module.exports = function(app, models) {
     function findEventById(req,res) {
         res.sendStatus(200);
     }
+
+    // find organizations by name
+    function findEventByName(req,res) {
+        res.sendStatus(200);
+    }
+
 
     // find all organizations for a poster
     function findEventsForOrganization(req, res) {
