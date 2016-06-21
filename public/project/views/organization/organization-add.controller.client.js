@@ -24,7 +24,7 @@
                     .createOrganization(posterId, vm.org)
                     .then(
                         function(response) {
-                            $location.url("/user/" + userId);
+                            $location.url("/user/" + posterId);
                         },
                         function(error) {
                             vm.error = error.data;

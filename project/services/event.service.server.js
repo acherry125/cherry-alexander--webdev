@@ -57,7 +57,7 @@ module.exports = function(app, models) {
     }
 
     // find organizations by name
-    function findEventByName(req,res) {
+    function findEventsByName(req,res) {
         res.sendStatus(200);
     }
 

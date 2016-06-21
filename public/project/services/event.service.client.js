@@ -11,7 +11,7 @@
             "updateEvent" : updateEvent,
             "removeEvent" : removeEvent,
             "findEventById" : findEventById,
-            "findEventsByName" : findEventByName,
+            "findEventsByName" : findEventsByName,
             "findEventsForOrganization" : findEventsForOrganization
         };
 
@@ -37,7 +37,7 @@
             return;
         }
 
-        function findsEventsForOrganization(organizationId) {
+        function findEventsForOrganization(organizationId) {
             return;
         }
 

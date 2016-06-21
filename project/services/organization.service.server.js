@@ -64,7 +64,17 @@ module.exports = function(app, models) {
 
     // find all organizations for a poster
     function findOrganizationsForPoster(req, res) {
-        res.sendStatus(200);
+        var posterId = req.params.uid;
+        organizationModel
+            .findOrganizationsForPoster(posterId)
+            .then(
+                function(organizations) {
+                    res.json({elements : organizations});
+                },
+                function(error) {
+                    res.send(error);
+                }
+            );
     }
     
 };
