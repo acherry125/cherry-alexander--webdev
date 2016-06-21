@@ -29,7 +29,7 @@
         
         function updateEvent() {
             EventService
-                .updateEvent
+                .updateEvent(eventId, vm.event)
                 .then(
                     function(response) {
                         $location.url("/event/" + eventId);
