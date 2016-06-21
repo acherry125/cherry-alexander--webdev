@@ -66,7 +66,8 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h3>{{model.org.description}}</h3>
+            <h3 ng-if="model.org.description">{{model.org.description}}</h3>
+            <h3 ng-if="!model.org.description">No description provided</h3>
         </div>
     </div>
     <div class="row">
