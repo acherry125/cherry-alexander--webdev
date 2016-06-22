@@ -229,7 +229,7 @@ module.exports = function(app, models) {
                         var index = -1;
                         // find user objects index since indexOf only works with ref
                         for(var i in user.followed) {
-                            if(user.followed[i]._id.toString() === eventId) {
+                            if(user.followed[i]._id.toString() === event._id) {
                                 index = i;
                                 break;
                             }

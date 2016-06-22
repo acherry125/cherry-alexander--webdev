@@ -4,7 +4,7 @@
         .controller("EventEditController", EventEditController);
 
 
-    function EventEditController($routeParams, $location, $rootScope, EventService) {
+    function EventEditController($routeParams, $location, $rootScope, EventService, UserService) {
         vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
@@ -12,7 +12,7 @@
         vm.updateEvent = updateEvent;
         vm.deleteEvent = deleteEvent;
         var verifyEvent = verifyEvent;
-
+        var unfollowAll = unfollowAll;
 
 
         function init() {
@@ -52,11 +52,29 @@
                 .then(
                     function(response) {
                         $location.url("/organization/" + vm.event._organization);
+                        // update user profiles
+                        unfollowAll();
                     },
                     function(error) {
                         vm.error = error.data;
                     }
                 )
+        }
+
+        // remove this from follow list of all attendees
+        function unfollowAll() {
+            for(var i in vm.event.attendees) {
+                UserService
+                    .unfollowEvent(vm.event.attendees[i], eventId)
+                    .then(
+                        function(response) {
+
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    );
+            }
         }
 
         function verifyEvent(event) {

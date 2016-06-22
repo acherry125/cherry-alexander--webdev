@@ -9,7 +9,6 @@ module.exports = function(mongoose) {
         email: String,
         poster: {type: Boolean, default: false},
         messages: [{from: String, message: String}],
-        organizations: [{type: mongoose.Schema.Types.ObjectId, ref: "Organization"}],
         followed: [{name: String, date: String, _id: {type: mongoose.Schema.Types.ObjectId, ref: "Event"}}],
         dateCreated: Date
     }, {collection: "event-user"});
