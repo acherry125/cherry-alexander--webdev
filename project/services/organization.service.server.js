@@ -2,7 +2,7 @@ module.exports = function(app, models) {
 
     var organizationModel = models.organizationModel;
     var userModel = models.userModel;
-
+    
     // create an organization for a user
     app.post("/api/project/user/:uid/organization", createOrganization);
     // update an organization
