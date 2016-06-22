@@ -24,6 +24,8 @@
                             response.data.date = new Date(response.data.date).toDateString();
                         }
                         vm.event = response.data;
+                        // for rendering
+                        vm.followNumber = vm.event.attendees.length;
                         var organizationId = vm.event._organization;
                         return OrganizationService.findOrganizationById(organizationId);
                     },
@@ -94,7 +96,7 @@
                 .addFollower(eventId, vm.user._id)
                 .then(
                     function(response) {
-                        
+                        vm.followNumber += 1;
                     },
                     function(error) {
                         vm.error = error.data;
@@ -119,7 +121,7 @@
                 .removeFollower(eventId, vm.user._id)
                 .then(
                     function(response) {
-
+                        vm.followNumber -= 1;
                     },
                     function(error) {
                         vm.error = error.data;
