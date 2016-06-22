@@ -12,6 +12,7 @@ module.exports = function(app, models) {
     // Create a user
     app.post("/api/project/register", register);
     app.post("/api/project/logout", logout);
+    app.post("/api/project/user/:uid/message", sendMessage);
     // respond to user queries
     app.get("/api/project/user", getUsers);
     // find user by id
@@ -209,7 +210,38 @@ module.exports = function(app, models) {
                 }
             );
     }
-    
+
+    function sendMessage(req, res) {
+        var recipientId = req.params.uid;
+        var message = req.body;
+
+        if(!recipientId || !message.from || !message.name || !message.message) {
+            res.status(400).status("Message must have 'from' and 'message' ");
+            return;
+        }
+
+        userModel
+            .findUserById(recipientId)
+            .then(
+                function(recipient) {
+                    recipient.messages.push(message);
+                    return userModel.updateUser(recipientId, recipient);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                }, 
+                function(error) {
+                    res.send(error);
+                }
+            )
+
+    }
+
     function followEvent(req, res) {
         var userId = req.params.uid;
         var event = req.body;

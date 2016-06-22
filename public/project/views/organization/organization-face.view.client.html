@@ -59,7 +59,7 @@
                           rows="5" id="tiny-message-box"
                           placeholder="Write your message here"
                           class="form-control"></textarea>
-                <button ng-if="model.messageActive" class="btn btn-block btn-primary">Send</button>
+                <button ng-if="model.messageActive" ng-click="model.sendMessage()" class="btn btn-block btn-primary">Send</button>
             </div>
         </div>
     </div>

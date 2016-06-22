@@ -30,7 +30,8 @@ module.exports = function(mongoose) {
                     firstName: newUser.firstName,
                     lastName: newUser.lastName,
                     poster: newUser.poster,
-                    followed: newUser.followed 
+                    followed: newUser.followed,
+                    messages: newUser.messages
                 }
             }
 

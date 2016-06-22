@@ -11,9 +11,11 @@
         vm.oid = organizationId;
 
         vm.messageActive = false;
+        vm.messageContent = "";
         vm.toggleMessage = toggleMessage;
         vm.addEvent = addEvent;
         vm.editOrganization = editOrganization;
+        vm.sendMessage = sendMessage;
 
         vm.user = $rootScope.currentUser;
 
@@ -69,6 +71,26 @@
 
         function editOrganization() {
             $location.url("/organization/" + organizationId + "/edit");
+        }
+
+        function sendMessage() {
+            var poster = vm.org._poster;
+            if(!vm.messageContent) {
+                vm.error = "Message must not be blank";
+                return;
+            }
+            var message = {name: vm.user.username, organization: vm.org.name, message: vm.messageContent};
+            UserService
+                .sendMessage(poster, vm.user._id, message)
+                .then(
+                    function(response) {
+                        vm.messageContent = "";
+                        vm.success = "Message Sent!"
+                    },
+                    function(error) {
+                        vm.error = error.data
+                    }
+                )
         }
 
     }

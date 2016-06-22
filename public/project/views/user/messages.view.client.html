@@ -18,21 +18,12 @@
     </nav>
 </header>
 <div class="container ac-nav-allow">
-    <div class="row">
-        <h3>RedSoxFan1</h3>
-        <button class="btn btn-warning">Show Message</button>
-    </div>
-    <div class="row">
-        <h3>Warlizard</h3>
-        <button class="btn btn-warning">Show Message</button>
-    </div>
-    <div class="row">
-        <h3>GoTWarrior</h3>
-        <button class="btn btn-warning">Show Message</button>
-    </div>
-    <div class="row">
-        <h3>PartyAllNite</h3>
-        <button class="btn btn-warning">Show Message</button>
+    <div ng-repeat="message in model.user.messages" class="row">
+        <h3>{{message.name}}</h3>
+        <button ng-click="model.toggleMessage(message._id)" class="btn btn-warning">Show Message</button>
+        <div ng-if="model.messageDict[message._id]" class="ac-message-container">
+            <p>{{message.message}}</p>
+        </div>
     </div>
 </div>
 <footer>

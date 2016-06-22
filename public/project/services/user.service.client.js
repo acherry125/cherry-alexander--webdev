@@ -16,7 +16,8 @@
             "updateUser": updateUser,
             "deleteUser": deleteUser,
             "logout": logout,
-            "checkLoggedIn": checkLoggedIn
+            "checkLoggedIn": checkLoggedIn,
+            "sendMessage": sendMessage
         };
 
         return api;
@@ -81,6 +82,13 @@
         function checkLoggedIn() {
             var url = "/api/project/loggedIn";
             return $http.get(url);
+        }
+
+        function sendMessage(recipient, from, message) {
+            message.from = from;
+            message._id = new Date();
+            var url = "/api/project/user/" + recipient + "/message";
+            return $http.post(url, message);
         }
     }
 
