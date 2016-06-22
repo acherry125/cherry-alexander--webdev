@@ -226,8 +226,21 @@ module.exports = function(app, models) {
                     if(user === null) {
                         res.status(400).send("User does not exist");
                     } else {
-                        user.followed.push(event);
-                        return userModel.updateUser(userId, user)
+                        var index = -1;
+                        // find user objects index since indexOf only works with ref
+                        for(var i in user.followed) {
+                            if(user.followed[i]._id.toString() === eventId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        // user found
+                        if (index !== -1) {
+                            res.status(400).send("You are already following this event");
+                        } else {
+                            user.followed.push(event);
+                            return userModel.updateUser(userId, user)
+                        }
                     }
                 },
                 function(error) {
@@ -273,12 +286,12 @@ module.exports = function(app, models) {
                         // user not found
                         if (index === -1) {
                             res.status(400).send("You are not following this event");
-                            return;
+                        } else {
+                            // remove user if found
+                            user.followed.splice(index, 1);
+                            // update the user model
+                            return userModel.updateUser(userId, user)
                         }
-                        // remove user if found
-                        user.followed.splice(index, 1);
-                        // update the user model
-                        return userModel.updateUser(userId, user)
                     }
                 },
                 function(error) {

@@ -154,14 +154,96 @@ module.exports = function(app, models) {
     function addFollower(req, res) {
         var eventId = req.params.eid;
         var userId = req.body.userId;
-        res.send(200);
+
+        if(!userId || !eventId) {
+            res.status(400).send("Cannot follow event");
+            return;
+        }
+
+        eventModel
+            .findEventById(eventId)
+            .then(
+                function(event) {
+                    if(event === null) {
+                        res.status(400).send("Event does not exist");
+                    } else {
+                        var index = -1;
+                        // find user objects index since indexOf only works with ref
+                        for(var i = 0; i < event.attendees.length; i++) {
+                            if(event.attendees[i] && event.attendees[i].toString() === userId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        // user found
+                        if (index !== -1) {
+                            res.status(400).send("This event was already being attended");
+                        } else {
+                            event.attendees.push(userId);
+                            return eventModel.updateEvent(eventId, event)
+                        }
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(user) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            );
     }
 
     // removes the follower from the event
     function removeFollower(req, res) {
         var eventId = req.params.eid;
         var userId = req.params.uid;
-        res.send(200);
+
+        if (!userId || !eventId) {
+            res.status(400).send("Cannot unfollow event");
+            return;
+        }
+
+        eventModel
+            .findEventById(eventId)
+            .then(
+                function (event) {
+                    if (event === null) {
+                        res.status(400).send("Event does not exist");
+                    } else {
+                        var index = -1;
+                        // find user objects index since indexOf only works with ref
+                        for (var i = 0; i < event.attendees.length; i++) {
+                            if (event.attendees[i] && event.attendees[i].toString() === userId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        // user found
+                        if (index === -1) {
+                            res.status(400).send("This event was not being attended");
+                        } else {
+                            event.attendees.splice(index, 1);
+                            return eventModel.updateEvent(eventId, event)
+                        }
+                    }
+                },
+                function (error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function (user) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.send(error);
+                }
+            );
     }
 
 };

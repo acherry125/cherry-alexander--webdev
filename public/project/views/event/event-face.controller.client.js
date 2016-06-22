@@ -20,7 +20,9 @@
                 .findEventById(eventId)
                 .then(
                     function(response) {
-                        response.data.date = new Date(response.data.date).toDateString();
+                        if(response.data.date) {
+                            response.data.date = new Date(response.data.date).toDateString();
+                        }
                         vm.event = response.data;
                         var organizationId = vm.event._organization;
                         return OrganizationService.findOrganizationById(organizationId);
@@ -112,7 +114,7 @@
                     function(error) {
                         vm.error = error.data;
                     }
-                )
+                );
             EventService
                 .removeFollower(eventId, vm.user._id)
                 .then(

@@ -30,7 +30,8 @@ module.exports = function(mongoose) {
                 description: event.description,
                 date: event.date,
                 time: event.time,
-                location: event.location
+                location: event.location,
+                attendees: event.attendees
             }
             }
 
