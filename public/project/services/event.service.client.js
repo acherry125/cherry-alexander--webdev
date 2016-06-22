@@ -13,7 +13,9 @@
             "findEventById" : findEventById,
             "findEventsByName" : findEventsByName,
             "findEventsForOrganization" : findEventsForOrganization,
-            "findAllEvents": findAllEvents
+            "findAllEvents": findAllEvents,
+            "addFollower": addFollower,
+            "removeFollower": removeFollower
         };
 
         return api;
@@ -53,6 +55,16 @@
             return $http.get(url)
         }
 
+        function addFollower(eventId, userId) {
+            var url = "/api/project/event/" + eventId + "/follower";
+            return $http.put(url, {userId: userId});
+        }
+        
+        function removeFollower(eventId, userId) {
+            var url = "/api/project/event/" + eventId + "/follower/" + userId;
+            return $http.delete(url);
+        }
+        
     }
 
 })();

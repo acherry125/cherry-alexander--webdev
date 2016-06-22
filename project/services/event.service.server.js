@@ -6,6 +6,10 @@ module.exports = function(app, models) {
     app.post("/api/project/organization/:oid/event", createEvent);
     // update an event
     app.put("/api/project/event/:eid", updateEvent);
+    // add a follower to the event
+    app.put("/api/project/event/:eid/follower", addFollower);
+    // remove the follower from the event
+    app.delete("/api/project/event/:eid/follower/:uid", removeFollower);
     // remove an event
     app.delete("/api/project/event/:eid", removeEvent);
     // find an event by id
@@ -14,6 +18,8 @@ module.exports = function(app, models) {
     app.get("/api/project/event", findEvents);
     // find all events for an organization
     app.get("/api/project/organization/:oid/event", findEventsForOrganization);
+
+
 
     // create an organization for a user
     function createEvent(req, res) {
@@ -142,6 +148,20 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             )
+    }
+
+    // adds a follower to the event
+    function addFollower(req, res) {
+        var eventId = req.params.eid;
+        var userId = req.body.userId;
+        res.send(200);
+    }
+
+    // removes the follower from the event
+    function removeFollower(req, res) {
+        var eventId = req.params.eid;
+        var userId = req.params.uid;
+        res.send(200);
     }
 
 };

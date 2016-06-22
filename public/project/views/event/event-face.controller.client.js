@@ -20,6 +20,7 @@
                 .findEventById(eventId)
                 .then(
                     function(response) {
+                        response.data.date = new Date(response.data.date).toDateString();
                         vm.event = response.data;
                         var organizationId = vm.event._organization;
                         return OrganizationService.findOrganizationById(organizationId);
@@ -76,12 +77,22 @@
 
         function followEvent() {
             UserService
-                .followEvent(vm.user._id, {name: vm.event.name, _id: eventId})
+                .followEvent(vm.user._id, {name: vm.event.name, _id: eventId, date: vm.event.date })
                 .then(
                     function(response) {
                         // again, very redundant but needed to make buttons load right
                         vm.followed = true;
                         vm.notFollowed = false;
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                );
+            EventService
+                .addFollower(eventId, vm.user._id)
+                .then(
+                    function(response) {
+                        
                     },
                     function(error) {
                         vm.error = error.data;
@@ -97,6 +108,16 @@
                         // redundant, but necessary, see other comments
                         vm.followed = false;
                         vm.notFollowed = true;
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
+            EventService
+                .removeFollower(eventId, vm.user._id)
+                .then(
+                    function(response) {
+
                     },
                     function(error) {
                         vm.error = error.data;

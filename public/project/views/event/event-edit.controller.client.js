@@ -11,6 +11,7 @@
         vm.user = $rootScope.currentUser;
         vm.updateEvent = updateEvent;
         vm.deleteEvent = deleteEvent;
+        var verifyEvent = verifyEvent;
 
 
 
@@ -19,6 +20,7 @@
                 .findEventById(eventId)
                 .then(
                     function(response) {
+                        response.data.date = new Date(response.data.date);
                         vm.event = response.data;
                     },
                     function(error) {
@@ -30,16 +32,18 @@
         init();
         
         function updateEvent() {
-            EventService
-                .updateEvent(eventId, vm.event)
-                .then(
-                    function(response) {
-                        $location.url("/event/" + eventId);
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                )
+            if(verifyEvent(vm.event)) {
+                EventService
+                    .updateEvent(eventId, vm.event)
+                    .then(
+                        function(response) {
+                            $location.url("/event/" + eventId);
+                        },
+                        function(error) {
+                            vm.error = error.data;
+                        }
+                    )
+            }
         }
         
         function deleteEvent() {
@@ -53,6 +57,16 @@
                         vm.error = error.data;
                     }
                 )
+        }
+
+        function verifyEvent(event) {
+            if(!event || !event.name) {
+                vm.error = "Name field is required";
+                return false;
+            } else {
+                vm.error = "";
+                return true;
+            }
         }
 
         
