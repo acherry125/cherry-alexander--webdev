@@ -155,20 +155,22 @@ module.exports = function(app, models) {
         var eventId = req.params.eid;
         var userId = req.body.userId;
 
+        // check for requirements
         if(!userId || !eventId) {
             res.status(400).send("Cannot follow event");
             return;
         }
-
+        // look for event
         eventModel
             .findEventById(eventId)
             .then(
                 function(event) {
+                    // check if event was found
                     if(event === null) {
                         res.status(400).send("Event does not exist");
                     } else {
                         var index = -1;
-                        // find user objects index since indexOf only works with ref
+                        // check if user is already in array
                         for(var i = 0; i < event.attendees.length; i++) {
                             if(event.attendees[i] && event.attendees[i].toString() === userId) {
                                 index = i;
@@ -179,20 +181,25 @@ module.exports = function(app, models) {
                         if (index !== -1) {
                             res.status(400).send("This event was already being attended");
                         } else {
+                            // add user to array
                             event.attendees.push(userId);
+                            // update user
                             return eventModel.updateEvent(eventId, event)
                         }
                     }
                 },
                 function(error) {
+                    // database error
                     res.send(error);
                 }
             )
             .then(
                 function(user) {
+                    // user succesfully updated
                     res.sendStatus(200);
                 },
                 function(error) {
+                    // database error
                     res.send(error);
                 }
             );
@@ -203,44 +210,51 @@ module.exports = function(app, models) {
         var eventId = req.params.eid;
         var userId = req.params.uid;
 
+        // check that remove can be fulfilled
         if (!userId || !eventId) {
             res.status(400).send("Cannot unfollow event");
             return;
         }
 
+        // get event in question
         eventModel
             .findEventById(eventId)
             .then(
                 function (event) {
+                    // check if it exists
                     if (event === null) {
                         res.status(400).send("Event does not exist");
                     } else {
                         var index = -1;
-                        // find user objects index since indexOf only works with ref
+                        // find userId index since indexOf only works with ref
                         for (var i = 0; i < event.attendees.length; i++) {
                             if (event.attendees[i] && event.attendees[i].toString() === userId) {
                                 index = i;
                                 break;
                             }
                         }
-                        // user found
+                        // userId not found
                         if (index === -1) {
                             res.status(400).send("This event was not being attended");
                         } else {
+                            // remove userId
                             event.attendees.splice(index, 1);
                             return eventModel.updateEvent(eventId, event)
                         }
                     }
                 },
                 function (error) {
+                    // database error
                     res.send(error);
                 }
             )
             .then(
                 function (user) {
+                    // user updated!
                     res.sendStatus(200);
                 },
                 function (error) {
+                    // database error
                     res.send(error);
                 }
             );
