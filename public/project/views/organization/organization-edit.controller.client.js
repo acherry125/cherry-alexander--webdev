@@ -53,6 +53,9 @@
             if(!org || !org.name) {
                 vm.error = "Organization must have a name";
                 return false;
+            } else {
+                vm.error = "";
+                return true;
             }
         }
 

@@ -51,7 +51,8 @@ body {
 }
 
 .ac-face-header {
-    text-shadow: 1px 1px 1px #00b33c;
+    color: #A52A2A;
+    text-shadow: 0.5px 0.5px 0.5px #801919;
 }
 
 .ng-scope > .container {
