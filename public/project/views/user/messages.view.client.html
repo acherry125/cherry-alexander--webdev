@@ -22,25 +22,30 @@
     <div ng-repeat="message in model.user.messages"
          class="row"
          ng-class="{ 'has-error': model.isManager(model.organization)}">
-        <h3>{{message.name}}</h3>
-        <!-- Toggle message button -->
-        <button ng-click="model.toggleMessage(message._id)"
-                class="btn btn-warning">Show Message</button>
-        <!-- default hidden message and reply container -->
-        <div ng-if="model.messageDict[message._id]"
-             class="ac-message-container">
-            <!-- Organization Message pertains to -->
-            <h3>{{message.organization}}</h3>
-            <!-- Message Body -->
-            <p>{{message.message}}</p>
-            <!-- Reply button -->
-            <button ng-click="model.replyMessage(message.from, message._id, message.organization)"
-                    class="btn btn-primary">Reply</button>
-            <!-- Reply text field -->
+        <div ng-if="model.messageDict[message._id].notDeleted">
+            <h3>{{message.name}}</h3>
+            <!-- Toggle message button -->
+            <button ng-click="model.toggleMessage(message._id)"
+                    class="btn btn-warning">Show Message</button>
+            <button ng-click="model.deleteMessage(message._id)"
+                    class="btn btn-danger">Delete Message</button>
+            <!-- default hidden message and reply container -->
+            <div ng-if="model.messageDict[message._id].toggled"
+                 class="ac-message-container">
+                <!-- Organization Message pertains to -->
+                <h3>{{message.organization}}</h3>
+                <!-- Message Body -->
+                <p>{{message.message}}</p>
+                <!-- Reply button -->
+                <button ng-click="model.replyMessage(message.from, message._id, message.organization)"
+                        class="btn btn-primary">Reply</button>
+                <!-- Reply text field -->
             <textarea rows="3"
-                      ng-model="model.replyDict[message._id]"
+                      ng-model="model.messageDict[message._id].reply"
                       class="form-control ac-no-resize-input"></textarea>
+            </div>
         </div>
+
     </div>
 </div>
 <footer>

@@ -17,7 +17,8 @@
             "deleteUser": deleteUser,
             "logout": logout,
             "checkLoggedIn": checkLoggedIn,
-            "sendMessage": sendMessage
+            "sendMessage": sendMessage,
+            "deleteMessage": deleteMessage
         };
 
         return api;
@@ -89,6 +90,11 @@
             message._id = new Date();
             var url = "/api/project/user/" + recipient + "/message";
             return $http.post(url, message);
+        }
+
+        function deleteMessage(userId, messageId) {
+            var url = "/api/project/user/" + userId + "/message/" + messageId;
+            return $http.delete(url);
         }
     }
 

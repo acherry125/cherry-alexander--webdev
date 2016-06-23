@@ -27,6 +27,8 @@ module.exports = function(app, models) {
     app.delete("/api/project/user/:uid/event/:eid", unfollowEvent);
     // delete a user
     app.delete("/api/project/user/:uid", deleteUser);
+    // delete a message for a user
+    app.delete("/api/project/user/:uid/message/:mid", deleteMessage);
 
     passport.use('EventHorizon', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -358,6 +360,48 @@ module.exports = function(app, models) {
                     res.status(404).send("User with ID"+ userId + "not found");
                 }
             );
+    }
+
+    function deleteMessage(req, res) {
+        var userId = req.params.uid;
+        var messageId = req.params.mid;
+
+        userModel
+            .findUserById(userId)
+            .then(
+                function(user) {
+                    if(user === null) {
+                        res.status(400).send("User does not exist");
+                    } else {
+                        var msgs = user.messages;
+                        var index = -1;
+                        for(var i = 0; i < msgs.length; i++) {
+                            if (msgs[i]._id === messageId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if(index === -1) {
+                            res.status(400).send("Message does not exist");
+                        } else {
+                            msgs.splice(index, 1);
+                            return userModel.updateUser(userId, user);
+                        }
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+
     }
 
 
