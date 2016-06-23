@@ -15,7 +15,8 @@
             "findEventsForOrganization" : findEventsForOrganization,
             "findAllEvents": findAllEvents,
             "addFollower": addFollower,
-            "removeFollower": removeFollower
+            "removeFollower": removeFollower,
+            "deleteImage": deleteImage
         };
 
         return api;
@@ -62,6 +63,11 @@
         
         function removeFollower(eventId, userId) {
             var url = "/api/project/event/" + eventId + "/follower/" + userId;
+            return $http.delete(url);
+        }
+        
+        function deleteImage(eventId, imgUrl) {
+            var url = "/api/project/event/" + eventId + "/image/" + imgUrl;
             return $http.delete(url);
         }
         

@@ -16,10 +16,10 @@ module.exports = function(app, models) {
     app.put("/api/project/event/:eid/follower", addFollower);
     // remove the follower from the event
     app.delete("/api/project/event/:eid/follower/:uid", removeFollower);
-    // remove image from event
-    app.delete("/api/project/event/:eid/image/:url", deleteImage);
     // remove an event
     app.delete("/api/project/event/:eid", removeEvent);
+    // remove image from event
+    app.delete("/api/project/event/:eid/image/:url", deleteImage);
     // find an event by id
     app.get("/api/project/event/:eid", findEventById);
     // find events
@@ -292,8 +292,7 @@ module.exports = function(app, models) {
             .findEventById(eventId)
             .then(
                 function(event) {
-                    var imgUrl = "/project/uploads/" + filename;
-                    event.images.push(imgUrl);
+                    event.images.push(filename);
                     eventModel
                         .updateEvent(eventId, event)
                         .then(
@@ -345,8 +344,31 @@ module.exports = function(app, models) {
             )
             .then(
                 function(response) {
-                    fs.unlinkSync(url);
                     res.sendStatus(200);
+                    var fullUrl = "public/project/uploads/" + url;
+                    var stats = fs.stat(fullUrl,
+                        function(err, stats) {
+                            if(err) {
+                                res.sendStatus(500);
+                            } else {
+                                fs.unlink(fullUrl, function(err) {
+                                    if(err) {
+                                        res.sendStatus(500);
+                                    }
+                                })
+                            }
+                        }
+                    );
+
+                    /*
+                    if(fullUrl) {
+
+                        fs.unrenameSync(fullUrl, "/project/uploads/apple");
+                        res.sendStatus(200);
+                    } else {
+                        res.status(500).send("Picture not Found");
+                    }
+                */
                 },
                 function(error) {
                     res.send(error);

@@ -82,7 +82,9 @@
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-6" ng-repeat="img in model.event.images">
-            <img src="{{img}}">
+            <img ng-src="/project/uploads/{{img}}">
+            <button ng-click="model.deleteImage(img)"
+                    class="btn btn-block btn-danger">Delete</button>
         </div>
     </div>
     <div class="row">

@@ -12,6 +12,7 @@
         vm.followEvent = followEvent;
         vm.unfollowEvent = unfollowEvent;
         vm.goToLogin = goToLogin;
+        vm.deleteImage = deleteImage;
         
         vm.user = $rootScope.currentUser;
 
@@ -140,6 +141,19 @@
         function goToLogin() {
             UserService.setLoginRedirect("/event/" + eventId);
             $location.url("/login");
+        }
+
+        function deleteImage(url) {
+            EventService
+                .deleteImage(eventId, url)
+                .then(
+                    function(response) {
+                        init();
+                    },
+                    function(error) {
+                        vm.error = error.data;
+                    }
+                )
         }
 
     }
