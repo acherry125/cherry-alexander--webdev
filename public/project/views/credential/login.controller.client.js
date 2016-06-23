@@ -6,12 +6,24 @@
         // naming controller and binding it to function
         .controller("LoginController", LoginController);
 
-    function LoginController($location, $rootScope, UserService, $rootScope) {
+    function LoginController($location, $rootScope, UserService) {
         // referring to self (View Model)
         var vm = this;
         // verifies login credentials
         vm.login = login;
         vm.goBack = goBack;
+        var cancelRedirect = "/landing";
+        var successRedirect = "";
+
+        function init() {
+            var newRedirect = UserService.getLoginRedirect();
+            if(newRedirect) {
+                cancelRedirect = newRedirect;
+                successRedirect = newRedirect;
+            }
+        }
+
+        init();
 
         // login handler
         function login(username, password) {
@@ -25,8 +37,13 @@
                         function(response) {
                             var user = response.data;
                             $rootScope.currentUser = user;
-                            var id = user._id;
-                            $location.url("/user/" + id);
+                            if(!successRedirect) {
+                                var id = user._id;
+                                $location.url("/user/" + id);
+                            } else {
+                                $location.url(successRedirect);
+                            }
+
                         },
                         function(error) {
                             vm.info = "";
@@ -45,7 +62,7 @@
         }
         
         function goBack() {
-            $location.url("/")
+            $location.url(cancelRedirect);
         }
     }
 })();

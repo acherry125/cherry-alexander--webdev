@@ -4,10 +4,11 @@
         .module("EventHorizon")
         .controller("SearchController", SearchController);
 
-    function SearchController($rootScope, EventService) {
+    function SearchController($rootScope, EventService, UserService, $location) {
         vm = this;
         vm.searchTerm = "";
         vm.mapDisplay = false;
+        vm.goToLogin = goToLogin;
 
         // just for rendering, doesn't allow access to anything sensitive
         vm.user = $rootScope.currentUser;
@@ -87,6 +88,14 @@
                 infowindow.open(map, marker);
             });
         }
+
+        function goToLogin() {
+            UserService.setLoginRedirect("/search");
+            $location.url("/login");
+        }
+
     }
+
+
 
 })();

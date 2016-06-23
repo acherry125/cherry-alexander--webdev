@@ -5,6 +5,8 @@
         .factory("UserService", UserService);
 
     function UserService($http) {
+        
+        var loginRedirect = "";
 
         var api = {
             "followEvent": followEvent,
@@ -18,10 +20,20 @@
             "logout": logout,
             "checkLoggedIn": checkLoggedIn,
             "sendMessage": sendMessage,
-            "deleteMessage": deleteMessage
+            "deleteMessage": deleteMessage,
+            "setLoginRedirect": setLoginRedirect,
+            "getLoginRedirect": getLoginRedirect
         };
 
         return api;
+        
+        function getLoginRedirect() {
+            return loginRedirect;
+        }
+
+        function setLoginRedirect(newUrl) {
+            loginRedirect = newUrl;
+        }
         
         /* has the given user follow the given event */
         function followEvent(userId, event) {
