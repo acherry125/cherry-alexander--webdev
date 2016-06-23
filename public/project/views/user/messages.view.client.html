@@ -23,6 +23,8 @@
         <button ng-click="model.toggleMessage(message._id)" class="btn btn-warning">Show Message</button>
         <div ng-if="model.messageDict[message._id]" class="ac-message-container">
             <p>{{message.message}}</p>
+            <button class="btn btn-primary">Reply</button>
+            <textarea rows="3" class="form-control ac-no-resize-input"></textarea>
         </div>
     </div>
 </div>

@@ -29,7 +29,7 @@ body {
     margin-right: -10px;
 }
 
-#tiny-message-box {
+.ac-no-resize-input {
     resize: none;
     position: relative;
 }

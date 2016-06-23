@@ -56,9 +56,9 @@
                 <button ng-click="model.toggleMessage()" class="btn btn-warning btn-lg">Message the organizer!</button>
                 <textarea ng-if="model.messageActive"
                           ng-model="model.messageContent"
-                          rows="5" id="tiny-message-box"
+                          rows="5"
                           placeholder="Write your message here"
-                          class="form-control"></textarea>
+                          class="form-control ac-no-resize-input"></textarea>
                 <button ng-if="model.messageActive" ng-click="model.sendMessage()" class="btn btn-block btn-primary">Send</button>
             </div>
         </div>
