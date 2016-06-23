@@ -5,6 +5,8 @@ module.exports = function(app, models) {
     
     // create an organization for a user
     app.post("/api/project/user/:uid/organization", createOrganization);
+    // add a review to an organization
+    app.post("/api/project/organization/:oid/review", submitReview);
     // update an organization
     app.put("/api/project/organization/:oid", updateOrganization);
     // remove an organization
@@ -16,7 +18,7 @@ module.exports = function(app, models) {
     // find all organizations for a poster
     app.get("/api/project/user/:uid/organization", findOrganizationsForPoster);
 
-    // create an organization for a user
+    // / create an organization for a user
     function createOrganization(req, res) {
         var organization = req.body;
         var posterId = req.params.uid;
@@ -39,6 +41,42 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             );
+
+    }
+
+    // add a review to the organization
+    function submitReview(req, res) {
+        var orgId = req.params.oid;
+        var review = req.body;
+
+        if(!orgId || !review || !review.from || !review.review) {
+            res.status(400).send("Review must have not be blank");
+            return;
+        }
+
+        organizationModel
+            .findOrganizationById(orgId)
+            .then(
+                function(organization) {
+                    if(!organization) {
+                        res.status(400).send("Organization does not exist");
+                    } else {
+                        organization.reviews.push(review);
+                        return organizationModel.updateOrganization(orgId, organization);
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
 
     }
 
