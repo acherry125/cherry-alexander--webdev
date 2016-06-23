@@ -112,6 +112,7 @@
             <div ng-repeat="review in model.org.reviews" class="col-xs-12">
                 <blockquote>
                     <h3>{{review.review}}</h3>
+                    <h3>- {{review.from}}</h3>
                 </blockquote>
                 <button ng-click="model.deleteReview(review._id, review.from)"
                         class="btn btn-lg btn-danger">Delete Review</button>
