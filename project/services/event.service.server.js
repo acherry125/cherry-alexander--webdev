@@ -266,6 +266,7 @@ module.exports = function(app, models) {
     }
 
     function uploadImage(req, res) {
+        //fs.unlink for delete?
 
         var eventId      = req.body.eventId;
         var myFile        = req.file;
