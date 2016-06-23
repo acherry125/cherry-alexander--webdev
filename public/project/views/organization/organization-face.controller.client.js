@@ -31,6 +31,7 @@
                     function(response) {
                         // location does not work
                         vm.org = response.data;
+                        vm.org.reviews.reverse();
                         // determine if this user own the page
                         if(vm.user && vm.org._poster === vm.user._id) {
                             vm.ownerUser = true;
@@ -119,9 +120,9 @@
                 .submitReview(organizationId, vm.user.username, review)
                 .then(
                     function(response) {
-                    //    vm.org.reviews.push({from: vm.user.username, review: vm.reviewSubmission});
                         vm.reviewSubmission = "";
-                    }, 
+                        init();
+                    },
                     function(error) {
                         vm.error = error.data;
                     }
@@ -129,8 +130,34 @@
             
         }
 
-        function deleteReview(reviewId) {
-            return;
+        function ownsComment(reviewerUsername) {
+            UserService
+                .findUserByUsername(username)
+                .then(
+                    function(response) {
+                        return response.data._id === vm.user._id;
+                    },
+                    function(error) {
+                        
+                    }
+                )
+        }
+
+        function deleteReview(reviewId, reviewerUsername) {
+            if(vm.ownerUser || ownsComment(username)) {
+                OrganizationService
+                    .deleteReview(organizationId, reviewId)
+                    .then(
+                        function(response) {
+                            init();
+                        },
+                        function(error) {
+                            
+                        }
+                    );
+            } else {
+                vm.error = "You do not own this comment";
+            }
         }
 
     }

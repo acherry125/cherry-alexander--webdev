@@ -11,6 +11,8 @@ module.exports = function(app, models) {
     app.put("/api/project/organization/:oid", updateOrganization);
     // remove an organization
     app.delete("/api/project/organization/:oid", removeOrganization);
+    // delete a comment
+    app.delete("/api/project/organization/:oid/review/:rid", removeReview);
     // find an organization by id
     app.get("/api/project/organization/:oid", findOrganizationById);
     // find organizations by name (has query param)
@@ -116,6 +118,54 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             );
+    }
+
+    // add a review to the organization
+    function removeReview(req, res) {
+        var orgId = req.params.oid;
+        var reviewId = req.params.rid;
+
+        if(!orgId || !reviewId) {
+            res.status(400).send("Review does not exist");
+            return;
+        }
+
+        organizationModel
+            .findOrganizationById(orgId)
+            .then(
+                function(organization) {
+                    if(!organization) {
+                        res.status(400).send("Organization does not exist");
+                    } else {
+                        var index = -1;
+                        for(var i = 0; i < organization.reviews.length; i++) {
+                            var review = organization.reviews[i];
+                            if(review._id.toString() === reviewId) {
+                                index = i;
+                                break;
+                            }
+                        }
+                        if(index === -1) {
+                            res.status(400).send("Review does not exist");
+                        } else {
+                            organization.reviews.splice(index, 1);
+                            return organizationModel.updateOrganization(orgId, organization);
+                        }
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(response) {
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+
     }
 
     // find an organization by id
