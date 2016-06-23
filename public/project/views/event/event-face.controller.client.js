@@ -11,7 +11,8 @@
         vm.editEvent = editEvent;
         vm.followEvent = followEvent;
         vm.unfollowEvent = unfollowEvent;
-
+        vm.goToLogin = goToLogin;
+        
         vm.user = $rootScope.currentUser;
 
 
@@ -134,6 +135,11 @@
                         vm.error = error.data;
                     }
                 )
+        }
+
+        function goToLogin() {
+            UserService.setLoginRedirect("/event/" + eventId);
+            $location.url("/login");
         }
 
     }

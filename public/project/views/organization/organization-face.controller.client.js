@@ -16,6 +16,7 @@
         vm.addEvent = addEvent;
         vm.editOrganization = editOrganization;
         vm.sendMessage = sendMessage;
+        vm.goToLogin = goToLogin;
 
         vm.user = $rootScope.currentUser;
 
@@ -95,6 +96,11 @@
                         vm.error = error.data
                     }
                 )
+        }
+
+        function goToLogin() {
+            UserService.setLoginRedirect("/organization/" + organizationId);
+            $location.url("/login");
         }
 
     }
