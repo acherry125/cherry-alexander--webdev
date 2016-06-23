@@ -18,7 +18,8 @@
         vm.editOrganization = editOrganization;
         vm.sendMessage = sendMessage;
         vm.goToLogin = goToLogin;
-        vm.submitComment = submitComment;
+        vm.submitReview = submitReview;
+        vm.deleteReview = deleteReview;
 
         vm.user = $rootScope.currentUser;
 
@@ -105,7 +106,7 @@
             $location.url("/login");
         }
 
-        function submitComment() {
+        function submitReview() {
             var review = vm.reviewSubmission;
             if(!vm.user) {
                 vm.error = "User must be logged in";
@@ -126,6 +127,10 @@
                     }
                 )
             
+        }
+
+        function deleteReview(reviewId) {
+            return;
         }
 
     }

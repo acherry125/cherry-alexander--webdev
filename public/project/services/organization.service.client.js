@@ -13,7 +13,8 @@
             "findOrganizationById" : findOrganizationById,
             "findOrganizationsByName" : findOrganizationsByName,
             "findOrganizationsForPoster" : findOrganizationsForPoster,
-            "submitReview": submitReview
+            "submitReview": submitReview,
+            "deleteReview": deleteReview
         };
 
         return api;
@@ -53,6 +54,11 @@
             var url = "/api/project/organization/" + organizationId + "/review";
             var review = {"from": reviewerUsername, "review": reviewContent};
             return $http.post(url, review);
+        }
+
+        function deleteReview(organizationId, reviewId) {
+            var url = "/api/project/organization/" + organizationId + "/review/" + reviewId;
+            return $http.delete(url);
         }
     }
 
