@@ -13,6 +13,7 @@
         vm.messageActive = false;
         vm.messageContent = "";
         vm.reviewSubmission = "";
+        vm.ownsReview = {};
         vm.toggleMessage = toggleMessage;
         vm.addEvent = addEvent;
         vm.editOrganization = editOrganization;
@@ -130,21 +131,8 @@
             
         }
 
-        function ownsComment(reviewerUsername) {
-            UserService
-                .findUserByUsername(username)
-                .then(
-                    function(response) {
-                        return response.data._id === vm.user._id;
-                    },
-                    function(error) {
-                        
-                    }
-                )
-        }
-
         function deleteReview(reviewId, reviewerUsername) {
-            if(vm.ownerUser || ownsComment(username)) {
+            if(vm.ownerUser || reviewerUsername === vm.user.username) {
                 OrganizationService
                     .deleteReview(organizationId, reviewId)
                     .then(
