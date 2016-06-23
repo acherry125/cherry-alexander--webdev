@@ -6,7 +6,7 @@ module.exports = function(mongoose) {
         phone: String,
         location: String,
         description: String,
-        events: [{type: mongoose.Schema.Types.ObjectId, ref: "Event"}],
+        reviews: [{from: String, review: String}],
         dateCreated: Date
     }, {collection: "event-organization"});
 

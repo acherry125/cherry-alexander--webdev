@@ -12,11 +12,13 @@
 
         vm.messageActive = false;
         vm.messageContent = "";
+        vm.reviewSubmission = "";
         vm.toggleMessage = toggleMessage;
         vm.addEvent = addEvent;
         vm.editOrganization = editOrganization;
         vm.sendMessage = sendMessage;
         vm.goToLogin = goToLogin;
+        vm.submitComment = submitComment;
 
         vm.user = $rootScope.currentUser;
 
@@ -101,6 +103,22 @@
         function goToLogin() {
             UserService.setLoginRedirect("/organization/" + organizationId);
             $location.url("/login");
+        }
+
+        function submitComment() {
+            var review = vm.reviewSubmission;
+            OrganizationService
+                .submitComment(organizationId, review)
+                .then(
+                    function(response) {
+                        vm.reviewSubmission = "";
+                        vm.org.reviews
+                    }, 
+                    function() {
+                        
+                    }
+                )
+            
         }
 
     }

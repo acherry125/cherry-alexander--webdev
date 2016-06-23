@@ -84,16 +84,40 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <h1>Reviews</h1>
+        <div class="col-xs-5">
+            <button class="btn btn-block btn-lg btn-success"
+                    ng-click="model.submitComment()">Add Review!</button>
         </div>
     </div>
     <div class="row">
-        <ul>
-            <li><h3>5 Stars out of 5!</h3></li>
-            <li><h3>Really great business!</h3></li>
-        </ul>
+        <div class="col-xs-5">
+            <textarea class="form-control ac-no-resize-input"
+                      ng-model="model.reviewSubmission"
+                      placeholder="Type your review here"
+                      rows="4"></textarea>
+        </div>
     </div>
+    <div id="reviews">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Reviews</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <blockquote>
+                    <h3 >5 Stars out of 5! I would always recommend this amazing place for their events!
+                        I would always recommend this amazing place for their events!</h3>
+                </blockquote>
+            </div>
+            <div class="col-xs-12">
+                <blockquote>
+                    <h3>Great Service, good communication!</h3>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Footer Navigation Bar -->

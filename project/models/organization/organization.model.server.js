@@ -17,6 +17,7 @@ module.exports = function(mongoose) {
     function createOrganization(posterId, organization) {
         organization.dateCreated = new Date();
         organization._poster = posterId;
+        organization.reviews = [];
         return Organization.create(organization);
     }
     
@@ -28,7 +29,8 @@ module.exports = function(mongoose) {
                 name: organization.name,
                 phone: organization.phone,
                 location: organization.location,
-                description: organization.description
+                description: organization.description,
+                reviews: organization.reviews
             }
             }
 
