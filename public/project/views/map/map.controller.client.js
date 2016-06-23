@@ -6,7 +6,7 @@
 
 
     function MapController($routeParams, $location, UserService) {
-        vm = this;
+        var vm = this;
 
         function init() {
             map_init();

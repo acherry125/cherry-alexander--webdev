@@ -16,6 +16,8 @@ module.exports = function(app, models) {
     app.put("/api/project/event/:eid/follower", addFollower);
     // remove the follower from the event
     app.delete("/api/project/event/:eid/follower/:uid", removeFollower);
+    // remove image from event
+    app.delete("/api/project/event/:eid/image/:url", deleteImage);
     // remove an event
     app.delete("/api/project/event/:eid", removeEvent);
     // find an event by id
@@ -312,8 +314,45 @@ module.exports = function(app, models) {
     }
 
     function deleteImage(req, res) {
-        var eventId = req.params.eventId;
+        var eventId = req.params.eid;
         var url = req.params.url;
+
+        if(!eventId || !url) {
+            res.status(400).send("Image or event does not exist");
+        }
+
+        eventModel
+            .findEventById(eventId)
+            .then(
+                function(event) {
+                    var index = -1;
+                    for(var i = 0; i < event.images.length; i++) {
+                        if(event.images[i] === url) {
+                            index = url;
+                            break;
+                        }
+                    }
+                    if(index === -1) {
+                        res.status(400).send("Image does not exist");
+                    } else {
+                        event.images.splice(index, 1);
+                        return eventModel.updateEvent(eventId, event);
+                    }
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+            .then(
+                function(response) {
+                    fs.unlinkSync(url);
+                    res.sendStatus(200);
+                },
+                function(error) {
+                    res.send(error);
+                }
+            )
+
     }
 
 };
