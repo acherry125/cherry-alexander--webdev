@@ -194,8 +194,8 @@ module.exports = function(app, models) {
         var userId = req.params.uid;
         var user = req.body;
 
-        if(!user || !user.name) {
-            res.status(400).send("User must have name");
+        if(!user || !user.username) {
+            res.status(400).send("User must have username");
             return;
         }
 
