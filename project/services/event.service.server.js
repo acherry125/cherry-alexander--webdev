@@ -287,7 +287,7 @@ module.exports = function(app, models) {
             .findEventById(eventId)
             .then(
                 function(event) {
-                    var imgUrl = "/uploads/" + filename;
+                    var imgUrl = "/project/uploads/" + filename;
                     event.images.push(imgUrl);
                     eventModel
                         .updateWidget(eventId, event)
