@@ -116,7 +116,7 @@
                 return;
             }
             OrganizationService
-                .submitReview(organizationId, review)
+                .submitReview(organizationId, vm.user.username, review)
                 .then(
                     function(response) {
                     //    vm.org.reviews.push({from: vm.user.username, review: vm.reviewSubmission});
