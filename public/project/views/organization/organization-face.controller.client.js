@@ -62,7 +62,11 @@
         init();
         
         function toggleMessage() {
-            vm.messageActive = !vm.messageActive;
+            if(vm.user) {
+                vm.messageActive = !vm.messageActive;
+            } else {
+                // should redirect to login page or something
+            }
         }
 
         function addEvent() {

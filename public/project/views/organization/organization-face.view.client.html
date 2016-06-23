@@ -53,13 +53,16 @@
                 <h2 ng-if="model.ownerUser">You manage this organization</h2>
             </div>
             <div ng-if="!model.ownerUser" class="row">
-                <button ng-click="model.toggleMessage()" class="btn btn-warning btn-lg">Message the organizer!</button>
+                <button ng-click="model.toggleMessage()"
+                        class="btn btn-warning btn-lg">Message the organizer!</button>
                 <textarea ng-if="model.messageActive"
                           ng-model="model.messageContent"
                           rows="5"
                           placeholder="Write your message here"
                           class="form-control ac-no-resize-input"></textarea>
-                <button ng-if="model.messageActive" ng-click="model.sendMessage()" class="btn btn-block btn-primary">Send</button>
+                <button ng-if="model.messageActive"
+                        ng-click="model.sendMessage()"
+                        class="btn btn-block btn-primary">Send</button>
             </div>
         </div>
     </div>

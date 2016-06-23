@@ -16,6 +16,9 @@
 
 
         function init() {
+            if(!vm.user) {
+                vm.notFollowed = true;
+            }
             EventService
                 .findEventById(eventId)
                 .then(
@@ -80,6 +83,10 @@
         }
 
         function followEvent() {
+            if(!vm.user) {
+                // redirect to login or something
+                return;
+            }
             UserService
                 .followEvent(vm.user._id, {name: vm.event.name, _id: eventId, date: vm.event.date })
                 .then(

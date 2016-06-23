@@ -58,7 +58,7 @@
                 <h2 ng-if="model.event.location">{{model.event.location}}</h2>
                 <h2 ng-if="!model.event.location">No location provided</h2>
             </div>
-            <div class="row" ng-if="model.user">
+            <div class="row">
                 <button ng-if="model.followed"
                         ng-click="model.unfollowEvent()"
                         class="btn btn-lg btn-danger">Cancel Attending</button>
@@ -113,7 +113,7 @@
         <div class="container">
             <div class="navbar-header">
                 <!-- Attend Event Button -->
-                <p ng-if="model.user" class="navbar-text pull-left">
+                <p class="navbar-text pull-left">
                     <button ng-if="model.followed"
                             ng-click="model.unfollowEvent()"
                             class="btn btn-lg btn-danger">Cancel Attending</button>
