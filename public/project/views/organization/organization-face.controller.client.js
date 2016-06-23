@@ -107,15 +107,22 @@
 
         function submitComment() {
             var review = vm.reviewSubmission;
+            if(!vm.user) {
+                vm.error = "User must be logged in";
+                return;
+            } else if(!review) {
+                vm.error = "Review must not be empty";
+                return;
+            }
             OrganizationService
                 .submitComment(organizationId, review)
                 .then(
                     function(response) {
+                    //    vm.org.reviews.push({from: vm.user.username, review: vm.reviewSubmission});
                         vm.reviewSubmission = "";
-                        vm.org.reviews
                     }, 
-                    function() {
-                        
+                    function(error) {
+                        vm.error = error.data;
                     }
                 )
             

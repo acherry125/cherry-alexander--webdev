@@ -12,7 +12,8 @@
             "removeOrganization" : removeOrganization,
             "findOrganizationById" : findOrganizationById,
             "findOrganizationsByName" : findOrganizationsByName,
-            "findOrganizationsForPoster" : findOrganizationsForPoster
+            "findOrganizationsForPoster" : findOrganizationsForPoster,
+            "submitReview": submitReview
         };
 
         return api;
@@ -46,6 +47,12 @@
         function findOrganizationsForPoster(posterId) {
             var url = "/api/project/user/" + posterId + "/organization";
             return $http.get(url)
+        }
+
+        function submitReview(organizationId, reviewerUsername, reviewContent) {
+            var url = "/api/project/organization/" + organizationId + "/review";
+            var review = {"from": reviewerUsername, "review": reviewContent};
+            return $http.post(url, review);
         }
     }
 
