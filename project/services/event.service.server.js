@@ -1,5 +1,8 @@
 module.exports = function(app, models) {
 
+    var multer = require('multer');
+    var upload = multer({ dest: __dirname+'/../../public/project/uploads' });
+
     var eventModel = models.eventModel;
 
     // create an event for an organization
@@ -18,6 +21,8 @@ module.exports = function(app, models) {
     app.get("/api/project/event", findEvents);
     // find all events for an organization
     app.get("/api/project/organization/:oid/event", findEventsForOrganization);
+    // TODO picture upload
+    app.post("/api/project/upload", upload.single('myFile'), uploadImage);
 
 
 
@@ -255,6 +260,49 @@ module.exports = function(app, models) {
                 },
                 function (error) {
                     // database error
+                    res.send(error);
+                }
+            );
+    }
+
+    function uploadImage(req, res) {
+
+        var eventId      = req.body.eventId;
+        var myFile        = req.file;
+
+        if(myFile == null) {
+            res.redirect("/project/index.html#/event/" + eventId + "/edit");
+            return;
+        }
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+
+        eventModel
+            .findEventById(eventId)
+            .then(
+                function(event) {
+                    var imgUrl = "/uploads/" + filename;
+                    event.images.push(imgUrl);
+                    eventModel
+                        .updateWidget(eventId, event)
+                        .then(
+                            function(response) {
+                                // reload the page
+                                res.redirect("/project/index.html#/event/" + eventId + "/edit");
+
+                            },
+                            function(error) {
+                                res.send(error);
+                            }
+                        )
+                },
+                function(error) {
                     res.send(error);
                 }
             );
