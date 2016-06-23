@@ -243,11 +243,9 @@ a:hover, a:focus {
     width: 100%;
 }
 
-
-
-
 p {
     font-size: 1.25em;
+    word-wrap: break-word;
 }
 
 h1 {
