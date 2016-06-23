@@ -1,5 +1,6 @@
 module.exports = function(app, models) {
 
+    var fs = require('fs');
     var multer = require('multer');
     var upload = multer({ dest: __dirname+'/../../public/project/uploads' });
 
@@ -7,6 +8,8 @@ module.exports = function(app, models) {
 
     // create an event for an organization
     app.post("/api/project/organization/:oid/event", createEvent);
+    // Upload a picture to the server
+    app.post("/api/project/upload", upload.single('myFile'), uploadImage);
     // update an event
     app.put("/api/project/event/:eid", updateEvent);
     // add a follower to the event
@@ -21,8 +24,7 @@ module.exports = function(app, models) {
     app.get("/api/project/event", findEvents);
     // find all events for an organization
     app.get("/api/project/organization/:oid/event", findEventsForOrganization);
-    // TODO picture upload
-    app.post("/api/project/upload", upload.single('myFile'), uploadImage);
+
 
 
 
@@ -291,7 +293,7 @@ module.exports = function(app, models) {
                     var imgUrl = "/project/uploads/" + filename;
                     event.images.push(imgUrl);
                     eventModel
-                        .updateWidget(eventId, event)
+                        .updateEvent(eventId, event)
                         .then(
                             function(response) {
                                 // reload the page
@@ -307,6 +309,11 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             );
+    }
+
+    function deleteImage(req, res) {
+        var eventId = req.params.eventId;
+        var url = req.params.url;
     }
 
 };

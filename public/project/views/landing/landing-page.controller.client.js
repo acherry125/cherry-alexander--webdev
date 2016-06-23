@@ -6,7 +6,7 @@
         .controller("LandingPageController", LandingPageController);
 
     function LandingPageController($rootScope) {
-        vm = this;
+        var vm = this;
         vm.expanded= false;
         vm.toggleExpand = toggleExpand;
 

@@ -6,7 +6,7 @@
 
 
     function OrganizationEditController($routeParams, $location, $rootScope, OrganizationService) {
-        vm = this;
+        var vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
         vm.updateOrganization = updateOrganization;

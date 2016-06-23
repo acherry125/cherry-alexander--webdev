@@ -92,10 +92,9 @@
         </div>
     </form>
     <!-- Upload Image Button -->
-    <form action="/api/event/upload"  method="post" enctype="multipart/form-data">
+    <form action="/api/project/upload"  method="post" enctype="multipart/form-data">
         <input required name="myFile"   type="file" class="form-control"/>
-        <input  name="eventId" value="{{model.widget._id}}"   style="display: none"/>
-        <input  name="posterId" value="{{model.posterId}}"   style="display: none"/>
+        <input  name="eventId" value="{{model.eid}}"   style="display: none"/>
         <br>
         <button type="submit" class="btn btn-block btn-lg btn-primary" id="image-submit-button">Upload Image</button>
     </form>

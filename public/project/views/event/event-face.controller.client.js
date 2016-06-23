@@ -5,7 +5,7 @@
 
 
     function EventFaceController($routeParams, $location, $rootScope, EventService, OrganizationService, UserService) {
-        vm = this;
+        var vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
         vm.editEvent = editEvent;

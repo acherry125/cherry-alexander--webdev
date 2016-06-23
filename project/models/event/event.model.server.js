@@ -18,6 +18,8 @@ module.exports = function(mongoose) {
     function createEvent(organizationId, event) {
         event.dateCreated = new Date();
         event._organization = organizationId;
+        event.attendees = [];
+        event.images = [];
         return Event.create(event);
     }
     
@@ -31,7 +33,8 @@ module.exports = function(mongoose) {
                 date: event.date,
                 time: event.time,
                 location: event.location,
-                attendees: event.attendees
+                attendees: event.attendees,
+                images: event.images
             }
             }
 

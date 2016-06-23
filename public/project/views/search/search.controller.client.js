@@ -5,7 +5,7 @@
         .controller("SearchController", SearchController);
 
     function SearchController($rootScope, EventService, UserService, $location) {
-        vm = this;
+        var vm = this;
         vm.searchTerm = "";
         vm.mapDisplay = false;
         vm.goToLogin = goToLogin;

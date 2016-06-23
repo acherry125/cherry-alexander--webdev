@@ -6,7 +6,7 @@
 
 
     function OrganizationAddController($routeParams, $location, $rootScope, OrganizationService) {
-        vm = this;
+        var vm = this;
         var posterId = $routeParams.uid;
         vm.uid = posterId;
         vm.createOrganization = createOrganization;

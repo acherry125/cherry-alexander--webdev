@@ -5,7 +5,7 @@
 
 
     function EventEditController($routeParams, $location, $rootScope, EventService, UserService) {
-        vm = this;
+        var vm = this;
         var eventId = $routeParams.eid;
         vm.eid = eventId;
         vm.user = $rootScope.currentUser;

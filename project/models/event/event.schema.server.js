@@ -9,6 +9,7 @@ module.exports = function(mongoose) {
         // can use a regex to make the email too
         description: String,
         attendees: [{type: mongoose.Schema.Types.ObjectId, ref: "EventUser"}],
+        images: [String],
         dateCreated: Date
     }, {collection: "event-event"});
 

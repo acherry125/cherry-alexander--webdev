@@ -6,7 +6,7 @@
 
 
     function OrganizationFaceController($routeParams, $location, $rootScope, EventService, OrganizationService, UserService) {
-        vm = this;
+        var vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
 

@@ -5,7 +5,7 @@
 
 
     function EventAddController($routeParams, $location, $rootScope, EventService) {
-        vm = this;
+        var vm = this;
         var organizationId = $routeParams.oid;
         vm.oid = organizationId;
         vm.createEvent = createEvent;
