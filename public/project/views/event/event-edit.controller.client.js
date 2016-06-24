@@ -46,9 +46,8 @@
             // list of suggestions.
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
-                var place_id = place.placeId;
                 var address = place.formatted_address;
-                vm.event.location = {'address': address, 'place_id': place_id};
+                vm.org.location = address;
             });
         }
         
