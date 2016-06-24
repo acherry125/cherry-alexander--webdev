@@ -14,6 +14,28 @@
         // just for rendering, doesn't allow access to anything sensitive
         vm.user = $rootScope.currentUser;
 
+        /*
+
+        TODO:
+        CREATE REAL SEARCH FOR TERMS
+        IDEA: Use .split(" ") then use .find() with search terms
+        figure out what do if they input multiple words, probably just match one of them
+        and that will be good enough
+
+        TODO:
+        Remove events for organization when it is deleted
+
+        TODO:
+        Check that navigation works smoothly
+
+        TODO:
+        Revamp overall design
+
+        TODO:
+        HOMEPAGEEEEEEEEEEEEE
+
+         */
+
         function init() {
             EventService
                 .findAllEvents()
