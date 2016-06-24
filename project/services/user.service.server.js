@@ -107,7 +107,7 @@ module.exports = function(app, models) {
                         var email = profile.emails[0].value;
                         var emailParts = email.split("@");
                         var newGoogleUser = {
-                            username:  emailParts[0],
+                            username:  emailParts[0] + new Date().valueOf(),
                             firstName: profile.name.givenName,
                             lastName:  profile.name.familyName,
                             email:     email,
