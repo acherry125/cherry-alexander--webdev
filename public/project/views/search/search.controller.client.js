@@ -9,7 +9,7 @@
         vm.searchTerm = "";
         vm.mapDisplay = false;
         vm.goToLogin = goToLogin;
-
+        vm.markers = [];
         // just for rendering, doesn't allow access to anything sensitive
         vm.user = $rootScope.currentUser;
 
@@ -19,16 +19,65 @@
                 .then(
                     function(response) {
                         vm.events = response.data.elements;
+                        map_init();
                     },
                     function(error) {
                         vm.error = error;
                     }
                 );
-            map_init();
-
         }
 
         init();
+
+        function addMarkers(events, map) {
+            for (var i = 0; i < events.length; i++) {
+                var event = events[i];
+                var location = event.location;
+                var placeId = location.place_id;
+                var LatLng = new google.maps.LatLng(location.lat, location.lng);
+                var marker = new google.maps.Marker({
+                    title: event.name,
+                    map: map
+                });
+                marker.setPlace({
+                    location: LatLng,
+                    placeId: placeId
+                });
+
+                var phone = event.phone ? event.phone : "";
+
+
+                marker.info = new google.maps.InfoWindow({
+                    content: '<div><strong>' + '<a href="#/event/' + event._id + '">' + event.name + '</a></strong><br>' +
+                    location.address + '<br>' + phone + '</div>'
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    var marker_map = this.getMap();
+                    this.info.open(marker_map, this);
+                });
+
+                vm.markers.push(marker);
+            }
+        }
+
+        function showVisibleMarkers(map) {
+            var bounds = map.getBounds(),
+                count = 0;
+
+            for (var i = 0; i < markers.length; i++) {
+                var marker = markers[i];
+                if (bounds.contains(marker.getPosition())===true) {
+                    // dummy code
+                    x = 2;
+                    // marker.open()
+                } else {
+                    // dummy code
+                    x = 3;
+                    // marker.close()
+                }
+            }
+        }
 
         function map_init() {
             var mapOptions = {
@@ -38,6 +87,13 @@
             var map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
 
+            addMarkers(vm.events, map);
+
+            // Fired when the map becomes idle after panning or zooming.
+            google.maps.event.addListener(map, 'idle', function() {
+                showVisibleMarkers(map);
+            });
+
             var input = /** @type {HTMLInputElement} */(
                 document.getElementById('search'));
 
@@ -45,19 +101,14 @@
             // an HTML text input box.
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.bindTo('bounds', map);
-            
-            var infowindow = new google.maps.InfoWindow();
+
             var marker = new google.maps.Marker({
                 map: map
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
             });
 
             // Get the full place details when the user selects a place from the
             // list of suggestions.
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
-                infowindow.close();
                 var place = autocomplete.getPlace();
                 if (!place.geometry) {
                     return;
@@ -76,16 +127,6 @@
                     location: place.geometry.location
                 }));
                 marker.setVisible(true);
-                console.log(place);
-
-                var phone = place.formatted_phone_number;
-                if(!phone) {
-                    phone = "";
-                }
-
-                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                    place.formatted_address + '<br>' + phone + '</div>');
-                infowindow.open(map, marker);
             });
         }
 
