@@ -23,6 +23,7 @@
                     function(response) {
                         response.data.date = new Date(response.data.date);
                         vm.event = response.data;
+                        vm.initialLocation = vm.event.location.address.slice(0);
                     },
                     function(error) {
                         vm.error = error.data;
@@ -46,8 +47,9 @@
             // list of suggestions.
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
+                var place_id = place.place_id;
                 var address = place.formatted_address;
-                vm.org.location = address;
+                vm.event.location = {'address': address, 'place_id': place_id};
             });
         }
         
