@@ -32,9 +32,9 @@
     <div ng-if="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
-    <!-- Website Details Form -->
+    <!-- Event Details Form -->
     <form name="eEditForm">
-        <!-- Page Name -->
+        <!-- Event Name -->
         <div class="form-group"
              ng-class="{ 'has-error': eEditForm.name.$error.required && model.error}">
             <label for="name">Event Name</label>
@@ -50,16 +50,21 @@
                    ng-show="eEditForm.name.$error.required && model.error">Name is required</label>
         </div>
         <!-- Event Date -->
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': eEditForm.date.$error.required && model.error}">
             <label for="event-date">Event Date</label>
             <input ng-model="model.event.date"
                    class="form-control"
                    type="date"
-                   name="event-date"
+                   name="date"
                    id="event-date"
+                   required
                    placeholder="Event Date">
+            <label for="event-date"
+                   class="control-label"
+                   ng-show="eEditForm.date.$error.required && model.error">Date is required</label>
         </div>
         <!-- Event Time of Day -->
+        <!-- Check this out to make sure it displays right -->
         <div class="form-group">
             <label for="event-time">Event Time</label>
             <input ng-model="model.event.time"
@@ -69,16 +74,19 @@
                    id="event-time"
                    placeholder="Event Time">
         </div>
-        {{model.event.time}}
         <!-- Event Location -->
-        <div class="form-group">
-            <label for="event-time">Event Location (Please select from the provided results) </label>
-            <input ng-model="model.initialLocation"
-                   class="form-control"
+        <div class="form-group" ng-class="{ 'has-error': eEditForm.location.$error.required && model.error}">
+            <label for="event-location">Event Location (Please select from the provided results)</label>
+            <input class="form-control"
+                   ng-model="model.initialLocation"
                    type="text"
-                   name="event-location"
+                   name="location"
                    id="event-location"
+                   required
                    placeholder="Event Location">
+            <label for="event-location"
+                   class="control-label"
+                   ng-show="eEditForm.location.$error.required && model.error">Location is required</label>
         </div>
         <!-- Event Description -->
         <div class="form-group">
@@ -88,7 +96,7 @@
                       name="event-desc"
                       rows="5"
                       id="event-desc"
-                      placeholder="Event Time"></textarea>
+                      placeholder="Event Description"></textarea>
         </div>
     </form>
     <!-- Upload Image Button -->
