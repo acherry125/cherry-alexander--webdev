@@ -11,7 +11,7 @@
                 </p>
                 <a class="navbar-brand">Event Info</a>
                 <!-- Edit Event Button -->
-                <p ng-if="model.authorizedUser" class="navbar-text pull-right">
+                <p ng-if="model.ownerUser" class="navbar-text pull-right">
                     <a ng-click="model.editEvent()" class="navbar-link">
                       <span class="glyphicon glyphicon-cog">
                       </span>
@@ -75,16 +75,20 @@
             <h3 ng-if="!model.event.description">No description provided</h3>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-if="model.event.images.length">
         <div class="col-xs-12">
             <h2>Here are pictures!</h2>
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-4 col-sm-6" ng-repeat="img in model.event.images">
             <img ng-src="/project/uploads/{{img}}">
-            <button ng-click="model.deleteImage(img)"
+            <button ng-if="model.ownerUser"
+                    ng-click="model.deleteImage(img)"
                     class="btn btn-block btn-danger">Delete</button>
+        </div>
+    </div>
+    <div class="row" ng-if="!model.event.images.length">
+        <div class="col-xs-12">
+            <h3>There are no pictures for this event</h3>
         </div>
     </div>
     <div class="row">

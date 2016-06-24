@@ -312,6 +312,7 @@ module.exports = function(app, models) {
             );
     }
 
+    /* Delete an image from an event and from the server */
     function deleteImage(req, res) {
         var eventId = req.params.eid;
         var url = req.params.url;
@@ -349,11 +350,11 @@ module.exports = function(app, models) {
                     var stats = fs.stat(fullUrl,
                         function(err, stats) {
                             if(err) {
-                                res.sendStatus(500);
+                                console.log(err);
                             } else {
                                 fs.unlink(fullUrl, function(err) {
                                     if(err) {
-                                        res.sendStatus(500);
+                                        console.log(err);
                                     }
                                 })
                             }

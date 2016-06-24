@@ -43,7 +43,7 @@
                         vm.orgName = response.data.name;
                         if(vm.user) {
                             if (vm.user._id === response.data._poster) {
-                                vm.authorizedUser = true;
+                                vm.ownerUser = true;
                             }
                             var followed = vm.user.followed;
                             // redundant but stops page from loading the wrong button first
