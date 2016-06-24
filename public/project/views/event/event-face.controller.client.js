@@ -67,6 +67,8 @@
         init();
 
         function map_init() {
+            // https://developers.google.com/maps/documentation/javascript/examples/geocoding-place-id
+            // thats where I will find what I need
             var mapOptions = {
                 center: {lat: 42.34003, lng: -71.089797},
                 zoom: 16
