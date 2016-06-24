@@ -71,18 +71,20 @@
         }
         
         function deleteEvent() {
-            EventService
-                .removeEvent(eventId)
-                .then(
-                    function(response) {
-                        $location.url("/organization/" + vm.event._organization);
-                        // update user profiles
-                        unfollowAll();
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                )
+            if (confirm('Are you sure you want to delete your account?')) {
+                EventService
+                    .removeEvent(eventId)
+                    .then(
+                        function (response) {
+                            $location.url("/organization/" + vm.event._organization);
+                            // update user profiles
+                            unfollowAll();
+                        },
+                        function (error) {
+                            vm.error = error.data;
+                        }
+                    )
+            }
         }
 
         // remove this from follow list of all attendees

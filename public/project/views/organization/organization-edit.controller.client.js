@@ -81,16 +81,18 @@
 
         /* deletes the organization */
         function deleteOrganization() {
-            OrganizationService
-                .removeOrganization(organizationId)
-                .then(
-                    function(response) {
-                        $location.url("/user/" + vm.org._poster);
-                    },
-                    function(error) {
-                        vm.error = error.data;
-                    }
-                )
+            if (confirm('Are you sure you want to delete this organization?')) {
+                OrganizationService
+                    .removeOrganization(organizationId)
+                    .then(
+                        function (response) {
+                            $location.url("/user/" + vm.org._poster);
+                        },
+                        function (error) {
+                            vm.error = error.data;
+                        }
+                    )
+            }
         }
 
     }
