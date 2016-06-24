@@ -32,8 +32,8 @@
 
         function map_init() {
             var mapOptions = {
-                center: {lat: 42.34003, lng: -71.089797},
-                zoom: 16
+                center: {lat: 42.347, lng: -71.081797},
+                zoom: 13
             };
             var map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
