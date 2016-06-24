@@ -35,7 +35,7 @@
             <div id="map" class="ac-map-box"></div>
         </div>
         <div class="col-md-6 ac-event-list">
-                <h1 ng-repeat="event in model.events"><a ng-href="#/event/{{event._id}}">{{event.name}}</a></h1>
+                <h1 ng-repeat="event in model.visibleEvents"><a ng-href="#/event/{{event._id}}">{{event.name}}</a></h1>
         </div>
     </div>
 </div>
