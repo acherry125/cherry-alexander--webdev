@@ -5,7 +5,7 @@ module.exports = function(mongoose) {
         name: String,
         date: String,
         time: String,
-        location: {address: String, place_id: String},
+        location: {address: String, place_id: String, lat: Number, lng: Number},
         // can use a regex to make the email too
         description: String,
         attendees: [{type: mongoose.Schema.Types.ObjectId, ref: "EventUser"}],

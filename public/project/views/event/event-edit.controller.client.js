@@ -48,8 +48,10 @@
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
                 var place_id = place.place_id;
+                var lat = place.geometry.location.lat();
+                var lng = place.geometry.location.lng();
                 var address = place.formatted_address;
-                vm.event.location = {'address': address, 'place_id': place_id};
+                vm.event.location = {'address': address, 'place_id': place_id, 'lat': lat, 'lng': lng};
             });
         }
         

@@ -32,6 +32,8 @@
                         // for rendering
                         vm.followNumber = vm.event.attendees.length;
                         var organizationId = vm.event._organization;
+                        // initialize map with location information
+                        map_init(vm.event.location.lat, vm.event.location.lng, vm.event.location.place_id);
                         return OrganizationService.findOrganizationById(organizationId);
                     },
                     function(error) {
@@ -61,24 +63,67 @@
                         vm.error = error.data;
                     }
                 );
-            map_init();
         }
 
         init();
 
-        function map_init() {
+        function map_init(lat, lng, placeId) {
             // https://developers.google.com/maps/documentation/javascript/examples/geocoding-place-id
             // thats where I will find what I need
             var mapOptions = {
-                center: {lat: 42.34003, lng: -71.089797},
+                center: {lat: lat, lng: lng},
                 zoom: 16
             };
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
             var infowindow = new google.maps.InfoWindow();
-            var marker = new google.maps.Marker({
-                map: map,
-                position: {lat: 42.34003, lng: -71.089797}
+            var geocoder = new google.maps.Geocoder;
+            if(placeId) {
+                // query google with place_id
+                geocodePlaceId(geocoder, map, infowindow, placeId);
+            } else {
+                // no placeid associated with location
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: {lat: lat, lng: lng}
+                });
+            }
+
+        }
+
+        function geocodePlaceId(geocoder, map, infowindow, placeId) {
+            geocoder.geocode({'placeId': placeId}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        var place = results[0];
+                        if (place.geometry.viewport) {
+                            map.fitBounds(place.geometry.viewport);
+                        } else {
+                            map.setCenter(place.geometry.location);
+                            map.setZoom(17);
+                        }
+                        var marker = new google.maps.Marker({
+                            map: map
+                        });
+                        // Set the position of the marker using the place ID and location.
+                        marker.setPlace(/** @type {!google.maps.Place} */ ({
+                            placeId: place.place_id,
+                            location: place.geometry.location
+                        }));
+                        marker.setVisible(true);
+                        var phone = place.formatted_phone_number;
+                        if(!phone) {
+                            phone = "";
+                        }
+
+                        infowindow.setContent(place.formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
             });
         }
 
