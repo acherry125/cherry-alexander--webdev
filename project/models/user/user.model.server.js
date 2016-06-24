@@ -9,7 +9,8 @@ module.exports = function(mongoose) {
         "deleteUser": deleteUser,
         "findUserById": findUserById,
         "findUserByUsername": findUserByUsername,
-        "findUserByCredentials": findUserByCredentials
+        "findUserByCredentials": findUserByCredentials,
+        "findUserByGoogleId": findUserByGoogleId
     };
     return api;
 
@@ -54,5 +55,8 @@ module.exports = function(mongoose) {
         return User.findOne({"username":username, "password":password});
     }    
     
+    function findUserByGoogleId(googleId) {
+        return User.findOne({"google.id": googleId})
+    }
     
 };

@@ -26,8 +26,8 @@ module.exports = function(app, models) {
     // google login callback
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/#/profile',
-            failureRedirect: '/#/login'
+            successRedirect: '/project/index.html#/user/redirect',
+            failureRedirect: '/project/index.html#/login'
         }));
     // update a user
     app.put("/api/project/user/:uid", updateUser);
@@ -41,9 +41,9 @@ module.exports = function(app, models) {
     app.delete("/api/project/user/:uid/message/:mid", deleteMessage);
 
     var googleConfig = {
-        clientID     : 2,//process.env.GOOGLE_CLIENT_ID,
-        clientSecret : 2,//process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : 2//process.env.GOOGLE_CALLBACK_URL
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
 
     passport.use('EventHorizon', new LocalStrategy(localStrategy));

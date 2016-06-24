@@ -3,6 +3,10 @@ module.exports = function(mongoose) {
     var UserSchema = mongoose.Schema({
         username: String,
         password: String,
+        google: {
+            id:    String,
+            token: String
+        },
         firstName: String,
         lastName: String,
         // can use a regex to make the email too
