@@ -58,8 +58,20 @@
         }
 
         function verifyEvent(event) {
-            if(!event || !event.name) {
+            if(!event) {
+                vm.error = "Name, location, and date are required";
+                return false;
+            } else if (!event.name) {
                 vm.error = "Name field is required";
+                return false;
+            } else if(!event.location && !event.date) {
+                vm.error = "Location and Date are required";
+                return false;
+            } else if(!event.location) {
+                vm.error = "Location is required";
+                return false;
+            } else if(!event.date) {
+                vm.error = "Date is required";
                 return false;
             } else {
                 vm.error = "";
