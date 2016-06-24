@@ -79,11 +79,6 @@ ul {
     margin-top: 10px;
 }
 
-.ac-event-list {
-    height: 400px;
-    overflow-y: auto;
-}
-
 /* highlight glyphicons when focused for clarity */
 a .glyphicon:hover {
     color: red;
