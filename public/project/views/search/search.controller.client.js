@@ -6,12 +6,20 @@
 
     function SearchController($rootScope, EventService, UserService, $scope, $location) {
         var vm = this;
+
+        /* API */
+        // initiate map
+        var mapInit = mapInit;
+        // add markers to map
+        var addMarkers = addMarkers;
+        // show all markers and add to event list
+        var showVisibleMarkers = showVisibleMarkers;
+        // compare two events based on their date (reversed)
+        var eventComparatorRevDate = eventComparatorRevDate;
         vm.goToLogin = goToLogin;
         vm.searchName = searchName;
-        var mapInit = mapInit;
-        var addMarkers = addMarkers;
-        var showVisibleMarkers = showVisibleMarkers;
-        var eventComparatorRevDate = eventComparatorRevDate;
+
+        /* initial conditions */
         vm.searchTerm = "";
         vm.mapDisplay = false;
         vm.markers = [];
@@ -20,22 +28,7 @@
         // just for rendering, doesn't allow access to anything sensitive
         vm.user = $rootScope.currentUser;
 
-        /*
-
-        TODO:
-        CREATE REAL SEARCH FOR TERMS
-        IDEA: Use .split(" ") then use .find() with search terms
-        figure out what do if they input multiple words, probably just match one of them
-        and that will be good enough
-
-        TODO:
-        Revamp overall design
-
-        TODO:
-        HOMEPAGEEEEEEEEEEEEE
-
-         */
-
+        // initialize the page
         function init() {
             EventService
                 .findAllEvents()
@@ -54,16 +47,21 @@
                 );
         }
 
+        // initial call
         init();
 
+        // initialize the map
         function mapInit() {
+
             var mapOptions = {
                 center: {lat: 42.347, lng: -71.081797},
                 zoom: 13
             };
+            // create map
             var map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
 
+            // add markers to map
             addMarkers(vm.events, map);
 
             // Fired when the map becomes idle after panning or zooming.
@@ -71,6 +69,7 @@
                 showVisibleMarkers(map);
             });
 
+            // connect to search bar
             var input = /** @type {HTMLInputElement} */(
                 document.getElementById('search'));
 
@@ -119,34 +118,36 @@
                 var dayCheck = then.getYear() === now.getYear()
                     && then.getMonth() === now.getMonth()
                     && then.getDate() >= now.getDate();
-                // marker for an event yet to come
+                // make sure marker is not for already finished event
                 if (yearCheck || monthCheck || dayCheck) {
                     var location = event.location;
                     var placeId = location.place_id;
                     var LatLng = new google.maps.LatLng(location.lat, location.lng);
+                    // the marker to place
                     var marker = new google.maps.Marker({
                         title: event.name,
                         map: map,
                         icon: "/image/marker.png"
                     });
+                    // position the marker
                     marker.setPlace({
                         location: LatLng,
                         placeId: placeId
                     });
 
-                    var phone = event.phone ? event.phone : "";
-
+                    var desc = event.description ? event.description : "";
 
                     marker.info = new google.maps.InfoWindow({
                         content: '<div><strong>' + '<a href="#/event/' + event._id + '">' + event.name + '</a></strong><br>' +
-                        location.address + '<br>' + phone + '</div>'
+                        location.address + '<br>' + desc + '</div>'
                     });
 
+                    // open infowindow on click
                     google.maps.event.addListener(marker, 'click', function() {
                         var marker_map = this.getMap();
                         this.info.open(marker_map, this);
                     });
-
+                    // add to markers
                     vm.markers.push(marker);
                 } else {
                     // to keep number of events == number of markers in arrays
@@ -158,7 +159,9 @@
         function showVisibleMarkers(map) {
             var bounds = map.getBounds(),
                 count = 0;
+            // reset events
             vm.visibleEvents = [];
+            // add markers to map within the map bounds and add to search results
             for (var i = 0; i < vm.markers.length; i++) {
                 var marker = vm.markers[i];
                 if(marker === 0) {
@@ -175,6 +178,7 @@
                     marker.setMap(null);
                 }
             }
+            // sort by date
             vm.visibleEvents.sort(eventComparatorRevDate);
             // outside of angular call so must apply
             $scope.$apply();
@@ -185,13 +189,13 @@
             return event1.date > event2.date;
         }
 
-
+        // go to login page
         function goToLogin() {
             UserService.setLoginRedirect("/search");
             $location.url("/login");
         }
 
-
+        // rudimentary search by name
         function searchName() {
             if(!vm.searchTerm) {
                 vm.visibleEvents = vm.events;
