@@ -85,7 +85,7 @@ ul {
 }
 
 .ac-title {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .ac-map-box {
@@ -128,12 +128,6 @@ nav>.container>.navbar-header {
     margin-right: 0px;
 }
 
-/* Make header text more readable */
-.navbar-brand {
-    font-size: 1.75em;
-    line-height: inherit;
-}
-
 .navbar p {
     font-size: 1.75em;
 }
@@ -155,7 +149,8 @@ nav>.container>.navbar-header {
 /* To stop the user from thinking the title page is clickable */
 .navbar .navbar-brand {
     cursor: default;
-    font-size: 1.75em;
+    font-size: 1.6em;
+    line-height: inherit;
 }
 
 .alert {

@@ -29,7 +29,7 @@
     <div ng-if="model.user.poster" class="row">
         <div class="col-sm-6 col-sm-offset-1">
             <div class="row">
-                <h1>Organizations</h1>
+                <h2>Organizations</h2>
             </div>
             <div>
                 <button ng-click="model.addOrganization()" class="btn btn-lg btn-primary">Add New Organization</button>
@@ -40,9 +40,10 @@
         </div>
         <div class="col-sm-5">
             <div class="row">
-                <h1>
-                    Events Following
-                </h1>
+                <h2>Events Following</h2>
+            </div>
+            <div>
+                <a href="#/search" role="button" class="btn btn-lg btn-primary">Find New Events!</a>
             </div>
             <div ng-repeat="event in model.user.followed" class="row">
                 <h3><a ng-click="model.goToEvent(event._id)">{{event.name}}</a></h3>

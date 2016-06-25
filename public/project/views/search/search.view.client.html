@@ -60,21 +60,6 @@
         <div class="col-md-6 col-xs-12" ng-show="model.searchType === 'location'">
             <div id="map" class="ac-map-box"></div>
         </div>
-        <!-- Title Row -->
-        <div id="title-row">
-            <div ng-class="{'col-xs-3': model.searchType === 'location',
-        'col-xs-6': model.searchType === 'name'}">
-                <div ng-class="{'col-xs-6': model.searchType === 'location'}">
-                    <h1>Name</h1>
-                </div>
-            </div>
-            <div ng-class="{'col-xs-3': model.searchType === 'location',
-        'col-xs-6': model.searchType === 'name'}">
-                <div ng-class="{'col-xs-6': model.searchType === 'location'}">
-                    <h1>Date</h1>
-                </div>
-            </div>
-        </div>
         <!-- Search Results -->
         <div ng-class="{'ac-search-results': model.searchType === 'location',
         'col-md-6': model.searchType === 'location'}">
