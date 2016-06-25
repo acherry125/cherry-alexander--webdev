@@ -80,7 +80,7 @@
     </div>
     <div ng-repeat="event in model.events" class="row">
         <div class="col-xs-12">
-            <h3><a href="#/event/{{event._id}}">{{event.name}}</a></h3>
+            <h3><a ng-click="model.goToEvent(event._id)">{{event.name}}</a></h3>
         </div>
     </div>
     <div id="add-review" ng-if="model.user">

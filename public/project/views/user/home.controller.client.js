@@ -10,6 +10,7 @@
         var userId = $routeParams.uid;
         vm.uid = userId;
         vm.addOrganization = addOrganization;
+        vm.goToEvent = goToEvent;
         
         
         function init() {
@@ -47,6 +48,11 @@
         // orders events by reverse date so they render from top to bottom
         function eventComparatorRevDate(event1, event2) {
             return event1.date > event2.date;
+        }
+
+        function goToEvent(eventId) {
+            $rootScope.back = "/user/" + userId;
+            $location.url("/event/" + eventId);
         }
 
 

@@ -13,6 +13,7 @@
         vm.unfollowEvent = unfollowEvent;
         vm.goToLogin = goToLogin;
         vm.deleteImage = deleteImage;
+        vm.goBack = goBack;
         
         vm.user = $rootScope.currentUser;
 

@@ -22,6 +22,7 @@
         vm.submitReview = submitReview;
         vm.deleteReview = deleteReview;
         vm.goBack = goBack;
+        vm.goToEvent = goToEvent;
 
         vm.user = $rootScope.currentUser;
 
@@ -155,6 +156,11 @@
             } else {
                 $location.url("/search");
             }
+        }
+
+        function goToEvent(eventId) {
+            $rootScope.back = "/organization/" + organizationId;
+            $location.url("/event/" + eventId);
         }
 
     }
