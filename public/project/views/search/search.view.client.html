@@ -1,3 +1,4 @@
+<!-- Header Nav -->
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -18,10 +19,12 @@
         </div>
     </nav>
 </header>
-<!-- Make fixed map that flows down with page -->
+<!-- Container -->
 <div class="container ac-nav-allow">
+    <!-- Search Bar -->
     <div class="row">
         <div class="col-xs-12">
+            <!-- Search Text Input -->
             <form ng-keyup="$event.keyCode == 13 && model.searchType === 'name' && model.searchName()">
                 <div class="form-group ac-form-group">
                     <label for="search">Search for events near you!</label>
@@ -38,6 +41,7 @@
                            class="form-control">
                 </div>
             </form>
+            <!-- Search options -->
             <div class="radio-inline">
                 <label><input type="radio" ng-model="model.searchType" value="location">Location</label>
             </div>
@@ -50,25 +54,33 @@
                     class="btn btn-lg btn-block btn-primary">Submit</button>
         </div>
     </div>
+    <!-- Main content -->
     <div class="row">
+        <!-- Map -->
         <div class="col-md-6 col-xs-12" ng-show="model.searchType === 'location'">
             <div id="map" class="ac-map-box"></div>
         </div>
-        <div ng-class="{'col-xs-3': model.searchType === 'location',
+        <!-- Title Row -->
+        <div id="title-row">
+            <div ng-class="{'col-xs-3': model.searchType === 'location',
         'col-xs-6': model.searchType === 'name'}">
-            <div ng-class="{'col-xs-6': model.searchType === 'location'}">
-                <h1>Name</h1>
+                <div ng-class="{'col-xs-6': model.searchType === 'location'}">
+                    <h1>Name</h1>
+                </div>
+            </div>
+            <div ng-class="{'col-xs-3': model.searchType === 'location',
+        'col-xs-6': model.searchType === 'name'}">
+                <div ng-class="{'col-xs-6': model.searchType === 'location'}">
+                    <h1>Date</h1>
+                </div>
             </div>
         </div>
-        <div ng-class="{'col-xs-3': model.searchType === 'location',
-        'col-xs-6': model.searchType === 'name'}">
-            <div ng-class="{'col-xs-6': model.searchType === 'location'}">
-                <h1>Date</h1>
-            </div>
-        </div>
+        <!-- Search Results -->
         <div ng-class="{'ac-search-results': model.searchType === 'location',
         'col-md-6': model.searchType === 'location'}">
+            <!-- Event repeat -->
             <div ng-repeat="event in model.visibleEvents">
+                <!-- Name -->
                 <div class="col-sm-6 col-xs-12">
                     <h1>
                         <a ng-href="#/event/{{event._id}}">
@@ -76,6 +88,7 @@
                         </a>
                     </h1>
                 </div>
+                <!-- Date -->
                 <div class="col-sm-6 col-xs-12">
                     <h1>
                         {{event.formattedDate}}
