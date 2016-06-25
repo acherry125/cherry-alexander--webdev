@@ -23,16 +23,10 @@
         and that will be good enough
 
         TODO:
-        Check that navigation works smoothly
-
-        TODO:
         Revamp overall design
 
         TODO:
         HOMEPAGEEEEEEEEEEEEE
-
-        TODO:
-        Sundial for the background? Or maybe a mountain photo or something
 
          */
 
