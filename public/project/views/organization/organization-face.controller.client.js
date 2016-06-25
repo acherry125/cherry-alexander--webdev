@@ -21,6 +21,7 @@
         vm.goToLogin = goToLogin;
         vm.submitReview = submitReview;
         vm.deleteReview = deleteReview;
+        vm.goBack = goBack;
 
         vm.user = $rootScope.currentUser;
 
@@ -145,6 +146,14 @@
                     );
             } else {
                 vm.error = "You do not own this comment";
+            }
+        }
+
+        function goBack() {
+            if(vm.user) {
+                $location.url("/user/" + vm.user._id);
+            } else {
+                $location.url("/search");
             }
         }
 

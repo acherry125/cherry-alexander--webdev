@@ -2,7 +2,8 @@ module.exports = function(app, models) {
 
     var organizationModel = models.organizationModel;
     var userModel = models.userModel;
-    
+    var eventModel = models.eventModel;
+
     // create an organization for a user
     app.post("/api/project/user/:uid/organization", createOrganization);
     // add a review to an organization
@@ -102,7 +103,6 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             )
-        
     }
 
     // remove an organization
@@ -118,6 +118,7 @@ module.exports = function(app, models) {
                     res.send(error);
                 }
             );
+        
     }
 
     // add a review to the organization

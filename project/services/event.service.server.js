@@ -84,7 +84,7 @@ module.exports = function(app, models) {
         eventModel
             .removeEvent(eventId)
             .then(
-                function(response) {
+                function(event) {
                     res.sendStatus(200);
                 },
                 function(error) {
