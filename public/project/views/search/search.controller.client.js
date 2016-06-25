@@ -31,6 +31,9 @@
         TODO:
         HOMEPAGEEEEEEEEEEEEE
 
+        TODO:
+        Sundial for the background? Or maybe a mountain photo or something
+
          */
 
         function init() {
