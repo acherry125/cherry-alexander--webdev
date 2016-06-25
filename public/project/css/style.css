@@ -3,7 +3,7 @@
 /***** general page layout *****/
 html {
     font-size: 14px;
-    background-color: #F53240;
+    background-color: #FF5252;
     padding: 1.25em 0.5em 0.5em 0.5em;
     height: 100%;
     overflow-y: hidden;
@@ -15,9 +15,10 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     font-size: 16px;
-    color: #FFF;
+    color: #fff;
+    text-shadow: 0.4px 0.4px 0.4px #000;
     background-color: #02C8A7;
-    font-family: "Alegreya Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
     padding: 2.5em 0 0 0;
 }
 
@@ -64,7 +65,6 @@ body {
 
 .ac-face-header {
     color: #A52A2A;
-    text-shadow: 1px 1px 1px #67DECA;
 }
 
 .ng-scope > .container {
@@ -84,6 +84,10 @@ ul {
     margin-bottom: 5px;
 }
 
+.ac-title {
+    font-size: 5em;
+}
+
 .ac-map-box {
     color: black;
     width: 100%;
@@ -93,11 +97,13 @@ ul {
 
 /* highlight glyphicons when focused for clarity */
 a .glyphicon:hover {
-    color: red;
+    color: #FF5252;
 }
 
 a {
     cursor: pointer;
+    text-shadow: none;
+    color: #2200CC;
 }
 
 /* Space to tap footer glyphicons */
@@ -108,11 +114,6 @@ a {
 /* Navbar text is black */
 .navbar .glyphicon, .navbar .navbar-brand {
     color: white;
-}
-
-/* Profile button should still be blue */
-.navbar .glyphicon-user {
-    color: #006080;
 }
 
 .navbar .btn.btn-lg.btn-block {

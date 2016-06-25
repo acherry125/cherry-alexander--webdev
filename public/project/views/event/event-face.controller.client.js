@@ -134,8 +134,7 @@
 
         function followEvent() {
             if(!vm.user) {
-                // redirect to login or something
-                return;
+                goToLogin();
             }
             UserService
                 .followEvent(vm.user._id, {name: vm.event.name, _id: eventId, date: vm.event.date })

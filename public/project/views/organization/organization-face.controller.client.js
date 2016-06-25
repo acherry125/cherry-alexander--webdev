@@ -60,6 +60,10 @@
                 .then(
                     function(response) {
                         vm.events = response.data.elements;
+                        for(var i in vm.events) {
+                            var event = vm.events[i];
+                            event.formattedDate = new Date(event.date).toDateString();
+                        }
                     },
                     function(error) {
                         vm.error = "";
@@ -73,7 +77,7 @@
             if(vm.user) {
                 vm.messageActive = !vm.messageActive;
             } else {
-                // should redirect to login page or something
+                goToLogin();
             }
         }
 

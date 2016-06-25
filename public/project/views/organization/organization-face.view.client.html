@@ -33,7 +33,7 @@
 <div class="container ac-nav-allow">
     <div class="row">
         <div class="col-md-12">
-            <h1>{{model.org.name}}</a></b></h1>
+            <h1 class="ac-title">{{model.org.name}}</a></b></h1>
         </div>
     </div>
     <div class="row">
@@ -66,11 +66,10 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xs-12">
-            <h3 ng-if="model.org.description">{{model.org.description}}</h3>
-            <h3 ng-if="!model.org.description">No description provided</h3>
+            <h3 class="ac-face-header" ng-if="model.org.description">{{model.org.description}}</h3>
+            <h3 class="ac-face-header" ng-if="!model.org.description">No description provided</h3>
         </div>
     </div>
     <div class="row">
@@ -80,7 +79,9 @@
     </div>
     <div ng-repeat="event in model.events" class="row">
         <div class="col-xs-12">
-            <h3><a ng-click="model.goToEvent(event._id)">{{event.name}}</a></h3>
+            <h2><a ng-click="model.goToEvent(event._id)">{{event.name}}</a></h2>
+            <h2>{{event.formattedDate}}</h2>
+            <h2>{{event.location.address}}</h2>
         </div>
     </div>
     <div id="reviews">
