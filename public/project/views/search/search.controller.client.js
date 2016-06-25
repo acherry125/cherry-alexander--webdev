@@ -23,9 +23,6 @@
         and that will be good enough
 
         TODO:
-        Remove events for organization when it is deleted
-
-        TODO:
         Check that navigation works smoothly
 
         TODO:
