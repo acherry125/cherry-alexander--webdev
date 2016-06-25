@@ -26,6 +26,11 @@ body {
     margin-right: 10px;
 }
 
+.radio-inline input {
+    height: 20px;
+    width: 20px;
+}
+
 #review-button {
     margin-top: 5px;
     box-shadow: 1px 1px 1px grey;
@@ -270,7 +275,7 @@ h3 {
 }
 
 @media only screen and (min-device-width: 992px) {
-    #search-results {
+    .ac-search-results {
         height: 380px;
         overflow-y: auto;
     }

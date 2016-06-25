@@ -22,21 +22,52 @@
 <div class="container ac-nav-allow">
     <div class="row">
         <div class="col-xs-12">
-            <form>
+            <form ng-keyup="$event.keyCode == 13 && model.searchType === 'name' && model.searchName()">
                 <div class="form-group ac-form-group">
                     <label for="search">Search for events near you!</label>
-                    <input ng-model="searchTerm" type="text" id="search" class="form-control">
+                    <input ng-if="model.searchType === 'location'"
+                           type="text"
+                           id="search"
+                           placeholder="enter location"
+                           class="form-control">
+                    <input ng-if="model.searchType === 'name'"
+                           ng-model="model.searchTerm"
+                           type="text"
+                           id="searchName"
+                           placeholder="enter name"
+                           class="form-control">
                 </div>
             </form>
-            <button ng-click="model.searchMap(searchTerm)"
+            <div class="radio-inline">
+                <label><input type="radio" ng-model="model.searchType" value="location">Location</label>
+            </div>
+            <div class="radio-inline">
+                <label><input type="radio" ng-model="model.searchType" value="name">Name</label>
+            </div>
+            <!-- Button for name search -->
+            <button ng-show="model.searchType === 'name'"
+                    ng-click="model.searchName()"
                     class="btn btn-lg btn-block btn-primary">Submit</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-xs-12" ng-show="model.searchType === 'location'">
             <div id="map" class="ac-map-box"></div>
         </div>
-        <div class="col-md-6" id="search-results">
+        <div ng-class="{'col-xs-3': model.searchType === 'location',
+        'col-xs-6': model.searchType === 'name'}">
+            <div ng-class="{'col-xs-6': model.searchType === 'location'}">
+                <h1>Name</h1>
+            </div>
+        </div>
+        <div ng-class="{'col-xs-3': model.searchType === 'location',
+        'col-xs-6': model.searchType === 'name'}">
+            <div ng-class="{'col-xs-6': model.searchType === 'location'}">
+                <h1>Date</h1>
+            </div>
+        </div>
+        <div ng-class="{'ac-search-results': model.searchType === 'location',
+        'col-md-6': model.searchType === 'location'}">
             <div ng-repeat="event in model.visibleEvents">
                 <div class="col-sm-6 col-xs-12">
                     <h1>

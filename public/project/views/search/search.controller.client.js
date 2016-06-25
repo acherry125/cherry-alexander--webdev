@@ -6,11 +6,17 @@
 
     function SearchController($rootScope, EventService, UserService, $scope, $location) {
         var vm = this;
+        vm.goToLogin = goToLogin;
+        vm.searchName = searchName;
+        var mapInit = mapInit;
+        var addMarkers = addMarkers;
+        var showVisibleMarkers = showVisibleMarkers;
+        var eventComparatorRevDate = eventComparatorRevDate;
         vm.searchTerm = "";
         vm.mapDisplay = false;
-        vm.goToLogin = goToLogin;
         vm.markers = [];
         vm.visibleEvents = [2];
+        vm.searchType = "location";
         // just for rendering, doesn't allow access to anything sensitive
         vm.user = $rootScope.currentUser;
 
@@ -36,7 +42,11 @@
                 .then(
                     function(response) {
                         vm.events = response.data.elements;
-                        map_init();
+                        for(var i in vm.events) {
+                            var event = vm.events[i];
+                            event.formattedDate = new Date(event.date).toDateString();
+                        }
+                        mapInit();
                     },
                     function(error) {
                         vm.error = error;
@@ -46,7 +56,7 @@
 
         init();
 
-        function map_init() {
+        function mapInit() {
             var mapOptions = {
                 center: {lat: 42.347, lng: -71.081797},
                 zoom: 13
@@ -159,7 +169,6 @@
                 var latLng = new google.maps.LatLng(lat, lng);
                 if (bounds.contains(latLng) === true) {
                     var event = vm.events[i];
-                    event.formattedDate = new Date(event.date).toDateString();
                     vm.visibleEvents.push(vm.events[i]);
                     marker.setMap(map);
                 } else {
@@ -182,8 +191,28 @@
             $location.url("/login");
         }
 
-    }
 
+        function searchName() {
+            if(!vm.searchTerm) {
+                vm.visibleEvents = vm.events;
+                return;
+            }
+            vm.visibleEvents = [];
+            var terms = vm.searchTerm.split(" ");
+            for(var i in vm.events) {
+                var nameTerms = vm.events[i].name.split(" ");
+                for(var j in nameTerms) {
+                    if(terms.indexOf(nameTerms[j]) > -1) {
+                        vm.visibleEvents.push(vm.events[i]);
+                        break;
+                    }
+                }
+            }
+            vm.visibleEvents.sort(eventComparatorRevDate);
+        }
+
+
+    }
 
 
 })();
