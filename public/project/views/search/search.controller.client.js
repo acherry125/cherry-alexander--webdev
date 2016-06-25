@@ -164,6 +164,8 @@
                 var lng = marker.place.location.lng();
                 var latLng = new google.maps.LatLng(lat, lng);
                 if (bounds.contains(latLng) === true) {
+                    var event = vm.events[i];
+                    event.formattedDate = new Date(event.date).toDateString();
                     vm.visibleEvents.push(vm.events[i]);
                     marker.setMap(map);
                 } else {
