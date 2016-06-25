@@ -102,7 +102,7 @@ a .glyphicon:hover {
 
 a {
     cursor: pointer;
-    text-shadow: none;
+    text-shadow: 0.1px 0.1px 0.1px #000;
     color: #2200CC;
 }
 
