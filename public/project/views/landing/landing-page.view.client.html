@@ -1,4 +1,36 @@
 <div class="container">
+    <!-- Top bar -->
+    <div class="ac-landing-button-group">
+        <!-- Not signed in -->
+        <div class="row" ng-if="!model.user">
+            <!-- Login -->
+            <div class="col-xs-5">
+                <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
+            </div>
+            <!-- Register -->
+            <div class="col-xs-5" id="ac-sign-up-public">
+                <a role="button" ng-href="#/register" class="btn btn-lg btn-block btn-primary">Sign Up</a>
+            </div>
+            <div class="col-xs-2" id="ac-search-container-public">
+                <a role="button"
+                   ng-href="#/search"
+                   class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
+            </div>
+        </div>
+        <!-- Signed in -->
+        <div class="row" ng-if="model.user">
+            <div class="col-xs-6">
+                <a role="button"
+                   ng-href="#/user/{{model.user._id}}"
+                   class="btn btn-lg btn-block btn-primary"><span class="glyphicon glyphicon-home"></span></a>
+            </div>
+            <div class="col-xs-6">
+                <a role="button"
+                   ng-href="#/search"
+                   class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
+            </div>
+        </div>
+    </div>
     <!-- Title -->
     <header>
         <div class="row ac-landing-title">
@@ -17,85 +49,56 @@
         <div class="col-xs-12">
             <img class="img-responsive" src="/image/landing2.jpg">
         </div>
+    </div>
+    <div class="row">
         <div class="col-xs-12">
-            <!-- Description -->
             <!-- First Block -->
-            <div class="row">
-                    <h3>Find Events!</h3>
-            </div>
-            <div class="row">
-                    <p>
-                        Event Horizon is a platform for event goers to find, coordinate, and remember the events they are interested in attending. Event goers can choose to follow events and view them listed on their profile page. They can also view dynamically generated weather updates for the date of events that they view.
-                    </p>
-            </div>
+            <h3>Find Events!</h3>
         </div>
-    </img> <!-- Second block -->
-    <div class="row">
-    	<div class="col-xs-12">
-    		<h3>Coordinate with Event Planners!</h3>
-    	</div>
     </div>
     <div class="row">
-    	<div class="col-xs-12">
-    		<p>
-        	Event planners can post their free and paid events here under a variety of categories allowing them to reach out to an audience looking to have a good time. Interested event goers can reach out to planners and send them direct messages and be responded to, and if planners intend on hosting multiple events, they can even allow event goers to rate and comment on their public profile.
-    		</p>
-    	</div>
-	</div>
-
-	<!-- Third Block -->
+        <div class="col-xs-12">
+            <p>
+                Event Horizon is a platform for event goers to find, coordinate, and remember the events they are interested in attending. Event goers can choose to follow events and view them listed on their profile page. They can also view dynamically generated weather updates for the date of events that they view.
+            </p>
+        </div>
+    </div>
+    <!-- Second block -->
     <div class="row">
-        <div class="col-xs-12"> 
-   			<h3>And More...</h3>
-   		</div>
+        <div class="col-xs-12">
+            <h3>Coordinate with Event Planners!</h3>
+        </div>
     </div>
     <div class="row">
-    	<div class="col-xs-12"> 
-    		<ul>
-    			<li>
+        <div class="col-xs-12">
+            <p>
+                Event planners can post their free and paid events here under a variety of categories allowing them to reach out to an audience looking to have a good time. Interested event goers can reach out to planners and send them direct messages and be responded to, and if planners intend on hosting multiple events, they can even allow event goers to rate and comment on their public profile.
+            </p>
+        </div>
+    </div>
+    <!-- Third Block -->
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>And More...</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul>
+                <li>
                     <p>
                         Have a favorite event planner? Follow them to have access to their events instantly.
                     </p>
-    			</li>
-    			<li>
+                </li>
+                <li>
                     <p>
                         Enjoy the event? Direct Message the event planner to give them valuable feedback.
                     </p>
-    			</li>
-    		</ul>
-    	</div>
+                </li>
+            </ul>
+        </div>
     </div>
     <!-- For ease of acccess for testers -->
     <br>
     <a href="/">Back to Root Page</a>
-</div>
-<!-- login buttons -->
-<div class="ac-landing-button-group">
-    <div class="row" ng-if="!model.user">
-        <!-- Login -->
-        <div class="col-xs-5">
-            <a role="button" ng-href="#/login" class="btn btn-lg btn-block btn-primary">Login</a>
-        </div>
-        <!-- Register -->
-        <div class="col-xs-5" id="ac-sign-up-public">
-            <a role="button" ng-href="#/register" class="btn btn-lg btn-block btn-primary">Sign Up</a>
-        </div>
-        <div class="col-xs-2" id="ac-search-container-public">
-            <a role="button"
-               ng-href="#/search"
-               class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
-        </div>
-    </div>
-    <div class="row" ng-if="model.user">
-        <div class="col-xs-6">
-            <a role="button"
-               ng-href="#/user/{{model.user._id}}"
-               class="btn btn-lg btn-block btn-primary"><span class="glyphicon glyphicon-home"></span></a>
-        </div>
-        <div class="col-xs-6">
-            <a role="button"
-               ng-href="#/search"
-               class="btn btn-lg btn-block btn-info"><span class="glyphicon glyphicon-search"></span></a>
-        </div>
-    </div>
 </div>

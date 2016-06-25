@@ -164,6 +164,7 @@ nav>.container>.navbar-header {
 
 
 .ac-landing-button-group {
+    z-index: 1000;
     position: fixed;
     top: 0px;
     left: 0;
