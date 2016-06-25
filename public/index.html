@@ -2,51 +2,65 @@
 <html lang="en">
 
 <head>
-    <meta lang="en" charset="UTF-8" name=viewport content='width=700px'>
+    <!-- didn't scale to 1.25 because that would ruin my layout, used @media tags instead -->
+    <meta lang="en" charset="UTF-8" name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- APPLE META TAGS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
     <!-- to be decided -->
     <title>Alex Cherry Home Page</title>
 </head>
-
 <body>
+<div class="container">
     <!-- Page Header -->
-    <div>
-        <h1>Alex Cherry Web Development</h1>
-    </div>
-    <!-- Page Content -->
-    <div>
-        <div>
-            <!-- Required Photo -->
-            <div>
-                <img id="profile-pic" src="image/profile.jpg">
+    <header>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Alex Cherry Web Development</h2>
             </div>
-            <!-- Important Links -->
-            <div id="links">
-                <div class="row">
-                    <a href="project/index.html" class="button large">
-                        Project
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="assignment/index.html" class="button large">
-                        Assignment
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="test/index.html" class="button large">
-                        Test MongoDB
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="https://github.com/acherry125/cherry-alexander-webdev" 
-                    class="button large">
-                    Github</a>
-                </div>
+        </div>
+    </header>
+    <!-- Page Content -->
+    <!-- Required Photo -->
+    <div class="row">
+        <div class="col-xs-12">
+            <img id="profile-pic" src="image/profile.jpg">
+        </div>
+    </div>
+    <!-- Important Links -->
+    <div id="links">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <a href="project/index.html" class="btn btn-primary btn-block btn-lg">
+                    Project</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <a href="assignment/index.html" class="btn btn-primary btn-block btn-lg">
+                    Assignment</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <a href="test/index.html" class="btn btn-primary btn-block btn-lg">
+                    Test MongoDB</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <a href="https://github.com/acherry125/cherry-alexander-webdev"
+                   class="btn btn-primary btn-block btn-lg">Github</a>
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>
