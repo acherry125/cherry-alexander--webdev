@@ -26,7 +26,10 @@
             <h3>{{message.name}}</h3>
             <!-- Toggle message button -->
             <button ng-click="model.toggleMessage(message._id)"
-                    class="btn btn-warning ac-message-button">Show Message</button>
+                    class="btn btn-warning ac-message-button">
+                <span ng-if="!model.messageDict[message._id].toggled">Show Message</span>
+                <span ng-if="model.messageDict[message._id].toggled">Hide Message</span>
+            </button>
             <button ng-click="model.deleteMessage(message._id)"
                     class="btn btn-danger ac-message-button">Delete Message</button>
             <!-- default hidden message and reply container -->
@@ -37,7 +40,7 @@
                 <!-- Message Body -->
                 <p>{{message.message}}</p>
                 <!-- Reply text field -->
-                <textarea rows="3"
+                <textarea rows="5"
                           ng-model="model.messageDict[message._id].reply"
                           class="form-control ac-no-resize-input"></textarea>
                 <!-- Reply button -->
