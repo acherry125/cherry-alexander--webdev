@@ -152,6 +152,7 @@
                         }
                     );
             }
+            $location.url("/user/" + vm.org._poster);
         }
 
     }

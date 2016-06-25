@@ -203,6 +203,14 @@
                 )
         }
 
+        function goBack() {
+            if($rootScope.back) {
+                $location.url($rootScope.back);
+            } else {
+                $location.url("/search");
+            }
+        }
+
     }
 
 })();

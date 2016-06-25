@@ -18,6 +18,8 @@
                 .then(
                     function(response) {
                         vm.user = response.data;
+                        // doesnt work
+                        vm.user.followed.sort(eventComparatorRevDate)
                     },
                     function(error) {
                         vm.error = error.data;
@@ -40,6 +42,11 @@
         
         function addOrganization() {
             $location.url("/user/" + userId + "/addOrganization")
+        }
+
+        // orders events by reverse date so they render from top to bottom
+        function eventComparatorRevDate(event1, event2) {
+            return event1.date > event2.date;
         }
 
 
