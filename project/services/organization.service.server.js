@@ -35,7 +35,7 @@ module.exports = function(app, models) {
             .then(
                 function(org) {
                     if(org) {
-                        res.sendStatus(200);
+                        res.json(org);
                     }
                 },
                 function(error) {

@@ -48,7 +48,7 @@
                     .createEvent(organizationId, vm.event)
                     .then(
                         function(response) {
-                            $location.url("/organization/" + organizationId);
+                            $location.url("/event/" + response.data._id);
                         },
                         function(error) {
                             vm.error = error.data;

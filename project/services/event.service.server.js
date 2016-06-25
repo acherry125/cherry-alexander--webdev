@@ -45,7 +45,7 @@ module.exports = function(app, models) {
             .then(
                 function(event) {
                     if(event) {
-                        res.sendStatus(200);
+                        res.json(event);
                     }
                 },
                 function(error) {
