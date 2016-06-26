@@ -45,6 +45,10 @@ a {
     display: none;
 }
 
+.smaller-nav-font {
+    font-size: 1.4em;
+}
+
 .ac-instr-text {
     color: black;
     font-weight: 500;

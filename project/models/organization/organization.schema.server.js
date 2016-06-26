@@ -3,7 +3,7 @@ module.exports = function(mongoose) {
     var OrganizationSchema = mongoose.Schema({
         _poster: {type: mongoose.Schema.Types.ObjectId, ref: "EventUser"},
         name: String,
-        phone: String,
+        phone: Number,
         location: String,
         description: String,
         reviews: [{from: String, review: String}],

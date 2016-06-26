@@ -34,6 +34,10 @@
                     function(response) {
                         // location does not work
                         vm.org = response.data;
+                        var fPhone = String(vm.org.phone);
+                        vm.org.formattedPhone = "(" + fPhone.slice(0, 3) + ")"
+                            + fPhone.slice(3,6) + "-" 
+                            + fPhone.slice(6);
                         vm.org.reviews.reverse();
                         // determine if this user own the page
                         if(vm.user && vm.org._poster === vm.user._id) {

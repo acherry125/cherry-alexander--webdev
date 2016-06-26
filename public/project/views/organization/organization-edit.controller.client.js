@@ -71,13 +71,17 @@
         /* verify that organization has all required fields */
         function verifyOrganization(org) {
             if(!org || !org.name) {
-                vm.error = "Organization must have a name";
+                vm.error = "Name field is required";
                 return false;
-            } else {
+            } else if(org.phone && String(org.phone).length != 10) {
+                vm.error = "Phone number must be 10 digits";
+            }
+            else {
                 vm.error = "";
                 return true;
             }
         }
+
 
         /* deletes the organization */
         function deleteOrganization() {
