@@ -47,6 +47,12 @@ body {
     position: relative;
 }
 
+.ac-no-wrap-row {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 3px;
+}
+
 .ac-message-container {
     min-width: 250px;
     width: 50%;

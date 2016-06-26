@@ -64,10 +64,10 @@
         <div ng-class="{'ac-search-results': model.searchType === 'location',
         'col-md-6': model.searchType === 'location'}">
             <!-- Event repeat -->
-            <div ng-repeat="event in model.visibleEvents">
+            <div ng-repeat="event in model.visibleEvents" class="row">
                 <!-- Name -->
                 <div class="col-sm-6 col-xs-12">
-                    <h1>
+                    <h1 class="ac-no-wrap-row">
                         <a ng-href="#/event/{{event._id}}">
                             {{event.name}}
                         </a>
