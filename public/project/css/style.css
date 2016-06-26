@@ -52,6 +52,10 @@ body {
     padding-right: 3px;
 }
 
+.navbar .navbar-brand.ac-smaller-font-nav {
+    font-size: 1.4em;
+}
+
 .ac-message-container {
     min-width: 250px;
     width: 50%;
@@ -156,7 +160,7 @@ nav>.container>.navbar-header {
 /* To stop the user from thinking the title page is clickable */
 .navbar .navbar-brand {
     cursor: default;
-    font-size: 1.6em;
+    font-size: 1.8em;
     line-height: inherit;
 }
 
