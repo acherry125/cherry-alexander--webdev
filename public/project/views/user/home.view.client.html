@@ -35,7 +35,9 @@
                 <button ng-click="model.addOrganization()" class="btn btn-lg btn-primary">Add New Organization</button>
             </div>
             <div ng-repeat="org in model.organizations" class="row">
-                <h3><a ng-href="#/organization/{{org._id}}">{{org.name}}</a></h3>
+                <h3 class="ac-no-wrap-row">
+                    <a ng-href="#/organization/{{org._id}}">{{org.name}}</a>
+                </h3>
             </div>
         </div>
         <div class="col-sm-5">
@@ -46,7 +48,9 @@
                 <a href="#/search" role="button" class="btn btn-lg btn-primary">Find New Events!</a>
             </div>
             <div ng-repeat="event in model.user.followed" class="row">
-                <h3><a ng-click="model.goToEvent(event._id)">{{event.name}}</a></h3>
+                <h3 class="ac-no-wrap-row">
+                    <a ng-click="model.goToEvent(event._id)">{{event.name}}</a>
+                </h3>
             </div>
         </div>
     </div>
