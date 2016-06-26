@@ -60,7 +60,7 @@
             if(!org || !org.name) {
                 vm.error = "Name field is required";
                 return false;
-            } else if(org.phone && org.phone.length != 10) {
+            } else if(org.phone && String(org.phone).length != 10) {
                 vm.error = "Phone number must be 10 digits";
             }
             else {
