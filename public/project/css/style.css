@@ -168,6 +168,7 @@ nav>.container>.navbar-header {
     font-family: sans-serif;
     font-weight: 700;
     font-size: 1.25em;
+    text-shadow: none;
 }
 
 .ac-form-group {
