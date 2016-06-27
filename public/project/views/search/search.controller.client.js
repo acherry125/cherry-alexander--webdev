@@ -111,15 +111,9 @@
             for (var i = 0; i < events.length; i++) {
                 var event = events[i];
                 var then = new Date(event.date);
-                var now = new Date();
-                var yearCheck = then.getYear() > now.getYear();
-                var monthCheck = then.getYear() === now.getYear()
-                    && then.getMonth() > now.getMonth();
-                var dayCheck = then.getYear() === now.getYear()
-                    && then.getMonth() === now.getMonth()
-                    && then.getDate() >= now.getDate();
-                // make sure marker is not for already finished event
-                if (yearCheck || monthCheck || dayCheck) {
+                var currentDate = new Date();
+                currentDate = new Date(currentDate.setTime( currentDate.getTime() - 86400000 ));
+                if(then > currentDate) {
                     var location = event.location;
                     var placeId = location.place_id;
                     var LatLng = new google.maps.LatLng(location.lat, location.lng);
