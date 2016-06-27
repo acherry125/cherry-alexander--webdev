@@ -198,7 +198,15 @@
         // rudimentary search by name
         function searchName() {
             if(!vm.searchTerm) {
-                vm.visibleEvents = vm.events;
+                var futureEvents = [];
+                var currentDate = new Date();
+                currentDate = new Date(currentDate.setTime( currentDate.getTime() - 86400000 ));
+                for(var i in vm.events) {
+                    if(new Date(vm.events[i].date) > currentDate) {
+                        futureEvents.push(vm.events[i]);
+                    }
+                }
+                vm.visibleEvents = futureEvents;
                 return;
             }
             vm.visibleEvents = [];
