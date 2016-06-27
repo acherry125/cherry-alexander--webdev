@@ -24,6 +24,7 @@
          ng-class="{ 'has-error': model.isManager(model.organization)}">
         <div ng-if="model.messageDict[message._id].notDeleted">
             <h3>{{message.name}}</h3>
+            <h3>{{message.formattedDate}}</h3>
             <!-- Toggle message button -->
             <button ng-click="model.toggleMessage(message._id)"
                     class="btn btn-warning ac-message-button">

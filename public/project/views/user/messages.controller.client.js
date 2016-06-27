@@ -24,6 +24,7 @@
                         var msgs = vm.user.messages;
                         for(var i in msgs) {
                             vm.messageDict[msgs[i]._id] = {"toggled": false, "reply": "", "notDeleted": true};
+                            msgs[i].formattedDate = (new Date(msgs[i]._id)).toDateString();
                         }
                     },
                     function(error) {
