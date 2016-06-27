@@ -23,7 +23,7 @@
                     function(response) {
                         vm.user = response.data;
                         var currentDate = new Date();
-                        currentDate = new Date(currentDate.setTime( currentDate.getTime() + 86400000 ));
+                        currentDate = new Date(currentDate.setTime( currentDate.getTime() - 86400000 ));
                         for(var i in vm.user.followed) {
                             var event = vm.user.followed[i];
                             var date = new Date(event.date);
