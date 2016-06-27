@@ -9,8 +9,11 @@
         var vm = this;
         var userId = $routeParams.uid;
         vm.uid = userId;
+        vm.futureEvents = [];
+        vm.pastEvents = [];
         vm.addOrganization = addOrganization;
         vm.goToEvent = goToEvent;
+        
         
         
         function init() {
@@ -19,8 +22,17 @@
                 .then(
                     function(response) {
                         vm.user = response.data;
-                        // doesnt work
-                        vm.user.followed.sort(eventComparatorRevDate)
+                        var currentDate = new Date();
+                        currentDate = new Date(currentDate.setTime( currentDate.getTime() + 86400000 ));
+                        for(var i in vm.user.followed) {
+                            var event = vm.user.followed[i];
+                            var date = new Date(event.date);
+                            if(date > currentDate) {
+                                vm.futureEvents.push(event);
+                            } else {
+                                vm.pastEvents.push(event);
+                            }
+                        }
                     },
                     function(error) {
                         vm.error = error.data;

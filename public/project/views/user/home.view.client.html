@@ -50,10 +50,18 @@
             <div class="row">
                 <a href="#/search" role="button" class="btn btn-lg btn-primary">Find New Events!</a>
             </div>
-            <div class="row" ng-if="model.user.followed.length === 0">
-                <h3>You aren't following any events!</h3>
+            <div class="row" ng-if="model.futureEvents.length === 0">
+                <h3>You aren't following upcoming events!</h3>
             </div>
-            <div ng-repeat="event in model.user.followed" class="row">
+            <div ng-repeat="event in model.futureEvents" class="row">
+                <h3 class="ac-no-wrap-row">
+                    <a ng-click="model.goToEvent(event._id)">{{event.name}}</a>
+                </h3>
+            </div>
+            <div class="row" ng-if="model.pastEvents.length > 0">
+                <h3>Past Events</h3>
+            </div>
+            <div ng-repeat="event in model.pastEvents" class="row">
                 <h3 class="ac-no-wrap-row">
                     <a ng-click="model.goToEvent(event._id)">{{event.name}}</a>
                 </h3>

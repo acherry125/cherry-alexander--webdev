@@ -22,7 +22,11 @@
                 .then(
                     function(response) {
                         vm.org = response.data;
-                        vm.initialLocation = vm.org.location.slice(0);
+                        if(vm.org.location) {
+                            vm.initialLocation = vm.org.location.slice(0);
+                        } else {
+                            vm.initialLocation = "";
+                        }
                     },
                     function(error) {
                         vm.error = error;
