@@ -35,7 +35,7 @@
                         // location does not work
                         vm.org = response.data;
                         var fPhone = String(vm.org.phone);
-                        vm.org.formattedPhone = "(" + fPhone.slice(0, 3) + ")"
+                        vm.org.formattedPhone = "(" + fPhone.slice(0, 3) + ") "
                             + fPhone.slice(3,6) + "-" 
                             + fPhone.slice(6);
                         vm.org.reviews.reverse();

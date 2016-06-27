@@ -22,6 +22,7 @@
                 .then(
                     function(response) {
                         vm.org = response.data;
+                        vm.initialLocation = vm.org.location.slice(0);
                     },
                     function(error) {
                         vm.error = error;
@@ -54,6 +55,9 @@
         /* Update an organization with new information */
         function updateOrganization() {
             if(verifyOrganization(vm.org)) {
+                if(!vm.org.phone) {
+                    vm.org.phone = null;
+                }
                 OrganizationService
                     .updateOrganization(organizationId, vm.org)
                     .then(
@@ -91,7 +95,7 @@
                     .then(
                         function (response) {
                             deleteAllEvents(organizationId);
-                            //$location.url("/user/" + vm.org._poster);
+                            $location.url("/user/" + vm.org._poster);
                         },
                         function (error) {
                             vm.error = error.data;
